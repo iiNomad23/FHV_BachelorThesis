@@ -6,7 +6,7 @@
 %\usepackage[english]{babel} % Englische Sprachanpassungen
 % ===============================================================================
 \usepackage[utf8]{inputenc}
-%\usepackage[ngerman]{babel}
+\usepackage[ngerman]{babel}
 %\usepackage[english]{babel} % Englische Sprachanpassungen
 %\usepackage{babel}
 \usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
@@ -82,21 +82,28 @@
 \input{_other/config}
 
 \begin{document}
+
 % ===============================================================================
 % Title Page
 % ===============================================================================
 \input{_other/titlepage/titlepage}
 
-
-% ===============================================================================
-% Standardinhalte - Vorwort
-% ===============================================================================
 % ===============================================================================
 % Roman Chapter and Page Numbering
 % ===============================================================================
 \pagenumbering{Roman}
 \newcounter{romanChapter}
 \renewcommand{\thechapter}{\Roman{chapter}}
+
+% ===============================================================================
+% Standardinhalte - Vorwort
+% ===============================================================================
+\input{content/standardContent/statuaryDeclaration}
+\input{content/standardContent/widmung}
+\input{content/standardContent/danksagung}
+\input{content/standardContent/abstract_german}
+\input{content/standardContent/abstract_english}
+
 
 % ===============================================================================
 % Table of Contents
