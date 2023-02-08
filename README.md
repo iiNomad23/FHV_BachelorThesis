@@ -1,7 +1,8 @@
 # Bachelor's Thesis
 
-This repository includes all LaTeX files of my bachelor's thesis **Integrating a feature-oriented testing system into the development cycle of technical systems**
-Written with [Overleaf](https://www.overleaf.com/)
+This repository includes all LaTeX files of my bachelor's thesis **Integrating a feature-oriented testing system into the development cycle of technical systems**. 
+
+Written with [Overleaf](https://www.overleaf.com/).
 
 ### Abstract
 The development of technical systems is a complex and costly process. Therefore, it’s
