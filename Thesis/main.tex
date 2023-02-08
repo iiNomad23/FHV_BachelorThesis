@@ -1,49 +1,35 @@
 % File must be on root level for minted to work
 % ===============================================================================
-\documentclass[a4paper,11pt,oneside,table,ngerman]{scrreprt}
+\documentclass[a4paper,12pt,oneside,table,ngerman]{scrreprt}
+
 % ===============================================================================
 % Packages 
-%\usepackage[english]{babel} % Englische Sprachanpassungen
 % ===============================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
-%\usepackage[english]{babel} % Englische Sprachanpassungen
-%\usepackage{babel}
-\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
-\usepackage{graphicx}       % Bilder einbinden
-\usepackage{acronym}  % für optionales Abkürzungsverzeichnis
-\usepackage{eurosym}  % z. B. \EUR{12345,68}
-\usepackage[linktocpage=true]{hyperref} % Links z. B. \href{https://www.wikibooks.org}{Wikibooks home}
+\usepackage[T1]{fontenc} % Silbentrennung bei Sonderzeichen
+\usepackage{graphicx} % Bilder einbinden
+\usepackage{wrapfig} % Bilder positionieren
+\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage{minted} % Code Highlighting/Import
+\usepackage{csquotes} % Anführungszeichen und Zitieren
+\usepackage[bindingoffset=8mm]{geometry} % Bindeverlust von 8mm einbeziehen
 \usepackage{caption} % Abbildungslegenden
-\captionsetup{format=hang, justification=raggedright}
-\usepackage[natbibapa]{apacite}
-%\bibliographystyle{apacite}
-\bibliographystyle{apacite}
-\usepackage{multicol} 
-\usepackage{pdfpages}
-\usepackage{url}
-\usepackage{rotating}
-\usepackage{tocloft}
-\usepackage{pdflscape}
-\usepackage{minted}
-\usepackage{enumitem}
-\usepackage[bindingoffset=8mm]{geometry}
-\usepackage{float}
-\usepackage{wrapfig}
-\usepackage{listings}
-\usepackage{nameref}
-\usepackage{xcolor}
+\usepackage{xcolor} % Farbige Hervorhebungen
+\usepackage{setspace} % Zeilenabstand
+\usepackage[style=authoryear,citestyle=authoryear,backend=biber]{biblatex} % Literaturverweise
+\usepackage[linktocpage=true]{hyperref} % Links
+\usepackage{acronym} % Abkürzungsverzeichnis
 \usepackage[textwidth=1in]{todonotes}
-\usepackage{regexpatch}
-\usepackage{csquotes} % After regexpatch to avoid warning
-\usepackage{array}
-\usepackage{verbatim} 
-\usepackage{setspace} % For line spacing
+\usepackage{url}
+\usepackage{xpatch}
 
+% ===============================================================================
+% Custom Commands
+% ===============================================================================
 \renewcommand{\contentsname}{My nice list of contents}
 \renewcommand{\listfigurename}{My nice list of figures}
 \renewcommand{\listtablename}{My nice list of table}
-
 
 % ===============================================================================
 % TODO Settings
@@ -51,6 +37,7 @@
 \makeatletter
 \xpatchcmd{\@todo}{\setkeys{todonotes}{#1}}{\setkeys{todonotes}{inline,#1}}{}{}
 \makeatother
+
 % ===============================================================================
 % Code List Environment
 % ===============================================================================
@@ -64,10 +51,12 @@
 % ===============================================================================
 % Settings
 % ===============================================================================
+\captionsetup{format=hang, justification=raggedright}
+\addbibresource{_other/main.bib}
 \onehalfspacing % Line Spacing
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}   % Depth of TOC
-\setlength{\parindent}{0em} 
+\setlength{\emergencystretch}{2pt}
 
 % HREF - Links
 \hypersetup{
@@ -123,7 +112,7 @@
 \clearpage
 \phantomsection
 \addcontentsline{toc}{chapter}{\protect\numberline{I}Liste der Akronyme/Glossar}
-\chapter*{Liste der Akronyme/Glossar}\label{ch:acro}
+\chapter*{Abkürzungsverzeichnis}\label{ch:acro}
 \input{content/_acro}
 \clearpage
 
@@ -194,7 +183,7 @@
 \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}Literaturverzeichnis}
 \stepcounter{chapter}
 \renewcommand{\bibname}{Literaturverzeichnis}
-\bibliography{_other/main}
+\printbibliography
 
 % ===============================================================================
 % Appendix
