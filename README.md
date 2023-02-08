@@ -1,7 +1,19 @@
-## Titel
-Integration eines Feature-orientierten Testsystems in den Entwicklungszyklus technischer Systeme.
+# Bachelor's Thesis
+
+This repository includes all LaTeX files of my bachelor's thesis **Integrating a feature-oriented testing system into the development cycle of technical systems**
+Written with [Overleaf](https://www.overleaf.com/)
 
 ### Abstract
-Die Entwicklung technischer Systeme ist ein komplexer und kostspieliger Prozess. Daher ist es wichtig, dass die Produkte vor der Auslieferung an den Kunden gezielt und sorgfältig getestet werden. Dies wird durch Zeitdruck und Deadlines oftmals vernachlässigt, oder nur unzureichend durchgeführt. Mit einem gut strukturierten Testplan kann dieses Risiko allerdings minimiert werden, und die Durchführung der Tests mit dem Produktentwicklungszyklus integriert werden. Dadurch kann stabile Hardware sowie effiziente und gut strukturierte Software ohne große Verzögerung an den Kunden ausgeliefert werden.
-Durch Methodiken wie zum Beispiel Feature-orientierte Entwicklung ist es möglich, dass bestimmte Features vor dem Release der Produkte abgenommen und getesten werden müssen. Das wiederum ermöglicht, dass neu implementierte Features gründlich getestet werden und somit zu einer hohen Qualität beitragen.
-Dies kann erreicht werden, indem Features strukturiert in einer Datenbank eingepflegt werden. Ein auf diesen Featurebeschreibungen basierendes System kann die automatische Testdurchführung unterstützen, gezielt Tests für einzelne Features durchführen und deren Abnahme beschleunigen. Dadurch kann der Testaufwand verringert und den Entwicklern ein fokussiertes Feedback vermittelt werden.
+The development of technical systems is a complex and costly process. Therefore, it’s
+important that products are thoroughly tested before delivery to the customer. Howe-
+ver, this is often neglected or done insufficiently due to time pressure and deadlines.
+A well-structured test plan can minimize this risk and integrate the testing process
+into the product development cycle. This allows stable hardware and efficient, well-
+structured software to be delivered to the customer without significant delays.
+Using techniques such as feature-oriented development, certain features must be ac-
+cepted and tested before the product release. This in turn allows newly implemented
+features to be thoroughly tested and contribute to high quality.
+This can be achieved by structuring features in a database. A system based on these
+feature descriptions can support automatic testing, conduct targeted tests for indivi-
+dual features, and accelerate their acceptance. This reduces testing effort and provides
+focused feedback to the developers.
