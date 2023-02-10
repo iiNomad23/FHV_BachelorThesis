@@ -1,0 +1,369 @@
+% !TeX document-id = {f5eab2f7-1326-43b3-ac0e-350c2acbded8}
+
+% !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
+
+\documentclass[a4paper, fontsize=11pt, parskip=half, twoside]{scrreprt}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}   
+\usepackage{graphicx}       
+\usepackage[english, ngerman]{babel}
+% for displaying quotes
+\usepackage{csquotes}     
+\usepackage{acronym}
+\usepackage{eurosym}
+\usepackage[linktocpage=true]{hyperref}
+\usepackage{xurl}
+\usepackage[bindingoffset=8mm]{geometry}
+\usepackage{caption}
+\captionsetup{format=hang, justification=raggedright}
+\usepackage[style=authoryear, backend=biber]{biblatex}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% for drawing
+\usepackage{tikz}
+
+% improve micro typography for better distribution
+\usepackage{microtype}
+
+% adds generic commands for degree, ohm, ..
+\usepackage{textcomp}
+\usepackage{gensymb}
+
+% for source code
+\usepackage{minted}
+
+% caption for e.g. figures
+\usepackage{caption}
+% captions for multiple figures
+\usepackage{subcaption}
+% for custom dates
+\usepackage{datetime}
+% clever refs
+% set labels as always (\label{fig:hello}), \cref{fig:hello}
+\usepackage[german]{cleveref}
+
+% 1.5x line space
+\usepackage[onehalfspacing]{setspace}
+
+\usepackage{todonotes}
+
+% define date variable for whole doc
+% use \displaydate{date} where needed to insert this date
+
+\newdate{date}{01}{07}{2023}
+\date{\displaydate{date}}
+
+% add zotero file for citations
+\addbibresource{reference.bib}
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\cleardoublepage   % force output to a right page
+	\thispagestyle{empty}
+	\begin{titlepage}
+		\begin{flushright}
+			\includegraphics[width=0.4\linewidth]{assets/Logo-A3.jpg}
+		\end{flushright}
+		
+		\begin{flushleft}
+			\section*{Integration eines Feature-orientierten Testsystems in den Entwicklungszyklus technischer Systeme}
+			%\subsection*{\papersubtitle}
+			\vspace{1cm}
+			
+			\vspace{0.5cm}
+			Bachelorarbeit\newline
+			zum Erlangen des akademischen Grades\newline
+			
+			\vspace{0.5cm}
+			\textbf{Bachelor of Science in Engineering (BSc)}
+			
+			\vspace{1cm}
+			Fachhochschule Vorarlberg\newline
+			Informatik - Software and Information Engineering\newline
+			
+			\vspace{0.5cm}
+			Betreut von\newline
+			Dipl.-Ing. Dr. techn. Ralph Hoch
+			
+			\vspace{0.5cm} 
+			Vorgelegt von\newline
+			Marco Prescher	
+			
+			\vspace{0.5cm}
+			Dornbirn, am \displaydate{date}
+		\end{flushleft}
+	\end{titlepage}
+	
+	% Kurzreferat:
+	\newpage
+	\section*{Kurzreferat}
+	\subsection*{Integration eines Feature-orientierten Testsystems in den Entwicklungszyklus technischer Systeme}
+	
+	Die Entwicklung technischer Systeme ist ein komplexer und kostspieliger Prozess. 
+	Daher ist es wichtig, dass die Produkte vor der Auslieferung an den Kunden gezielt und sorgfältig getestet werden. 
+	Dies wird durch Zeitdruck und Deadlines oftmals vernachlässigt, oder nur unzureichend durchgeführt. 
+	Mit einem gut strukturierten Testplan kann dieses Risiko allerdings minimiert werden, und die Durchführung der Tests mit dem Produktentwicklungszyklus integriert werden. 
+	Dadurch kann stabile Hardware sowie effiziente und gut strukturierte Software ohne große Verzögerung an den Kunden ausgeliefert werden.
+	
+	Durch Methodiken wie zum Beispiel Feature-orientierte Entwicklung ist es möglich, dass bestimmte Features vor dem Release der Produkte abgenommen und getesten werden müssen. 
+	Das wiederum ermöglicht, dass neu implementierte Features gründlich getestet werden und somit zu einer hohen Qualität beitragen.
+	
+	Dies kann erreicht werden, indem Features strukturiert in einer Datenbank eingepflegt werden. 
+	Ein auf diesen Featurebeschreibungen basierendes System kann die automatische Testdurchführung unterstützen, gezielt Tests für einzelne Features durchführen und deren Abnahme beschleunigen. 
+	Dadurch kann der Testaufwand verringert und den Entwicklern ein fokussiertes Feedback vermittelt werden.
+	
+	\newpage
+	\section*{Abstract}
+	\subsection*{Integrating a feature-oriented testing system into the development cycle of technical systems}
+	
+	The development of technical systems is a complex and costly process. 
+	Therefore, it's important that products are thoroughly tested before delivery to the customer. 
+	However, this is often neglected or done insufficiently due to time pressure and deadlines. 
+	A well-structured test plan can minimize this risk and integrate the testing process into the product development cycle. 
+	This allows stable hardware and efficient, well-structured software to be delivered to the customer without significant delays.
+	
+	Using techniques such as feature-oriented development, certain features must be accepted and tested before the product release. 
+	This in turn allows newly implemented features to be thoroughly tested and contribute to high quality. 
+	
+	This can be achieved by structuring features in a database. 
+	A system based on these feature descriptions can support automatic testing, conduct targeted tests for individual features, and accelerate their acceptance. 
+	This reduces testing effort and provides focused feedback to the developers.
+	
+	% Inhaltsverzeichnis:
+	\cleardoublepage   % force output to a right page
+	\setcounter{tocdepth}{2}
+	\setcounter{secnumdepth}{4}
+	\tableofcontents
+	
+	% Abbildungsverzeichnis
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+	\listoffigures
+	
+	% Abkürzungsverzeichnis:
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+	\section*{Abkürzungsverzeichnis}
+	\begin{acronym}
+		\acro{API}{Application Programming Interface}
+		\acro{JSON}{JavaScript Object Notation}
+		\acro{SPA}{Single Page Application}
+		\acro{TCMS}{Test Case Management System}
+		\acro{TDD}{Test Driven Development}
+	\end{acronym}
+	
+	\clearpage
+	\section*{Danksagung}
+	Ich möchte mich aufrichtig bei Ralph Hoch, der Firma Gantner Instruments und allen Mitarbeitenden bedanken, die mir bei der Vollendung dieser Arbeit geholfen haben. 
+	Ihre Unterstützung und Expertise waren von unschätzbarem Wert und haben zum erfolgreichen Abschluss dieses Projekts beigetragen. 
+	Vielen Dank für Ihre harte Arbeit und Ihr Engagement. 
+	Ich schätze Ihre Zusammenarbeit sehr.
+	
+	
+	\clearpage
+	\chapter{Einleitung}
+	\todo{Einleitung}
+	
+	Das Aktor-Modell ist ein erstmals in \textcite{hewitt_universal_1973} beschriebenes Berechnungsmodell...
+	Diese grundlegende Idee des Aktor-Modells, welches in \cref{sec:stateofart} detailliert beschrieben wird, ermöglicht die 
+	\ac{TDD}
+	\ac{TDD}
+	\textcite[S.10]{george_arnett_foreign_2015}
+	\cref{fig:schelling_end}
+	
+	\section{Motivation}
+	\todo{Proper Motivation}
+	
+	\section{Problemstellung}
+	\todo{Proper Problemstellung}
+	
+	\section{Zielsetzung}
+	\todo{Proper Zielsetzung}
+	
+	
+	\chapter{Stand des Wissens} \label{sec:stateofart}
+	In diesem Kapitel wird eine systematische Überprüfung der angewandten Technologien vorgenommen. 
+	Dabei werden die verschiedenen Typen von Tests, die Verwendung von Testmanagement-Systemen sowie die Organisation und Strukturierung von Funktionalitäten gründlich analysiert.
+	
+	
+	
+	\section{Testarten}
+	\todo{Proper Testing Description}
+	
+	\subsection{Unit Test}
+	\todo{Proper Unit Test Description}
+	
+	\subsection{Integration Test}
+	\todo{Proper Integration Test Description}
+	
+	
+	\section{Test Case Management System}
+	
+	Ein \ac{TCMS} ist eine Software, die verwendet wird, um Testfälle für ein bestimmtes Projekt oder eine Anwendung zu verwalten und zu organisieren. 
+	Es hilft bei der Planung, Überwachung und Dokumentation von Tests und ermöglicht es, Testfälle sicher und effizient zu verwalten.
+	
+	Ein \ac{TCMS} verfügt über Funktionen wie Testfall-Erstellung, Testfall-Verwaltung, Testfall-Ausführung und Ergebnisberichterstattung. 
+	Es kann auch eine integrierte Umgebung für die Zusammenarbeit von Testern und Entwicklern bereitstellen.
+	
+	Zusammenfassend ist \ac{TCMS} ein wichtiges Werkzeug, um einen strukturierten und effektiven Testprozess zu gewährleisten und den Qualitätsstandard einer Anwendung zu verbessern.
+	
+	
+	\section{Verwaltung und Struktur von Features}
+	\todo{Proper Verwaltung und Struktur von Features Description}
+	
+	\subsection{Featurestruktur zur Datenbank}
+	\todo{Proper Featurestruktur zur Datenbank Description}
+	
+	\subsection{Visualisierung von Featurestrukturen}
+	\todo{Proper Featurestruktur zur Datenbank Description}
+	
+	
+	\section{Relationale Datenbank}
+	\todo{Proper Relationale Datenbank Description}
+	
+	\subsection{MySQL}
+	\todo{Proper MySQL Description}
+	
+	\subsection{PostgreSQL}
+	\todo{Proper PostgreSQL Description}
+	
+	\subsection{MariaDB}
+	\todo{Proper MariaDB Description}
+	
+	
+	\section{Single Page Application (SPA)}
+	\todo{Proper Single-Page-Webanwendung Description}
+	
+	
+	\section{Docker}
+	\todo{Proper Docker Description}
+	
+	
+	
+	\chapter{Lösungsansatz}
+	\todo{Proper Lösungsansatz}
+	
+	
+	\section{Scrum}
+	\todo{Proper Scrum Description}
+	
+	
+	\section{Architektur}
+	\todo{Proper Architektur Description}
+	
+	\subsection{Backend}
+	\todo{Proper Backend Description}
+	
+	\subsection{Frontend}
+	\todo{Proper Frontend Description}
+	
+	
+	\section{Vorentwicklungsphase}
+	\todo{Proper Vorentwicklungsphase Description}
+	
+	\subsection{Projektstruktur}
+	\todo{Proper Projektstruktur Description}
+	
+	\subsection{Domain Model}
+	\todo{Proper Domain Model Description}
+	
+	\subsection{ER Model}
+	\todo{Proper ER Model Description}
+	
+	\subsection{Featurestruktur}
+	\todo{Proper Featurestruktur Description}
+	
+	\subsection{Featurebedingungen}
+	\todo{Proper Featurebedingungen Description}
+	
+	\subsection{Featureverwaltung}
+	\todo{Proper Featureverwaltung Description}
+	
+	
+	\section{Entwicklungsphase}
+	\todo{Proper Entwicklungsphase Description}
+	
+	
+	\section{Nachentwicklungsphase}
+	\todo{Proper Nachentwicklungsphase Description}
+	
+	
+	
+	\chapter{Implementierung}
+	\todo{Proper Implementierung}
+	
+	
+	\section{Sprints}
+	\todo{Proper Sprints Description}
+	
+	\section{User Stories}
+	\todo{Proper User Stories Description}
+	
+	\subsection{Story 1}
+	\todo{Proper Story 1 Description}
+	
+	\subsection{Story 2}
+	\todo{Proper Story 2 Description}
+	
+	\subsection{Story n}
+	\todo{Proper Story n Description}
+	
+	
+	
+	\chapter{Ergebnisse}
+	\todo{Proper Ergebnisse Description}
+	
+	
+	
+	\chapter{Fazit und Ausblick}
+	\todo{Proper Fazit und Ausblick}
+	
+	
+	
+	\begin{figure}[ht]
+		\begin{minted}[autogobble, tabsize=4]{rust}
+			{
+				// Start eines neuen Scopes
+				
+				let hello = String::from("hello");
+				// Ende des Scopes. hello wird an dieser Stelle freigegeben
+			}
+			// hello kann hier nicht mehr verwendet werden
+		\end{minted}
+		\caption{Ein String wird in einem Scope erzeugt und der Variable hello zugewiesen. Am Ende des Scopes wird der Speicher freigegeben.}
+		\label{fig:drop:example}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width = 10cm]{assets/Logo-A3.jpg}
+		\caption{Nach 100 Simulationsschritten, einem minimalen Gruppenanteil $B{\min} = 0.4$ und einer Nachbarschaftsgröße von einem Feld sind die Gruppen bereits sichtlich separiert.}
+		\label{fig:schelling_end}
+	\end{figure}
+	
+	% Literaturverzeichnis:
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+	\printbibliography
+	
+	\clearpage
+	\section*{Eidesstattliche Erklärung}
+	Ich erkläre hiermit an Eides statt, dass ich vorliegende Bachelorarbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. 
+	Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. 
+	Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
+	
+	\vspace{3cm}
+	\noindent
+	Dornbirn, am \displaydate{date} \hfill Marco Prescher
+	
+	
+\end{document}
