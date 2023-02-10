@@ -10,3 +10,15 @@ The development of technical systems is a complex and costly process. Therefore,
 Using techniques such as feature-oriented development, certain features must be accepted and tested before the product release. This in turn allows newly implemented features to be thoroughly tested and contribute to high quality.  
 
 This can be achieved by structuring features in a database. A system based on these feature descriptions can support automatic testing, conduct targeted tests for individual features, and accelerate their acceptance. This reduces testing effort and provides focused feedback to the developers.
+
+
+# Latex Setup Windows
+
+- Tex Live
+- TexStudio
+- Rust Code Listings:
+  - minted
+    - python -m pip install -U pygments
+    - evtl. Python scripts zu PATH hinzufügen
+    - Texstudio: options > configure > commands
+      - PdfLatex -> pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
