@@ -5,15 +5,15 @@ namespace Domain;
 
 public class TestCase
 {
-    private long Id { get; }
-    private TestCaseId DomainId { get; }
+    public long Id { get; }
+    public TestCaseId DomainId { get; }
     
-    private string ShortDescription { get; set; }
-    private string LongDescription { get; set; }
-    private string AuthorDescription { get; }
-    private DateTime CreateDate { get; }
-    private Priority Priority { get; set; }
-    private string ReferenceLink { get; set; }
+    public string ShortDescription { get; set; }
+    public string LongDescription { get; set; }
+    public string AuthorDescription { get; }
+    public DateTime CreateDate { get; }
+    public Priority Priority { get; set; }
+    public string ReferenceLink { get; set; }
 
     public TestCase(long id, TestCaseId domainId, string shortDescription, string longDescription, string authorDescription, DateTime createDate, Priority priority, string referenceLink)
     {
