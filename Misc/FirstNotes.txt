@@ -1,0 +1,54 @@
+(Verwaltung/Organisation von integration tests)
+Integration tests für GI-Messsysteme
+
+Hauptthemen abdeckung:
+
+Übersicht von getesteten feature und ob ein release möglich ist.
+* Verwaltung von zu getesten features.
+** Entwickler kann selber beschreibungen vom fertigen feature in die Datenbank schreiben (Manuelle-SQL-Query/Query-Browser/CLI-tool oder kleine React Anwendung) 
+	-> Feature an Produkt/Version zuweisen
+	-> Release erst möglich wenn Feature status "Grün" ist
+	(automatische erzwingung von dokumentation)
+
+* Interfaces für das automatisierte einfügen von Testergebnisen.
+* Visualisierung vom aktuellen status.
+* Möglichkeiten für export von Reports/Test-History.
+
+Research über schon bestehenden Lösungen.
+
+Backend (Datenbank mit API)
+Architektur von API schnittstellen von backend.
+Feature/Funktionen sammlung -> in datenbank abgedekt.
+Interface für Automatisierungssytem.
+Interface für Reports.
+
+Frontend (React und TypeScript)
+Visualisieren und Reports generieren.
+Auswertung von Reports von/und Tests.
+Live übersicht/status. (zwei/drei unterschiedliche UIs)
+Bench auf Windows PC will ich datenspeicher tests anschauen.
+
+
+Zusätzlich:
+Fragebogen -> zusätzliche schnittstelle für manuelle Testtätigkeiten.
+Beispiel-Feature "Export im webui":
+Liste von aktivitäten die man manuell durchtesten muss. 
+Ergebnisse werden in die datenbank abgelget.
+
+
+Ergebnisse Besprechung mit Ralph am 12.10.2022
+
+Research BSc-Thesis relevante fragen:
+* Wie kann man Features beschreiben? 
+* wie in Datenbank schreiben? 
+* und wie von da aus bearbeiten?
+
+Verbindung zu features! (mit feature id?)
+Bestehende features in die struktur aufnehmen.
+
+Side Notes
+Feature orientierte entwicklung.
+Feature strukturen.
+
+Abstract notes.
+das testen von software wird außenvorgelassen und darum sollte die sofware strujturieren -> features abgenommen -> in backend -> 
