@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Domain.ids;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,10 @@ public class TestCaseRepository : ITestCaseRepository
     public TestCaseRepository(EFContext context)
     {
         _context = context;
+    }
+    
+    public string NextIdentity() {
+        return Guid.NewGuid().ToString();
     }
     
     public async Task<TestCase> GetById(int id)
@@ -42,9 +47,18 @@ public class TestCaseRepository : ITestCaseRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task Remove(TestCase testCase)
+    public async Task Remove(TestCaseId id)
     {
-        _context.TestCases.Remove(testCase);
-        await _context.SaveChangesAsync();
+        // Query the database to retrieve the entity you want to delete
+        var testCase = _context.TestCases.FirstOrDefault(entity => entity.DomainId == id);
+        
+        if (testCase != null)
+        {
+            // Remove the entity from the DbSet
+            _context.TestCases.Remove(testCase);
+
+            // Save the changes to the database
+            await _context.SaveChangesAsync();
+        }
     }
 }

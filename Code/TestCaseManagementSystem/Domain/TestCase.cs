@@ -15,6 +15,17 @@ public class TestCase
     public Priority Priority { get; set; }
     public string ReferenceLink { get; set; }
 
+    public TestCase(TestCaseId domainId, string shortDescription, string longDescription, string authorDescription, DateTime createDate, Priority priority, string referenceLink)
+    {
+        DomainId = domainId;
+        ShortDescription = shortDescription;
+        LongDescription = longDescription;
+        AuthorDescription = authorDescription;
+        CreateDate = createDate;
+        Priority = priority;
+        ReferenceLink = referenceLink;
+    }
+    
     public TestCase(long id, TestCaseId domainId, string shortDescription, string longDescription, string authorDescription, DateTime createDate, Priority priority, string referenceLink)
     {
         Id = id;
