@@ -12,6 +12,7 @@ public class TestCaseRepository : ITestCaseRepository
     public TestCaseRepository(EFContext context)
     {
         _context = context;
+        _context.TestCases = context.Set<TestCase>();
     }
     
     public string NextIdentity() {
