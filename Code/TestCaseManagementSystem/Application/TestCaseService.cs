@@ -39,30 +39,30 @@ public class TestCaseService : ITestCaseService
                 testCaseDTO.ShortDescription,
                 testCaseDTO.LongDescription,
                 testCaseDTO.AuthorDescription,
-                testCaseDTO.CreateDate,
+                new DateTime(),
                 testCaseDTO.Priority,
                 testCaseDTO.ReferenceLink
             )
         );
     }
 
-    public async Task Update(TestCaseDTO testCaseDTO)
-    {
-        await _testCaseRepository.Update(
-            new TestCase(
-                new TestCaseId(_testCaseRepository.NextIdentity()),
-                testCaseDTO.ShortDescription,
-                testCaseDTO.LongDescription,
-                testCaseDTO.AuthorDescription,
-                testCaseDTO.CreateDate,
-                testCaseDTO.Priority,
-                testCaseDTO.ReferenceLink
-            )
-        );
-    }
+    // public async Task Update(TestCaseDTO testCaseDTO)
+    // {
+    //     await _testCaseRepository.Update(
+    //         new TestCase(
+    //             new TestCaseId(_testCaseRepository.NextIdentity()),
+    //             testCaseDTO.ShortDescription,
+    //             testCaseDTO.LongDescription,
+    //             testCaseDTO.AuthorDescription,
+    //             testCaseDTO.CreateDate,
+    //             testCaseDTO.Priority,
+    //             testCaseDTO.ReferenceLink
+    //         )
+    //     );
+    // }
 
     public async Task Remove(TestCaseDTO testCase)
     {
-        await _testCaseRepository.Remove(testCase.DomainId);
+        await _testCaseRepository.Remove(new TestCaseId(testCase.Id));
     }
 }
