@@ -10,7 +10,7 @@ public class TestCaseConfiguration : IEntityTypeConfiguration<TestCase>
 {
     public void Configure(EntityTypeBuilder<TestCase> builder)
     {
-        builder.ToTable("Users");
+        builder.ToTable("TestCases");
 
         builder.HasKey(p => p.Id);
 
@@ -31,8 +31,8 @@ public class TestCaseConfiguration : IEntityTypeConfiguration<TestCase>
         // Configure the enum property
         builder.Property(p => p.Priority)
             .HasConversion(
-                v => v.ToString(),
-                v => (Priority)Enum.Parse(typeof(Priority), v)
+                e => e.ToString(),
+                e => (Priority)Enum.Parse(typeof(Priority), e)
             )
             .HasMaxLength(10)
             .IsRequired();
