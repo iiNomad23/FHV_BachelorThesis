@@ -12,6 +12,10 @@ public class EFContext : DbContext
     {
         // TestCases = Set<TestCase>();
     }
+    
+    public EFContext()
+    {
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
