@@ -40,10 +40,10 @@ public class Startup
         );
 
         // Register repositories with the DI container
-        services.AddScoped<ITestCaseRepository, TestCaseRepository>();
+        services.AddTransient<ITestCaseRepository, TestCaseRepository>();
         
         // Register services with the DI container
-        services.AddScoped<ITestCaseService, TestCaseService>();
+        services.AddTransient<ITestCaseService, TestCaseService>();
 
         services.AddControllers();
         

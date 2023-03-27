@@ -11,13 +11,16 @@ Docker MariaDB Container
 ## EF Core migrations
 
 ### JetBrains Rider IDE
-First we need `dotnet add package Microsoft.EntityFrameworkCore.Tools` and `dotnet tool install --global dotnet-ef` to execute `dotnet ef` commands
+First we need `dotnet tool install --global dotnet-ef` to execute `dotnet ef` commands
 
-To create a new migration for your EF Core DbContext, open the terminal in Rider and navigate to the project directory that contains your DbContext class. Then, run the following command  
-`dotnet ef migrations add MigrationName`
+To create the init migration for your EF Core DbContext, open the terminal in Rider and navigate to the project directory that contains your DbContext class. Then, run the following command  
+`dotnet ef migrations add InitialCreate --startup-project="G:\Wichtiges\_StudiumFH\FHV_BachelorThesis\Code\TestCaseManagementSystem\Presentation\Presentation.csproj`
+
+To undo the action, run the following command  
+`dotnet ef migrations remove --startup-project="G:\Wichtiges\_StudiumFH\FHV_BachelorThesis\Code\TestCaseManagementSystem\Presentation\Presentation.csproj`
 
 To apply the migration and update the database schema, run the following command  
-`dotnet ef database update`
+`dotnet ef database update --startup-project="G:\Wichtiges\_StudiumFH\FHV_BachelorThesis\Code\TestCaseManagementSystem\Presentation\Presentation.csproj`
 
 ### Visual Studio
 Create a migration for the TestCases model  
