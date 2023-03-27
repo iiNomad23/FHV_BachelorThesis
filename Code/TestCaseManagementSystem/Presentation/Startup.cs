@@ -4,6 +4,7 @@ using Domain.Repositories;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace Presentation;
 
@@ -21,11 +22,23 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         // Register database with the DI container
-        services.AddDbContext<EFContext>(opt =>
-        {
-            opt.UseSqlServer(_config.GetConnectionString("DDDConnectionString"));
-        });
+        // services.AddDbContext<EFContext>(dbContextOptions =>
+        // {
+        //     dbContextOptions.UseSqlServer(_config.GetConnectionString("MariaDbConnectionString"));
+        // });
         
+        services.AddDbContext<EFContext>(
+            dbContextOptions =>
+            {
+                var connectionString = _config.GetConnectionString("MariaDbConnectionString");
+                dbContextOptions
+                    .UseMySql(
+                        connectionString,
+                        ServerVersion.AutoDetect(connectionString)
+                    );
+            }
+        );
+
         // Register repositories with the DI container
         services.AddScoped<ITestCaseRepository, TestCaseRepository>();
         
