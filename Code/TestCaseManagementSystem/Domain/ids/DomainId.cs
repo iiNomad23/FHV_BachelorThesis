@@ -2,7 +2,7 @@
 
 public class DomainId
 {
-    private readonly string Id;
+    public string Id { get; }
 
     protected DomainId(string id)
     {

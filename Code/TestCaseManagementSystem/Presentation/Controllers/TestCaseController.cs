@@ -16,14 +16,14 @@ public class TestCaseController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetTestCaseById(int id)
+    public async Task<ActionResult<TestCaseDTO>> GetTestCaseById(int id)
     {
         var testCaseDTO = await _testCaseService.GetById(id);
         return Ok(testCaseDTO);
     }
     
     [HttpPost("create")]
-    public async Task<IActionResult> AddTestCase([FromBody] TestCaseDTO testCaseDTO)
+    public async Task<ActionResult<TestCaseDTO>> CreateTestCase(TestCaseDTO testCaseDTO)
     {
         await _testCaseService.Add(testCaseDTO);
         return Ok(testCaseDTO);

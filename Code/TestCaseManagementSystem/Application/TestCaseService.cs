@@ -1,7 +1,6 @@
 ﻿using Application.api;
 using Application.dto;
 using Domain;
-using Domain.ids;
 using Domain.Repositories;
 
 namespace Application;
@@ -19,7 +18,14 @@ public class TestCaseService : ITestCaseService
     {
         var testCase = await _testCaseRepository.GetById(id);
 
-        return TestCaseDTO.FromTestCase(testCase);
+        return new TestCaseDTO {
+            Id = testCase.DomainId,
+            ShortDescription = testCase.ShortDescription,
+            LongDescription = testCase.LongDescription,
+            AuthorDescription = testCase.AuthorDescription,
+            Priority = testCase.Priority,
+            ReferenceLink = testCase.ReferenceLink
+        };
     }
 
     public async Task<List<TestCaseDTO>> GetAll()
@@ -27,7 +33,14 @@ public class TestCaseService : ITestCaseService
         var testCases = await _testCaseRepository.GetAll();
 
         return testCases
-            .Select(testCase => TestCaseDTO.FromTestCase(testCase))
+            .Select(testCase => new TestCaseDTO {
+                Id = testCase.DomainId,
+                ShortDescription = testCase.ShortDescription,
+                LongDescription = testCase.LongDescription,
+                AuthorDescription = testCase.AuthorDescription,
+                Priority = testCase.Priority,
+                ReferenceLink = testCase.ReferenceLink
+            })
             .ToList();
     }
 
@@ -35,11 +48,11 @@ public class TestCaseService : ITestCaseService
     {
         await _testCaseRepository.Add(
             new TestCase(
-                new TestCaseId(_testCaseRepository.NextIdentity()),
+                _testCaseRepository.NextIdentity(),
                 testCaseDTO.ShortDescription,
                 testCaseDTO.LongDescription,
                 testCaseDTO.AuthorDescription,
-                new DateTime(),
+                DateTime.Now.ToUniversalTime(),
                 testCaseDTO.Priority,
                 testCaseDTO.ReferenceLink
             )
@@ -63,6 +76,6 @@ public class TestCaseService : ITestCaseService
 
     public async Task Remove(TestCaseDTO testCase)
     {
-        await _testCaseRepository.Remove(new TestCaseId(testCase.Id));
+        await _testCaseRepository.Remove(testCase.Id);
     }
 }

@@ -12,7 +12,6 @@ public class TestCaseRepository : ITestCaseRepository
     public TestCaseRepository(EFContext context)
     {
         _context = context;
-        _context.TestCases = context.Set<TestCase>();
     }
     
     public string NextIdentity() {
@@ -48,7 +47,7 @@ public class TestCaseRepository : ITestCaseRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task Remove(TestCaseId id)
+    public async Task Remove(string id)
     {
         // Query the database to retrieve the entity you want to delete
         var testCase = _context.TestCases.FirstOrDefault(entity => entity.DomainId == id);

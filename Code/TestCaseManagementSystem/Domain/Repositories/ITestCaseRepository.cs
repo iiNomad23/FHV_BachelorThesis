@@ -9,5 +9,5 @@ public interface ITestCaseRepository
     Task<List<TestCase>> GetAll();
     Task Add(TestCase testCase);
     Task Update(TestCase testCase);
-    Task Remove(TestCaseId id);
+    Task Remove(string id);
 }

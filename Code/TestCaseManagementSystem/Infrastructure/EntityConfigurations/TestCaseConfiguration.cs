@@ -1,4 +1,6 @@
 ﻿using Domain;
+using Domain.enums;
+using Domain.ids;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,24 +12,31 @@ public class TestCaseConfiguration : IEntityTypeConfiguration<TestCase>
     {
         builder.ToTable("Users");
 
-        builder.HasKey(u => u.Id);
+        builder.HasKey(p => p.Id);
 
-        builder.Property(u => u.DomainId)
+        builder.Property(p => p.DomainId)
             .IsRequired();
 
-        builder.Property(u => u.ShortDescription)
+        builder.Property(p => p.ShortDescription)
             .IsRequired()
             .HasMaxLength(200);
 
-        builder.Property(u => u.LongDescription);
+        builder.Property(p => p.LongDescription);
 
-        builder.Property(u => u.AuthorDescription)
+        builder.Property(p => p.AuthorDescription)
             .IsRequired();
-        builder.Property(u => u.CreateDate)
-            .IsRequired();
-        builder.Property(u => u.Priority)
+        builder.Property(p => p.CreateDate)
             .IsRequired();
         
-        builder.Property(u => u.ReferenceLink);
+        // Configure the enum property
+        builder.Property(p => p.Priority)
+            .HasConversion(
+                v => v.ToString(),
+                v => (Priority)Enum.Parse(typeof(Priority), v)
+            )
+            .HasMaxLength(10)
+            .IsRequired();
+
+        builder.Property(p => p.ReferenceLink);
     }
 }

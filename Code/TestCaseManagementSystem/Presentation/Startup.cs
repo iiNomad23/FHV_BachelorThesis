@@ -1,4 +1,6 @@
-﻿using Domain.Repositories;
+﻿using Application;
+using Application.api;
+using Domain.Repositories;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -18,12 +20,17 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        // Register database with the DI container
         services.AddDbContext<EFContext>(opt =>
         {
             opt.UseSqlServer(_config.GetConnectionString("DDDConnectionString"));
         });
         
+        // Register repositories with the DI container
         services.AddScoped<ITestCaseRepository, TestCaseRepository>();
+        
+        // Register services with the DI container
+        services.AddScoped<ITestCaseService, TestCaseService>();
 
         services.AddControllers();
         

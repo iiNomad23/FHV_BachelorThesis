@@ -1,40 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Domain;
 using Domain.enums;
-using Domain.ids;
 
 namespace Application.dto;
 
 public class TestCaseDTO
 {
-    [Required]
-    public string Id { get; private init; }
+    public string Id { get; init; }
     
     [Required]
     [StringLength(200)]
-    public string ShortDescription { get; private init; }
+    public string ShortDescription { get; init; }
     
-    public string LongDescription { get; private init; }
+    public string LongDescription { get; init; }
     
     [Required]
     [StringLength(50)]
-    public string AuthorDescription { get; private init; }
+    public string AuthorDescription { get; init; }
     
     [Required]
-    public Priority Priority { get; private init; }
+    public Priority Priority { get; init; }
     
-    public string ReferenceLink { get; private init; }
-
-    public static TestCaseDTO FromTestCase(TestCase testCase)
-    {
-        return new TestCaseDTO
-        {
-            Id = testCase.DomainId.ToString(),
-            ShortDescription = testCase.ShortDescription,
-            LongDescription = testCase.LongDescription,
-            AuthorDescription = testCase.AuthorDescription,
-            Priority = testCase.Priority,
-            ReferenceLink = testCase.ReferenceLink
-        };
-    }
+    public string ReferenceLink { get; init; }
+    
 }
