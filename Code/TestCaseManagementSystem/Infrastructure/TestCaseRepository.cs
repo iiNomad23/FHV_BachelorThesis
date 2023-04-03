@@ -1,5 +1,4 @@
 ﻿using Domain;
-using Domain.ids;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,12 +37,6 @@ public class TestCaseRepository : ITestCaseRepository
     public async Task Add(TestCase testCase)
     {
         await _context.TestCases.AddAsync(testCase);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task Update(TestCase testCase)
-    {
-        _context.TestCases.Update(testCase);
         await _context.SaveChangesAsync();
     }
 

@@ -7,6 +7,7 @@ namespace Infrastructure;
 public class EFContext : DbContext
 {
     public DbSet<TestCase> TestCases { get; set; }
+    public DbSet<TestPlan> TestPlans { get; set; }
 
     public EFContext(DbContextOptions<EFContext> options) : base(options)
     {
@@ -21,5 +22,6 @@ public class EFContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.ApplyConfiguration(new TestCaseConfiguration());
+        modelBuilder.ApplyConfiguration(new TestPlanConfiguration());
     }
 }

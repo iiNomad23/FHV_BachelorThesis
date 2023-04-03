@@ -1,6 +1,5 @@
 ﻿using Domain;
 using Domain.enums;
-using Domain.ids;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

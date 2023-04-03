@@ -1,5 +1,4 @@
 ﻿using Domain.enums;
-using Domain.ids;
 
 namespace Domain;
 
@@ -40,6 +39,6 @@ public class TestCase
 
     public override string ToString()
     {
-        return DomainId.ToString();
+        return DomainId;
     }
 }
