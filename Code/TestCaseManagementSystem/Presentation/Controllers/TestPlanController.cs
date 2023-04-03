@@ -23,7 +23,7 @@ public class TestPlanController : ControllerBase
     }
     
     [HttpPost("create")]
-    public async Task<ActionResult<TestCaseDTO>> CreateTestPlan(TestPlanDTO testPlanDTO)
+    public async Task<ActionResult<TestPlanDTO>> CreateTestPlan(TestPlanDTO testPlanDTO)
     {
         await _testPlanService.Add(testPlanDTO);
         return Ok(testPlanDTO);
