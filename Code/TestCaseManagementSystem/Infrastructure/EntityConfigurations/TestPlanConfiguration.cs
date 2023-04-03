@@ -1,5 +1,4 @@
 ﻿using Domain;
-using Domain.enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,7 +8,7 @@ public class TestPlanConfiguration : IEntityTypeConfiguration<TestPlan>
 {
     public void Configure(EntityTypeBuilder<TestPlan> builder)
     {
-        builder.ToTable("TestCases");
+        builder.ToTable("TestPlans");
 
         builder.HasKey(p => p.Id);
 

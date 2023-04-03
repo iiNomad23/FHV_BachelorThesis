@@ -53,8 +53,8 @@ public class TestPlanService : ITestPlanService
         );
     }
 
-    public async Task Remove(TestPlanDTO testCase)
+    public async Task Remove(TestPlanDTO testPlanDTO)
     {
-        await _testPlanRepository.Remove(testCase.Id);
+        await _testPlanRepository.Remove(testPlanDTO.Id);
     }
 }

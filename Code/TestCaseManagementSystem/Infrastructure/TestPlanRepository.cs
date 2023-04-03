@@ -19,7 +19,7 @@ public class TestPlanRepository : ITestPlanRepository
 
     public async Task<TestPlan> GetById(int id)
     {
-        var testPlan = await _context.TestPlans.FirstOrDefaultAsync(testCase => testCase.Id == id);
+        var testPlan = await _context.TestPlans.FirstOrDefaultAsync(testPlan => testPlan.Id == id);
 
         if (testPlan == null)
         {

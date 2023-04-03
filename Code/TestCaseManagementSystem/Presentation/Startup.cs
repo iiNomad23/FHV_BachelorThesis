@@ -41,9 +41,13 @@ public class Startup
 
         // Register repositories with the DI container
         services.AddTransient<ITestCaseRepository, TestCaseRepository>();
+        services.AddTransient<ITestPlanRepository, TestPlanRepository>();
+        services.AddTransient<ITestImplementationRepository, TestImplementationRepository>();
         
         // Register services with the DI container
         services.AddTransient<ITestCaseService, TestCaseService>();
+        services.AddTransient<ITestPlanService, TestPlanService>();
+        services.AddTransient<ITestImplementationService, TestImplementationService>();
 
         services.AddControllers();
         

@@ -59,8 +59,8 @@ public class TestCaseService : ITestCaseService
         );
     }
 
-    public async Task Remove(TestCaseDTO testCase)
+    public async Task Remove(TestCaseDTO testCaseDTO)
     {
-        await _testCaseRepository.Remove(testCase.Id);
+        await _testCaseRepository.Remove(testCaseDTO.Id);
     }
 }

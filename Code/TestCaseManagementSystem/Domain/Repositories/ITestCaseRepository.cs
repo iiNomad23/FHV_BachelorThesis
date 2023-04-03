@@ -1,6 +1,4 @@
-﻿using Domain.ids;
-
-namespace Domain.Repositories;
+﻿namespace Domain.Repositories;
 
 public interface ITestCaseRepository
 {

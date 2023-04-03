@@ -18,8 +18,8 @@ public class TestPlanController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<TestPlanDTO>> GetTestPlanById(int id)
     {
-        var testCaseDTO = await _testPlanService.GetById(id);
-        return Ok(testCaseDTO);
+        var testPlanDTO = await _testPlanService.GetById(id);
+        return Ok(testPlanDTO);
     }
     
     [HttpPost("create")]
