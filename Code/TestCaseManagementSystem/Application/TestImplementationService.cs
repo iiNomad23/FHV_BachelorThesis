@@ -14,11 +14,12 @@ public class TestImplementationService : ITestImplementationService
         _testImplementationRepository = testImplementationRepository;
     }
 
-    public async Task<TestImplementationDTO> GetById(int id)
+    public async Task<TestImplementationDTO> FindById(string id)
     {
-        var testImplementation = await _testImplementationRepository.GetById(id);
+        var testImplementation = await _testImplementationRepository.FindById(id);
 
-        return new TestImplementationDTO {
+        return new TestImplementationDTO
+        {
             Id = testImplementation.DomainId,
             ShortDescription = testImplementation.ShortDescription,
             LongDescription = testImplementation.LongDescription,
@@ -27,12 +28,29 @@ public class TestImplementationService : ITestImplementationService
         };
     }
 
+    public async Task<List<TestImplementationDTO>> FindByShortDescription(string shortDescription)
+    {
+        var testImplementations = await _testImplementationRepository.FindByShortDescription(shortDescription);
+
+        return testImplementations
+            .Select(testImplementation => new TestImplementationDTO
+            {
+                Id = testImplementation.DomainId,
+                ShortDescription = testImplementation.ShortDescription,
+                LongDescription = testImplementation.LongDescription,
+                AuthorDescription = testImplementation.AuthorDescription,
+                ReferenceLink = testImplementation.ReferenceLink
+            })
+            .ToList();
+    }
+
     public async Task<List<TestImplementationDTO>> GetAll()
     {
         var testImplementations = await _testImplementationRepository.GetAll();
 
         return testImplementations
-            .Select(testImplementation => new TestImplementationDTO {
+            .Select(testImplementation => new TestImplementationDTO
+            {
                 Id = testImplementation.DomainId,
                 ShortDescription = testImplementation.ShortDescription,
                 LongDescription = testImplementation.LongDescription,

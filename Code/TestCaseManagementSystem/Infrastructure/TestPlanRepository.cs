@@ -17,16 +17,23 @@ public class TestPlanRepository : ITestPlanRepository
         return Guid.NewGuid().ToString();
     }
 
-    public async Task<TestPlan> GetById(int id)
+    public async Task<TestPlan> FindById(string id)
     {
-        var testPlan = await _context.TestPlans.FirstOrDefaultAsync(testPlan => testPlan.Id == id);
+        var testPlan = await _context.TestPlans.FirstOrDefaultAsync(testPlan => testPlan.DomainId == id);
 
         if (testPlan == null)
         {
-            throw new ArgumentNullException(null, "Test case is null: " + id);
+            throw new ArgumentNullException(null, "Test plan is null: " + id);
         }
         
         return testPlan;
+    }
+    
+    public async Task<List<TestPlan>> FindByShortDescription(string shortDescription)
+    {
+       return await _context.TestPlans
+            .Where(testPlan => EF.Functions.Like(testPlan.ShortDescription, "%" + shortDescription + "%"))
+            .ToListAsync();
     }
 
     public async Task<List<TestPlan>> GetAll()

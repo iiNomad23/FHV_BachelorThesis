@@ -14,9 +14,9 @@ public class TestCaseService : ITestCaseService
         _testCaseRepository = testCaseRepository;
     }
 
-    public async Task<TestCaseDTO> GetById(int id)
+    public async Task<TestCaseDTO> FindById(string id)
     {
-        var testCase = await _testCaseRepository.GetById(id);
+        var testCase = await _testCaseRepository.FindById(id);
 
         return new TestCaseDTO {
             Id = testCase.DomainId,
@@ -26,6 +26,22 @@ public class TestCaseService : ITestCaseService
             Priority = testCase.Priority,
             ReferenceLink = testCase.ReferenceLink
         };
+    }
+    
+    public async Task<List<TestCaseDTO>> FindByShortDescription(string shortDescription)
+    {
+        var testCases = await _testCaseRepository.FindByShortDescription(shortDescription);
+
+        return testCases
+            .Select(testCase => new TestCaseDTO {
+                Id = testCase.DomainId,
+                ShortDescription = testCase.ShortDescription,
+                LongDescription = testCase.LongDescription,
+                AuthorDescription = testCase.AuthorDescription,
+                Priority = testCase.Priority,
+                ReferenceLink = testCase.ReferenceLink
+            })
+            .ToList();
     }
 
     public async Task<List<TestCaseDTO>> GetAll()

@@ -16,12 +16,19 @@ public class TestPlanController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<TestPlanDTO>> GetTestPlanById(int id)
+    public async Task<ActionResult<TestPlanDTO>> FindTestPlanById(string id)
     {
-        var testPlanDTO = await _testPlanService.GetById(id);
+        var testPlanDTO = await _testPlanService.FindById(id);
         return Ok(testPlanDTO);
     }
-    
+
+    [HttpGet("shortDescription/{shortDescription}")]
+    public async Task<ActionResult<TestPlanDTO>> FindTestImplementationByShortDescription(string shortDescription)
+    {
+        var testPlanDTOs = await _testPlanService.FindByShortDescription(shortDescription);
+        return Ok(testPlanDTOs);
+    }
+
     [HttpPost("create")]
     public async Task<ActionResult<TestPlanDTO>> CreateTestPlan(TestPlanDTO testPlanDTO)
     {

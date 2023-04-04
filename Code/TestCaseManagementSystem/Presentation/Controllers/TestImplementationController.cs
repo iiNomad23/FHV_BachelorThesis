@@ -16,10 +16,17 @@ public class TestImplementationController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<TestImplementationDTO>> GetTestImplementationById(int id)
+    public async Task<ActionResult<TestImplementationDTO>> FindTestImplementationById(string id)
     {
-        var testImplementationDTO = await _testImplementationService.GetById(id);
+        var testImplementationDTO = await _testImplementationService.FindById(id);
         return Ok(testImplementationDTO);
+    }
+    
+    [HttpGet("shortDescription/{shortDescription}")]
+    public async Task<ActionResult<TestImplementationDTO>> FindTestImplementationByShortDescription(string shortDescription)
+    {
+        var testImplementationDTOs = await _testImplementationService.FindByShortDescription(shortDescription);
+        return Ok(testImplementationDTOs);
     }
     
     [HttpPost("create")]

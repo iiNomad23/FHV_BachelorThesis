@@ -12,21 +12,29 @@ public class TestCaseRepository : ITestCaseRepository
     {
         _context = context;
     }
-    
-    public string NextIdentity() {
+
+    public string NextIdentity()
+    {
         return Guid.NewGuid().ToString();
     }
-    
-    public async Task<TestCase> GetById(int id)
+
+    public async Task<TestCase> FindById(string id)
     {
-        var testCase = await _context.TestCases.FirstOrDefaultAsync(testCase => testCase.Id == id);
+        var testCase = await _context.TestCases.FirstOrDefaultAsync(testCase => testCase.DomainId == id);
 
         if (testCase == null)
         {
             throw new ArgumentNullException(null, "Test case is null: " + id);
         }
-        
+
         return testCase;
+    }
+
+    public async Task<List<TestCase>> FindByShortDescription(string shortDescription)
+    {
+        return await _context.TestCases
+            .Where(testCase => EF.Functions.Like(testCase.ShortDescription, "%" + shortDescription + "%"))
+            .ToListAsync();
     }
 
     public async Task<List<TestCase>> GetAll()
@@ -43,8 +51,8 @@ public class TestCaseRepository : ITestCaseRepository
     public async Task Remove(string id)
     {
         // Query the database to retrieve the entity you want to delete
-        var testCase = _context.TestCases.FirstOrDefault(entity => entity.DomainId == id);
-        
+        var testCase = await _context.TestCases.FirstOrDefaultAsync(entity => entity.DomainId == id);
+
         if (testCase != null)
         {
             // Remove the entity from the DbSet

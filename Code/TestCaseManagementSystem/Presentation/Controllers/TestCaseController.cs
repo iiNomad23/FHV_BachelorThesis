@@ -16,12 +16,19 @@ public class TestCaseController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<TestCaseDTO>> GetTestCaseById(int id)
+    public async Task<ActionResult<TestCaseDTO>> FindTestCaseById(string id)
     {
-        var testCaseDTO = await _testCaseService.GetById(id);
+        var testCaseDTO = await _testCaseService.FindById(id);
         return Ok(testCaseDTO);
     }
-    
+
+    [HttpGet("shortDescription/{shortDescription}")]
+    public async Task<ActionResult<TestCaseDTO>> FindTestCaseByShortDescription(string shortDescription)
+    {
+        var testCaseDTOs = await _testCaseService.FindByShortDescription(shortDescription);
+        return Ok(testCaseDTOs);
+    }
+
     [HttpPost("create")]
     public async Task<ActionResult<TestCaseDTO>> CreateTestCase(TestCaseDTO testCaseDTO)
     {

@@ -14,9 +14,9 @@ public class TestPlanService : ITestPlanService
         _testPlanRepository = testCaseRepository;
     }
     
-    public async Task<TestPlanDTO> GetById(int id)
+    public async Task<TestPlanDTO> FindById(string id)
     {
-        var testPlan = await _testPlanRepository.GetById(id);
+        var testPlan = await _testPlanRepository.FindById(id);
 
         return new TestPlanDTO {
             Id = testPlan.DomainId,
@@ -24,6 +24,21 @@ public class TestPlanService : ITestPlanService
             LongDescription = testPlan.LongDescription,
             ReferenceLink = testPlan.ReferenceLink
         };
+    }
+    
+    public async Task<List<TestPlanDTO>> FindByShortDescription(string shortDescription)
+    {
+        var testPlans = await _testPlanRepository.FindByShortDescription(shortDescription);
+
+        return testPlans
+            .Select(testPlan => new TestPlanDTO
+            {
+                Id = testPlan.DomainId,
+                ShortDescription = testPlan.ShortDescription,
+                LongDescription = testPlan.LongDescription,
+                ReferenceLink = testPlan.ReferenceLink
+            })
+            .ToList();
     }
 
     public async Task<List<TestPlanDTO>> GetAll()

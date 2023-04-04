@@ -18,16 +18,23 @@ public class TestImplementationRepository : ITestImplementationRepository
         return Guid.NewGuid().ToString();
     }
 
-    public async Task<TestImplementation> GetById(int id)
+    public async Task<TestImplementation> FindById(string id)
     {
-        var testImplementation = await _context.TestImplementations.FirstOrDefaultAsync(testImplementation => testImplementation.Id == id);
+        var testImplementation = await _context.TestImplementations.FirstOrDefaultAsync(testImplementation => testImplementation.DomainId == id);
 
         if (testImplementation == null)
         {
-            throw new ArgumentNullException(null, "Test case is null: " + id);
+            throw new ArgumentNullException(null, "Test implementation is null: " + id);
         }
         
         return testImplementation;
+    }
+    
+    public async Task<List<TestImplementation>> FindByShortDescription(string shortDescription)
+    {
+        return await _context.TestImplementations
+            .Where(testImplementation => EF.Functions.Like(testImplementation.ShortDescription, "%" + shortDescription + "%"))
+            .ToListAsync();
     }
 
     public async Task<List<TestImplementation>> GetAll()
