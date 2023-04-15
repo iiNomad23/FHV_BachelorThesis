@@ -220,20 +220,36 @@
 	
 	Durch die Erfüllung dieser Ziele wird diese Arbeit dazu beitragen, das Verständnis für die Verwendung von \ac{TCMS} in der Produktentwicklung zu verbessern und Unternehmen dabei zu unterstützen, den Testprozess zu optimieren und die Qualität ihrer Produkte zu verbessern.
 	
+	
+	
 	\chapter{Stand des Wissens} \label{sec:stateofart}
 	In diesem Kapitel wird eine systematische Überprüfung der angewandten Technologien vorgenommen. 
-	Dabei werden die verschiedenen Typen von Tests, die Verwendung von Testmanagement-Systemen sowie die Organisation und Strukturierung von Funktionalitäten gründlich analysiert.
-	
+	Dabei werden die verschiedenen Typen von Tests, die Verwendung von \aclp{TCMS} sowie die Organisation und Strukturierung von Funktionalitäten dieser gründlich analysiert.	
 	
 	
 	\section{Testarten}
-	\todo{Proper Testing Description}
+	Generell gibt es einige Testarten in der Entwicklung eines Produktes. 
+	Es gibt laut \textcite{atlassian_unterschiedlichen_nodate} mindestens sieben unterschiedliche Testverfahren die je nachdem andere Implementierungen betrachten und testen.
+	Dabei werden noch zwischen Funktionale und Nicht-Funktionale Tests unterschieden.
+	Zu der funktionalen Testfamilie zählen beispielsweise Unit-Tests und Integrationstests.
+	Wobei hingegen Leistung, Last und Stresstests sowie Usability-Tests zu den nicht funktionalen Testfamilie gehören.
+	\textcite{noauthor_software_nodate}
 	
-	\subsection{Unit Test}
-	\todo{Proper Unit Test Description}
+	Die wichtigsten und meist vorkommenden Testarten sind:
 	
-	\subsection{Integration Test}
-	\todo{Proper Integration Test Description}
+	\begin{itemize}
+		\item Unit-Tests
+		\item Integrationstests
+	\end{itemize}
+	
+	\subsection{Unit-Tests}
+	Im Allgemeinen sind Unit-Tests kosteneffektiv automatisierbar und können von einem Continuous-Integration-Server sehr schnell durchgeführt werden. 
+	Dieser Ansatz ermöglicht eine frühe Entdeckung von Fehlern und eine kontinuierliche Überprüfung der Funktionsfähigkeit des Produkts im Entwicklungsprozess. 
+	Durch die Integration von Unit-Tests kann die Qualität des Produkts verbessert werden, indem Fehler frühzeitig erkannt und behoben werden, bevor sie sich auf andere Teile der Anwendung auswirken.
+	
+	\subsection{Integrationstests}
+	Integrationstests sind Verfahren, um sicherzustellen, dass verschiedene Module oder Services, die von einer Anwendung genutzt werden, problemlos miteinander interagieren können. 
+	Durch diese Tests kann die Funktionalität der Anwendung insgesamt überprüft werden, insbesondere hinsichtlich des Zusammenspiels von einzelnen Komponenten, wie beispielsweise der Interaktion mit einer Datenbank oder der Zusammenarbeit von Mikroservices.
 	
 	
 	\section{Einführung in das Test Case Management}
