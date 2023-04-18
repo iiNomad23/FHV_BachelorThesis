@@ -223,8 +223,9 @@
 	
 	
 	\chapter{Stand des Wissens} \label{sec:stateofart}
-	In diesem Kapitel wird eine systematische Überprüfung der angewandten Technologien vorgenommen. 
-	Dabei werden die verschiedenen Typen von Tests, die Verwendung von \aclp{TCMS} sowie die Organisation und Strukturierung von Funktionalitäten dieser gründlich analysiert.	
+	Dieses Kapitel gibt einen Überblick über den aktuellen Stand der Technik von Testarten und Testmanagementsystemen. 
+	Darüber hinaus wird untersucht wie ein \acl{TCMS} verwendet wird und was die empfohlene Vorgehensweise ist.
+	Zusätzlich werden Technologien analysiert, mit denen eine Implementation von einem \ac{TCMS} gut umsetzbar ist. 
 	
 	
 	\section{Testarten} \label{sec:testtypes}
@@ -234,26 +235,49 @@
 	Zu der funktionalen Testfamilie zählen beispielsweise Unit-Tests und Integrationstests.
 	Wobei hingegen Leistung, Last und Stresstests sowie Usability-Tests zu den nicht funktionalen Testfamilie gehören.
 	
-	Die wichtigsten und meist vorkommenden Testarten sind:
+	Ein paar der meist vorkommenden Testarten sind:
 	
 	\begin{itemize}
 		\item Unit-Tests
 		\item Integrationstests
+		\item Funktionstests
+		\item Leistungstests
 	\end{itemize}
+
+	Um eine Testabdeckung sicherzustellen und den allgemeinen Testprozess zu optimieren, gibt es sogenannte \ac{TCMS}. 
+	Diese Systeme bieten eine zentrale Plattform zur Verwaltung von Testfällen, dass alle erforderlichen Tests durchgeführt und dokumentiert werden. 
+	In Kapitel \autoref{sec:tcms} auf Seite \pageref{sec:tcms} werden wir diese Systeme genauer untersuchen.
 	
 	\subsection{Unit-Tests}
-	Im Allgemeinen sind Unit-Tests kosteneffektiv automatisierbar und können von einem Continuous-Integration-Server sehr schnell durchgeführt werden. 
-	Dieser Ansatz ermöglicht eine frühe Entdeckung von Fehlern und eine kontinuierliche Überprüfung der Funktionsfähigkeit des Produkts im Entwicklungsprozess. 
-	Durch die Integration von Unit-Tests kann die Qualität des Produkts verbessert werden, indem Fehler frühzeitig erkannt und behoben werden, bevor sie sich auf andere Teile der Anwendung auswirken.
+	Im Allgemeinen sind Unit-Tests sehr einfache Tests die beispielsweise Methoden einer Klasse mit unterschiedlichen Parametern testet. Sie sind automatisierbar und können von einer Continuos-Integration-Pipeline sehr schnell durchgeführt werden. 
+	Dieser Ansatz ermöglicht eine frühe Entdeckung von Fehlern und eine kontinuierliche Überprüfung der Funktionsfähigkeit des Produkts im Entwicklungsprozess.
 	
 	\subsection{Integrationstests}
-	Integrationstests sind Verfahren, um sicherzustellen, dass verschiedene Module oder Services, die von einer Anwendung genutzt werden, problemlos miteinander interagieren können. 
-	Durch diese Tests kann die Funktionalität der Anwendung insgesamt überprüft werden, insbesondere hinsichtlich des Zusammenspiels von einzelnen Komponenten, wie beispielsweise der Interaktion mit einer Datenbank oder der Zusammenarbeit von Mikroservices.
+	Integrationstests sind Tests, die sicherzustellen, dass verschiedene Module oder Services, problemlos miteinander interagieren können. 
+	Durch diese Tests kann die Funktionalität der Anwendung insgesamt überprüft werden, wie beispielsweise die Interaktion mit einer Datenbank oder der Zusammenarbeit von Mikroservices.
 	
+	\subsection{Funktionstests}
+	Funktionstests werden integriert, um ausschließlich Ergebnisse einer gegebenen Funktion zu überprüfen. Dabei werden Spezifikation vor der Testausführung festgelegt und diese dann mit den Ergebnissen verglichen.
 	
-	\section{Einführung in das Test Case Management}
-	Neben einigen verschiedenen Testarten, die in Kapitel \autoref{sec:testtypes} auf Seite \pageref{sec:testtypes} besprochen worden sind, gibt es sogenannte \aclp{TCMS}.
-	Ein \acl{TCMS} ist eine Software, die verwendet wird, um Testfälle für ein bestimmtes Projekt oder eine Anwendung zu verwalten und zu organisieren.
+	Im Gegensatz dazu stellt ein Integrationstest sicher, dass verschiedene Komponenten einer Anwendung zusammenarbeiten.
+	Dabei werden Interaktionen zwischen verschiedenen Modulen oder Services, wie z.B. Datenbankabfragen oder die Kommunikation zwischen Mikroservices, überprüft.
+	
+	Während Integrationstests beispielsweise nur prüfen, ob Datenbankabfragen generell möglich sind, wird bei einem Funktionstest ein bestimmter Wert aus der Datenbank abgerufen und dieser mit den angegebenen Spezifikationen geprüft.
+	
+	\subsection{Leistungstests}
+	Leistungstests sind Verfahren, die dazu dienen, das Verhalten eines Systems unter verschiedenen Auslastungsmaximierungen zu überprüfen. 
+	Sie werden oft dazu verwendet um Zuverlässigkeit, Geschwindigkeit, Skalierbarkeit und Reaktionsfähigkeit einer Anwendung zu testen. 
+	Außerdem können Leistungstests mögliche Engpässe in einer Anwendung identifizieren.
+	
+	\section{Einführung in das Test Case Management} \label{sec:tcm}
+	\todo{Proper Einführung in das Test Case Management Description}
+	
+	\subsection{Methoden und Techniken im Test Case Management}
+	\todo{Proper Methoden und Techniken im Test Case Management Description}
+	
+	\section{Test Case Management System} \label{sec:tcms}
+	Wie in Kapitel \autoref{sec:tcm} auf Seite \pageref{sec:tcm} besprochen worden ist, gibt es zur Unterstützung von Test Case Management-Prozessen sogenannte \aclp{TCMS}.
+	Ein \acl{TCMS} ist eine Software, mit dem Test-Teams für ein bestimmtes Projekt oder eine Anwendung Testfälle verwalten, organisieren und verfolgen können.
 	Es hilft bei der Planung, Überwachung und Dokumentation von Tests und ermöglicht es, Testfälle sicher und effizient zu verwalten.
 	
 	Ein \ac{TCMS} verfügt über Funktionen wie Testfall-Erstellung, Testfall-Verwaltung, Testfall-Ausführung und Ergebnisberichterstattung. 
@@ -268,30 +292,30 @@
 	\begin{itemize}
 		\item \textcite{noauthor_testrail_2023}  
 		
-		Eine webbasierte Testmanagement-Software, die eine einfache und intuitive Oberfläche bietet. 
+		Eine webbasierte Testmanagementsoftware, die eine einfache und intuitive Oberfläche bietet. 
 		TestRail ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch umfangreiche Berichtsfunktionen. 
 		
 		\item \textcite{noauthor_tricentis_nodate} 
 		
-		Ein beliebtes Projektmanagement-Tool, das auch Funktionen für das Testmanagement bietet. 
+		Eine beliebte Projektmanagementsoftware, das auch Funktionen für das Testmanagement bietet. 
 		JIRA ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch umfangreiche Berichtsfunktionen.
 		
 		\item \textcite{noauthor_zephyr_nodate}
 		
-		Ein webbasiertes Testmanagement-Tool, das in JIRA integriert werden kann. 
+		Eine webbasierte Testmanagementsoftware, das in JIRA integriert werden kann. 
 		Zephyr ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch Funktionen zur Automatisierung von Tests.
 		
 		\item \textcite{noauthor_qtest_nodate} 
 		
-		Eine webbasierte Testmanagement-Software, die eine einfache und intuitive Oberfläche bietet. 
+		Eine webbasierte Testmanagementsoftware, die eine einfache und intuitive Oberfläche bietet. 
 		QTest ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch umfangreiche Berichtsfunktionen.
 	\end{itemize}
+
+	Diese \ac{TCMS}-Tools bieten eine große Basis Funktionalität und je nachdem andere oder zusätzliche Funktionen und Integrationsmöglichkeiten.
+	Welches Tool am besten geeignet ist, hängt natürlich von der jeweiligen Anwendung ab.
 	
 	\subsection{Funktionen und Eigenschaften von Test Case Management Systemen}
 	\todo{Proper Funktionen und Eigenschaften von Test Case Management Systemen Description}
-	
-	\subsection{Methoden und Techniken im Test Case Management}
-	\todo{Proper Methoden und Techniken im Test Case Management Description}
 	
 	\subsection{Aktuelle Trends und Herausforderungen}
 	\todo{Proper Aktuelle Trends und Herausforderungen Description}
