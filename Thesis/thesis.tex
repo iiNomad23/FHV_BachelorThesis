@@ -155,9 +155,7 @@
 	\begin{acronym}
 		\acro{API}{Application Programming Interface}
 		\acro{JSON}{JavaScript Object Notation}
-		\acro{SPA}{Single Page Application}
 		\acro{TCMS}{Test Case Management System}
-		\acro{TDD}{Test Driven Development}
 		
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
@@ -170,27 +168,21 @@
 	Ich schätze Ihre Zusammenarbeit sehr.
 	
 	
+	
 	\clearpage
 	\chapter{Einleitung}
-	\todo{Einleitung}
+	\todo{Proper Einleitung Description}
 	
-	\ac{TDD}
-	\ac{TDD}
-	\textcite{harman_well-wrought_2012}
-	\cref{fig:schelling_end}
 	
-	\cite{harman_well-wrought_2012}
-	
-	\section{Motivation}
+	\section{Motivation} \label{sec:motivation}
 	Die Entwicklung technischer Systeme ist ein komplexer Prozess, der eine hohe Qualität erfordert, um den Anforderungen der Kunden gerecht zu werden. 
 	Damit diese Qualität auch gewährleistet wird, müssen Fehler sowie Mängel identifiziert und ausgebessert werden. 
 	Ein \ac{TCMS} bietet eine Lösung, um diesen Prozess zu vereinfachen und effektiver zu gestalten. 
-	Durch die Verwendung eines \ac{TCMS} können Angestellte, die in der Software/Hardware Entwicklung, Support, Marketing etc., die Qualität des Produkts verbessern, Fehler frühzeitig erkennen, beheben und den Entwicklungsprozess effizienter gestalten. 
+	Durch die Verwendung eines \ac{TCMS} können Angestellte aus verschiedenen Abteilungen, wie z.B. der Software-, Hardware-, Support- oder Marketingabteilung, die Qualität des Produkts gemeinsam verbessern. 
 	Diese Arbeit fokussiert sich daher auf die Integration von einem \ac{TCMS} in einen laufenden Produktentwicklungs-Zyklus und vergleicht verschiedene vorhandene Lösungen.
 	
 	\section{Problemstellung}
-	Die Komplexität von Projekten steigt kontinuierlich an und es ist eine Herausforderung, die Qualität des entwickelten Systems sicherzustellen. 
-	Es ist bekannt, dass Fehler, die erst spät im Entwicklungsprozess entdeckt werden, viel kostspieliger zu beheben sind als Fehler, die frühzeitig identifiziert und behoben werden. 
+	Durch die von \autoref{sec:motivation} angesprochene Komplexität technischer Systeme ist bekannt, dass Fehler, die erst spät im Entwicklungsprozess entdeckt werden, viel kostspieliger zu beheben sind als Fehler, die frühzeitig identifiziert und behoben werden. 
 	Infolgedessen suchen Unternehmen nach Lösungen, um den Testprozess effektiver zu gestalten und Fehler früher im Entwicklungszyklus zu identifizieren. 
 	\ac{TCMS} bietet eine solche Lösung, indem es Entwicklern und Testern ermöglicht, Testfälle effizient zu planen und zu verwalten sowie Testergebnisse zu erfassen, darzustellen und somit auch zu verfolgen. 
 	Obwohl \aclp{TCMS} in der Industrie weit verbreitet sind und es einige fertige Lösungen gibt, gibt es jedoch nicht immer die Perfekte Lösung um ein bestehendes \ac{TCMS} für das eigene Projekt anzuwenden. 
@@ -222,7 +214,7 @@
 	
 	
 	
-	\chapter{Stand des Wissens} \label{sec:stateofart}
+	\chapter{Stand des Wissens}
 	Dieses Kapitel gibt einen Überblick über den aktuellen Stand der Technik von Testarten und Testmanagementsystemen. 
 	Darüber hinaus wird untersucht wie ein \acl{TCMS} verwendet wird und was die empfohlene Vorgehensweise ist.
 	Zusätzlich werden Technologien analysiert, mit denen eine Implementation von einem \ac{TCMS} gut umsetzbar ist. 
@@ -246,7 +238,7 @@
 
 	Um eine Testabdeckung sicherzustellen und den allgemeinen Testprozess zu optimieren, gibt es sogenannte \ac{TCMS}. 
 	Diese Systeme bieten eine zentrale Plattform zur Verwaltung von Testfällen, dass alle erforderlichen Tests durchgeführt und dokumentiert werden. 
-	In Kapitel \autoref{sec:tcms} auf Seite \pageref{sec:tcms} werden wir diese Systeme genauer untersuchen.
+	In \autoref{sec:tcms} auf \autopageref{sec:tcms} werden wir diese Systeme genauer untersuchen.
 	
 	\subsection{Unit-Tests}
 	Im Allgemeinen sind Unit-Tests sehr einfache Tests die beispielsweise Methoden einer Klasse mit unterschiedlichen Parametern testet. Sie sind automatisierbar und können von einer Continuos-Integration-Pipeline sehr schnell durchgeführt werden. 
@@ -305,7 +297,7 @@
 		QTest ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch umfangreiche Berichtsfunktionen.
 	\end{itemize}
 
-	Diese \aclp{TCMS} bieten eine große Basis Funktionalität, auf diese wir in Kapitel \autoref{subsec:functionsOfTCMS} auf Seite \pageref{subsec:functionsOfTCMS} genauer eingehen werden, und je nachdem andere oder zusätzliche Funktionen und Integrationsmöglichkeiten.
+	Diese \aclp{TCMS} bieten eine große Basis Funktionalität, auf diese wir in \autoref{subsec:functionsOfTCMS} auf \autopageref{subsec:functionsOfTCMS} genauer eingehen werden, und je nachdem andere oder zusätzliche Funktionen und Integrationsmöglichkeiten.
 	Welches Tool am besten geeignet ist, hängt natürlich von der jeweiligen Anwendung ab.
 	
 	\begin{figure}[H]
@@ -321,14 +313,16 @@
 	\todo{Proper Vorteile von Test Case Management Systemen Description}
 	
 	\subsection{Features von Test Case Management Systemen} \label{subsec:functionsOfTCMS}
-	Dieses Unterkapitel gibt einen Überblick zu den Funktionen und Aspekten von \aclp{TCMS}.
-	Wie im Kapitel \autoref{sec:tcms} auf Seite \pageref{sec:tcms} schon angedeutet wird verfügt ein \ac{TCMS} über Basis Funktionen.
-	Diese Funktionen bieten je nachdem welches Tools man verwendet oder entwickelt andere eigenschaften an, beispielsweise gibt es hier !!!Quelle||| für die Testfall-Erstellung andere Requirements als wie bei !!!Quelle!!!.
+	Dieses Unterkapitel gibt einen Überblick zu den Features von \aclp{TCMS}.
+	Wie in \autoref{sec:tcms} auf \autopageref{sec:tcms} schon angedeutet wird verfügt ein \ac{TCMS} über Basis Funktionen mit denen verschiedene Features realisierbar werden.
 	
-	Die Berichterstattung ist im allgemeinen eine der wichtigsten Funktion eines \ac{TCMS}s. 
+	Zudem gibt es 
+	Die Berichterstattung ist im Allgemeinen eine der wichtigsten Funktion eines \ac{TCMS}s. 
 	Diese generiert einen ausführlichen Testbericht und gibt eine Übersicht von allen implementierten Testfällen nach einem Testlauf.
-	Dadurch wird auch Error Tracking sehr vereinfacht und effizient.
-	Zusätzlich können diese Testberichte nach jedem Testlauf zu den jeweiligen Abonnierten Testern gesendet werden.
+	Dadurch wird auch die Fehlerverfolgung und Fehleridentifizierung sehr vereinfacht und effizient.
+	Zusätzlich können diese Testberichte nach jedem Testlauf zu den jeweiligen abonnierten Testern gesendet werden.  
+	\linebreak
+	\textcite{lead_articles_nodate}
 	
 	\subsection{Aspekte von Test Case Management Systemen} \label{subsec:aspectsOfTCMS}
 	\todo{Proper Aspekte von Test Case Management Systemen Description}
