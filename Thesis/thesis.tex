@@ -23,6 +23,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+% for nested lists
+\usepackage{outlines}
+
 % for drawing
 \usepackage{tikz}
 
@@ -281,28 +284,59 @@
 	
 	\subsection{Überblick über Test Case Management Systeme}
 	Heutzutage gibt es natürlich schon eine Vielzahl von fertigen und direkt verwendbaren \aclp{TCMS}n auf dem Markt, die die Verwaltung von Tests vereinfacht.
+	
 	Einige bekannte Tools sind:
 	
 	\begin{itemize}
-		\item \textcite{noauthor_testrail_2023}  
+		\item \textcite{noauthor_testrail_2023} 
 		
-		Eine webbasierte Testmanagementsoftware, die eine einfache und intuitive Oberfläche bietet. 
-		TestRail ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch umfangreiche Berichtsfunktionen. 
+		Webbasiertes \acl{TCMS}, ist zentralisiert und hat eine einfache und intuitive Oberfläche.
+		
+		Kern Features:
+		\begin{itemize}
+			\setlength\itemsep{-0.5em}
+			\item Test Planung, Verwaltung und Ausführung 
+			\item Echtzeit Berichterstattung und Analysen
+			\item Rückverfolgbarkeits- und Abdeckungsberichte für Anforderungen, Tests und Fehler
+		\end{itemize}
 		
 		\item \textcite{noauthor_tricentis_nodate} 
 		
-		Eine beliebte Projektmanagementsoftware, das auch Funktionen für das Testmanagement bietet. 
-		JIRA ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch umfangreiche Berichtsfunktionen.
+		Webbasiertes \acl{TCMS} und hat moderne und intuitive Oberfläche.
 		
-		\item \textcite{noauthor_zephyr_nodate}
+		Kern Features:
+		\begin{itemize}
+			\setlength\itemsep{-0.5em}
+			\item Test Planung, Verwaltung und Ausführung 
+			\item Echtzeit Test Status Update
+			\item Berichterstattung
+		\end{itemize}
 		
-		Eine webbasierte Testmanagementsoftware, das in JIRA integriert werden kann. 
-		Zephyr ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch Funktionen zur Automatisierung von Tests.
+		\item \textcite{noauthor_zephyr_nodate} 
+		
+		Webbasiertes \acl{TCMS}, moderne Oberfläche und kann in JIRA integriert werden. 
+		
+		Kern Features:
+		\begin{itemize}
+			\setlength\itemsep{-0.5em}
+			\item Test Planung, Verwaltung und Ausführung 
+			\item Test Automatisierung
+			\item Echtzeit Visualisierung von Projektstatus
+		\end{itemize}
 		
 		\item \textcite{noauthor_tricentis_nodate-1} 
 		
-		Eine webbasierte Testmanagementsoftware, die eine einfache und intuitive Oberfläche bietet. 
-		QTest ermöglicht es, Testfälle zu planen, durchzuführen und zu verwalten und bietet auch umfangreiche Berichtsfunktionen.
+		Webbasiertes \acl{TCMS} und hat moderne und intuitive Oberfläche.
+		
+		Kern Features:
+		\begin{itemize}
+			\setlength\itemsep{-0.5em}
+			\item Test Planung, Verwaltung und Ausführung 
+			\item Migrationsmöglichkeit von alten Test Management Lösungen
+			\item Integrationsmöglichkeit mit Jenkins, Azure Pipelines, Bamboo oder jedem anderen CI/CD-Tool
+			\item Anpassbare Dashboards, um über alle Releases, Projekte oder Programme im gesamten Unternehmen zu berichten
+			\item Berichte per E-Mail oder URL teilen
+		\end{itemize}
 	\end{itemize}
 
 	Diese \aclp{TCMS} bieten eine große Basis Funktionalität, auf diese wir in \autoref{sec:functionsOfTCMS} auf \autopageref{sec:functionsOfTCMS} genauer eingehen werden, und je nachdem andere oder zusätzliche Funktionen und Integrationsmöglichkeiten.
