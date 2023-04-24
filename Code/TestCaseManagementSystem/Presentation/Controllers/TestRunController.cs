@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers;
 
+[ApiController]
+[Route("api/testRun")]
 public class TestRunController : ControllerBase
 {
     private readonly ITestRunService _testRunService;
