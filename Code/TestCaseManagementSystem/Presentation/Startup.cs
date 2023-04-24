@@ -4,7 +4,6 @@ using Domain.Repositories;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace Presentation;
 
@@ -43,11 +42,13 @@ public class Startup
         services.AddTransient<ITestCaseRepository, TestCaseRepository>();
         services.AddTransient<ITestPlanRepository, TestPlanRepository>();
         services.AddTransient<ITestImplementationRepository, TestImplementationRepository>();
+        services.AddTransient<ITestRunRepository, TestRunRepository>();
         
         // Register services with the DI container
         services.AddTransient<ITestCaseService, TestCaseService>();
         services.AddTransient<ITestPlanService, TestPlanService>();
         services.AddTransient<ITestImplementationService, TestImplementationService>();
+        services.AddTransient<ITestRunService, TestRunService>();
 
         services.AddControllers();
         

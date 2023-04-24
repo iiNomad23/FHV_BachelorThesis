@@ -16,6 +16,7 @@ public class Program
         {
             var services = scope.ServiceProvider;
             var dbContext = services.GetRequiredService<EFContext>();
+            dbContext.Database.EnsureDeleted();
             dbContext.Database.EnsureCreated();
         }
         
