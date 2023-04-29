@@ -30,7 +30,7 @@
 *.blg
 *-blx.aux
 *-blx.bib
-*thesis.run.xml
+*.run.xml
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
