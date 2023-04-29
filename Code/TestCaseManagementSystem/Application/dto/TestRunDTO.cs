@@ -5,17 +5,17 @@ namespace Application.dto;
 
 public class TestRunDTO
 {
-    public string Id { get; init; }
+    public string Id { get; init; } = "";
     
     [Required]
-    public string State { get; init; }
+    public string State { get; init; } = "";
     
     [Required]
-    public string TestSystemId { get; init; }
-    
+    public string TestSystemId { get; init; } = "";
+
     [Required]
-    public Dictionary<string, ResultDetails> ResultDetailsMap { get; init; }
-    
-    [Required]
-    public List<DeviceDetails> DeviceDetailsCollection { get; init; }
+    public Dictionary<string, ResultDetails> ResultDetailsMap { get; init; } = new Dictionary<string, ResultDetails>();
+
+    [Required] 
+    public List<DeviceDetails> DeviceDetailsCollection { get; init; } = new List<DeviceDetails>();
 }

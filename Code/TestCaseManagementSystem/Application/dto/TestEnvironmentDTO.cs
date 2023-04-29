@@ -5,14 +5,14 @@ namespace Application.dto;
 
 public class TestEnvironmentDTO
 {
-    public string Id { get; init; }
+    public string Id { get; init; } = "";
     
     [Required]
     [StringLength(200)]
-    public string ShortDescription { get; init; }
+    public string ShortDescription { get; init; } = "";
     
-    public string LongDescription { get; init; }
+    public string LongDescription { get; init; } = "";
     
     [Required]
-    public List<TestSystem> TestSystems { get; init; }
+    public List<TestSystem> TestSystems { get; init; } = new List<TestSystem>();
 }

@@ -32,7 +32,7 @@ public class TestRunConfiguration : IEntityTypeConfiguration<TestRun>
 
         builder.Property(p => p.ResultDetailsMap).HasConversion<string>(
             d => JsonConvert.SerializeObject(d),
-            s => JsonConvert.DeserializeObject<Dictionary<string, ResultDetails>>(s)
+            s => JsonConvert.DeserializeObject<Dictionary<string, ResultDetails>>(s) ?? new Dictionary<string, ResultDetails>()
             );
 
         builder.OwnsMany(tr => tr.DeviceDetailsList, item =>
