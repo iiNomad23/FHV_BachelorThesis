@@ -1,5 +1,4 @@
 ﻿using Domain;
-using Domain.enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

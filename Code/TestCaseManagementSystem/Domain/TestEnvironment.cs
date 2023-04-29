@@ -9,6 +9,14 @@ public class TestEnvironment
     public string LongDescription { get; set; }
     public List<TestSystem> TestSystems { get; private set; }
 
+    public TestEnvironment(string domainId, string shortDescription, string longDescription)
+    {
+        DomainId = domainId;
+        ShortDescription = shortDescription;
+        LongDescription = longDescription;
+        TestSystems = new List<TestSystem>();
+    }
+    
     public TestEnvironment(long id, string domainId, string shortDescription, string longDescription)
     {
         Id = id;
@@ -18,25 +26,17 @@ public class TestEnvironment
         TestSystems = new List<TestSystem>();
     }
     
-    public TestEnvironment(string domainId, string shortDescription, string longDescription)
+    public TestEnvironment(string domainId, string shortDescription, string longDescription, List<TestSystem> testSystems)
     {
-        DomainId = domainId;
-        ShortDescription = shortDescription;
-        LongDescription = longDescription;
-        TestSystems = new List<TestSystem>();
-    }
-    
-    public TestEnvironment(long id, string domainId, string shortDescription, string longDescription, List<TestSystem> testSystems)
-    {
-        Id = id;
         DomainId = domainId;
         ShortDescription = shortDescription;
         LongDescription = longDescription;
         TestSystems = testSystems;
     }
     
-    public TestEnvironment(string domainId, string shortDescription, string longDescription, List<TestSystem> testSystems)
+    public TestEnvironment(long id, string domainId, string shortDescription, string longDescription, List<TestSystem> testSystems)
     {
+        Id = id;
         DomainId = domainId;
         ShortDescription = shortDescription;
         LongDescription = longDescription;
