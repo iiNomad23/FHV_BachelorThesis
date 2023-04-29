@@ -7,6 +7,6 @@ public interface ITestCaseService
     Task<TestCaseDTO> FindById(string id);
     Task<List<TestCaseDTO>> FindByShortDescription(string shortDescription);
     Task<List<TestCaseDTO>> GetAll();
-    Task Add(TestCaseDTO testCase);
-    Task Remove(TestCaseDTO testCase);
+    Task Add(TestCaseDTO testCaseDTO);
+    Task Remove(TestCaseDTO testCaseDTO);
 }

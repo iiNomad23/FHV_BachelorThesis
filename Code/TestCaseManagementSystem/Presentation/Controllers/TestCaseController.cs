@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Presentation.Controllers;
 
 [ApiController]
-[Route("api/testcase")]
+[Route("api/testCase")]
 public class TestCaseController : ControllerBase
 {
     private readonly ITestCaseService _testCaseService;
@@ -23,7 +23,7 @@ public class TestCaseController : ControllerBase
     }
 
     [HttpGet("shortDescription/{shortDescription}")]
-    public async Task<ActionResult<TestCaseDTO>> FindTestCaseByShortDescription(string shortDescription)
+    public async Task<ActionResult<TestCaseDTO>> FindTestCasesByShortDescription(string shortDescription)
     {
         var testCaseDTOs = await _testCaseService.FindByShortDescription(shortDescription);
         return Ok(testCaseDTOs);

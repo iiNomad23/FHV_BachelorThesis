@@ -43,12 +43,14 @@ public class Startup
         services.AddTransient<ITestPlanRepository, TestPlanRepository>();
         services.AddTransient<ITestImplementationRepository, TestImplementationRepository>();
         services.AddTransient<ITestRunRepository, TestRunRepository>();
+        services.AddTransient<ITestEnvironmentRepository, TestEnvironmentRepository>();
         
         // Register services with the DI container
         services.AddTransient<ITestCaseService, TestCaseService>();
         services.AddTransient<ITestPlanService, TestPlanService>();
         services.AddTransient<ITestImplementationService, TestImplementationService>();
         services.AddTransient<ITestRunService, TestRunService>();
+        services.AddTransient<ITestEnvironmentService, TestEnvironmentService>();
 
         services.AddControllers();
         

@@ -18,8 +18,8 @@ public class TestRunController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<TestRunDTO>> FindTestRunById(string id)
     {
-        var testPlanDTO = await _testRunService.FindById(id);
-        return Ok(testPlanDTO);
+        var testRunDTO = await _testRunService.FindById(id);
+        return Ok(testRunDTO);
     }
 
     [HttpGet("testSystemId/{testSystemId}")]

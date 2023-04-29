@@ -23,7 +23,7 @@ public class TestImplementationController : ControllerBase
     }
     
     [HttpGet("shortDescription/{shortDescription}")]
-    public async Task<ActionResult<TestImplementationDTO>> FindTestImplementationByShortDescription(string shortDescription)
+    public async Task<ActionResult<TestImplementationDTO>> FindTestImplementationsByShortDescription(string shortDescription)
     {
         var testImplementationDTOs = await _testImplementationService.FindByShortDescription(shortDescription);
         return Ok(testImplementationDTOs);
