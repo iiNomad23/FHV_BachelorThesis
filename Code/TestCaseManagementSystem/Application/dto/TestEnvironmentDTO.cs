@@ -14,5 +14,5 @@ public class TestEnvironmentDTO
     public string LongDescription { get; init; } = "";
     
     [Required]
-    public List<TestSystem> TestSystems { get; init; } = new List<TestSystem>();
+    public List<TestSystemDTO> TestSystems { get; init; } = new List<TestSystemDTO>();
 }

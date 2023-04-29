@@ -21,11 +21,8 @@ public class TestEnvironmentConfiguration : IEntityTypeConfiguration<TestEnviron
 
         builder.Property(p => p.LongDescription);
         
-        // TODO redo this with the testEnvId inside the Testsystem entity
         builder.OwnsMany(te => te.TestSystems, item =>
         {
-            item.Property(p => p.Id);
-            item.Property(p => p.DomainId);
             item.Property(p => p.Name);
             item.Property(p => p.Description);
         });
