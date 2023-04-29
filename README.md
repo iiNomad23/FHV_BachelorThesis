@@ -23,7 +23,7 @@ This reduces testing effort and provides focused feedback to the developers.
 
 - Tex Live
 - TexStudio
-- Rust Code Listings:
+- Code Listings:
   - minted
     - python -m pip install -U pygments
     - evtl. Python scripts zu PATH hinzufügen
