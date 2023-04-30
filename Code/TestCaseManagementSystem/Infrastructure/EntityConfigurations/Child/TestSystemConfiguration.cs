@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.EntityConfigurations.ChildEntityConfigurations;
+namespace Infrastructure.EntityConfigurations.Child;
 
 public class TestSystemConfiguration : IEntityTypeConfiguration<TestSystem>
 {

@@ -1,6 +1,6 @@
 ﻿using Domain;
 using Infrastructure.EntityConfigurations;
-using Infrastructure.EntityConfigurations.ChildEntityConfigurations;
+using Infrastructure.EntityConfigurations.Child;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure;
@@ -29,8 +29,6 @@ public class EFContext : DbContext
 
         ApplyChildConfigurations(modelBuilder);
         
-        modelBuilder.ApplyConfiguration(new TestSystemConfiguration());
-        
         modelBuilder.ApplyConfiguration(new TestCaseConfiguration());
         modelBuilder.ApplyConfiguration(new TestPlanConfiguration());
         modelBuilder.ApplyConfiguration(new TestImplementationConfiguration());
@@ -40,6 +38,6 @@ public class EFContext : DbContext
 
     private static void ApplyChildConfigurations(ModelBuilder modelBuilder)
     {
-        // modelBuilder.ApplyConfiguration(new TestSystemConfiguration());
+        modelBuilder.ApplyConfiguration(new TestSystemConfiguration());
     }
 }
