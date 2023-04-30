@@ -7,13 +7,13 @@ public class TestImplementationDTO
     public string Id { get; init; } = "";
     
     [Required]
-    [StringLength(200)]
+    [StringLength(255)]
     public string ShortDescription { get; init; } = "";
     
     public string LongDescription { get; init; } = "";
     
     [Required]
-    [StringLength(50)]
+    [StringLength(255)]
     public string AuthorDescription { get; init; } = "";
 
     public string ReferenceLink { get; init; } = "";

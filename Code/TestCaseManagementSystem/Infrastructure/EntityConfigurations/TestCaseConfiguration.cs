@@ -23,7 +23,9 @@ public class TestCaseConfiguration : IEntityTypeConfiguration<TestCase>
         builder.Property(p => p.LongDescription);
 
         builder.Property(p => p.AuthorDescription)
+            .HasMaxLength(255)
             .IsRequired();
+        
         builder.Property(p => p.CreateDate)
             .IsRequired();
         

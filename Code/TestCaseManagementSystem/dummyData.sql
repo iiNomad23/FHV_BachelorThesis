@@ -23,16 +23,16 @@ VALUES ('TestCase 1', 'Short Description 1', 'Long Description 1', 'Author Descr
 
 
 INSERT INTO TestEnvironments (DomainId, ShortDescription, LongDescription)
-VALUES ('TestEnvironment 1', 'Short Description 1', 'Long Description 1'),
-       ('TestEnvironment 2', 'Short Description 2', 'Long Description 2'),
-       ('TestEnvironment 3', 'Short Description 3', 'Long Description 3'),
-       ('TestEnvironment 4', 'Short Description 4', 'Long Description 4'),
-       ('TestEnvironment 5', 'Short Description 5', 'Long Description 5'),
-       ('TestEnvironment 6', 'Short Description 6', 'Long Description 6'),
-       ('TestEnvironment 7', 'Short Description 7', 'Long Description 7'),
-       ('TestEnvironment 8', 'Short Description 8', 'Long Description 8'),
-       ('TestEnvironment 9', 'Short Description 9', 'Long Description 9'),
-       ('TestEnvironment 10', 'Short Description 10', 'Long Description 10');
+VALUES ('TestEnvironment_1', 'Short Description 1', 'Long Description 1'),
+       ('TestEnvironment_2', 'Short Description 2', 'Long Description 2'),
+       ('TestEnvironment_3', 'Short Description 3', 'Long Description 3'),
+       ('TestEnvironment_4', 'Short Description 4', 'Long Description 4'),
+       ('TestEnvironment_5', 'Short Description 5', 'Long Description 5'),
+       ('TestEnvironment_6', 'Short Description 6', 'Long Description 6'),
+       ('TestEnvironment_7', 'Short Description 7', 'Long Description 7'),
+       ('TestEnvironment_8', 'Short Description 8', 'Long Description 8'),
+       ('TestEnvironment_9', 'Short Description 9', 'Long Description 9'),
+       ('TestEnvironment_10', 'Short Description 10', 'Long Description 10');
 
 
 INSERT INTO TestImplementations (DomainId, ShortDescription, LongDescription, AuthorDescription, CreateDate,
@@ -93,18 +93,18 @@ VALUES ('abc123', '2022-01-01 10:00:00.000000', '2022-01-01 11:30:00.000000', 'S
        ('bcd890', '2022-10-05 10:15:00.000000', '2022-10-05 11:30:00.000000', 'Failed', 'testsys1',
         '{"additionalProp1": {"value": 0,"timestamp": 0,"description": "string","result": true},"additionalProp2": {"value": 0,"timestamp": 0,"description": "string","result": true},"additionalProp3": {"value": 0,"timestamp": 0,"description": "string","result": true}}');
 
-# INSERT INTO `TestSystem` (`TestEnvironmentId`, `DomainId`, `Name`, `Description`)
-# VALUES (1, 'domain1', 'System1', 'This is the first test system'),
-#        (1, 'domain1', 'System2', 'This is the second test system'),
-#        (1, 'domain1', 'System3', 'This is the third test system'),
-#        (2, 'domain2', 'System4', 'This is the fourth test system'),
-#        (2, 'domain2', 'System5', 'This is the fifth test system'),
-#        (2, 'domain2', 'System6', 'This is the sixth test system'),
-#        (3, 'domain3', 'System7', 'This is the seventh test system'),
-#        (3, 'domain3', 'System8', 'This is the eighth test system'),
-#        (3, 'domain3', 'System9', 'This is the ninth test system'),
-#        (3, 'domain3', 'System10', 'This is the tenth test system');
-# 
+INSERT INTO `TestSystems` (`Name`, `Description`, `TestEnvironmentDomainId`)
+VALUES ('System1', 'This is the first test system', 'TestEnvironment_1'),
+       ('System2', 'This is the second test system', 'TestEnvironment_4'),
+       ('System3', 'This is the third test system', 'TestEnvironment_1'),
+       ('System4', 'This is the fourth test system', 'TestEnvironment_3'),
+       ('System5', 'This is the fifth test system', 'TestEnvironment_8'),
+       ('System6', 'This is the sixth test system', 'TestEnvironment_10'),
+       ('System7', 'This is the seventh test system', 'TestEnvironment_4'),
+       ('System8', 'This is the eighth test system', 'TestEnvironment_5'),
+       ('System9', 'This is the ninth test system', 'TestEnvironment_6'),
+       ('System10', 'This is the tenth test system', 'TestEnvironment_1');
+
 # INSERT INTO `DeviceDetails` (`TestRunId`, `Id`, `Name`, `Firmware`, `MkCode`, `Serial`)
 # VALUES
 #     (1, 1, 'Device1', 'v1.0', 'MK-001', 'SER-001'),

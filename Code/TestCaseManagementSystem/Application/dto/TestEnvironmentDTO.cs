@@ -8,7 +8,7 @@ public class TestEnvironmentDTO
     public string Id { get; init; } = "";
     
     [Required]
-    [StringLength(200)]
+    [StringLength(255)]
     public string ShortDescription { get; init; } = "";
     
     public string LongDescription { get; init; } = "";
