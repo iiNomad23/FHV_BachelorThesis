@@ -17,7 +17,7 @@ public class TestImplementationConfiguration : IEntityTypeConfiguration<TestImpl
 
         builder.Property(p => p.ShortDescription)
             .IsRequired()
-            .HasMaxLength(200);
+            .HasMaxLength(255);
 
         builder.Property(p => p.LongDescription);
 

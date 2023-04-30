@@ -17,14 +17,15 @@ public class TestEnvironmentConfiguration : IEntityTypeConfiguration<TestEnviron
 
         builder.Property(p => p.ShortDescription)
             .IsRequired()
-            .HasMaxLength(200);
+            .HasMaxLength(255);
 
         builder.Property(p => p.LongDescription);
-        
-        builder.OwnsMany(te => te.TestSystems, item =>
-        {
-            item.Property(p => p.Name);
-            item.Property(p => p.Description);
-        });
+
+        // https://learn.microsoft.com/en-us/ef/core/modeling/relationships/one-to-many
+        builder
+            .HasMany(e => e.TestSystems)
+            .WithOne()
+            .HasPrincipalKey(p => p.DomainId)
+            .IsRequired();
     }
 }

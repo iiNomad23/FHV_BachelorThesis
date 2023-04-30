@@ -77,13 +77,15 @@ public class TestEnvironmentService : ITestEnvironmentService
 
     public async Task Add(TestEnvironmentDTO testEnvironmentDTO)
     {
+        var nextDomainId = _testEnvironmentRepository.NextIdentity();
+        
         await _testEnvironmentRepository.Add(
             new TestEnvironment(
-                _testEnvironmentRepository.NextIdentity(),
+                nextDomainId,
                 testEnvironmentDTO.ShortDescription,
                 testEnvironmentDTO.LongDescription,
                 testEnvironmentDTO.TestSystems
-                    .Select(ts => new TestSystem(ts.Name, ts.Description))
+                    .Select(ts => new TestSystem(ts.Name, ts.Description, nextDomainId))
                     .ToList()
             )
         );

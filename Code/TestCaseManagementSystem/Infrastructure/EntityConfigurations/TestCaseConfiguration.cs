@@ -18,7 +18,7 @@ public class TestCaseConfiguration : IEntityTypeConfiguration<TestCase>
 
         builder.Property(p => p.ShortDescription)
             .IsRequired()
-            .HasMaxLength(200);
+            .HasMaxLength(255);
 
         builder.Property(p => p.LongDescription);
 
@@ -33,7 +33,7 @@ public class TestCaseConfiguration : IEntityTypeConfiguration<TestCase>
                 e => e.ToString(),
                 e => (Priority)Enum.Parse(typeof(Priority), e)
             )
-            .HasMaxLength(10)
+            .HasMaxLength(15)
             .IsRequired();
 
         builder.Property(p => p.ReferenceLink);
