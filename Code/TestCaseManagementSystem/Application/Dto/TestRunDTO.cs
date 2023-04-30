@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Domain.valueObjects;
+using Domain.ValueObjects;
 
-namespace Application.dto;
+namespace Application.Dto;
 
 public class TestRunDTO
 {

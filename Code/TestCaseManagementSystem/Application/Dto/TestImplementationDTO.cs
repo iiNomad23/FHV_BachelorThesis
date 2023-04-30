@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Domain;
 
-namespace Application.dto;
+namespace Application.Dto;
 
-public class TestEnvironmentDTO
+public class TestImplementationDTO
 {
     public string Id { get; init; } = "";
     
@@ -14,5 +13,8 @@ public class TestEnvironmentDTO
     public string LongDescription { get; init; } = "";
     
     [Required]
-    public List<TestSystemDTO> TestSystems { get; init; } = new List<TestSystemDTO>();
+    [StringLength(255)]
+    public string AuthorDescription { get; init; } = "";
+
+    public string ReferenceLink { get; init; } = "";
 }

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Domain.enums;
+using Domain.Enums;
 
-namespace Application.dto;
+namespace Application.Dto;
 
 public class TestCaseDTO
 {

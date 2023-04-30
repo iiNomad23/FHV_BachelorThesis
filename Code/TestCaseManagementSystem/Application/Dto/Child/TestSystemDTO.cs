@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.dto;
+namespace Application.Dto.Child;
 
 public class TestSystemDTO
 {

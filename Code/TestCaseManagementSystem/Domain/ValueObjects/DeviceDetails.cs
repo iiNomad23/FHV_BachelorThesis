@@ -1,4 +1,4 @@
-﻿namespace Domain.valueObjects;
+﻿namespace Domain.ValueObjects;
 
 public class DeviceDetails : ValueObject
 {

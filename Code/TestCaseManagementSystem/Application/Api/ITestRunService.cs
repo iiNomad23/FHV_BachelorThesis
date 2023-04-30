@@ -1,6 +1,6 @@
-﻿using Application.dto;
+﻿using Application.Dto;
 
-namespace Application.api;
+namespace Application.Api;
 
 public interface ITestRunService
 {

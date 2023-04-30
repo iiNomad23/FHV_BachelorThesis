@@ -1,5 +1,5 @@
 ﻿using Domain;
-using Domain.valueObjects;
+using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Newtonsoft.Json;

@@ -1,4 +1,4 @@
-﻿namespace Domain.enums;
+﻿namespace Domain.Enums;
 
 public enum Priority
 {

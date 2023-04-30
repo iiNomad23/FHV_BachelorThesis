@@ -1,5 +1,5 @@
 ﻿using Application;
-using Application.api;
+using Application.Api;
 using Domain.Repositories;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
