@@ -28,7 +28,6 @@ public class TestEnvironmentService : ITestEnvironmentService
                 {
                     Name = ts.Name,
                     Description = ts.Description,
-                    TestEnvironmentDomainId = ts.TestEnvironmentDomainId
                 })
                 .ToList()
         };
@@ -49,7 +48,6 @@ public class TestEnvironmentService : ITestEnvironmentService
                     {
                         Name = ts.Name,
                         Description = ts.Description,
-                        TestEnvironmentDomainId = ts.TestEnvironmentDomainId
                     })
                     .ToList()
             })
@@ -71,7 +69,6 @@ public class TestEnvironmentService : ITestEnvironmentService
                     {
                         Name = ts.Name,
                         Description = ts.Description,
-                        TestEnvironmentDomainId = ts.TestEnvironmentDomainId
                     })
                     .ToList()
             })

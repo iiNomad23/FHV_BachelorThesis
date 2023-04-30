@@ -20,7 +20,9 @@ public class TestEnvironmentRepository : ITestEnvironmentRepository
 
     public async Task<TestEnvironment> FindById(string id)
     {
-        var testEnvironment = await _context.TestEnvironments.FirstOrDefaultAsync(testEnvironment => testEnvironment.DomainId == id);
+        var testEnvironment = await _context.TestEnvironments
+            .Include(te => te.TestSystems)
+            .FirstOrDefaultAsync(testEnvironment => testEnvironment.DomainId == id);
 
         if (testEnvironment == null)
         {

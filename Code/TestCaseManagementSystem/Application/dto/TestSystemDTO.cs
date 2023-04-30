@@ -9,8 +9,4 @@ public class TestSystemDTO
     public string Name { get; init; } = "";
     
     public string Description { get; init; } = "";
-    
-    [Required]
-    [StringLength(255)]
-    public string TestEnvironmentDomainId { get; init; } = "";
 }
