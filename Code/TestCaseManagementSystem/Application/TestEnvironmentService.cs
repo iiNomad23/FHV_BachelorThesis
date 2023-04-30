@@ -27,7 +27,8 @@ public class TestEnvironmentService : ITestEnvironmentService
                 .Select(ts => new TestSystemDTO
                 {
                     Name = ts.Name,
-                    Description = ts.Description
+                    Description = ts.Description,
+                    TestEnvironmentDomainId = ts.TestEnvironmentDomainId
                 })
                 .ToList()
         };
@@ -47,7 +48,8 @@ public class TestEnvironmentService : ITestEnvironmentService
                     .Select(ts => new TestSystemDTO
                     {
                         Name = ts.Name,
-                        Description = ts.Description
+                        Description = ts.Description,
+                        TestEnvironmentDomainId = ts.TestEnvironmentDomainId
                     })
                     .ToList()
             })
@@ -68,7 +70,8 @@ public class TestEnvironmentService : ITestEnvironmentService
                     .Select(ts => new TestSystemDTO
                     {
                         Name = ts.Name,
-                        Description = ts.Description
+                        Description = ts.Description,
+                        TestEnvironmentDomainId = ts.TestEnvironmentDomainId
                     })
                     .ToList()
             })
@@ -78,14 +81,18 @@ public class TestEnvironmentService : ITestEnvironmentService
     public async Task Add(TestEnvironmentDTO testEnvironmentDTO)
     {
         var nextDomainId = _testEnvironmentRepository.NextIdentity();
-        
+
         await _testEnvironmentRepository.Add(
             new TestEnvironment(
                 nextDomainId,
                 testEnvironmentDTO.ShortDescription,
                 testEnvironmentDTO.LongDescription,
                 testEnvironmentDTO.TestSystems
-                    .Select(ts => new TestSystem(ts.Name, ts.Description, nextDomainId))
+                    .Select(ts => new TestSystem(
+                        ts.Name,
+                        ts.Description,
+                        nextDomainId
+                    ))
                     .ToList()
             )
         );
