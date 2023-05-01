@@ -159,6 +159,7 @@
 		\acro{API}{Application Programming Interface}
 		\acro{JSON}{JavaScript Object Notation}
 		\acro{TCMS}{Test Case Management System}
+		\acro{TDD}{Test Driven Development}
 		
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
@@ -219,8 +220,8 @@
 	
 	\chapter{Stand des Wissens}
 	Dieses Kapitel gibt einen Überblick über den aktuellen Stand der Technik von Testarten und Testmanagementsystemen. 
-	Darüber hinaus wird untersucht wie ein \acl{TCMS} verwendet wird und was die empfohlene Vorgehensweise ist.
-	Zusätzlich werden Technologien analysiert, mit denen eine Implementation von einem \ac{TCMS} gut umsetzbar ist. 
+	Darüber hinaus wird untersucht was ein \acl{TCMS} ist und wie ein solches System verwendet wird.
+	Zusätzlich wird einen Überblick von den Technologien gegeben, mit denen, für diese Arbeit, ein \ac{TCMS} backend umgesetzt worden ist.
 	
 	
 	\section{Testarten} \label{sec:testtypes}
@@ -242,6 +243,8 @@
 	Um eine Testabdeckung sicherzustellen und den allgemeinen Testprozess zu optimieren, gibt es, wie in \autoref{sec:motivation} auf \autopageref{sec:motivation} schon besprochen, \aclp{TCMS}. 
 	Diese Systeme bieten eine zentrale Plattform zur Verwaltung von Testfällen, dass alle erforderlichen Tests durchgeführt und dokumentiert werden. 
 	In \autoref{sec:tcms} auf \autopageref{sec:tcms} werden wir diese Systeme genauer untersuchen.
+	
+	\textcite{ammann_introduction_2016}
 	
 	\subsection{Unit-Tests}
 	Im Allgemeinen sind Unit-Tests sehr einfache Tests die beispielsweise Methoden einer Klasse mit unterschiedlichen Parametern testet. 
@@ -265,6 +268,7 @@
 	Sie werden oft dazu verwendet um Zuverlässigkeit, Geschwindigkeit, Skalierbarkeit und Reaktionsfähigkeit einer Anwendung zu testen. 
 	Außerdem können Leistungstests mögliche Engpässe in einer Anwendung identifizieren.
 	
+	
 	\section{Black-Box und White-Box Testing}
 	Sowohl Black-Box als auch White-Box Tests werden in der Software Entwicklung häufig verwendet, um Fehler als auch die Qualität des Produktes zu evaluieren. 
 	Dabei gibt es zwischen den beiden wichtige Unterschiede.
@@ -277,22 +281,37 @@
 	Hier werden nur die Ausgaben oder Reaktionen von dem System geprüft.
 	Black-Box Testing bezieht sich hiermit nur auf die externe Funktion des Produkts.
 	
+	\textcite[Seite 12]{nidhra_black_2012}
+	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.7]{assets/WhiteBoxBlackBoxTesting.jpg}
+		\includegraphics[scale=0.6]{assets/WhiteBoxBlackBoxTesting.jpg}
 		\caption{Black-Box/White-Box Testing (Quelle: \textcite{khandelwal_difference_2019})}
 		\label{fig:WhiteBoxBlackBoxTesting}
 	\end{figure}
 	
 	
-	
-	
 	\section{Test Driven Devlopment}
-	\todo{Proper Test Driven Devlopment Description}
+	\acl{TDD} (\ac{TDD}) ist ein Konzept bei dem zuerst ein Test geschrieben wird der fehlschlagt und dann genau soviel Code geschrieben wird, dass der Test erfolgreich durchgeführt werden kann.
+	\ac{TDD} bietet daher mehrere Vorteile:
 	
+	\begin{itemize}
+		\item Geschriebener Code kann überarbeitet oder verschoben werden, ohne dass die Gefahr besteht, wesentliche Teile des Codes zu beschädigen.
+		\item Die Tests selbst wurden getestet.
+		\item Die Anforderungen werden mit fast keinem Aufwand umgesetzt, da nur die benötigte Funktion geschrieben wird.
+	\end{itemize}
+
+	\textcite{ammann_introduction_2016}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.25]{assets/tdd-cycle.png}
+		\caption{\ac{TDD} cycle (Quelle: \textcite{noauthor_test-driven_nodate})}
+		\label{fig:tdd-cycle}
+	\end{figure}
 	
 	\section{Test Case Management System} \label{sec:tcms}
-	Ein \acl{TCMS} ist eine Software, mit dem Test-Teams für ein bestimmtes Projekt oder eine Anwendung Testfälle verwalten, organisieren und verfolgen können.
+	Ein \acl{TCMS} (\ac{TCMS}) ist eine Software, mit dem Test-Teams für ein bestimmtes Projekt oder eine Anwendung Testfälle verwalten, organisieren und verfolgen können.
 	Es hilft bei der Planung, Überwachung und Dokumentation von Tests und ermöglicht es, Testfälle sicher und effizient zu verwalten.
 	
 	Zusammenfassend ist das \ac{TCMS} ein wichtiges Werkzeug, um einen strukturierten und effektiven Testprozess zu gewährleisten und den Qualitätsstandard einer Anwendung zu verbessern.
@@ -312,32 +331,33 @@
 		\item Überwachung und Metriken
 		\item Flexibilität
 	\end{itemize}
+	Mehr zu den einzelnen punkte schreiben?
 	
 	\textcite{lead_articles_nodate}	
 	
-	\subsection{Attraktive Benutzeroberfläche und benutzerfreundliches Design}
-	\todo{Proper Attraktive Benutzeroberfläche und benutzerfreundliches Design Description}
-	\textcite{lead_articles_nodate}	
+%	\subsection{Attraktive Benutzeroberfläche und benutzerfreundliches Design}
+%	\todo{Proper Attraktive Benutzeroberfläche und benutzerfreundliches Design Description}
+%	\textcite{lead_articles_nodate}	
 	
-	\subsection{Zulassung von mehreren Projekten und Benutzerberechtigungen}
-	\todo{Proper Zulassung von mehreren Projekten und Benutzerberechtigungen Description}
-	\textcite{lead_articles_nodate}	
+%	\subsection{Zulassung von mehreren Projekten und Benutzerberechtigungen}
+%	\todo{Proper Zulassung von mehreren Projekten und Benutzerberechtigungen Description}
+%	\textcite{lead_articles_nodate}	
 	
-	\subsection{Nachvollziehbarkeit}
-	\todo{Proper Nachvollziehbarkeit Description}
-	\textcite{lead_articles_nodate}	
+%	\subsection{Nachvollziehbarkeit}
+%	\todo{Proper Nachvollziehbarkeit Description}
+%	\textcite{lead_articles_nodate}	
 	
-	\subsection{Zeitplanung und Organisation}
-	\todo{Proper Zeitplanung und Organisation Description}
-	\textcite{lead_articles_nodate}
+%	\subsection{Zeitplanung und Organisation}
+%	\todo{Proper Zeitplanung und Organisation Description}
+%	\textcite{lead_articles_nodate}
 	
-	\subsection{Überwachung und Metriken}
-	\todo{Proper Überwachung und Metriken Description}
-	\textcite{lead_articles_nodate}	
+%	\subsection{Überwachung und Metriken}
+%	\todo{Proper Überwachung und Metriken Description}
+%	\textcite{lead_articles_nodate}	
 	
-	\subsection{Flexibilität}
-	\todo{Proper Flexibilität Description}
-	\textcite{lead_articles_nodate}	
+%	\subsection{Flexibilität}
+%	\todo{Proper Flexibilität Description}
+%	\textcite{lead_articles_nodate}	
 	
 	
 	\section{Allgemeine Vorteile von Test Case Management Systemen}
@@ -425,6 +445,34 @@
 	
 	Die in Abbildung \ref{fig:tcms_logo} ersichtlichen Tools zeigen eine aktuell führende Auswahl von beliebten \aclp{TCMS}n.  
 	
+	\section{Verwendete Technologien}
+	Dieser Abschnitt gibt eine Übersicht über die verwendeten Technologien, die für die implementieren, von einem backend eines \acl{TCMS}s eingesetzt worden sind.
+	
+	\subsection{MariaDB}
+	\todo{Proper MariaDB Description}
+	\textcite{noauthor_mariadb_nodate}
+	
+	\subsection{Docker}
+	\todo{Proper Docker Description}
+	\textcite{ghosh_docker_2020}
+	
+	\subsection{Microsoft .NET Core}
+	\todo{Proper .NET Core Description}
+	\textcite{billwagner_net_nodate}
+	
+	\subsection{Microsoft ASP.NET Core}
+	\todo{Proper ASP.NET Core Description}
+	\textcite{billwagner_net_nodate}
+	
+	\subsection{Entity Framework Core}
+	\todo{Proper Entity Framework Core Description}
+	\textcite{billwagner_net_nodate}
+	
+	\subsection{OpenAPI}
+	\todo{Proper OpenAPI Description}
+	\textcite{noauthor_openapi_nodate}
+	\textcite{noauthor_openapi_nodate-1}
+	
 	
 	
 	\chapter{Anforderungen}
@@ -441,16 +489,19 @@
 	
 	\section{Scrum}
 	\todo{Proper Scrum Description}
+	\textcite{rubin_essential_2012}
 	
 	
 	\section{Architektur}
 	\todo{Proper Architektur Description}
+	\textcite{richards_fundamentals_2020}
 	
 	\subsection{Backend}
 	\todo{Proper Backend Description}
 	
 	\subsection{Domain Driven Design}
 	\todo{Proper Domain Driven Design Description}
+	\textcite{vernon_implementing_2013}
 	
 	
 	\section{Vorentwicklungsphase}
@@ -491,34 +542,7 @@
 	
 	\chapter{Technische Umsetzung}
 	\todo{Proper Implementierung}
-	
-	
-	\section{Verwendete Technologien}
-	Dieser Abschnitt gibt eine Übersicht über die verwendeten Technologien, die für die implementieren, von einem backend eines \acl{TCMS}s eingesetzt worden sind.
-	
-	\subsection{MariaDB}
-	\todo{Proper MariaDB Description}
-	\textcite{noauthor_mariadb_nodate}
-	
-	\subsection{Docker}
-	\todo{Proper Docker Description}
-	
-	\subsection{Microsoft .NET Core}
-	\todo{Proper .NET Core Description}
-	\textcite{billwagner_net_nodate}
-	
-	\subsection{Microsoft ASP.NET Core}
-	\todo{Proper ASP.NET Core Description}
-	\textcite{billwagner_net_nodate}
-	
-	\subsection{Entity Framework Core}
-	\todo{Proper Entity Framework Core Description}
-	\textcite{billwagner_net_nodate}
-	
-	\subsection{OpenAPI}
-	\todo{Proper OpenAPI Description}
-	\textcite{noauthor_openapi_nodate}
-	\textcite{noauthor_openapi_nodate-1}
+
 	
 	\section{User Stories}
 	\todo{Proper User Stories Description}
