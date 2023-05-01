@@ -160,7 +160,11 @@
 		\acro{JSON}{JavaScript Object Notation}
 		\acro{TCMS}{Test Case Management System}
 		\acro{TDD}{Test Driven Development}
-		
+		\acro{EF}{Entity Framework}
+		\acro{ORM}{Object Relational Mapping}
+		\acro{OAS}{OpenAPI Spezifikation}
+		\acro{HTTP}{Hypertext Transfer Protocol}
+	
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
 	
@@ -292,7 +296,7 @@
 	
 	
 	\section{Test Driven Devlopment}
-	\acl{TDD} (\ac{TDD}) ist ein Konzept bei dem zuerst ein Test geschrieben wird der fehlschlagt und dann genau soviel Code geschrieben wird, dass der Test erfolgreich durchgeführt werden kann.
+	\acl{TDD} (\ac{TDD}) ist ein Konzept, bei dem zuerst ein Test geschrieben wird der fehlschlagt und dann genau soviel Code geschrieben wird, dass der Test erfolgreich durchgeführt werden kann.
 	\ac{TDD} bietet daher mehrere Vorteile:
 	
 	\begin{itemize}
@@ -435,7 +439,7 @@
 	Diese \aclp{TCMS} bieten eine Grundfunktionalität, auf diese wir in \autoref{sec:functionsOfTCMS} auf \autopageref{sec:functionsOfTCMS} eingegangen sind. 
 	Zu den Grundfunktionalitäten bieten diese Systeme jeweils andere oder zusätzliche Funktionen und Integrationsmöglichkeiten.
 	Welches Tool am besten geeignet ist, hängt natürlich von der jeweiligen Anwendung ab.
-	
+	\newline
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.5]{assets/best-tool-logos.jpg}
@@ -446,33 +450,74 @@
 	Die in Abbildung \ref{fig:tcms_logo} ersichtlichen Tools zeigen eine aktuell führende Auswahl von beliebten \aclp{TCMS}n.  
 	
 	\section{Verwendete Technologien}
-	Dieser Abschnitt gibt eine Übersicht über die verwendeten Technologien, die für die implementieren, von einem backend eines \acl{TCMS}s eingesetzt worden sind.
+	Dieser Abschnitt gibt eine Übersicht über die verwendeten Technologien, die für die Implementierung eines \acl{TCMS} backends eingesetzt worden sind.
 	
 	\subsection{MariaDB}
-	\todo{Proper MariaDB Description}
+	MariaDB ist eine der beliebtesten relationalen Open-Source-Datenbanken. 
+	Sie wurde von den Entwicklern von MySQL entwickelt und ist auch ein Fork von MySQL. 
+	In \textcite{noauthor_mariadb_nodate} wird beschrieben, dass MariaDB sehr viel Wert auf Leistung, Stabilität und Offenheit legt. 
+	Zu den jüngsten Erweiterungen gehören fortschrittliches Clustering mit Galera Cluster 4, Kompatibilitätsfunktionen mit der Oracle-Datenbank und temporäre Datentabellen, mit denen Daten zu jedem beliebigen Zeitpunkt in der Vergangenheit abgefragt werden können.
+	
 	\textcite{noauthor_mariadb_nodate}
 	
 	\subsection{Docker}
-	\todo{Proper Docker Description}
+	Docker ist eine Plattform mit der Entwickler einfach und schnell Container Erstellen, Bereitstellen, Ausführen, Aktualisieren und Verwalten können.
+	Die Software, die die Container Verwaltet heißt Docker Engine.
+	Container vereinfachen die Entwicklung und Bereitstellung von verteilten Anwendungen. 
+	Entwickler können Container auch ohne Docker erstellen doch Docker macht die Containerisierung schneller, einfacher und sicherer. 
+	Telepresence ist die neuste Erweiterung und bietet einen einfachen Weg mit Kubernetes zu entwickeln.
+	Docker wird laut \textcite{noauthor_docker_2022} heutzutage von mehr als 18 Millionen Entwickler verwendet.
+	
 	\textcite{ghosh_docker_2020}
 	
-	\subsection{Microsoft .NET Core}
-	\todo{Proper .NET Core Description}
+	\subsection{Microsoft .NET Core} \label{subsec:msNetCore}
+	Microsoft .NET Core ist ein Open-Source und plattformübergreifendes Framework um moderne Applikationen auf Android, Apple, Linux und Windows Betriebssystemen zu entwickeln.
+	Microsoft .NET Core unterstützt Programmiersprachen wie C\#, F\# und Visual Basic.
+	Zudem bietet .NET im Allgemeinen einen Paketmanager um einfach und effizient Bibliotheken von Drittanbietern zu verwenden.
+	Die aktuelle Version ist laut \textcite{billwagner_net_nodate} .NET 8 und bietet einige Neuerungen wie beispielsweise Performance-focused Typen, die die Leistung einer Anwendung erheblich zu verbessern.
+	
 	\textcite{billwagner_net_nodate}
 	
 	\subsection{Microsoft ASP.NET Core}
-	\todo{Proper ASP.NET Core Description}
+	Microsoft ASP.NET Core ist hingegen zu .NET Core ein Framework um Webanwendungen zu entwickeln. 
+	ASP.NET verfügt über Features wie beispielsweise Blazor mit dem man einfach und effizient eine Interaktive Webbenutzeroberfläche mit C\# anstatt mit Javascript entwickeln kann.
+	Dieses Framework bietet auch einfache Wege um \acl{API}s (\acs{API}) und Mikroservices zu entwickeln und zu implementieren.
+	Zudem ist ASP.NET laut \textcite{noauthor_techempower_nodate} schneller als jedes andere beliebte Web-Framekwork.
+	
 	\textcite{billwagner_net_nodate}
 	
 	\subsection{Entity Framework Core}
-	\todo{Proper Entity Framework Core Description}
+	\ac{EF} Core ist ein moderner Objektdatenbank-Mapper für Microsofts .Net Core Technologie (\autoref{subsec:msNetCore}). 
+	Die Technologie ist Open-Source, erweiterbar und plattformübergreifend.
+	\ac{EF} Core unterstützt LINQ-Abfragen, Änderungsverfolgung, Aktualisierung sowie Schemamigration und funktioniert mit einigen Datenbanken wie beispielsweise MySQL, PostgreSQL, Azure CosmosDB etc. und auch MariaDB.
+	Die aktuelle Version von \ac{EF} Core ist 7.0 und verfügt über neue Funktionen wie z.B. das Mapping und Abfragen auf \ac{JSON} Spalten. 
+	Dabei ist es möglich einzelne Parameter von einem \ac{JSON} Objekt abzufragen und auch zu ändern.
+	\newline
+	\begin{figure}[ht]
+		\begin{minted}[autogobble, tabsize=4]{csharp}
+			var jeremy = await context
+			.Authors
+			.SingleAsync(author => author.Name.StartsWith("Jeremy"));
+			
+			jeremy.Contact = new() { 
+				Address = new("2 Riverside", "Trimbridge", "TB1 5ZS", "UK"), 
+				Phone = "01632 88346" 
+			};
+		
+			await context.SaveChangesAsync();
+		\end{minted}
+		\caption{Update von einem Parameter einer \ac{JSON} Spalte}
+	\end{figure}
+
 	\textcite{billwagner_net_nodate}
 	
 	\subsection{OpenAPI}
-	\todo{Proper OpenAPI Description}
-	\textcite{noauthor_openapi_nodate}
-	\textcite{noauthor_openapi_nodate-1}
+	Die OpenAPI-Initiative hat die \ac{OAS} entwickelt, die eine \ac{API} Beschreibung standardisiert.
+	Die \ac{OAS} ist eine Sprache für \ac{HTTP} \ac{API}s.
+	Durch diese Spezifikation kann schnell und effizient herausgefunden werden wie eine \ac{API} funktioniert. 
+	Mithilfe von einem OpenAI-Code-Generator (\textcite{noauthor_openapi_nodate-1}) kann dann direkt Code für verschiedene Technologien wie z.B. Typescript generiert werden.
 	
+	\textcite{noauthor_openapi_nodate}
 	
 	
 	\chapter{Anforderungen}
@@ -485,11 +530,6 @@
 	
 	\chapter{Konzept}
 	\todo{Proper Lösungsansatz}
-	
-	
-	\section{Scrum}
-	\todo{Proper Scrum Description}
-	\textcite{rubin_essential_2012}
 	
 	
 	\section{Architektur}
@@ -543,6 +583,10 @@
 	\chapter{Technische Umsetzung}
 	\todo{Proper Implementierung}
 
+
+	\section{Scrum}
+	\todo{Proper Scrum Description}
+	\textcite{rubin_essential_2012}
 	
 	\section{User Stories}
 	\todo{Proper User Stories Description}
