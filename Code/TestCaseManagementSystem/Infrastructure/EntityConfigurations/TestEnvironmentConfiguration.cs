@@ -27,5 +27,17 @@ public class TestEnvironmentConfiguration : IEntityTypeConfiguration<TestEnviron
             .WithOne()
             .HasPrincipalKey(p => p.DomainId)
             .IsRequired();
+
+        // builder
+        //     .HasMany(e => e.TestPlans)
+        //     .WithOne()
+        //     .HasPrincipalKey(e => e.DomainId)
+        //     .IsRequired();
+
+        builder
+            .HasMany(e => e.TestPlans)
+            .WithOne()
+            .HasPrincipalKey(e => e.DomainId)
+            .IsRequired();
     }
 }

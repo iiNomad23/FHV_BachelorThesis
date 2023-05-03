@@ -25,5 +25,11 @@ public class TestPlanConfiguration : IEntityTypeConfiguration<TestPlan>
             .IsRequired();
 
         builder.Property(p => p.ReferenceLink);
+        
+        builder
+            .HasMany(e => e.TestEnvironments)
+            .WithOne()
+            .HasPrincipalKey(e => e.DomainId)
+            .IsRequired();
     }
 }

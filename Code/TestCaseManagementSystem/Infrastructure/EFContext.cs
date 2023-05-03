@@ -39,5 +39,6 @@ public class EFContext : DbContext
     private static void ApplyChildConfigurations(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new TestSystemConfiguration());
+        modelBuilder.ApplyConfiguration(new TestEnvironmentPlanConfiguration());
     }
 }

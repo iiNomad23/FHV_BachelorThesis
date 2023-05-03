@@ -10,6 +10,9 @@ public class TestPlan
     public DateTime CreateDate { get; }
     public string ReferenceLink { get; set; }
 
+    // EF relationship
+    public List<TestEnvironmentPlan> TestEnvironments { get; private set; }
+
     public TestPlan(string domainId, string shortDescription, string longDescription, DateTime createDate, string referenceLink)
     {
         DomainId = domainId;
@@ -17,16 +20,17 @@ public class TestPlan
         LongDescription = longDescription;
         CreateDate = createDate;
         ReferenceLink = referenceLink;
+        TestEnvironments = new List<TestEnvironmentPlan>();
     }
-
-    public TestPlan(long id, string domainId, string shortDescription, string longDescription, DateTime createDate, string referenceLink)
+    
+    public TestPlan(string domainId, string shortDescription, string longDescription, DateTime createDate, string referenceLink, List<TestEnvironmentPlan> testEnvironments)
     {
-        Id = id;
         DomainId = domainId;
         ShortDescription = shortDescription;
         LongDescription = longDescription;
         CreateDate = createDate;
         ReferenceLink = referenceLink;
+        TestEnvironments = testEnvironments;
     }
 
     public override string ToString()

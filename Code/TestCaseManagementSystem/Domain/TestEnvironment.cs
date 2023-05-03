@@ -7,8 +7,10 @@ public class TestEnvironment
     
     public string ShortDescription { get; set; }
     public string LongDescription { get; set; }
+    
+    // EF relationship
     public List<TestSystem> TestSystems { get; private set; }
-    // public List<TestPlan> TestPlans { get; private set; }
+    public List<TestEnvironmentPlan> TestPlans { get; private set; }
 
     public TestEnvironment(string domainId, string shortDescription, string longDescription)
     {
@@ -16,35 +18,45 @@ public class TestEnvironment
         ShortDescription = shortDescription;
         LongDescription = longDescription;
         TestSystems = new List<TestSystem>();
-        // TestPlans = new List<TestPlan>();
+        TestPlans = new List<TestEnvironmentPlan>();
     }
     
-    public TestEnvironment(long id, string domainId, string shortDescription, string longDescription)
-    {
-        Id = id;
-        DomainId = domainId;
-        ShortDescription = shortDescription;
-        LongDescription = longDescription;
-        TestSystems = new List<TestSystem>();
-        // TestPlans = new List<TestPlan>();
-    }
-    
-    public TestEnvironment(string domainId, string shortDescription, string longDescription, List<TestSystem> testSystems)//, List<TestPlan> testPlans)
+    public TestEnvironment(string domainId, string shortDescription, string longDescription, List<TestSystem> testSystems)
     {
         DomainId = domainId;
         ShortDescription = shortDescription;
         LongDescription = longDescription;
         TestSystems = testSystems;
-        // TestPlans = testPlans;
+        TestPlans = new List<TestEnvironmentPlan>();
     }
-    
-    public TestEnvironment(long id, string domainId, string shortDescription, string longDescription, List<TestSystem> testSystems)//, List<TestPlan> testPlans)
+
+    public TestEnvironment(string domainId, string shortDescription, string longDescription, List<TestSystem> testSystems, List<TestEnvironmentPlan> testPlans)
     {
-        Id = id;
         DomainId = domainId;
         ShortDescription = shortDescription;
         LongDescription = longDescription;
         TestSystems = testSystems;
-        // TestPlans = testPlans;
+        TestPlans = testPlans;
+    }
+
+    public void AddTestPlan(string testPlanDomainId)
+    {
+        if (TestPlans.Exists(item => item.TestPlanDomainId == testPlanDomainId))
+        {
+            return;
+        }
+        
+        TestPlans.Add(new TestEnvironmentPlan(DomainId, testPlanDomainId));
+    }
+    
+    public void RemoveTestPlan(string testPlanDomainId)
+    {
+        var testPlan = TestPlans.Find(item => item.TestPlanDomainId == testPlanDomainId);
+        if (testPlan == null)
+        {
+            return;
+        }
+        
+        TestPlans.Remove(testPlan);
     }
 }
