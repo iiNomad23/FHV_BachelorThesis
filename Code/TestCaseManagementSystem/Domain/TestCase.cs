@@ -24,18 +24,6 @@ public class TestCase
         Priority = priority;
         ReferenceLink = referenceLink;
     }
-    
-    public TestCase(long id, string domainId, string shortDescription, string longDescription, string authorDescription, DateTime createDate, Priority priority, string referenceLink)
-    {
-        Id = id;
-        DomainId = domainId;
-        ShortDescription = shortDescription;
-        LongDescription = longDescription;
-        AuthorDescription = authorDescription;
-        CreateDate = createDate;
-        Priority = priority;
-        ReferenceLink = referenceLink;
-    }
 
     public override string ToString()
     {

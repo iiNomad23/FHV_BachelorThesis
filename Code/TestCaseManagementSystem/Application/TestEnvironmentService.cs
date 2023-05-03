@@ -76,7 +76,7 @@ public class TestEnvironmentService : ITestEnvironmentService
             .ToList();
     }
 
-    public async Task Add(TestEnvironmentDTO testEnvironmentDTO)
+    public async Task Create(TestEnvironmentDTO testEnvironmentDTO)
     {
         var nextDomainId = _testEnvironmentRepository.NextIdentity();
 
@@ -99,5 +99,31 @@ public class TestEnvironmentService : ITestEnvironmentService
     public async Task Remove(TestEnvironmentDTO testEnvironmentDTO)
     {
         await _testEnvironmentRepository.Remove(testEnvironmentDTO.Id);
+    }
+
+    public async Task AddTestPlans(TestEnvironmentUpdateTestPlanIdsDTO testEnvironmentUpdateTestPlanIdsDTO)
+    {
+        var testEnvironment = await _testEnvironmentRepository
+            .FindById(testEnvironmentUpdateTestPlanIdsDTO.Id);
+
+        foreach (var testPlansId in testEnvironmentUpdateTestPlanIdsDTO.TestPlansIds)
+        {
+            testEnvironment.AddTestPlan(testPlansId);
+        }
+
+        await _testEnvironmentRepository.Update(testEnvironment);
+    }
+
+    public async Task RemoveTestPlans(TestEnvironmentUpdateTestPlanIdsDTO testEnvironmentUpdateTestPlanIdsDTO)
+    {
+        var testEnvironment = await _testEnvironmentRepository
+            .FindById(testEnvironmentUpdateTestPlanIdsDTO.Id);
+
+        foreach (var testPlansId in testEnvironmentUpdateTestPlanIdsDTO.TestPlansIds)
+        {
+            testEnvironment.RemoveTestPlan(testPlansId);
+        }
+
+        await _testEnvironmentRepository.Update(testEnvironment);
     }
 }

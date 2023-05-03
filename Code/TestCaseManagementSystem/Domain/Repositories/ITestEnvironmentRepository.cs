@@ -8,4 +8,5 @@ public interface ITestEnvironmentRepository
     Task<List<TestEnvironment>> GetAll();
     Task Add(TestEnvironment testEnvironment);
     Task Remove(string id);
+    Task Update(TestEnvironment testEnvironment);
 }

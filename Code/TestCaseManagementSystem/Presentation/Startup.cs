@@ -51,6 +51,7 @@ public class Startup
         services.AddTransient<ITestImplementationService, TestImplementationService>();
         services.AddTransient<ITestRunService, TestRunService>();
         services.AddTransient<ITestEnvironmentService, TestEnvironmentService>();
+        services.AddTransient<ITestEnvironmentManger, TestEnvironmentManager>();
 
         services.AddControllers();
         

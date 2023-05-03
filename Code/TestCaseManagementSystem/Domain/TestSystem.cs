@@ -10,15 +10,7 @@ public class TestSystem
     public string TestEnvironmentDomainId { get; private set; }
     
     // public TestEnvironment TestEnvironment { get; private set; }
-    
-    public TestSystem(long id, string name, string description, string testEnvironmentDomainId)
-    {
-        Id = id;
-        Name = name;
-        Description = description;
-        TestEnvironmentDomainId = testEnvironmentDomainId;
-    }
-    
+
     public TestSystem(string name, string description, string testEnvironmentDomainId)
     {
         Name = name;

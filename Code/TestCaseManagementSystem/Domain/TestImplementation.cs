@@ -20,17 +20,6 @@ public class TestImplementation
         CreateDate = createDate;
         ReferenceLink = referenceLink;
     }
-    
-    public TestImplementation(long id, string domainId, string shortDescription, string longDescription, string authorDescription, DateTime createDate, string referenceLink)
-    {
-        Id = id;
-        DomainId = domainId;
-        ShortDescription = shortDescription;
-        LongDescription = longDescription;
-        AuthorDescription = authorDescription;
-        CreateDate = createDate;
-        ReferenceLink = referenceLink;
-    }
 
     public override string ToString()
     {

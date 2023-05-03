@@ -22,6 +22,7 @@ public class TestEnvironmentRepository : ITestEnvironmentRepository
     {
         var testEnvironment = await _context.TestEnvironments
             .Include(te => te.TestSystems)
+            .Include(tp => tp.TestPlans)
             .FirstOrDefaultAsync(testEnvironment => testEnvironment.DomainId == id);
 
         if (testEnvironment == null)
@@ -63,5 +64,11 @@ public class TestEnvironmentRepository : ITestEnvironmentRepository
             // Save the changes to the database
             await _context.SaveChangesAsync();
         }
+    }
+
+    public async Task Update(TestEnvironment testEnvironment)
+    {
+        _context.Entry(testEnvironment).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
     }
 }
