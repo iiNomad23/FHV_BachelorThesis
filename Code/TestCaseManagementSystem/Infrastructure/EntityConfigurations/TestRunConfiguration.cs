@@ -22,7 +22,7 @@ public class TestRunConfiguration : IEntityTypeConfiguration<TestRun>
 
         builder.Property(p => p.EndDate)
             .IsRequired();
-        
+
         builder.Property(p => p.State)
             .IsRequired();
 
@@ -30,17 +30,42 @@ public class TestRunConfiguration : IEntityTypeConfiguration<TestRun>
             .IsRequired()
             .HasMaxLength(255);
 
-        builder.Property(p => p.ResultDetailsMap).HasConversion<string>(
-            d => JsonConvert.SerializeObject(d),
-            s => JsonConvert.DeserializeObject<Dictionary<string, ResultDetails>>(s) ?? new Dictionary<string, ResultDetails>()
+        builder
+            .Property(p => p.ResultDetailsMap)
+            .HasConversion<string>(
+                d => JsonConvert.SerializeObject(d),
+                s => JsonConvert.DeserializeObject<Dictionary<string, ResultDetails>>(s) ??
+                     new Dictionary<string, ResultDetails>()
             );
 
-        builder.OwnsMany(tr => tr.DeviceDetailsList, item =>
-        {
-            item.Property(p => p.Name);
-            item.Property(p => p.Firmware);
-            item.Property(p => p.MkCode);
-            item.Property(p => p.Serial);
-        });
+        builder
+            .OwnsMany(tr => tr.DeviceDetailsList, ddl =>
+            {
+                ddl.HasKey("Serial");
+                
+                ddl
+                    .WithOwner()
+                    .HasPrincipalKey(tr => tr.DomainId);
+
+                ddl
+                    .Property(p => p.Name)
+                    .IsRequired()
+                    .HasMaxLength(255);
+                
+                ddl
+                    .Property(p => p.Firmware)
+                    .IsRequired()
+                    .HasMaxLength(255);
+                
+                ddl
+                    .Property(p => p.MkCode)
+                    .IsRequired()
+                    .HasMaxLength(255);
+                
+                ddl
+                    .Property(p => p.Serial)
+                    .IsRequired()
+                    .HasMaxLength(255);
+            });
     }
 }

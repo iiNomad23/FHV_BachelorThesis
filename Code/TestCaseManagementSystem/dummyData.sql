@@ -130,15 +130,16 @@ VALUES ('TestEnvironment_1', 'TestPlan_1'),
        ('TestEnvironment_8', 'TestPlan_10'),
        ('TestEnvironment_10', 'TestPlan_9');
 
-# INSERT INTO `DeviceDetails` (`TestRunId`, `Id`, `Name`, `Firmware`, `MkCode`, `Serial`)
-# VALUES
-#     (1, 1, 'Device1', 'v1.0', 'MK-001', 'SER-001'),
-#     (1, 2, 'Device2', 'v2.1', 'MK-002', 'SER-002'),
-#     (1, 3, 'Device3', 'v3.3', 'MK-003', 'SER-003'),
-#     (2, 4, 'Device4', 'v4.2', 'MK-004', 'SER-004'),
-#     (2, 5, 'Device5', 'v5.1', 'MK-005', 'SER-005'),
-#     (2, 6, 'Device6', 'v6.3', 'MK-006', 'SER-006'),
-#     (3, 7, 'Device7', 'v7.0', 'MK-007', 'SER-007'),
-#     (3, 8, 'Device8', 'v8.2', 'MK-008', 'SER-008'),
-#     (3, 9, 'Device9', 'v9.1', 'MK-009', 'SER-009'),
-#     (4, 10, 'Device10', 'v10.0', 'MK-010', 'SER-010');
+
+INSERT INTO `DeviceDetails` (`Serial`, `Name`, `Firmware`, `MkCode`, `TestRunDomainId`)
+VALUES
+    ('SER-001', 'Device1', 'v1.0', 'MK-001', 'abc123'),
+    ('SER-002', 'Device2', 'v2.1', 'MK-002', 'ghi789'),
+    ('SER-003', 'Device3', 'v3.3', 'MK-003', 'yza567'),
+    ('SER-004', 'Device4', 'v4.2', 'MK-004', 'ghi789'),
+    ('SER-005', 'Device5', 'v5.1', 'MK-005', 'bcd890'),
+    ('SER-006', 'Device6', 'v6.3', 'MK-006', 'abc123'),
+    ('SER-007', 'Device7', 'v7.0', 'MK-007', 'bcd890'),
+    ('SER-008', 'Device8', 'v8.2', 'MK-008', 'vwx234'),
+    ('SER-009', 'Device9', 'v9.1', 'MK-009', 'mno345'),
+    ('SER-010', 'Device1', 'v1.0', 'MK-010', 'bcd890');
