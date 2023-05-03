@@ -3,15 +3,15 @@ using Application.Api;
 using Domain.Repositories;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.OpenApi.Models;
 
 namespace Presentation;
 
 public class Startup
 {
-    
     private readonly IConfiguration _config;
-    
+
     public Startup(IConfiguration config)
     {
         _config = config;
@@ -25,7 +25,7 @@ public class Startup
         // {
         //     dbContextOptions.UseSqlServer(_config.GetConnectionString("MariaDbConnectionString"));
         // });
-        
+
         services.AddDbContext<EFContext>(
             dbContextOptions =>
             {
@@ -34,7 +34,12 @@ public class Startup
                     .UseMySql(
                         connectionString,
                         ServerVersion.AutoDetect(connectionString)
-                    );
+                    )
+                    .LogTo(
+                        Console.WriteLine,
+                        new[] { CoreEventId.QueryCompilationStarting, RelationalEventId.CommandExecuted }
+                    )
+                    .EnableSensitiveDataLogging();
             }
         );
 
@@ -44,7 +49,7 @@ public class Startup
         services.AddTransient<ITestImplementationRepository, TestImplementationRepository>();
         services.AddTransient<ITestRunRepository, TestRunRepository>();
         services.AddTransient<ITestEnvironmentRepository, TestEnvironmentRepository>();
-        
+
         // Register services with the DI container
         services.AddTransient<ITestCaseService, TestCaseService>();
         services.AddTransient<ITestPlanService, TestPlanService>();
@@ -54,11 +59,8 @@ public class Startup
         services.AddTransient<ITestEnvironmentManger, TestEnvironmentManager>();
 
         services.AddControllers();
-        
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-        });
+
+        services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" }); });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,9 +79,6 @@ public class Startup
 
         app.UseAuthorization();
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
 }
