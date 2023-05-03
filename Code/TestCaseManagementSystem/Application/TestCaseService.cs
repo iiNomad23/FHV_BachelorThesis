@@ -60,7 +60,7 @@ public class TestCaseService : ITestCaseService
             .ToList();
     }
 
-    public async Task Add(TestCaseDTO testCaseDTO)
+    public async Task Create(TestCaseDTO testCaseDTO)
     {
         await _testCaseRepository.Add(
             new TestCase(

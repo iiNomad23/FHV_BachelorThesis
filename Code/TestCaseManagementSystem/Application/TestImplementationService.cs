@@ -60,7 +60,7 @@ public class TestImplementationService : ITestImplementationService
             .ToList();
     }
 
-    public async Task Add(TestImplementationDTO testImplementationDTO)
+    public async Task Create(TestImplementationDTO testImplementationDTO)
     {
         await _testImplementationRepository.Add(
             new TestImplementation(

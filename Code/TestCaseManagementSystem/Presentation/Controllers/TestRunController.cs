@@ -32,7 +32,7 @@ public class TestRunController : ControllerBase
     [HttpPost("create")]
     public async Task<ActionResult<TestRunDTO>> CreateTestRun(TestRunDTO testRunDTO)
     {
-        await _testRunService.Add(testRunDTO);
+        await _testRunService.Create(testRunDTO);
         return Ok(testRunDTO);
     }
 }

@@ -57,7 +57,7 @@ public class TestRunService : ITestRunService
             .ToList();
     }
 
-    public async Task Add(TestRunDTO testRunDTO)
+    public async Task Create(TestRunDTO testRunDTO)
     {
         await _testRunRepository.Add(
             new TestRun(

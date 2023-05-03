@@ -55,7 +55,7 @@ public class TestPlanService : ITestPlanService
             .ToList();
     }
 
-    public async Task Add(TestPlanDTO testPlanDTO)
+    public async Task Create(TestPlanDTO testPlanDTO)
     {
         await _testPlanRepository.Add(
             new TestPlan(

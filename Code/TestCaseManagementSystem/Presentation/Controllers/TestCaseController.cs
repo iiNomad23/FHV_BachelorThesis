@@ -32,7 +32,7 @@ public class TestCaseController : ControllerBase
     [HttpPost("create")]
     public async Task<ActionResult<TestCaseDTO>> CreateTestCase(TestCaseDTO testCaseDTO)
     {
-        await _testCaseService.Add(testCaseDTO);
+        await _testCaseService.Create(testCaseDTO);
         return Ok(testCaseDTO);
     }
 }
