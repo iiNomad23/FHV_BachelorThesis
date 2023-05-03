@@ -29,6 +29,20 @@ public class TestPlanRepository : ITestPlanRepository
         return testPlan;
     }
     
+    public async Task<List<TestPlan>> FindByIdSet(string[] ids)
+    {
+        var testPlans = await _context.TestPlans
+            .Where(p => ids.Contains(p.DomainId))
+            .ToListAsync();
+
+        if (testPlans.Count <= 0)
+        {
+            throw new ArgumentNullException(null, "TestEnvironment: has no TestPlans of ids" + ids);
+        }
+        
+        return testPlans;
+    }
+    
     public async Task<List<TestPlan>> FindByShortDescription(string shortDescription)
     {
        return await _context.TestPlans

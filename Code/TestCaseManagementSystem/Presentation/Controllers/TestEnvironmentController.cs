@@ -25,10 +25,10 @@ public class TestEnvironmentController : ControllerBase
     }
     
     [HttpGet("{id}/withTestPlans")]
-    public async Task<ActionResult<TestEnvironmentDTO>> FindTestEnvironmentByIdWithFeatures(string id)
+    public async Task<ActionResult<TestEnvironmentWithTestPlansDTO>> FindTestEnvironmentByIdWithTestPlans(string id)
     {
-        var testEnvironmentDTO = await _testEnvironmentManger.FindByIdWithTestPlans(id);
-        return Ok(testEnvironmentDTO);
+        var testEnvironmentWithTestPlansDTO = await _testEnvironmentManger.FindByIdWithTestPlans(id);
+        return Ok(testEnvironmentWithTestPlansDTO);
     }
 
     [HttpGet("shortDescription/{shortDescription}")]

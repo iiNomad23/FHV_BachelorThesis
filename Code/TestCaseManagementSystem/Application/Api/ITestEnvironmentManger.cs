@@ -4,5 +4,5 @@ namespace Application.Api;
 
 public interface ITestEnvironmentManger
 {
-    Task<TestEnvironmentDTO> FindByIdWithTestPlans(string id);
+    Task<TestEnvironmentWithTestPlansDTO> FindByIdWithTestPlans(string id);
 }
