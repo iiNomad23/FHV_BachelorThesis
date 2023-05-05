@@ -179,27 +179,27 @@
 	
 	\clearpage
 	\chapter{Einleitung}
-	\todo{Proper Einleitung Description}
-	
+	In Zusammenarbeit der Firma \emph{Gantner Instruments}....  \todo{Proper Text}
+	Diese Arbeit fokussiert sich daher auf die Implementierung von einem \acfi{TCMS} backends und vergleicht verschiedene vorhandene Lösungen.
 	
 	\section{Motivation} \label{sec:motivation}
 	Die Entwicklung technischer Systeme ist ein komplexer Prozess, der eine hohe Qualität erfordert, um den Anforderungen der Kunden gerecht zu werden. 
 	Damit diese Qualität auch gewährleistet wird, müssen Fehler sowie Mängel identifiziert und ausgebessert werden. 
 	Ein \ac{TCMS} bietet eine Lösung, um diesen Prozess zu vereinfachen und effektiver zu gestalten. 
 	Durch die Verwendung eines \ac{TCMS} können Angestellte aus verschiedenen Abteilungen, wie z.B. der Software-, Hardware-, Support- oder Marketingabteilung, die Qualität des Produkts gemeinsam verbessern. 
-	Diese Arbeit fokussiert sich daher auf die Integration von einem \ac{TCMS} in einen laufenden Produktentwicklungs-Zyklus und vergleicht verschiedene vorhandene Lösungen.
 	
 	\section{Problemstellung}
-	Durch die von \autoref{sec:motivation} angesprochene Komplexität technischer Systeme ist bekannt, dass Fehler, die erst spät im Entwicklungsprozess entdeckt werden, viel kostspieliger zu beheben sind als Fehler, die frühzeitig identifiziert und behoben werden. 
+	Durch die von \autoref{sec:motivation} angesprochene Komplexität technischer Systeme ist bekannt, dass Fehler, die erst spät im Entwicklungsprozess entdeckt werden, viel kostspieliger zu beheben sind als Fehler, die frühzeitig identifiziert und behoben werden. \todo{Zitat}
+	
 	Infolgedessen suchen Unternehmen nach Lösungen, um den Testprozess effektiver zu gestalten und Fehler früher im Entwicklungszyklus zu identifizieren. 
 	\ac{TCMS} bietet eine solche Lösung, indem es Entwicklern und Testern ermöglicht, Testfälle effizient zu planen und zu verwalten sowie Testergebnisse zu erfassen, darzustellen und somit auch zu verfolgen. 
-	Obwohl \aclp{TCMS} in der Industrie weit verbreitet sind und es einige fertige Lösungen gibt, gibt es jedoch nicht immer die Perfekte Lösung um ein bestehendes \ac{TCMS} für das eigene Projekt anzuwenden. 
-	Insbesondere gibt es Bedenken hinsichtlich der Anwendbarkeit von \ac{TCMS} mit anderen Tools und der Skalierbarkeit von \ac{TCMS}. 
-	Diese Probleme stellen Hindernisse dar, die die Einführung von \ac{TCMS} in einem Unternehmen erschweren können. 
-	In dieser Arbeit werden wir uns mit diesen Problemen und Herausforderungen auseinandersetzen, eine Software Lösung entwickeln und untersuchen, wie \aclp{TCMS} effektiv eingesetzt werden können, um den Testprozess zu optimieren und die Qualität eines Produkts zu verbessern.
+	Obwohl \ac{TCMS} in der Industrie weit verbreitet sind und es einige fertige Lösungen gibt, gibt es jedoch nicht immer die perfekte Lösung um ein bestehendes \ac{TCMS} für das eigene Projekt anzuwenden. 
+	Insbesondere gibt es Bedenken hinsichtlich der Anwendbarkeit und Integration von einem schon bestehendem \ac{TCMS}, da dieses System auch mit internen Tools kommunizieren können muss.
+	Diese Probleme stellen Hindernisse dar, die die Einführung von \ac{TCMS} in einem Unternehmen erschweren. 
+	Diese Arbeit beschäftigt sich mit diesen Problemen und untersucht, wie ein \ac{TCMS} effektiv eingesetzt werden kann.
 	
 	\section{Zielsetzung}
-	Das Ziel dieser Arbeit ist es, die Verwendung von \aclp{TCMS}n zu untersuchen und zu bewerten. 
+	Das Ziel dieser Arbeit ist es, die Verwendung von \acp{TCMS} zu untersuchen und zu bewerten. 
 	Zudem ein auf unser eigenes Produkt angepasstes \ac{TCMS} backend zu entwickeln. 
 	Hiermit ergeben sich drei relevante fragen:
 	
@@ -212,30 +212,28 @@
 	Insbesondere möchten wir die folgenden Ziele erreichen:
 	
 	\begin{itemize}
-		\item Die Vor- und Nachteile der Verwendung von \ac{TCMS} zu identifizieren und zu analysieren.
-		\item Die Entwicklung und Integration von \ac{TCMS} in den Entwicklungsprozess zu untersuchen und zu bewerten, einschließlich der Herausforderungen, die bei der Integration von \ac{TCMS} in bestehende Entwicklungs- und Testprozesse auftreten können.
+		\item Die Vor- und Nachteile der Verwendung von einem \ac{TCMS} zu identifizieren und zu analysieren.
+		\item Die Entwicklung eines \ac{TCMS} backends.
 		\item Die Konnektivität von \ac{TCMS} mit anderen Tools und Systemen, die in der Softwareentwicklung verwendet werden, zu untersuchen und zu bewerten.
 		\item Empfehlungen für die erfolgreiche Implementierung von \ac{TCMS} in der Softwareentwicklung zu geben, einschließlich der Identifizierung bewährter Praktiken.
 	\end{itemize}
 	
-	Durch die Erfüllung dieser Ziele wird diese Arbeit dazu beitragen, das Verständnis für die Verwendung von \ac{TCMS} in der Produktentwicklung zu verbessern und Unternehmen dabei zu unterstützen, den Testprozess zu optimieren und die Qualität ihrer Produkte zu verbessern.
+	Durch die Erfüllung dieser Ziele wird diese Arbeit dazu beitragen, das Verständnis für die Verwendung von einem \ac{TCMS} in der Produktentwicklung zu verbessern und Unternehmen dabei zu unterstützen, den Testprozess zu optimieren und die Qualität ihrer Produkte zu verbessern.
 	
 	
 	
 	\chapter{Stand des Wissens}
-	Dieses Kapitel gibt einen Überblick über den aktuellen Stand der Technik von Testarten und Testmanagementsystemen. 
-	Darüber hinaus wird untersucht was ein \acl{TCMS} ist und wie ein solches System verwendet wird.
-	Zusätzlich wird einen Überblick von den Technologien gegeben, mit denen, für diese Arbeit, ein \ac{TCMS} backend umgesetzt worden ist.
-	
+	Dieses Kapitel gibt einen Überblick über den aktuellen Stand der Technik von Testarten, \ac{TCMS} sowie deren Verwendung und Integration mit bestehenden Systemen. 
+	Weiters werden Technologien, auf denen das in dieser Arbeit entwickelte \ac{TCMS} aufbaut, beschrieben.
 	
 	\section{Testarten} \label{sec:testtypes}
-	Generell gibt es einige Testarten in der Entwicklung eines Produktes. 
-	Es gibt laut \textcite{atlassian_unterschiedlichen_nodate} mindestens sieben unterschiedliche Testverfahren die je nachdem andere Implementierungen betrachten und testen.
-	In \textcite{noauthor_software_nodate} wird beschreiben, dass dabei zwischen Funktionalen und Nicht-Funktionalen Tests unterschieden werden.
+	Während der Entwicklung eines Produktes kommen unterschiedliche Testarten zum Einsatz. 
+	\textcite{atlassian_unterschiedlichen_nodate} beschreibt sieben unterschiedliche Testverfahren die je nachdem andere Aspekte eines Produkts testen.
+	In \textcite{noauthor_software_nodate} wird beschreiben, dass dabei zwischen \emph{Funktionalen} und \emph{Nicht-Funktionalen} Tests unterschieden werden.
 	Zu der funktionalen Testfamilie zählen beispielsweise Unit-Tests und Integrationstests.
-	Wobei hingegen Leistung, Last und Stresstests sowie Usability-Tests zu den nicht funktionalen Testfamilie gehören.
+	Nicht funktionale Testarten sind beispielsweise Leistung, Last und Stresstests sowie Usability-Tests zu den nicht funktionalen Testfamilie gehören.
 	
-	Ein paar der meist vorkommenden Testarten sind:
+	Ein paar der am häufigsten vorkommenden Testarten sind:
 	
 	\begin{itemize}
 		\item Unit-Tests
@@ -244,46 +242,43 @@
 		\item Leistungstests
 	\end{itemize}
 
-	Um eine Testabdeckung sicherzustellen und den allgemeinen Testprozess zu optimieren, gibt es, wie in \autoref{sec:motivation} auf \autopageref{sec:motivation} schon besprochen, \aclp{TCMS}. 
-	Diese Systeme bieten eine zentrale Plattform zur Verwaltung von Testfällen, dass alle erforderlichen Tests durchgeführt und dokumentiert werden. 
-	In \autoref{sec:tcms} auf \autopageref{sec:tcms} werden wir diese Systeme genauer untersuchen.
+	Um eine Testabdeckung sicherzustellen und den allgemeinen Testprozess zu optimieren werden \ac{TCMS} eingesetzt. 
+	Diese Systeme bieten eine zentrale Plattform zur Verwaltung von Testfällen, wo Tests, die für ein Release oder Produkt erforderlich sind, erstellt und dokumentiert werden können (Siehe \autoref{sec:tcms}). 
 	
 	\textcite{ammann_introduction_2016}
 	
 	\subsection{Unit-Tests}
-	Im Allgemeinen sind Unit-Tests sehr einfache Tests die beispielsweise Methoden einer Klasse mit unterschiedlichen Parametern testet. 
-	Sie sind automatisierbar und können von einer Continuos-Integration-Pipeline sehr schnell durchgeführt werden. 
-	Dieser Ansatz ermöglicht eine frühe Entdeckung von Fehlern und eine kontinuierliche Überprüfung der Funktionsfähigkeit des Produkts im Entwicklungsprozess.
+	Im Allgemeinen sind Unit-Tests Tests die beispielsweise Methoden einer Klasse mit unterschiedlichen Parametern testet. 
+	Sie sind automatisierbar und können von einer Continuos-Integration-Pipeline durchgeführt werden. 
+	Diese Tests ermöglichen eine kontinuierliche Überprüfung der Funktionsfähigkeit des Produkts im Entwicklungsprozess und unterstützen das frühzeitige Finden von Fehlern.
 	
 	\subsection{Integrationstests}
 	Integrationstests sind Tests, die sicherzustellen, dass verschiedene Module oder Services, problemlos miteinander interagieren können. 
-	Durch diese Tests kann die Funktionalität der Anwendung insgesamt überprüft werden, wie beispielsweise die Interaktion mit einer Datenbank oder der Zusammenarbeit von Mikroservices.
+	Durch diese Tests kann die Funktionalität einzelner Teile der Anwendung überprüft werden, wie beispielsweise die Interaktion mit einer Datenbank oder der Zusammenarbeit von Microservices.
 	
 	\subsection{Funktionstests}
 	Funktionstests werden integriert, um ausschließlich Ergebnisse einer gegebenen Funktion zu überprüfen. Dabei werden Spezifikation vor der Testausführung festgelegt und diese dann mit den Ergebnissen verglichen.
 	
-	Im Gegensatz dazu stellt ein Integrationstest sicher, dass verschiedene Komponenten einer Anwendung zusammenarbeiten.
-	Dabei werden Interaktionen zwischen verschiedenen Modulen oder Services, wie z.B. Datenbankabfragen oder die Kommunikation zwischen Mikroservices, überprüft.
-	
 	Während Integrationstests beispielsweise nur prüfen, ob Datenbankabfragen generell möglich sind, wird bei einem Funktionstest ein bestimmter Wert aus der Datenbank abgerufen und dieser mit den angegebenen Spezifikationen geprüft.
 	
 	\subsection{Leistungstests}
-	Leistungstests sind Verfahren, die dazu dienen, das Verhalten eines Systems unter verschiedenen Auslastungsmaximierungen zu überprüfen. 
-	Sie werden oft dazu verwendet um Zuverlässigkeit, Geschwindigkeit, Skalierbarkeit und Reaktionsfähigkeit einer Anwendung zu testen. 
+	Leistungstests prüfen das Verhalten eines Systems unter verschiedenen Lastprofilen zu überprüfen. 
+	Häufig wird Zuverlässigkeit, Geschwindigkeit, Skalierbarkeit und Reaktionsfähigkeit einer Anwendung getestet. 
 	Außerdem können Leistungstests mögliche Engpässe in einer Anwendung identifizieren.
 	
 	
 	\section{Black-Box und White-Box Testing}
-	Sowohl Black-Box als auch White-Box Tests werden in der Software Entwicklung häufig verwendet, um Fehler als auch die Qualität des Produktes zu evaluieren. 
+	Sowohl \emph{Black-Box} als auch \emph{White-Box} Tests werden in der Software Entwicklung häufig verwendet, um Fehler als auch die Qualität des Produktes zu evaluieren. 
 	Dabei gibt es zwischen den beiden wichtige Unterschiede.
 	
-	Bei White-Box Testing handelt es sich grundsätzlich um Unit-Tests die den Code und die Struktur des zu testeten Produkts überprüft. 
+	\todo{Verbessering der Erklärung von white box testing}
+	Bei White-Box Testing handelt es sich grundsätzlich um Unit-Tests die den Code und die Struktur des zu testeten Produkts überprüfen. 
 	Wobei der Inhalt des Codes für den Tester einsehbar ist.
-	White-Box Testing bezieht sich dabei nur auf die interne Funktion des Produkts.
+	White-Box Testing bezieht sich dabei nur auf die interne Funktion der Software.
 	
 	Bei Black-Box Testing wird die interne Struktur, das Design und die Implementierung nicht berücksichtigt.
 	Hier werden nur die Ausgaben oder Reaktionen von dem System geprüft.
-	Black-Box Testing bezieht sich hiermit nur auf die externe Funktion des Produkts.
+	Black-Box Testing bezieht sich hiermit nur auf die externe Funktion der Software.
 	
 	\textcite[Seite 12]{nidhra_black_2012}
 	
@@ -296,13 +291,13 @@
 	
 	
 	\section{Test Driven Devlopment}
-	\acl{TDD} (\ac{TDD}) ist ein Konzept, bei dem zuerst ein Test geschrieben wird der fehlschlagt und dann genau soviel Code geschrieben wird, dass der Test erfolgreich durchgeführt werden kann.
+	\acfi{TDD} ist ein Konzept, bei dem Tests zuerst geschrieben werden und erst anschließend eine passende Implementierung erstellt wird die genau soviel beinhaltet, dass der Test erfolgreich durchgeführt werden kann.
 	\ac{TDD} bietet daher mehrere Vorteile:
 	
 	\begin{itemize}
-		\item Geschriebener Code kann überarbeitet oder verschoben werden, ohne dass die Gefahr besteht, wesentliche Teile des Codes zu beschädigen.
-		\item Die Tests selbst wurden getestet.
-		\item Die Anforderungen werden mit fast keinem Aufwand umgesetzt, da nur die benötigte Funktion geschrieben wird.
+		\item Geschriebener Code kann überarbeitet oder verschoben werden, ohne dass die Gefahr besteht, Funktionalität zu beschädigen.
+		\item Die Tests selbst werden durch die Implementierung getestet.
+		\item Die Anforderungen können mit geringerem Aufwand umgesetzt werden, da nur die benötigte Funktion geschrieben wird.
 	\end{itemize}
 
 	\textcite{ammann_introduction_2016}
@@ -310,86 +305,56 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.25]{assets/tdd-cycle.png}
-		\caption{\ac{TDD} cycle (Quelle: \textcite{noauthor_test-driven_nodate})}
+		\caption{\acl{TDD} cycle (Quelle: \textcite{noauthor_test-driven_nodate})}
 		\label{fig:tdd-cycle}
 	\end{figure}
 	
 	\section{Test Case Management System} \label{sec:tcms}
-	Ein \acl{TCMS} (\ac{TCMS}) ist eine Software, mit dem Test-Teams für ein bestimmtes Projekt oder eine Anwendung Testfälle verwalten, organisieren und verfolgen können.
+	Ein \acl{TCMS} (\ac{TCMS}) ist eine Software, mit dem Test-Teams für ein bestimmtes Projekt oder eine Anwendung Testfälle verwalten, organisieren und analysieren können.
 	Es hilft bei der Planung, Überwachung und Dokumentation von Tests und ermöglicht es, Testfälle sicher und effizient zu verwalten.
 	
-	Zusammenfassend ist das \ac{TCMS} ein wichtiges Werkzeug, um einen strukturierten und effektiven Testprozess zu gewährleisten und den Qualitätsstandard einer Anwendung zu verbessern.
-
-	\section{Merkmale von Test Case Management Systemen} \label{sec:functionsOfTCMS}
-	Dieser Abschnitt gibt einen Überblick zu den Hauptmerkmalen von \aclp{TCMS}.
-	Ein \ac{TCMS} verfügt normalerweise über Basisfunktionen wie Testfall-Erstellung, Testfall-Verwaltung, Testfall-Ausführung und Ergebnisberichterstattung. 
-	Es kann auch eine integrierte Umgebung für die Zusammenarbeit von Testern und Entwicklern bereitstellen.
+	Ein \ac{TCMS} ist ein wichtiges Werkzeug, um einen strukturierten und effektiven Testprozess zu gewährleisten und den Qualitätsstandard einer Anwendung zu verbessern.
+	Es verfügt über Basisfunktionen wie Testfall-Erstellung, Testfall-Verwaltung, Testfall-Ausführung und Ergebnisberichterstattung. 
+	Weiters kann ein solches System auch eine integrierte Umgebung für die Zusammenarbeit von verschiedene Abteilungen in einer Firma bereitstellen.
 	
-	Zusätzlich zu den Basisfunktionen sind das die 6 wichtigsten Merkmale, die eine gutes \ac{TCMS} ausmachen:
+	Zusätzlich zu den Basisfunktionen sind weitere wichtige Merkmale:
 	
 	\begin{itemize}
 		\item Attraktive Benutzeroberfläche und benutzerfreundliches Design
-		\item Zulassung von mehreren Projekten und Benutzerberechtigungen
 		\item Nachvollziehbarkeit
-		\item einfache Zeitplanung und Organisation
+		\item verbesserte Zeitplanung und Organisation für Releases durch Reports
 		\item Überwachung und Metriken
 		\item Flexibilität
 	\end{itemize}
-	Mehr zu den einzelnen punkte schreiben?
 	
 	\textcite{lead_articles_nodate}	
 	
-%	\subsection{Attraktive Benutzeroberfläche und benutzerfreundliches Design}
-%	\todo{Proper Attraktive Benutzeroberfläche und benutzerfreundliches Design Description}
-%	\textcite{lead_articles_nodate}	
 	
-%	\subsection{Zulassung von mehreren Projekten und Benutzerberechtigungen}
-%	\todo{Proper Zulassung von mehreren Projekten und Benutzerberechtigungen Description}
-%	\textcite{lead_articles_nodate}	
+	\subsection{Allgemeine Vorteile von Test Case Management Systemen}
+	Einer der Hauptvorteile eines \ac{TCMS} besteht darin, dass sie den Testprozess verbessern. 
+	Sie unterstützen auch die Kontrolle der Gesamtkosten, indem sie die Testautomatisierung nutzen, um einen reibungslosen Ablauf zu gewährleisten.  
 	
-%	\subsection{Nachvollziehbarkeit}
-%	\todo{Proper Nachvollziehbarkeit Description}
-%	\textcite{lead_articles_nodate}	
-	
-%	\subsection{Zeitplanung und Organisation}
-%	\todo{Proper Zeitplanung und Organisation Description}
-%	\textcite{lead_articles_nodate}
-	
-%	\subsection{Überwachung und Metriken}
-%	\todo{Proper Überwachung und Metriken Description}
-%	\textcite{lead_articles_nodate}	
-	
-%	\subsection{Flexibilität}
-%	\todo{Proper Flexibilität Description}
-%	\textcite{lead_articles_nodate}	
-	
-	
-	\section{Allgemeine Vorteile von Test Case Management Systemen}
-	Der Hauptvorteil des Einsatzes von einem \ac{TCMS} besteht darin, dass sie den Testprozess verbessern und so schneller zu einem besseren Produkt führen. 
-	Sie sind auch unerlässlich, um die Gesamtkosten des Testens zu kontrollieren, indem sie die Testautomatisierung nutzen, um einen reibungslosen Ablauf zu gewährleisten.  
-	
-	Im Folgenden werden die spezifischen Vorteile von Testmanagement-Tools für die Testausführungsabläufe erläutert:
+	Einige Vorteile von \ac{TCMS} bezüglich der Testausführungsläufe sind:
 	
 	\begin{itemize}
 		\item Sie geben einen besseren Überblick über das zu testende System, halten den gesamten Prozess auf Kurs und koordinieren die Testaktivitäten.
-		\item Sie helfen bei der Feinabstimmung des Testprozesses, indem sie die Zusammenarbeit, Kommunikation und Datenanalyse unterstützen.
-		\item Sie verfolgen Aufgaben, Fehler und Testergebnisse und vereinfachen den Prozess, indem sie alles in einer einzigen Anwendung erledigen.
+		\item Sie helfen bei der Feinabstimmung des Testprozesses, indem sie die Zusammenarbeit, Kommunikation und Auswertung unterstützen.
+		\item Sie dokumentieren Aufgaben, Fehler und Testergebnisse und vereinfachen den Prozess, indem sie alles in einer einzigen Anwendung erledigen.
 		\item Sie sind skalierbar und können eingesetzt werden, wenn die Testaktivitäten umfangreicher und komplexer werden.
 	\end{itemize}
 
 	\textcite{lead_articles_nodate}
 	
-	\section{Überblick von bestehenden Test Case Management Systeme}
-	Heutzutage gibt es natürlich schon eine Vielzahl von fertigen und direkt verwendbaren \aclp{TCMS}n auf dem Markt, die die Verwaltung von Tests vereinfacht.
+	\subsection{Überblick von bestehenden Test Case Management Systeme}
+	Auf dem Markt gibt es eine Vielzahl fertiger und direkt verwendbaren \ac{TCMS}, die die Verwaltung von Tests vereinfacht.
 	
-	Einige bekannte Tools sind:
+	Einige bekannte \ac{TCMS} sind:
 	
 	\begin{itemize}
 		\item \textcite{noauthor_testrail_2023} 
 		
-		Webbasiertes \acl{TCMS}, ist zentralisiert und hat eine einfache und intuitive Oberfläche.
+		Webbasiertes \ac{TCMS}, ist zentralisiert und hat folgende Features:
 		
-		Features:
 		\begin{itemize}
 			\setlength\itemsep{-0.5em}
 			\item Test Planung, Verwaltung und Ausführung 
@@ -399,9 +364,8 @@
 		
 		\item \textcite{noauthor_tricentis_nodate} 
 		
-		Webbasiertes \acl{TCMS} und hat moderne und intuitive Oberfläche.
+		Webbasiertes \ac{TCMS} und hat folgende Features:
 		
-		Features:
 		\begin{itemize}
 			\setlength\itemsep{-0.5em}
 			\item Test Planung, Verwaltung und Ausführung 
@@ -411,9 +375,8 @@
 		
 		\item \textcite{noauthor_zephyr_nodate} 
 		
-		Webbasiertes \acl{TCMS}, moderne Oberfläche und kann in JIRA integriert werden. 
+		Webbasiertes \ac{TCMS}, kann in JIRA integriert werden und hat folgende Features:
 		
-		Features:
 		\begin{itemize}
 			\setlength\itemsep{-0.5em}
 			\item Test Planung, Verwaltung und Ausführung 
@@ -423,9 +386,8 @@
 		
 		\item \textcite{noauthor_tricentis_nodate-1} 
 		
-		Webbasiertes \acl{TCMS} und hat moderne und intuitive Oberfläche.
+		Webbasiertes \ac{TCMS} und hat folgende Features:
 		
-		Features:
 		\begin{itemize}
 			\setlength\itemsep{-0.5em}
 			\item Test Planung, Verwaltung und Ausführung 
@@ -436,8 +398,6 @@
 		\end{itemize}
 	\end{itemize}
 	
-	Diese \aclp{TCMS} bieten eine Grundfunktionalität, auf diese wir in \autoref{sec:functionsOfTCMS} auf \autopageref{sec:functionsOfTCMS} eingegangen sind. 
-	Zu den Grundfunktionalitäten bieten diese Systeme jeweils andere oder zusätzliche Funktionen und Integrationsmöglichkeiten.
 	Welches Tool am besten geeignet ist, hängt natürlich von der jeweiligen Anwendung ab.
 	\newline
 	\begin{figure}[H]
@@ -446,52 +406,58 @@
 		\caption{Liste von aktuell führenden Test Case Management Systemen/Tools (Quelle: \textcite{noauthor_7_nodate})}
 		\label{fig:tcms_logo}
 	\end{figure}
-	
-	Die in Abbildung \ref{fig:tcms_logo} ersichtlichen Tools zeigen eine aktuell führende Auswahl von beliebten \aclp{TCMS}n.  
+	 
 	
 	\section{Verwendete Technologien}
-	Dieser Abschnitt gibt eine Übersicht über die verwendeten Technologien, die für die Implementierung eines \acl{TCMS} backends eingesetzt worden sind.
+	Dieser Abschnitt gibt eine Übersicht über die verwendeten Technologien, die für die Implementierung des in dieser Arbeit entwickelten \ac{TCMS} backends eingesetzt worden sind.
 	
 	\subsection{MariaDB}
-	MariaDB ist eine der beliebtesten relationalen Open-Source-Datenbanken. 
-	Sie wurde von den Entwicklern von MySQL entwickelt und ist auch ein Fork von MySQL. 
-	In \textcite{noauthor_mariadb_nodate} wird beschrieben, dass MariaDB sehr viel Wert auf Leistung, Stabilität und Offenheit legt. 
-	Zu den jüngsten Erweiterungen gehören fortschrittliches Clustering mit Galera Cluster 4, Kompatibilitätsfunktionen mit der Oracle-Datenbank und temporäre Datentabellen, mit denen Daten zu jedem beliebigen Zeitpunkt in der Vergangenheit abgefragt werden können.
+	MariaDB ist eine weit verbreitete relationalen Open-Source-Datenbanken. 
+	Sie wurde auf einem Fork von MySQL basierend von den ursprünglichen Entwicklern von MySQL entwickelt. 
+	Der Fokus von MariaDB liegt auf Leistung, Stabilität und Offenheit. 
+	Zu den jüngsten Erweiterungen gehören Clustering mit Galera Cluster 4, Kompatibilitätsfunktionen mit der Oracle-Datenbank und temporäre Datentabellen, mit denen Daten zu jedem beliebigen Zeitpunkt in der Vergangenheit abgefragt werden können.
 	
 	\textcite{noauthor_mariadb_nodate}
 	
 	\subsection{Docker}
-	Docker ist eine Plattform mit der Entwickler einfach und schnell Container Erstellen, Bereitstellen, Ausführen, Aktualisieren und Verwalten können.
-	Die Software, die die Container Verwaltet heißt Docker Engine.
+	Docker ist eine Plattform mit der Entwickler einfach und schnell Container erstellen, bereitstellen, ausführen, aktualisieren und verwalten können.
+	Container sind eigenständige, ausführbare Einheiten die unabhängig vom OS deployed werden können.
 	Container vereinfachen die Entwicklung und Bereitstellung von verteilten Anwendungen. 
 	Entwickler können Container auch ohne Docker erstellen doch Docker macht die Containerisierung schneller, einfacher und sicherer. 
 	Telepresence ist die neuste Erweiterung und bietet einen einfachen Weg mit Kubernetes zu entwickeln.
-	Docker wird laut \textcite{noauthor_docker_2022} heutzutage von mehr als 18 Millionen Entwickler verwendet.
 	
 	\textcite{ghosh_docker_2020}
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.5]{assets/docker-funktionsweise.png}
+		\caption{Funktionsweise von Docker (Quelle: \textcite{bollhoff_kubernetes_2022})}
+	\end{figure}
+	
 	\subsection{Microsoft .NET Core} \label{subsec:msNetCore}
-	Microsoft .NET Core ist ein Open-Source und plattformübergreifendes Framework um moderne Applikationen auf Android, Apple, Linux und Windows Betriebssystemen zu entwickeln.
-	Microsoft .NET Core unterstützt Programmiersprachen wie C\#, F\# und Visual Basic.
-	Zudem bietet .NET im Allgemeinen einen Paketmanager um einfach und effizient Bibliotheken von Drittanbietern zu verwenden.
-	Die aktuelle Version ist laut \textcite{billwagner_net_nodate} .NET 8 und bietet einige Neuerungen wie beispielsweise Performance-focused Typen, die die Leistung einer Anwendung erheblich zu verbessern.
+	Microsoft .NET Core ist ein Open-Source und plattformübergreifendes Framework um Applikationen auf Android, Apple, Linux und Windows Betriebssystemen zu entwickeln.
+	Microsoft .NET Core unterstützt mehrere Programmiersprachen wie C\#, F\# und Visual Basic.
+	Zudem bietet .NET einen Paketmanager um einfach und effizient Bibliotheken von Drittanbietern zu verwenden.
+	Die neue Version .NET 8 bietet einige Neuerungen wie beispielsweise Performance-focused Typen, die die Leistung einer Anwendung erheblich verbessern soll.
+	.NET 8 wird offiziell im November 2023 veröffentlicht.
 	
 	\textcite{billwagner_net_nodate}
 	
 	\subsection{Microsoft ASP.NET Core}
-	Microsoft ASP.NET Core ist hingegen zu .NET Core ein Framework um Webanwendungen zu entwickeln. 
-	ASP.NET verfügt über Features wie beispielsweise Blazor mit dem man einfach und effizient eine Interaktive Webbenutzeroberfläche mit C\# anstatt mit Javascript entwickeln kann.
-	Dieses Framework bietet auch einfache Wege um \acl{API}s (\acs{API}) und Mikroservices zu entwickeln und zu implementieren.
-	Zudem ist ASP.NET laut \textcite{noauthor_techempower_nodate} schneller als jedes andere beliebte Web-Framekwork.
+	Microsoft ASP.NET Core ist im Gegensatz zu .NET Core ein Framework um Webanwendungen zu entwickeln. 
+	ASP.NET verfügt über Vorteile wie beispielsweise Blazor mit dem man einfach und effizient eine Interaktive Webbenutzeroberfläche mit C\# entwickeln kann.
+	Dieses Framework unterstützt die Entwicklung und Implementierung von \acfi{API} und Mikroservices.
+	Zudem ist ASP.NET laut \textcite{noauthor_techempower_nodate} schneller als jedes andere beliebte Web-Framework.
 	
 	\textcite{billwagner_net_nodate}
 	
 	\subsection{Entity Framework Core}
-	\ac{EF} Core ist eine moderne \ac{ORM} Technik für Microsofts .Net Core Technologie (\autoref{subsec:msNetCore}). 
+	\acfi{EF} Core ist eine \acfi{ORM} Technik für Microsofts .NET Core Technologie (\autoref{subsec:msNetCore}). 
 	Die Technologie ist Open-Source, erweiterbar und plattformübergreifend.
-	\ac{EF} Core unterstützt LINQ-Abfragen, Änderungsverfolgung, Aktualisierung sowie Schemamigration und funktioniert mit einigen Datenbanken wie beispielsweise MySQL, PostgreSQL, Azure CosmosDB etc. und auch MariaDB.
-	Die aktuelle Version von \ac{EF} Core ist 7.0 und verfügt über neue Funktionen wie z.B. das Mapping und Abfragen auf \ac{JSON} Spalten. 
-	Dabei ist es möglich einzelne Parameter von einem \ac{JSON} Objekt abzufragen und auch zu ändern.
+	\ac{EF} Core unterstützt LINQ-Abfragen, Änderungsverfolgung, Aktualisierung sowie Schemamigration.
+	Weiteres unterstützt \ac{EF} Core mehrere Datenbanken wie beispielsweise MySQL, PostgreSQL, Azure CosmosDB etc. und auch MariaDB.
+	Die aktuelle Version von \ac{EF} Core ist 7.0 und verfügt über neue Funktionen wie z.B. das Mapping und Abfragen auf \acfi{JSON} Spalten. 
+	Dabei ist es möglich einzelne Parameter von einem \ac{JSON} Objekt abzufragen und zu ändern.
 	
 	\begin{figure}[ht]
 		\begin{minted}[autogobble, tabsize=4]{csharp}
@@ -506,16 +472,15 @@
 		
 			await context.SaveChangesAsync();
 		\end{minted}
-		\caption{Update von einem Parameter einer \ac{JSON} Spalte}
+		\caption{Update von einem Parameter einer \acl{JSON} Spalte}
 	\end{figure}
 
 	\textcite{billwagner_net_nodate}
 	
 	\subsection{OpenAPI}
-	Die OpenAPI-Initiative hat die \ac{OAS} entwickelt, die eine \ac{API} Beschreibung standardisiert.
-	Die \ac{OAS} ist eine Sprache für \ac{HTTP} \ac{API}s.
-	Durch diese Spezifikation kann schnell und effizient herausgefunden werden wie eine \ac{API} funktioniert. 
-	Mithilfe von einem OpenAI-Code-Generator (\textcite{noauthor_openapi_nodate-1}) kann dann direkt Client-Code für verschiedene Technologien wie z.B. Typescript generiert werden.
+	Die OpenAPI-Initiative hat die \acfi{OAS} entwickelt, die eine \ac{API} Beschreibung standardisiert.
+	Die \ac{OAS} ist eine Sprache für \acfi{HTTP} \ac{API}s, durch diese \ac{API}s standardisiert beschrieben werden können. 
+	Mithilfe von einem OpenAPI-Code-Generator (\textcite{noauthor_openapi_nodate-1}) kann direkt Client-Code für verschiedene Technologien wie z.B. Typescript generiert werden.
 	
 	\textcite{noauthor_openapi_nodate}
 	
