@@ -164,6 +164,8 @@
 		\acro{ORM}{Object Relational Mapping}
 		\acro{OAS}{OpenAPI Spezifikation}
 		\acro{HTTP}{Hypertext Transfer Protocol}
+		\acro{MVP}{Minimum Viable Product}
+		\acro{UI}{User Interface}
 	
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
@@ -486,11 +488,43 @@
 	
 	
 	\chapter{Anforderungen}
-	\todo{Proper Anforderungen}
+	Der Hauptteil dieser Arbeit ist es ein funktionierendes \ac{TCMS} mit den genannten Technologien zu entwickeln.
+	Dabei steht Zuverlässigkeit, Geschwindigkeit und Skalierbarkeit im Vordergrund.
+	Zudem soll geachtet werden, dass Ressourcen bzw. Entitäten wie beispielsweise Testfälle für mehrere Testpläne verwendet werden können damit mehrfache Einträge in der Datenbank verhindert werden.
 	
-	\section{Test}
-	\todo{Test}
+	Das zu entwickelnde \ac{TCMS} hat folgende Anforderungen:
 	
+	\begin{itemize}
+		\setlength\itemsep{-0.5em}
+		\item Produkt und Testsysteme beschreiben
+		\item Features beschreiben
+		\item Features zu einem Produkt zuordnen
+		\item Testfälle beschreiben
+		\item Testfälle zu einem Feature zuordnen
+		\item Testimplementierungen beschreiben
+		\item Testimplementierungen zu Testfällen und Testsysteme zuordnen
+		\item Testläufe zu einem Testsystem zuordnen
+		\item Resultate von bestimmten Testläufen abzufragen
+	\end{itemize}
+	
+	
+	\section{Minimum Viable Product}
+	Ein \acfi{MVP} ist ein minimal brauchbares Produkt. 
+	Dabei handelt es sich um die erste funktionierte Iteration eines Produkts das nur Kernfunktionalitäten beinhaltet.
+	In unserem Fall ist das ein Funktionierendes backend von der Datenbank abfrage bis hin zur \ac{API} und sollte die oben angeführten Anforderung abdecken.
+	
+	Der Vorteil ist, dass das Produkt so schnell wie möglich zum Kunden gelangt und das Produkt Kundenfeedback bekommt.
+	Die Kunden von dem zu entwickelnden \ac{TCMS} sind in diesem Fall die Mitarbeitenden der Firma Ganter Instruments.
+	
+	\textcite{alliance_what_2017}
+	
+	
+	\section{Testen der Funktionalitäten}
+	Damit der Kunde die Funktionalitäten des \ac{TCMS} auch oberflächlich Testen kann, wird ein Tool namens Swagger verwendet um ein Webbasiertes \acfi{UI} bereitzustellen.
+	Swagger ist grundsätzlich ein Werkzeug mit denen Teams \ac{API}-Beschreibungen erstellen können.
+	Zudem kann Swagger mithilfe des standardisiertem \ac{OAS} automatisch ein \ac{UI} generieren.
+	
+	\textcite{noauthor_api_nodate}
 	
 	
 	\chapter{Konzept}
