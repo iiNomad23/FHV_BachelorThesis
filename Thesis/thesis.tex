@@ -166,6 +166,7 @@
 		\acro{HTTP}{Hypertext Transfer Protocol}
 		\acro{MVP}{Minimum Viable Product}
 		\acro{UI}{User Interface}
+		\acro{DDD}{Domain Driven Design}
 	
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
@@ -531,23 +532,79 @@
 		\includegraphics[scale=0.6]{assets/swaggerui.png}
 		\caption{Beispiel \ac{UI} von Swagger (Quelle: \textcite{noauthor_host_nodate})}
 	\end{figure}
+
+	\section{Herangehensweise}
+	Hier die Anforderungen noch explizit detailliert in User-Stories packen oder einfach dann unten bei der technischen Umsetzung? Bin mir nämlich nicht sicher, da es vielleicht zuviel wird :D (und auch wahrscheinlich repetitiv)
 	
 	
 	\chapter{Konzept}
 	Im vorherigen Kapitel wurden die Anforderungen des zu entwickelnden \ac{TCMS} festgelegt.
-	Dieses Kapitel gibt nun einen Überblick über die Architektur und vertieft sich in die Entwicklungsphasen des \ac{TCMS}.
+	Dieses Kapitel gibt nun einen Überblick über die Architektur, die dafür verwendet wird und vertieft sich in die Entwicklungsphasen des \ac{TCMS}.
 	
 	
 	\section{Architektur}
-	\todo{Proper Architektur Description}
+	Grundlegend repräsentiert eine Softwarearchitektur die Organisation und den Aufbau eines Systems, zudem ist die Architektur eines der wichtigsten Komponente bei der Softwareentwicklung.
+	Die Wahl der Softwarearchitektur ist zu Beginn eines Softwareprojektes sehr relevant, da diese hohen Einfluss auf den späteren verlauf des Projektes haben wird und es sehr kostenintensiv ist diese umzustellen.
+	Eine gut strukturierte Software Architektur bringt dementsprechend einige Vorteile:
+	
+	\begin{itemize}
+		%\setlength\itemsep{-0.5em}
+		\item Übersichtlichkeit
+		\item bessere Wartbarkeit
+		\item Erweiterbarkeit
+		\item Anpassungsfähigkeit
+		\item Skalierbar
+		\item reduziert kosten und verhindert Code Verdoppelung
+		\item erhöht die Qualität der Software
+		\item Hilf bei komplexen Problemstellungen
+		\item reduziert den Time-to-Market Faktor durch effizienteres entwickeln
+	\end{itemize}
+	
 	\textcite{richards_fundamentals_2020}
 	
 	\subsection{Backend}
-	\todo{Proper Backend Description}
+	In dieser Arbeit haben wir uns für die Vierschichtigen \acfi{DDD} Architektur entschieden, da sich diese schon öfters bewährt hat und es gute Erfahrungen damit gab.
+	Der Aufbau dieser Architektur unterteilt sich in vier Schichten:
 	
-	\subsection{Domain Driven Design}
-	\todo{Proper Domain Driven Design Description}
+	\begin{itemize}
+		%\setlength\itemsep{-0.5em}
+		\item Präsentationsschicht
+		
+		Diese Repräsentiert \ac{API}s, die reinkommende Anfragen entgegennimmt und dementsprechend Antworten liefert.
+		Die Anfragen werden an die Applikationsschicht weitergeleitet.
+		
+		\item Applikationsschicht
+		
+		Diese Schicht interagiert mit der Präsentationsschicht und koordiniert Applikation Aktivitäten.
+		Hier werden abhängig von den gelieferten Daten dementsprechende Domain Objekte erzeugt und der Infrastruktur weitergeleitet.
+		
+		\item Domainschicht
+		
+		Beinhaltet die Entitäten von der Domain und ist das Zentrum der Architektur.
+		Diese Schicht wird von der Applikationsschicht und von der Infrastrukturschicht aufgerufen und beinhaltet die ganze Business-Logik.
+		
+		\item Infrastrukturschicht
+		
+		Hier wird mit der Applikationsschicht, der Domainschicht und der Datenbank interagiert.
+	\end{itemize}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.5]{assets/layeredArchitecture.png}
+		\caption{Übersicht der Schichten (Quelle: \textcite{zhang_domain_nodate})}
+	\end{figure}
+	
+	\ac{DDD} ist ein Design Ansatz, der sich auf den Input der Domainexperten konzentriert und somit die Entitäten des Systems dadurch modelliert werden.
+	Das erleichtert es den Teammitgliedern, die Arbeit der anderen besser zu verstehen.
+	Diese Verwendung trägt auch zur \emph{ubiquitous language} bei, die alle Teammitglieder bei Modell- und Entwurfsdiskussionen verwenden können.
+	
 	\textcite{vernon_implementing_2013}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.4]{assets/PatternsDDD.png}
+		\caption{Komponenten von \ac{DDD} (Quelle: \textcite{noauthor_domain_nodate})}
+	\end{figure}
 	
 	
 	\section{Vorentwicklungsphase}
