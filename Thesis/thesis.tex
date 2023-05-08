@@ -8,8 +8,7 @@
 \usepackage[T1]{fontenc}   
 \usepackage{graphicx}       
 \usepackage[english, ngerman]{babel}
-% for displaying quotes
-\usepackage{csquotes}     
+\usepackage{csquotes} % for displaying quotes  
 \usepackage{acronym}
 \usepackage{eurosym}
 \usepackage[linktocpage=true]{hyperref}
@@ -22,46 +21,31 @@
 \usepackage{rotating}
 \usepackage{amsmath}
 \usepackage{amssymb}
-
-% for nested lists
-\usepackage{outlines}
-
-% for drawing
-\usepackage{tikz}
-
-% improve micro typography for better distribution
-\usepackage{microtype}
+\usepackage{outlines} % for nested lists
+\usepackage{tikz} % for drawing
+\usepackage{microtype} % improve micro typography for better distribution
+\usepackage{minted} % for source code
+\usepackage{caption} % caption for e.g. figures
+\usepackage{subcaption} % captions for multiple figures
+\usepackage{datetime} % for custom dates
+\usepackage[german]{cleveref} % clever refs - set labels as always (\label{fig:hello}), \cref{fig:hello}
+\usepackage[onehalfspacing]{setspace} % 1.5x line space
 
 % adds generic commands for degree, ohm, ..
 \usepackage{textcomp}
 \usepackage{gensymb}
 
-% for source code
-\usepackage{minted}
-
-% caption for e.g. figures
-\usepackage{caption}
-% captions for multiple figures
-\usepackage{subcaption}
-% for custom dates
-\usepackage{datetime}
-% clever refs
-% set labels as always (\label{fig:hello}), \cref{fig:hello}
-\usepackage[german]{cleveref}
-
-% 1.5x line space
-\usepackage[onehalfspacing]{setspace}
-
 \usepackage{todonotes}
+
+% Custom Commands
+\renewcommand{\listingscaption}{Quellcode}
+\renewcommand\listoflistingscaption{Quellcodeverzeichnis}
 
 % define date variable for whole doc
 % use \displaydate{date} where needed to insert this date
 
 \newdate{date}{01}{07}{2023}
 \date{\displaydate{date}}
-
-\newcommand{\chapquote}[3]{\begin{quotation} \textit{#1} \end{quotation} \begin{flushright} - #2, \textit{#3}\end{flushright} }
-
 
 % add zotero file for citations
 \addbibresource{reference.bib}
@@ -196,7 +180,7 @@
 	\end{flushright}
 
 	In der Softwareentwicklung kann es durch Fehler und Mängel zu Verzögerungen und dadurch zu Verlusten kommen.
-	Deswegen wurde in Zusammenarbeit der Firma \acfi{GI} geplant ein \acfi{TCMS} zu entwickeln.
+	Deswegen wurde in Zusammenarbeit mit der Firma \acfi{GI} geplant ein \acfi{TCMS} zu entwickeln.
 	Diese Arbeit fokussiert sich daher auf die Implementierung von einem \ac{TCMS} und vergleicht verschiedene vorhandene Lösungen.
 	
 	
@@ -298,7 +282,7 @@
 	
 	\textcite[Seite 12]{nidhra_black_2012}
 	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.6]{assets/WhiteBoxBlackBoxTesting.jpg}
 		\caption{Black-Box/White-Box Testing (Quelle: \textcite{khandelwal_difference_2019})}
@@ -318,7 +302,7 @@
 
 	\textcite{ammann_introduction_2016}
 	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.25]{assets/tdd-cycle.png}
 		\caption{\acl{TDD} cycle (Quelle: \textcite{noauthor_test-driven_nodate})}
@@ -416,7 +400,7 @@
 	
 	Welches Tool am besten geeignet ist, hängt natürlich von der jeweiligen Anwendung ab.
 	\newline
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.5]{assets/best-tool-logos.jpg}
 		\caption{Liste von aktuell führenden Test Case Management Systemen/Tools (Quelle: \textcite{noauthor_7_nodate})}
@@ -444,7 +428,7 @@
 	
 	\textcite{ghosh_docker_2020}
 	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.5]{assets/docker-funktionsweise.png}
 		\caption{Funktionsweise von Docker (Quelle: \textcite{bollhoff_kubernetes_2022})}
@@ -475,7 +459,7 @@
 	Die aktuelle Version von \ac{EF} Core ist 7.0 und verfügt über neue Funktionen wie z.B. das Mapping und Abfragen auf \acfi{JSON} Spalten. 
 	Dabei ist es möglich einzelne Parameter von einem \ac{JSON} Objekt abzufragen und zu ändern.
 	
-	\begin{figure}[ht]
+	\begin{listing}[ht]
 		\begin{minted}[autogobble, tabsize=4]{csharp}
 			var jeremy = await context
 			.Authors
@@ -489,7 +473,7 @@
 			await context.SaveChangesAsync();
 		\end{minted}
 		\caption{Update von einem Parameter einer \acl{JSON} Spalte}
-	\end{figure}
+	\end{listing}
 
 	\textcite{billwagner_net_nodate}
 	
@@ -540,7 +524,7 @@
 	
 	\textcite{noauthor_api_nodate}
 	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.6]{assets/swaggerui.png}
 		\caption{Beispiel \ac{UI} von Swagger (Quelle: \textcite{noauthor_host_nodate})}
@@ -640,7 +624,7 @@
 		Hier wird mit der Applikationsschicht, der Domainschicht und der Datenbank interagiert.
 	\end{itemize}
 
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.5]{assets/layeredArchitecture.png}
 		\caption{Übersicht der Schichten (Quelle: \textcite{zhang_domain_nodate})}
@@ -652,7 +636,7 @@
 	
 	\textcite{vernon_implementing_2013}
 	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.4]{assets/PatternsDDD.png}
 		\caption{Komponenten von \ac{DDD} (Quelle: \textcite{noauthor_domain_nodate})}
@@ -665,7 +649,7 @@
 	Dabei greift das \ac{TAS} über die Technologie Automise über eine von \ac{TCMS} bereitgestellte \ac{API} darauf zu und erstellt Testläufe.
 	Bei der Beschreibung von \autoref{fig:domainModelPart2} wird darauf genauer eingegangen (Siehe \autoref{subsec:domainModel}).
 	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.3]{assets/TestTechnologiesOverview.drawio.png}
 		\caption{\ac{TAS} von \ac{GI}}
@@ -678,7 +662,7 @@
 	Zunächst wurde das Domain-Model entwickelt, um die Entitäten und ihre Beziehungen darzustellen.
 	Dabei wurden exakt, die von den Anforderungen geforderten Features abgebildet.
 	
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.6]{assets/TCMS_DomainModel_part1.png}
 		\caption{Domain-Model (Teil 1) aus den Anforderungen von \autoref{chapter:requiremnts}}
@@ -729,7 +713,7 @@
 		Somit kann beispielsweise ein Report generiert werden der einen Überblick über jede Testimplementation von einem Environment gibt.
 	\end{itemize}
 
-	\begin{figure}[H]
+	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.6]{assets/TCMS_DomainModel_part2.png}
 		\caption{Domain-Model (Teil 2) aus den Anforderungen von \autoref{chapter:requiremnts}}
