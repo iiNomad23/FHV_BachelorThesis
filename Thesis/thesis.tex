@@ -60,6 +60,9 @@
 \newdate{date}{01}{07}{2023}
 \date{\displaydate{date}}
 
+\newcommand{\chapquote}[3]{\begin{quotation} \textit{#1} \end{quotation} \begin{flushright} - #2, \textit{#3}\end{flushright} }
+
+
 % add zotero file for citations
 \addbibresource{reference.bib}
 
@@ -185,9 +188,17 @@
 	
 	\clearpage
 	\chapter{Einleitung}
-	\todo{Proper Text}
-	Deswegen wurde in Zusammenarbeit mit der Firma \acfi{GI} geplant ein \acfi{TCMS} zu entwickeln.
-	Diese Arbeit fokussiert sich daher auf die Implementierung von einem \ac{TCMS} backends und vergleicht verschiedene vorhandene Lösungen.
+	
+	\begin{flushright}
+		\rightskip=8cm\textit{``Zeit ist Geld.''} \\
+		\vspace{.2em}
+		\rightskip=6cm--- \textcite{franklin1748advice}
+	\end{flushright}
+
+	In der Softwareentwicklung kann es durch Fehler und Mängel zu Verzögerungen und dadurch zu Verlusten kommen.
+	Deswegen wurde in Zusammenarbeit der Firma \acfi{GI} geplant ein \acfi{TCMS} zu entwickeln.
+	Diese Arbeit fokussiert sich daher auf die Implementierung von einem \ac{TCMS} und vergleicht verschiedene vorhandene Lösungen.
+	
 	
 	\section{Motivation} \label{sec:motivation}
 	Die Entwicklung technischer Systeme ist ein komplexer Prozess, der eine hohe Qualität erfordert, um den Anforderungen der Kunden gerecht zu werden. 
@@ -196,7 +207,7 @@
 	Durch die Verwendung eines \ac{TCMS} können Angestellte aus verschiedenen Abteilungen, wie z.B. der Software-, Hardware-, Support- oder Marketingabteilung, die Qualität des Produkts gemeinsam verbessern. 
 	
 	\section{Problemstellung}
-	Durch die von \autoref{sec:motivation} angesprochene Komplexität technischer Systeme ist bekannt, dass Fehler, die erst spät im Entwicklungsprozess entdeckt werden, viel kostspieliger zu beheben sind als Fehler, die frühzeitig identifiziert und behoben werden. \todo{Zitat}
+	Durch die von \autoref{sec:motivation} angesprochene Komplexität technischer Systeme ist bekannt, dass Fehler, die erst spät im Entwicklungsprozess entdeckt werden, viel kostspieliger zu beheben sind als Fehler, die frühzeitig identifiziert und behoben werden. \textcite{westland_cost_2002}
 	
 	Infolgedessen suchen Unternehmen nach Lösungen, um den Testprozess effektiver zu gestalten und Fehler früher im Entwicklungszyklus zu identifizieren. 
 	\ac{TCMS} bietet eine solche Lösung, indem es Entwicklern und Testern ermöglicht, Testfälle effizient zu planen und zu verwalten sowie Testergebnisse zu erfassen, darzustellen und somit auch zu verfolgen. 
@@ -206,8 +217,8 @@
 	Diese Arbeit beschäftigt sich mit diesen Problemen und untersucht, wie ein \ac{TCMS} effektiv eingesetzt werden kann.
 	
 	\section{Zielsetzung}
-	Das Ziel dieser Arbeit ist es, die Verwendung von \acp{TCMS} zu untersuchen und zu bewerten. 
-	Zudem ein auf unser eigenes Produkt angepasstes \ac{TCMS} backend zu entwickeln. 
+	Das Ziel dieser Arbeit ist es, die Verwendung von \ac{TCMS} zu untersuchen und zu bewerten. 
+	Zudem ein auf unser eigenes Produkt angepasstes \ac{TCMS} zu entwickeln. 
 	Hiermit ergeben sich drei relevante fragen:
 	
 	\begin{itemize}
@@ -220,9 +231,7 @@
 	
 	\begin{itemize}
 		\item Die Vor- und Nachteile der Verwendung von einem \ac{TCMS} zu identifizieren und zu analysieren.
-		\item Die Entwicklung eines \ac{TCMS} backends.
-		\item Die Konnektivität von \ac{TCMS} mit anderen Tools und Systemen, die in der Softwareentwicklung verwendet werden, zu untersuchen und zu bewerten.
-		\item Empfehlungen für die erfolgreiche Implementierung von \ac{TCMS} in der Softwareentwicklung zu geben, einschließlich der Identifizierung bewährter Praktiken.
+		\item Empfehlungen für die erfolgreiche Implementierung eines \ac{TCMS} in der Softwareentwicklung zu geben, einschließlich der Identifizierung bewährter Praktiken.
 	\end{itemize}
 	
 	Durch die Erfüllung dieser Ziele wird diese Arbeit dazu beitragen, das Verständnis für die Verwendung von einem \ac{TCMS} in der Produktentwicklung zu verbessern und Unternehmen dabei zu unterstützen, den Testprozess zu optimieren und die Qualität ihrer Produkte zu verbessern.
@@ -234,7 +243,7 @@
 	Weiters werden Technologien, auf denen das in dieser Arbeit entwickelte \ac{TCMS} aufbaut, beschrieben.
 	
 	\section{Testarten} \label{sec:testtypes}
-	Während der Entwicklung eines Produktes kommen unterschiedliche Testarten zum Einsatz. 
+	Während der Entwicklung eines Produkts kommen unterschiedliche Testarten zum Einsatz. 
 	\textcite{atlassian_unterschiedlichen_nodate} beschreibt sieben unterschiedliche Testverfahren die je nachdem andere Aspekte eines Produkts testen.
 	In \textcite{noauthor_software_nodate} wird beschreiben, dass dabei zwischen \emph{Funktionalen} und \emph{Nicht-Funktionalen} Tests unterschieden werden.
 	Zu der funktionalen Testfamilie zählen beispielsweise Unit-Tests und Integrationstests.
@@ -275,7 +284,7 @@
 	
 	
 	\section{Black-Box und White-Box Testing}
-	Sowohl \emph{Black-Box} als auch \emph{White-Box} Tests werden in der Software Entwicklung häufig verwendet, um Fehler als auch die Qualität des Produktes zu evaluieren. 
+	Sowohl \emph{Black-Box} als auch \emph{White-Box} Tests werden in der Software Entwicklung häufig verwendet, um Fehler als auch die Qualität des Produkts zu evaluieren. 
 	Dabei gibt es zwischen den beiden wichtige Unterschiede.
 	
 	\todo{Verbessering der Erklärung von white box testing}
@@ -416,7 +425,7 @@
 	 
 	
 	\section{Verwendete Technologien}
-	Dieser Abschnitt gibt eine Übersicht über die verwendeten Technologien, die für die Implementierung des in dieser Arbeit entwickelten \ac{TCMS} backends eingesetzt worden sind.
+	Dieser Abschnitt gibt eine Übersicht über die verwendeten Technologien, die für die Implementierung des in dieser Arbeit entwickelten \ac{TCMS} eingesetzt worden sind.
 	
 	\subsection{MariaDB}
 	MariaDB ist eine weit verbreitete relationalen Open-Source-Datenbanken. 
@@ -516,7 +525,7 @@
 	\section{Minimum Viable Product}
 	Ein \acfi{MVP} ist ein minimal brauchbares Produkt. 
 	Dabei handelt es sich um die erste funktionierte Iteration eines Produkts das nur Kernfunktionalitäten beinhaltet.
-	In unserem Fall ist das ein Funktionierendes backend von der Datenbank abfrage bis hin zur \ac{API} und sollte die oben angeführten Anforderung abdecken.
+	In unserem Fall ist das ein Funktionierendes \ac{TCMS} backend von der Datenbank abfrage bis hin zur \ac{API} und sollte die oben angeführten Anforderung abdecken.
 	
 	Der Vorteil ist, dass das Produkt so schnell wie möglich zum Kunden gelangt und das Produkt Kundenfeedback bekommt.
 	Die Kunden von dem zu entwickelnden \ac{TCMS} sind in diesem Fall die Mitarbeitenden der Firma Ganter Instruments.
