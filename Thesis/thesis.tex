@@ -168,6 +168,8 @@
 		\acro{UI}{User Interface}
 		\acro{DDD}{Domain Driven Design}
 		\acro{DHCP}{Dynamic Host Configuration Protocol}
+		\acro{GI}{Gantner Instruments}
+		\acro{TAS}{Test Automation System}
 	
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
@@ -183,7 +185,7 @@
 	
 	\clearpage
 	\chapter{Einleitung}
-	In Zusammenarbeit der Firma \emph{Gantner Instruments}....  \todo{Proper Text}
+	In Zusammenarbeit der Firma \acfi{GI}....  \todo{Proper Text}
 	Diese Arbeit fokussiert sich daher auf die Implementierung von einem \acfi{TCMS} backends und vergleicht verschiedene vorhandene Lösungen.
 	
 	\section{Motivation} \label{sec:motivation}
@@ -563,7 +565,7 @@
 	
 	\textcite{richards_fundamentals_2020}
 	
-	\subsection{Backend}
+	\subsection{Backend} \label{subsec:backend}
 	In dieser Arbeit haben wir uns für die Vierschichtigen \acfi{DDD} Architektur entschieden, da sich diese schon öfters bewährt hat und es gute Erfahrungen damit gab.
 	Der Aufbau dieser Architektur unterteilt sich in vier Schichten:
 	
@@ -606,13 +608,24 @@
 		\includegraphics[scale=0.4]{assets/PatternsDDD.png}
 		\caption{Komponenten von \ac{DDD} (Quelle: \textcite{noauthor_domain_nodate})}
 	\end{figure}
-	
+
 	
 	\section{Vorentwicklungsphase}
 	In dieser Phase handelt es sich hauptsächlich um die Planung der Implementierung des \ac{TCMS}.
-	Durch die von \autoref{chapter:requiremnts} gegebenen Anforderungen wurde dementsprechend geplant.
+	Zuerst wurde eine Übersicht von dem schon bestehenden \acfi{TAS} erzeugt, das zeigt wie es mit dem \ac{TCMS} interagiert.
+	Dabei greift das \ac{TAS} über die Technologie Automise über eine von \ac{TCMS} bereitgestellte \ac{API} darauf zu und erstellt Testläufe.
+	Bei der Beschreibung von \autoref{fig:domainModelPart2} wird darauf genauer eingegangen (Siehe \autoref{subsec:domainModel}).
 	
-	\subsection{Domain Model}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{assets/TestTechnologiesOverview.drawio.png}
+		\caption{\ac{TAS} von \ac{GI}}
+		\label{fig:testAutomationSystem}
+	\end{figure}
+
+	Durch die von \autoref{chapter:requiremnts} gegebenen Anforderungen und dem bestehendem \ac{TAS} wurde dementsprechend geplant.
+	
+	\subsection{Domain Model} \label{subsec:domainModel}
 	Zunächst wurde das Domain-Model entwickelt, um die Entitäten und ihre Beziehungen darzustellen.
 	Dabei wurden exakt, die von den Anforderungen geforderten Features abgebildet.
 	
@@ -680,7 +693,7 @@
 		%\setlength\itemsep{-0.5em}
 		\item Testläufe von Testimplementierungen zu einem Testsystem zuordnen
 		
-		Testläufe werden automatisch von dem bereits bestehenden Testautomatisierungssystem der Firma erstellt und beschrieben.
+		Testläufe werden automatisch von dem bereits bestehenden \ac{TAS} der Firma erstellt und beschrieben.
 		Diese Testläufe enthalten Informationen welche Testimplementationen, mit welchen Konfigurationen und mit welcher Hardware getestet wurde.
 		Testläufe werden zum Zeitpunkt des Erstellens zu den jeweiligen Testsystemen zugeordnet, mit denen diese durchgeführt worden sind.
 		
@@ -691,19 +704,10 @@
 	
 	Die in \autoref{fig:domainModelPart1} und \autoref{fig:domainModelPart2} gezeigten Entitäten wurden auf Basis der Kommunikation mit den Domainexperten so modelliert.
 	
-	
-	\section{Entwicklungsphase}
-	\todo{Proper Entwicklungsphase Description}
-	
-	\subsection{Verwaltung und Struktur von Features}
-	\todo{Proper Verwaltung und Struktur von Features Description}
-	
-	\subsection{Featurestruktur zur Datenbank}
-	\todo{Proper Featurestruktur zur Datenbank Description}
-	
-	\subsection{Visualisierung von Featurestrukturen}
-	\todo{Proper Visualisierung von Featurestrukturen Description}
-	
+	\section{Datenbank Server}
+	Der Datenbank Server wird mit Docker aufgesetzt.
+	Über die bereitgestellten \ac{API}s des \ac{TCMS} wird dann über die schichten der verwendeten Architektur in die Datenbank geschrieben und gelesen werden (Siehe \autoref{subsec:backend}).
+	Wie dies implementiert wird, wird im folgenden Kapitel beschrieben.
 	
 	
 	\chapter{Technische Umsetzung}

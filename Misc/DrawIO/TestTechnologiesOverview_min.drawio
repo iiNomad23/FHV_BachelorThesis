@@ -1,0 +1,89 @@
+<mxfile host="app.diagrams.net" modified="2023-05-08T12:24:30.724Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="w7nV_IcAwIGdbwuYspga" version="21.2.9" type="device">
+  <diagram name="Page-1" id="f96WgXrJF7w2DZCyWAKk">
+    <mxGraphModel dx="2993" dy="1188" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-15" value="" style="swimlane;startSize=0;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="-50" y="90" width="980" height="590" as="geometry">
+            <mxRectangle x="-50" y="90" width="50" height="40" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-16" value="https://dev.gantner-instruments.com/dokuwiki/doku.php?id=test_and_quality:test_automation:general" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" vertex="1">
+          <mxGeometry x="40" y="20" width="510" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-11" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Universal CSV Tests&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" vertex="1">
+          <mxGeometry x="112.5" y="110" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-1" value="&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Automise&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;(C#, C++)&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" vertex="1">
+          <mxGeometry x="112.5" y="380" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" source="1aQ4Zla8gFwNtVFZ-AiG-11" target="1aQ4Zla8gFwNtVFZ-AiG-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-38" value="configure Automise Test with a CSV file" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;" parent="1aQ4Zla8gFwNtVFZ-AiG-12" vertex="1" connectable="0">
+          <mxGeometry x="-0.7425" y="-2" relative="1" as="geometry">
+            <mxPoint x="2" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=11;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510.82" y="440" as="sourcePoint" />
+            <mxPoint x="510.82" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IV9MoBWmYWmBW-QY7avg-2" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" source="1aQ4Zla8gFwNtVFZ-AiG-1" target="1aQ4Zla8gFwNtVFZ-AiG-7" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="391.82" y="439.58000000000004" as="sourcePoint" />
+            <mxPoint x="636.82" y="439.58000000000004" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="IV9MoBWmYWmBW-QY7avg-3" value="&lt;span style=&quot;font-size: 12px&quot;&gt;visualize/start test steps&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="IV9MoBWmYWmBW-QY7avg-2" vertex="1" connectable="0">
+          <mxGeometry x="-0.3524" y="-2" relative="1" as="geometry">
+            <mxPoint x="36" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-7" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Jenkins&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" vertex="1">
+          <mxGeometry x="636.82" y="380" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="WGsBbb1lFy_ZqLdGjQi--1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" source="IV9MoBWmYWmBW-QY7avg-4" target="1aQ4Zla8gFwNtVFZ-AiG-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="463" y="160" />
+              <mxPoint x="463" y="305" />
+              <mxPoint x="232" y="305" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3etS4jr1pKGL3zoFXnOU-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" source="IV9MoBWmYWmBW-QY7avg-4" target="1aQ4Zla8gFwNtVFZ-AiG-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IV9MoBWmYWmBW-QY7avg-4" value="Tester" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1aQ4Zla8gFwNtVFZ-AiG-15" vertex="1">
+          <mxGeometry x="600" y="140" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-17" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Test Automation System&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="-40" y="40" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-23" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;MariaDB&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="62.50000000000006" y="960" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-33" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=24;" parent="1" source="1aQ4Zla8gFwNtVFZ-AiG-32" target="1aQ4Zla8gFwNtVFZ-AiG-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1aQ4Zla8gFwNtVFZ-AiG-32" value="&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;Test Case Management System&lt;/span&gt;&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;(C# .NET Core)&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="62.50000000000006" y="760" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="-Yvk3Jp_ioSxefIqhNEg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="1aQ4Zla8gFwNtVFZ-AiG-1" target="1aQ4Zla8gFwNtVFZ-AiG-32" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-Yvk3Jp_ioSxefIqhNEg-5" value="writes test results" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-Yvk3Jp_ioSxefIqhNEg-3" vertex="1" connectable="0">
+          <mxGeometry x="-0.7246" y="-3" relative="1" as="geometry">
+            <mxPoint x="3" y="7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
