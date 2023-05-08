@@ -167,6 +167,7 @@
 		\acro{MVP}{Minimum Viable Product}
 		\acro{UI}{User Interface}
 		\acro{DDD}{Domain Driven Design}
+		\acro{DHCP}{Dynamic Host Configuration Protocol}
 	
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
@@ -622,7 +623,49 @@
 		\label{fig:domainModelPart1}
 	\end{figure}
 
-	\todo{More description to figure part 1}
+	Bei den in \autoref{fig:domainModelPart1} abgebildeten Entitäten handelt es sich um die folgenden Anforderungen:
+	
+	\begin{itemize}
+		%\setlength\itemsep{-0.5em}
+		\item Produkt und Testsysteme beschreiben
+		
+		Das Produkt wurde als Test Environment Entität modelliert, dass kann beispielsweise ein Gerät von der Firma sein.
+		Das Testsystem bildet beispielsweise eine Prüfwand mit mehreren Geräten ab mit denen Tests durchgeführt werden.
+		Jedes Produkt hat eigene Testsysteme.
+		
+		\item Features beschreiben
+		
+		Feature wurde als Testplan Entität modelliert.
+		Ein Feature besteht aus mehreren Testfällen und bildet ein Feature von einem Gerät ab wie beispielsweise Netzwerk Connectivity.
+		
+		\item Features zu einem Produkt zuordnen
+		
+		Die erstellten Testpläne können nach dem Erstellen zu Test Environments zugeordnet werden.
+		Somit können Testpläne für andere Environments wiederverwendet werden.
+		
+		\item Testfälle beschreiben
+		
+	    Ein Testfall besteht aus mehreren Testimplementationen.
+	    Diese Testimplementationen sind für jeden Testfall unique und können nicht wiederverwendet werden. 
+	    Ein Testfall ist beispielsweise eine überprüfung ob das Gerät eine \acfi{DHCP} Adresse erhalten hat.
+		
+		\item Testfälle zu einem Feature zuordnen
+		
+		Die Teställe können dann zu Features zugeordnet werden.
+		Somit können Testfälle wiederverwendet werden.
+		
+		\item Testimplementierungen beschreiben
+		
+		Testimplementierungen sind grundsätzlich Beschreibungen wie ein Testfall getestet wird und ob dieser manuell oder automatisch ausgeführt wird.
+		Testimplementierungen enthalten auch Informationen, ob sie Positiv beim letzten Testlauf getestet worden sind.
+		Eine Testimplementation ist beispielsweise die Beschreibung mit welchen Konfigurationen ein Testfall bei einem Gerät getestet wird.
+		
+		\item Testimplementierungen zu Testfällen und Testsysteme zuordnen
+		
+		Testimplementierungen könne zu Testfällen und zu Testsysteme zugeordnet werden.
+		Durch die Zuordnung von Testimplementierungen zu Testsystemen ist es einfacher die Testimplementierungen von einer Environment darzustellen.
+		Somit kann beispielsweise ein Report generiert werden der einen Überblick über jede Testimplementation von einem Environment gibt.
+	\end{itemize}
 
 	\begin{figure}[H]
 		\centering
@@ -631,7 +674,22 @@
 		\label{fig:domainModelPart2}
 	\end{figure}
 
-	\todo{More description to figure part 2}
+	Bei den in \autoref{fig:domainModelPart2} abgebildeten Entitäten handelt es sich um die folgenden Anforderungen:
+	
+	\begin{itemize}
+		%\setlength\itemsep{-0.5em}
+		\item Testläufe von Testimplementierungen zu einem Testsystem zuordnen
+		
+		Testläufe werden automatisch von dem bereits bestehenden Testautomatisierungssystem der Firma erstellt und beschrieben.
+		Diese Testläufe enthalten Informationen welche Testimplementationen, mit welchen Konfigurationen und mit welcher Hardware getestet wurde.
+		Testläufe werden zum Zeitpunkt des Erstellens zu den jeweiligen Testsystemen zugeordnet, mit denen diese durchgeführt worden sind.
+		
+		\item Resultate von bestimmten Testläufen abzufragen
+		
+		Durch die Zuordnung von Testläufen zu Testsystemen können Resultate zu jedem Testsystem abgefragt werden.
+	\end{itemize}
+	
+	Die in \autoref{fig:domainModelPart1} und \autoref{fig:domainModelPart2} gezeigten Entitäten wurden auf Basis der Kommunikation mit den Domainexperten so modelliert.
 	
 	\subsection{Featurestruktur}
 	\todo{Proper Featurestruktur Description}
