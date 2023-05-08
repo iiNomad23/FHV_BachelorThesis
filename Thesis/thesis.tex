@@ -185,8 +185,9 @@
 	
 	\clearpage
 	\chapter{Einleitung}
-	In Zusammenarbeit der Firma \acfi{GI}....  \todo{Proper Text}
-	Diese Arbeit fokussiert sich daher auf die Implementierung von einem \acfi{TCMS} backends und vergleicht verschiedene vorhandene Lösungen.
+	\todo{Proper Text}
+	Deswegen wurde in Zusammenarbeit mit der Firma \acfi{GI} geplant ein \acfi{TCMS} zu entwickeln.
+	Diese Arbeit fokussiert sich daher auf die Implementierung von einem \ac{TCMS} backends und vergleicht verschiedene vorhandene Lösungen.
 	
 	\section{Motivation} \label{sec:motivation}
 	Die Entwicklung technischer Systeme ist ein komplexer Prozess, der eine hohe Qualität erfordert, um den Anforderungen der Kunden gerecht zu werden. 
@@ -536,14 +537,53 @@
 		\caption{Beispiel \ac{UI} von Swagger (Quelle: \textcite{noauthor_host_nodate})}
 	\end{figure}
 
-	\section{Herangehensweise}
-	Hier die Anforderungen noch explizit detailliert in User-Stories packen oder einfach dann unten bei der technischen Umsetzung? Bin mir nämlich nicht sicher, da es vielleicht zuviel wird :D (und auch wahrscheinlich repetitiv)
+	\section{Vorgehensweise}
+	Damit das zu Entwickelnde \ac{TCMS} die eben genannten Anforderungen erfüllen kann werden diese in User Stories aufgeteilt.
+	Nachfolgend sind vier User Stories aufgeführt, die erklären, welche Funktionalitäten das \ac{TCMS} beinhaltet, um die Anforderungen abzudecken.
+	
+	\subsection{Projekt und Datenbank Aufsetzen}
+	Diese User Story beinhaltet noch keine Implementierung von Funktionalitäten, sondern beschäftigt sich mit dem Aufsetzten des Projektes und der Datenbank.
+	
+	Die Akzeptanzkriterien sind wie folgend:
+	\begin{itemize}
+		\item Projekt Struktur in die Architektur Schichten aufteilen 
+		\item Datenbank mit Docker aufsetzen
+		\item Datenbank manuell beschreibbar
+	\end{itemize}
+	
+	\subsection{Erstellen und suchen von Test Environments}
+	Als Nutzer:in möchte ich Test Environments erstellen und suchen, sodass ich Testpläne zuordnen kann.
+	
+	Die Akzeptanzkriterien sind wie folgend:
+	\begin{itemize}
+		\item Erstellen von Test Environments über Swagger \ac{UI}
+		\item Suchen von Test Environments über Swagger \ac{UI}
+		\item Hinzufügen und Entfernen von Testplänen über Swagger \ac{UI}
+	\end{itemize}
+
+	\subsection{Erstellen und suchen von Testplänen, Testfällen und Testimplementationen}
+	Als Nutzer:in möchte ich Testpläne, Testfälle und Testimplementationen erstellen und suchen, sodass ich diese dementsprechend zuordnen kann.
+	
+	Die Akzeptanzkriterien sind wie folgend:
+	\begin{itemize}
+		\item Erstellen von Testplänen, Testfällen und Testimplementationen über Swagger \ac{UI}
+		\item Suchen von Testplänen, Testfällen und Testimplementationen über Swagger \ac{UI}
+	\end{itemize}
+	
+	\subsection{Erstellen und suchen von Testläufe}
+	Als Nutzer:in möchte ich Testläufe erstellen und suchen, sodass ich Reports generieren kann.
+	
+	Die Akzeptanzkriterien sind wie folgend:
+	\begin{itemize}
+		\item Erstellen von Testläufen über Swagger \ac{UI}
+		\item Suchen von Testläufen über Swagger \ac{UI}
+	\end{itemize}
+	
 	
 	
 	\chapter{Konzept}
 	Im vorherigen Kapitel wurden die Anforderungen des zu entwickelnden \ac{TCMS} festgelegt.
 	Dieses Kapitel gibt nun einen Überblick über die Architektur, die dafür verwendet wird und vertieft sich in die Entwicklungsphasen des \ac{TCMS}.
-	
 	
 	\section{Architektur}
 	Grundlegend repräsentiert eine Softwarearchitektur die Organisation und den Aufbau eines Systems, zudem ist die Architektur eines der wichtigsten Komponente bei der Softwareentwicklung.
