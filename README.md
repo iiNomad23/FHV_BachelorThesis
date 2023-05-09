@@ -28,4 +28,4 @@ This reduces testing effort and provides focused feedback to the developers.
     - python -m pip install -U pygments
     - evtl. Python scripts zu PATH hinzufügen
     - Texstudio: options > configure > commands
-      - PdfLatex -> pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+      - PdfLatex -> pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
