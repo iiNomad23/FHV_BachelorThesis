@@ -29,3 +29,8 @@ This reduces testing effort and provides focused feedback to the developers.
     - evtl. Python scripts zu PATH hinzufügen
     - Texstudio: options > configure > commands
       - PdfLatex -> pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+- Bib settings:
+  - Texstudio: Bibliography > Type -> BibLaTeX
+  - Texstudio: options > configure > build
+    - Default Bibliography Tool -> Biber
+
