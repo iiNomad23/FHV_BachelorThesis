@@ -30,7 +30,8 @@ This reduces testing effort and provides focused feedback to the developers.
     - Texstudio: options > configure > commands
       - PdfLatex -> pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
 - Bib settings:
-  - Texstudio: Bibliography > Type -> BibLaTeX
+  - Texstudio: bibliography
+    - Type -> BibLaTeX
   - Texstudio: options > configure > build
     - Default Bibliography Tool -> Biber
 
