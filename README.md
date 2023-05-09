@@ -21,17 +21,24 @@ This reduces testing effort and provides focused feedback to the developers.
 
 # Latex Setup Windows
 
-- Tex Live
-- TexStudio
+- Install TexStudio
+- Install Tex Live
+
 - Code Listings:
   - minted
     - python -m pip install -U pygments
     - evtl. Python scripts zu PATH hinzufügen
     - Texstudio: options > configure > commands
       - PdfLatex -> pdflatex.exe -synctex=1 -interaction=nonstopmode --shell-escape %.tex
+      
 - Bib settings:
   - Texstudio: bibliography
     - Type -> BibLaTeX
   - Texstudio: options > configure > build
     - Default Bibliography Tool -> Biber
+    
+- LanguageTool settings:  
+
+![languageToolConfig](https://github.com/iiNomad23/FHV_BachelorThesis/assets/93211011/8cae1e4c-b373-4ddb-a98e-6f19b846b6ee)
+
 
