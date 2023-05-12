@@ -40,6 +40,18 @@
 % Custom Commands
 \renewcommand{\listingscaption}{Quellcode}
 \renewcommand{\listoflistingscaption}{Quellcodeverzeichnis}
+\providecommand*{\listingautorefname}{Quellcode}
+
+\definecolor{bg}{rgb}{0.93, 0.93, 0.93}
+\setminted{
+	autogobble, 
+	tabsize=4, 
+	numbers=left,
+	numbersep=15pt,
+	bgcolor=bg,
+	fontsize=\footnotesize
+}
+\renewcommand{\fcolorbox}[4][]{#4} % "disables" syntax errores in minted code blocks 
 
 % define date variable for whole doc
 % use \displaydate{date} where needed to insert this date
@@ -163,6 +175,7 @@
 		\acro{DHCP}{Dynamic Host Configuration Protocol}
 		\acro{GI}{Gantner Instruments}
 		\acro{TAS}{Test Automation System}
+		\acro{IDE}{Integrated Development Environment}
 	
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
@@ -182,7 +195,7 @@
 	\begin{flushright}
 		\rightskip=8cm\textit{``Time is money.''} \\
 		\vspace{.2em}
-		\rightskip=6cm--- \textcite{franklin1748advice}
+		\rightskip=6cm--- \textcite{franklin_advice_1748}
 	\end{flushright}
 
 	In der Softwareentwicklung kann es durch Fehler und Mängel zu Verzögerungen und dadurch zu Verlusten kommen.
@@ -466,7 +479,7 @@
 	Dabei ist es möglich einzelne Parameter von einem \ac{JSON} Objekt abzufragen und zu ändern.
 	
 	\begin{listing}[ht]
-		\begin{minted}[autogobble, tabsize=4]{csharp}
+		\begin{minted}{csharp}
 			var jeremy = await context
 			.Authors
 			.SingleAsync(author => author.Name.StartsWith("Jeremy"));
@@ -478,7 +491,7 @@
 		
 			await context.SaveChangesAsync();
 		\end{minted}
-		\caption{Update von einem Parameter einer \acl{JSON} Spalte}
+		\caption{Update von einem Parameter einer \ac{JSON} Spalte}
 	\end{listing}
 
 	\textcite{billwagner_net_nodate}
@@ -750,24 +763,118 @@
 	
 	
 	\chapter{Technische Umsetzung}
-	Um das Ziel dieser Arbeit, ein \ac{TCMS} zu entwickeln, erreicht wird, werden die im \autoref{chapter:requiremnts} auf \autopageref{sec:userStoriesDefinition} definierten User-Stories mithilfe der erwähnten Technologien aus \autoref{sec:technologies} umgesetzt.
+	Damit das Ziel dieser Arbeit, ein \ac{TCMS} zu entwickeln, erreicht wird, werden die im \autoref{chapter:requiremnts} auf \autopageref{sec:userStoriesDefinition} definierten User-Stories mithilfe der erwähnten Technologien aus \autoref{sec:technologies} umgesetzt.
 	Dabei wird auf den Scrum-Prozess und im Anschluss auf die User-Stories detailliert eingegangen.
 
 	\section{Scrum}
-	\todo{Proper Scrum Description}
+	Scrum ist grundsätzlich eine Projektmanagement-Methode um in der Softwareentwicklung agil zu arbeiten.
+	Bei dieser Methode geht es darum, dass ein Team Aufgaben von einer Aufgabenstellung in kleinen Schritten, sogenannte Sprints, angeht.
+	
 	\textcite{rubin_essential_2012}
 	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.4]{assets/scrum-process.png}
+		\caption{Scrum Prozess (Quelle: \textcite{noauthor_home_nodate})}
+		\label{fig:scrum-process}
+	\end{figure}
+	
+	Während der Implementierung des \ac{TCMS} dieser Arbeit wurde ein solcher Prozess angewendet (\autoref{fig:scrum-process}).
+	
 	\section{Implementierung der User-Stories}
-	\todo{Proper User Stories Description}
+	Dieser Abschnitt zeigt den Ablauf der Implementierung des \ac{TCMS} dieser Arbeit.
+	Gesamt ist die Implementierung auf vier User-Stories aufgeteilt, die in folgender Reihenfolge implementiert wurden:
 	
-	\subsection{Story 1}
-	\todo{Proper Story 1 Description}
+	\begin{itemize}
+		\item Projekt und Datenbank Aufsetzen
+		\item Erstellen und suchen von Test Environments
+		\item Erstellen und suchen von Testplänen, Testfällen und Testimplementationen
+		\item Erstellen und suchen von Testläufe
+	\end{itemize}
+
+	Zur Umsetzung des \ac{TCMS} kommt die Version .NET 7.0 zum Einsatz.
+	Als \acfi{IDE} wurde \emph{Rider} verwendet, die von \emph{JetBrains} entwickelt wurde.
+
+	\subsection{Projekt und Datenbank Aufsetzen}
+	Damit eine Grundlage für die folgenden User-Stories vorhanden ist, wurde die Struktur des Projektes in vier Teil Projekte aufgeteilt.
+	Dabei ist jedes Projekt die Projektion einer Schicht der verwendeten Architektur (Siehe: \autoref{subsec:backend}).
 	
-	\subsection{Story 2}
-	\todo{Proper Story 2 Description}
+	Docker Desktop wurde für das Aufsetzen der Datenbank verwendet.
+	Docker Desktop ist eine Anwendung die das Erstellen und Verwalten von Container einfacher macht.
+	\autoref{lst:dockerDesktop} zeigt das Erstellen und Ausführen eines MariaDB Containers.
 	
-	\subsection{Story n}
-	\todo{Proper Story n Description}
+	\begin{listing}[ht]
+		\begin{minted}{Basic}
+			docker run --name mariadb-container 
+			-e MYSQL_ROOT_PASSWORD=admin -p 3306:3306 -d mariadb:latest
+		\end{minted}
+		\caption{Starten eines MariaDB Containers}
+		\label{lst:dockerDesktop}
+	\end{listing}
+
+	Nachdem der Container hochgefahren ist kann mit dem MariaDB Server gearbeitet werden.
+	Weiters wurde ein Datenbankschema namens \emph{tcms\_mariadb} erstellt, wo die Tabellen abgespeichert werden (Siehe: \autoref{lst:createAndUseDBSchema}).
+	
+	\begin{listing}[ht]
+		\begin{minted}{SQL}
+			CREATE DATABASE tcms_mariadb; 
+			USE tcms_mariadb;
+		\end{minted}
+		\caption{Erstellen und verwenden eines Datenbankschemas}
+		\label{lst:createAndUseDBSchema}
+	\end{listing}
+
+	Um eine Verbindung zur Datenbank aufzustellen, liegt im Projekt ein \ac{JSON}-File, das die benötigten Konfigurationen bereitstellt (Siehe: \autoref{lst:connectionConfigs}).
+
+	\begin{listing}[ht]
+		\begin{minted}{JSON}
+			{
+				[...]
+				
+				"ConnectionStrings": {
+					"MariaDbConnectionString": 
+					"server=localhost;port=3306;database=tcms_mariadb;user=root;password=admin;"
+				}
+			}
+		\end{minted}
+		\caption{Konfigurationen für die Verbindung zur MariaDB Datenbank}
+		\label{lst:connectionConfigs}
+	\end{listing}
+
+	Diese werden beim Start des Projektes gelesen und verwendet (Siehe: \autoref{lst:registerDatabase}).
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			services.AddDbContext<EFContext>(
+				dbContextOptions =>
+				{
+					var connectionString = _config
+						.GetConnectionString("MariaDbConnectionString");
+					
+					dbContextOptions
+						.UseMySql(
+							connectionString,
+							ServerVersion.AutoDetect(connectionString)
+						);
+				}
+			);
+			
+			[...]
+		\end{minted}
+		\caption{Registrieren der Datenbank}
+		\label{lst:registerDatabase}
+	\end{listing}
+
+	\subsection{Erstellen und suchen von Test Environments}
+	\todo{Proper Erstellen und suchen von Test Environments Description}
+	
+	\subsection{Erstellen und suchen von Testplänen, Testfällen und Testimplementationen}
+	\todo{Proper Erstellen und suchen von Testplänen, Testfällen und Testimplementationen Description}
+	
+	\subsection{Erstellen und suchen von Testläufe}
+	\todo{Proper Erstellen und suchen von Testläufe Description}
 	
 	
 	
