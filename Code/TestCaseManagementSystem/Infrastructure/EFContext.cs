@@ -15,13 +15,8 @@ public class EFContext : DbContext
     
     public DbSet<TestSystem> TestSystems { get; set; }
 
-    public EFContext(DbContextOptions<EFContext> options) : base(options)
-    {
-    }
-    
-    public EFContext()
-    {
-    }
+    public EFContext(DbContextOptions<EFContext> options) : base(options) { }
+    public EFContext() { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

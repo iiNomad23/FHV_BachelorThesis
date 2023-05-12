@@ -30,7 +30,7 @@ public class Startup
             dbContextOptions =>
             {
                 var connectionString = _config.GetConnectionString("MariaDbConnectionString");
-                
+
                 dbContextOptions
                     .UseMySql(
                         connectionString,
