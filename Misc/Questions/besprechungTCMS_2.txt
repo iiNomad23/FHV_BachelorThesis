@@ -1,0 +1,27 @@
+
+2 
+1 Value object in DTOs?
+0 Wie Firma einführen?
+In zusm mit firma in einleitung oder motivation - pläne bessre verwalten usw.
+
+1 Kurz wegen zielsetzung
+Später bezug nehmen bei z.b bei architektur - mit diesem aufbau bilden ich aein teil ab die diese fragen beantworten oder unterstützen kann.
+
+2 Englische begriffe wie microservices etc.
+Alle fachbegriffe auf englisch
+
+3 Überblick TCMS
+Des sind die führenden und obe sind ein paar
+
+4 EF Core bild
+-
+
+5 DrawIo zeichnungen einfügen?
+Ja
+
+6 Wie ausführlich User Stories? 
+
+
+
+Die anforderung steht mit dieser zielsetzung in bezug wie damit die connectivity 
+Des arbeitet 

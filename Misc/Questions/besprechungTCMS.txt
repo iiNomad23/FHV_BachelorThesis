@@ -1,0 +1,26 @@
+Anforderung chpter mit stories die dann auf adas konzept über geht wie man es plnt hat.
+
+Sprint braucht
+
+Backend ist so kozeptiert.
+
+
+Ergebnisse...
+Discussion
+reflection über architecture (verbesserungspotenzial)
+
+FazitAusblick
+das war aufgabe
+so lösung
+offene punkte.
+
+blackbox white
+für wissensschfltiche pape 
+
+buch für scrum!!
+buch für TDD!!
+buch 
+
+IEEE
+ACM
+
