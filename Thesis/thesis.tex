@@ -799,9 +799,8 @@
 	Damit eine Grundlage für die folgenden User-Stories vorhanden ist, wurde die Struktur des Projektes in vier Teil Projekte aufgeteilt.
 	Dabei ist jedes Projekt die Projektion einer Schicht der verwendeten Architektur (Siehe: \autoref{subsec:backend}).
 	
-	Docker Desktop wurde für das Aufsetzen der Datenbank verwendet.
+	Für das Aufsetzen der Datenbank wurde Docker Desktop verwendet.
 	Docker Desktop ist eine Anwendung die das Erstellen und Verwalten von Container einfacher macht.
-	\autoref{lst:dockerDesktop} zeigt das Erstellen und Ausführen eines MariaDB Containers.
 	
 	\begin{listing}[ht]
 		\begin{minted}{Basic}
@@ -812,8 +811,8 @@
 		\label{lst:dockerDesktop}
 	\end{listing}
 
+	\autoref{lst:dockerDesktop} zeigt das Erstellen und Ausführen eines MariaDB Containers.
 	Nachdem der Container hochgefahren ist kann mit dem MariaDB Server gearbeitet werden.
-	Weiters wurde ein Datenbankschema namens \emph{tcms\_mariadb} erstellt, wo die Tabellen abgespeichert werden (Siehe: \autoref{lst:createAndUseDBSchema}).
 	
 	\begin{listing}[ht]
 		\begin{minted}{SQL}
@@ -824,7 +823,8 @@
 		\label{lst:createAndUseDBSchema}
 	\end{listing}
 
-	Um eine Verbindung zur Datenbank aufzustellen, liegt im Projekt ein \ac{JSON}-File, das die benötigten Konfigurationen bereitstellt (Siehe: \autoref{lst:connectionConfigs}).
+	\autoref{lst:createAndUseDBSchema} zeigt das Erstellen eines Datenbankschemas namens \emph{tcms\_mariadb}. 
+	In dieser werden die Tabellen vom \ac{TCMS} erzeugt und verwaltet.
 
 	\begin{listing}[ht]
 		\begin{minted}{JSON}
@@ -841,8 +841,6 @@
 		\label{lst:connectionConfigs}
 	\end{listing}
 
-	Diese werden beim Start des Projektes in der \emph{Startup} Klasse gelesen und verwendet (Siehe: \autoref{lst:registerDatabase}).
-	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
 			[...]
@@ -850,7 +848,7 @@
 			services.AddDbContext<EFContext>(dbContextOptions => {
 				var connectionString = _config
 					.GetConnectionString("MariaDbConnectionString");
-					
+				
 				dbContextOptions
 					.UseMySql(connectionString,
 						ServerVersion.AutoDetect(connectionString));
@@ -862,7 +860,12 @@
 		\label{lst:registerDatabase}
 	\end{listing}
 
-	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang auf Seite \autopageref{lst:startupClassPart1} zeigt die \emph{Startup} und \emph{Program} Klasse, die beim Start alles nötige initiiert.
+	Um eine Verbindung zur Datenbank herzustellen, liegt im Projekt ein \ac{JSON}-File, das die benötigten Konfigurationen bereitstellt (Siehe: \autoref{lst:connectionConfigs}).
+	Diese werden beim Start des Projektes in der \emph{Startup} Klasse gelesen und verwendet (Siehe: \autoref{lst:registerDatabase}).
+	Weiters wird in \autoref{lst:registerDatabase} gezeigt, dass die Funktion \emph{AddDbContext} den Typ \emph{EFContext} bekommt. 
+	Diese Klasse kümmert sich um alle Tabellen Konfigurationen, die verwendet werden (Siehe: \autoref{lst:efcontextClass}).
+
+	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang auf Seite \autopageref{lst:startupClassPart1} zeigt die \emph{Startup} und \emph{Program} Klasse, die im Zusammenhang der oben gezeigten Ausschnitte, alles nötige initiiert.
 
 	\subsection{Erstellen und suchen von Test Environments}
 	\todo{Proper Erstellen und suchen von Test Environments Description}
