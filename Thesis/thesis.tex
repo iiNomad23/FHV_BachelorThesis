@@ -39,7 +39,7 @@
 
 % Custom Commands
 \renewcommand{\listingscaption}{Quellcode}
-\renewcommand\listoflistingscaption{Quellcodeverzeichnis}
+\renewcommand{\listoflistingscaption}{Quellcodeverzeichnis}
 
 % define date variable for whole doc
 % use \displaydate{date} where needed to insert this date
@@ -137,6 +137,12 @@
 	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 	\listoffigures
 	
+	% Quellcodeverzeichnis
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Quellcodeverzeichnis}
+	\listoflistings
+	
 	% Abkürzungsverzeichnis:
 	\clearpage
 	\phantomsection
@@ -174,7 +180,7 @@
 	\chapter{Einleitung}
 	
 	\begin{flushright}
-		\rightskip=8cm\textit{``Zeit ist Geld.''} \\
+		\rightskip=8cm\textit{``Time is money.''} \\
 		\vspace{.2em}
 		\rightskip=6cm--- \textcite{franklin1748advice}
 	\end{flushright}
@@ -430,7 +436,7 @@
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[scale=0.5]{assets/docker-funktionsweise.png}
+		\includegraphics[scale=0.4]{assets/docker-funktionsweise.png}
 		\caption{Funktionsweise von Docker (Quelle: \textcite{bollhoff_kubernetes_2022})}
 	\end{figure}
 	
@@ -710,7 +716,7 @@
 		
 		Testimplementierungen könne zu Testfällen und zu Testsysteme zugeordnet werden.
 		Durch die Zuordnung von Testimplementierungen zu Testsystemen ist es einfacher die Testimplementierungen von einer Environment darzustellen.
-		Somit kann beispielsweise ein Report generiert werden der einen Überblick über jede Testimplementation von einem Environment gibt.
+		Somit kann beispielsweise ein Report generiert werden, der einen Überblick über jede Testimplementation von einem Environment gibt.
 	\end{itemize}
 
 	\begin{figure}[ht]
