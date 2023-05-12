@@ -37,7 +37,7 @@
 
 \usepackage{todonotes}
 
-% Custom Commands
+% custom commands
 \renewcommand{\listingscaption}{Quellcode}
 \renewcommand{\listoflistingscaption}{Quellcodeverzeichnis}
 \providecommand*{\listingautorefname}{Quellcode}
@@ -102,7 +102,7 @@
 		\end{flushleft}
 	\end{titlepage}
 	
-	% Kurzreferat:
+	% Kurzreferat
 	\newpage
 	\section*{Kurzreferat}
 	\subsection*{Integration eines Feature-orientierten Testsystems in den Entwicklungszyklus technischer Systeme}
@@ -137,7 +137,7 @@
 	A system based on these feature descriptions can support automatic testing, conduct targeted tests for individual features, and accelerate their acceptance. 
 	This reduces testing effort and provides focused feedback to the developers.
 	
-	% Inhaltsverzeichnis:
+	% Inhaltsverzeichnis
 	\cleardoublepage   % force output to a right page
 	\setcounter{tocdepth}{2}
 	\setcounter{secnumdepth}{4}
@@ -155,7 +155,7 @@
 	\addcontentsline{toc}{chapter}{Quellcodeverzeichnis}
 	\listoflistings
 	
-	% Abkürzungsverzeichnis:
+	% Abkürzungsverzeichnis
 	\clearpage
 	\phantomsection
 	\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
@@ -847,25 +847,22 @@
 		\begin{minted}{csharp}
 			[...]
 			
-			services.AddDbContext<EFContext>(
-				dbContextOptions =>
-				{
-					var connectionString = _config
-						.GetConnectionString("MariaDbConnectionString");
+			services.AddDbContext<EFContext>(dbContextOptions => {
+				var connectionString = _config
+					.GetConnectionString("MariaDbConnectionString");
 					
-					dbContextOptions
-						.UseMySql(
-							connectionString,
-							ServerVersion.AutoDetect(connectionString)
-						);
-				}
-			);
+				dbContextOptions
+					.UseMySql(connectionString,
+						ServerVersion.AutoDetect(connectionString));
+			});
 			
 			[...]
 		\end{minted}
 		\caption{Ausschnitt der \emph{Startup} Klasse, der das Registrieren der Datenbank zeigt}
 		\label{lst:registerDatabase}
 	\end{listing}
+
+	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang auf Seite \autopageref{lst:startupClassPart1} zeigt die \emph{Startup} und \emph{Program} Klasse, die beim Start alles nötige initiiert.
 
 	\subsection{Erstellen und suchen von Test Environments}
 	\todo{Proper Erstellen und suchen von Test Environments Description}
@@ -887,12 +884,127 @@
 	\todo{Proper Fazit und Ausblick}
 	
 	
-	% Literaturverzeichnis:
+	% Literaturverzeichnis
 	\clearpage
 	\phantomsection
 	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 	\printbibliography
 	
+	% Anhang
+	\chapter*{Anhang}
+	\addcontentsline{toc}{chapter}{Anhang}
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			public class Startup
+			{
+				private readonly IConfiguration _config;		
+				
+				public Startup(IConfiguration config) { _config = config; }
+				
+				// This method gets called by the runtime. 
+				// Use this method to add services to the container.
+				public void ConfigureServices(IServiceCollection services)
+				{
+					// Register database with the DI container
+					services.AddDbContext<EFContext>(dbContextOptions => {
+						var connectionString = _config
+							.GetConnectionString("MariaDbConnectionString");	
+									
+						dbContextOptions
+							.UseMySql(connectionString,
+								ServerVersion.AutoDetect(connectionString));
+					});
+					
+					// Register repositories with the DI container
+					services.AddTransient<ITestCaseRepository, TestCaseRepository>();
+					services.AddTransient<ITestPlanRepository, TestPlanRepository>();
+					[...]
+					
+					// Register services with the DI container
+					services.AddTransient<ITestCaseService, TestCaseService>();
+					services.AddTransient<ITestPlanService, TestPlanService>();
+					[...]
+					
+					services.AddControllers();
+					services.AddSwaggerGen(c => { 
+							c.SwaggerDoc("v1", 
+								new OpenApiInfo { Title = "API", Version = "v1" }); 
+					});
+				}
+				
+			[...]
+		\end{minted}
+		\caption{\emph{Startup} Klasse Teil 1}
+		\label{lst:startupClassPart1}
+	\end{listing}
+
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+				
+				// This method gets called by the runtime. 
+				// Use this method to configure the HTTP request pipeline.
+				public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+				{
+					if (env.IsDevelopment())
+					{
+						app.UseDeveloperExceptionPage();
+						app.UseSwagger();
+						app.UseSwaggerUI(c => 
+							c.SwaggerEndpoint(
+								"/swagger/v1/swagger.json", 
+								"API v1"
+							)
+						);
+					}
+					
+					app.UseHttpsRedirection();
+					app.UseRouting();
+					app.UseAuthorization();
+					app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+				}
+			}
+		\end{minted}
+		\caption{\emph{Startup} Klasse Teil 2}
+		\label{lst:startupClassPart2}
+	\end{listing}
+
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			public class Program
+			{
+				public static void Main(string[] args)
+				{
+					// Use this line of code when we are going production
+					// CreateHostBuilder(args).Build().Run();
+					
+					// Remove the code block below when we are going production
+					var host = CreateHostBuilder(args).Build();	
+					using (var scope = host.Services.CreateScope())
+					{
+						var services = scope.ServiceProvider;
+						var dbContext = services.GetRequiredService<EFContext>();
+						dbContext.Database.EnsureDeleted();
+						dbContext.Database.EnsureCreated();
+					}
+					
+					host.Run();
+				}
+				
+				private static IHostBuilder CreateHostBuilder(string[] args)
+				{
+					return Host
+						.CreateDefaultBuilder(args)
+						.ConfigureWebHostDefaults(webBuilder => { 
+							webBuilder.UseStartup<Startup>(); 
+						});
+				}
+			}
+		\end{minted}
+		\caption{\emph{Program} Klasse, die die \emph{Startup} Klasse verwendet}
+		\label{lst:programClass}
+	\end{listing}
+		
 	\clearpage
 	\section*{Eidesstattliche Erklärung}
 	Ich erkläre hiermit an Eides statt, dass ich vorliegende Bachelorarbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. 
