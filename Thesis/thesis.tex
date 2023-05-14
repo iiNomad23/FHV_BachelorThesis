@@ -176,6 +176,10 @@
 		\acro{GI}{Gantner Instruments}
 		\acro{TAS}{Test Automation System}
 		\acro{IDE}{Integrated Development Environment}
+		\acro{ID}{Identifier}
+		\acro{SQL}{Structured Query Language}
+		\acro{DTO}{Data Transfer Object}
+		\acro{DI}{Dependency Injection}
 	
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
@@ -563,13 +567,13 @@
 		\item Datenbank manuell beschreibbar
 	\end{itemize}
 	
-	\subsection{Erstellen und suchen von Test Environments}
-	Als Nutzer:in möchte ich Test Environments erstellen und suchen, sodass ich Testpläne zuordnen kann.
+	\subsection{Erstellen und suchen von Test-Environments}
+	Als Nutzer:in möchte ich Test-Environments erstellen und suchen, sodass ich Testpläne zuordnen kann.
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
-		\item Erstellen von Test Environments über Swagger \ac{UI}
-		\item Suchen von Test Environments über Swagger \ac{UI}
+		\item Erstellen von Test-Environments über Swagger \ac{UI}
+		\item Suchen von Test-Environments über Swagger \ac{UI}
 		\item Hinzufügen und Entfernen von Testplänen über Swagger \ac{UI}
 	\end{itemize}
 
@@ -694,7 +698,7 @@
 		%\setlength\itemsep{-0.5em}
 		\item Produkt und Testsysteme beschreiben
 		
-		Das Produkt wurde als Test Environment Entität modelliert, dass kann beispielsweise ein Gerät von der Firma sein.
+		Das Produkt wurde als Test-Environment Entität modelliert, dass kann beispielsweise ein Gerät von der Firma sein.
 		Das Testsystem bildet beispielsweise eine Prüfwand mit mehreren Geräten ab mit denen Tests durchgeführt werden.
 		Jedes Produkt hat eigene Testsysteme.
 		
@@ -705,7 +709,7 @@
 		
 		\item Features zu einem Produkt zuordnen
 		
-		Die erstellten Testpläne können nach dem Erstellen zu Test Environments zugeordnet werden.
+		Die erstellten Testpläne können nach dem Erstellen zu Test-Environments zugeordnet werden.
 		Somit können Testpläne für andere Environments wiederverwendet werden.
 		
 		\item Testfälle beschreiben
@@ -779,17 +783,29 @@
 		\label{fig:scrum-process}
 	\end{figure}
 	
-	Während der Implementierung des \ac{TCMS} dieser Arbeit wurde ein solcher Prozess angewendet (\autoref{fig:scrum-process}).
+	Für die Implementierung der User-Stories wurde der oben gezeigte Prozess angewendet (\autoref{fig:scrum-process}).
 	
 	\section{Implementierung der User-Stories}
 	Dieser Abschnitt zeigt den Ablauf der Implementierung des \ac{TCMS} dieser Arbeit.
 	Gesamt ist die Implementierung auf vier User-Stories aufgeteilt, die in folgender Reihenfolge implementiert wurden:
 	
 	\begin{itemize}
+		\setlength\itemsep{-0.5em}
 		\item Projekt und Datenbank Aufsetzen
-		\item Erstellen und suchen von Test Environments
+		\item Erstellen und suchen von Test-Environments
 		\item Erstellen und suchen von Testplänen, Testfällen und Testimplementationen
 		\item Erstellen und suchen von Testläufe
+	\end{itemize}
+
+	Um die Durchgängigkeit der Architektur zu veranschaulichen wird bei der User-Story \emph{Erstellen und suchen von Test-Environments} im \autoref{subsec:createAndSearchTestEnvironments} auf \autopageref{subsec:createAndSearchTestEnvironments} detailliert in jede Schicht eingegangen.
+	Dabei werden die User-Stories in folgender Reihenfolge in die Schichten implementiert:
+	
+	\begin{itemize}
+		\setlength\itemsep{-0.5em}
+		\item Domainschicht
+		\item Infrastrukturschicht
+		\item Applikationsschicht
+		\item Präsentationsschicht
 	\end{itemize}
 
 	Zur Umsetzung des \ac{TCMS} kommt die Version .NET 7.0 zum Einsatz.
@@ -800,7 +816,7 @@
 	Dabei ist jedes Projekt die Projektion einer Schicht der verwendeten Architektur (Siehe: \autoref{subsec:backend}).
 	
 	Für das Aufsetzen der Datenbank wurde Docker Desktop verwendet.
-	Docker Desktop ist eine Anwendung die das Erstellen und Verwalten von Container einfacher macht.
+	Docker Desktop ist eine Anwendung die das Erstellen und Verwalten von Container einfacher macht. \textcite{noauthor_docker_2022}
 	
 	\begin{listing}[ht]
 		\begin{minted}{Basic}
@@ -867,8 +883,139 @@
 
 	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang auf Seite \autopageref{lst:startupClassPart1} zeigt die \emph{Startup} und \emph{Program} Klasse, die im Zusammenhang der oben gezeigten Ausschnitte, alles nötige initiiert.
 
-	\subsection{Erstellen und suchen von Test Environments}
-	\todo{Proper Erstellen und suchen von Test Environments Description}
+	\subsection{Erstellen und suchen von Test-Environments} \label{subsec:createAndSearchTestEnvironments}
+	Zuerst wurde mit den Domain-Models, \emph{Test-Environment} und \emph{Testsystem}, in der Domainschicht angefangen.
+	Im Anschluss wurden die Interfaces für die Infrastrukturschicht definiert, die ebenfalls in der Domainschicht liegen.
+	Somit kann die Infrastrukturschicht einfach und ohne Abhängigkeiten ausgetauscht werden.
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			public interface ITestEnvironmentRepository
+			{
+				string NextIdentity();
+				Task<TestEnvironment> FindById(string id);
+				Task<List<TestEnvironment>> FindByShortDescription(string shortDescription);
+				Task<List<TestEnvironment>> GetAll();
+				Task Add(TestEnvironment testEnvironment);
+				Task Remove(string id);
+				Task Update(TestEnvironment testEnvironment);
+			}
+		\end{minted}
+		\caption{Test-Environment Aggregate Interface, für die Infrastrukturschicht}
+		\label{lst:testEnvironmentRepository}
+	\end{listing}
+
+	Als nächster Schritt wurden das definierte Interface (Siehe: \autoref{lst:testEnvironmentRepository}) in der Infrastrukturschicht programmiert.
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			public async Task<TestEnvironment> FindById(string id)
+			{
+				var testEnvironment = await _context.TestEnvironments
+					.Include(te => te.TestSystems)
+					.Include(tp => tp.TestPlans)
+					.FirstOrDefaultAsync(testEnvironment => testEnvironment.DomainId == id);
+				
+				if (testEnvironment == null)
+				{
+					throw new ArgumentNullException(null, "Test environment is null: " + id);
+				}
+				
+				return testEnvironment;
+			}
+		
+			[...]
+		\end{minted}
+		\caption{Ausschnitt der \emph{TestEnvironmentRepository} Klasse, die ein Test-Environment-Objekt mithilfe einer \ac{ID} von der Datenbank ausliest}
+		\label{lst:testEnvironmentRepositoryAusschnitt_1}
+	\end{listing}
+	
+	Mithilfe der \ac{ORM} Technologie, \ac{EF} Core, können Objekte ohne \acfi{SQL} Statements in die Datenbank geschrieben, gelesen, gelöscht und aktualisiert werden.
+	Beispielsweise zeigt der \autoref{lst:testEnvironmentRepositoryAusschnitt_1} wie ein Test-Environment mit einer \acfi{ID} von der Datenbank ausgelesen werden kann.
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			public async Task Add(TestEnvironment testEnvironment)
+			{
+				await _context.TestEnvironments.AddAsync(testEnvironment);
+				await _context.SaveChangesAsync();
+			}
+			
+			[...]
+		\end{minted}
+		\caption{Ausschnitt der \emph{TestEnvironmentRepository} Klasse}
+		\label{lst:testEnvironmentRepositoryAusschnitt_2}
+	\end{listing}
+
+	Der in \autoref{lst:testEnvironmentRepositoryAusschnitt_2} gezeigte Code zeigt das Schreiben eines Test-Environment-Objekts in die Datenbank.
+	
+	Damit wir das von \autoref{lst:testEnvironmentRepositoryAusschnitt_1} ausgelesene Test-Environment-Objekt weiter verwenden können, wird ein Test-Environment-Service in der Applikationsschicht einwickelt.
+	Dabei wird für den Service zuerst wieder ein Interface definiert, welches die \emph{TestEnvironemntService} Klasse implementiert.
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			public async Task<TestEnvironmentDTO> FindById(string id)
+			{
+				var testEnvironment = await _testEnvironmentRepository.FindById(id);
+				
+				return new TestEnvironmentDTO
+				{
+					Id = testEnvironment.DomainId,
+					ShortDescription = testEnvironment.ShortDescription,
+					LongDescription = testEnvironment.LongDescription,
+					TestSystems = testEnvironment.TestSystems
+						.Select(ts => new TestSystemDTO
+						{
+							Name = ts.Name,
+							Description = ts.Description,
+						})
+						.ToList()
+				};
+			}
+			
+			[...]
+		\end{minted}
+		\caption{Ausschnitt der \emph{TestEnvironemntService} Klasse}
+		\label{lst:testEnvironmentServiceAusschnitt}
+	\end{listing}
+	
+	Der in \autoref{lst:testEnvironmentServiceAusschnitt} gezeigte Code bekommt das Test-Environment-Objekt von der Infrastrukturschicht zurück und wandelt es in ein \acfi{DTO} um.
+	Das \ac{DTO} wird dann in der Präsentationsschicht weiter verarbeitet.
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			[HttpGet("{id}")]
+			public async Task<ActionResult<TestEnvironmentDTO>> FindTestEnvironmentById(string id)
+			{
+				var testEnvironmentDTO = await _testEnvironmentService.FindById(id);
+				return Ok(testEnvironmentDTO);
+			}
+			
+			[...]
+		\end{minted}
+		\caption{Ausschnitt der \emph{TestEnvironemntController} Klasse}
+		\label{lst:testEnvironmentControllerAusschnitt_1}
+	\end{listing}
+
+	Der in \autoref{lst:testEnvironmentControllerAusschnitt_1} gezeigte Code bekommt das umgewandelte Test-Environment-Objekt (\ac{DTO}) von der Applikationsschicht zurück und schickt es dem Client weiter.
+	Zu guter Letzt wird die \emph{TestEnvironemntService} und die \emph{TestEnvironmentRepository} Klasse in der \emph{EFContext} Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.5]{assets/swaggerui_testenvironment.png}
+		\caption{Test-Environment \ac{UI} von Swagger}
+		\label{fig:swaggerui_testenvironment}
+	\end{figure}
+
+	Dadurch, dass \emph{Swagger} verwendet wird, wird beim Start des Projektes die \emph{TestEnvironemntController} Klasse gescannt und dafür eine Weboberfläche für die definierten Endpunkte generiert (Siehe: \autoref{fig:swaggerui_testenvironment}).
 	
 	\subsection{Erstellen und suchen von Testplänen, Testfällen und Testimplementationen}
 	\todo{Proper Erstellen und suchen von Testplänen, Testfällen und Testimplementationen Description}
