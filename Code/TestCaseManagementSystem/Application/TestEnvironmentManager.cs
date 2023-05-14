@@ -45,10 +45,11 @@ public class TestEnvironmentManager : ITestEnvironmentManger
             LongDescription = testEnvironment.LongDescription,
             TestSystems = testEnvironment.TestSystems
                 .Select(ts => new TestSystemDTO
-                {
-                    Name = ts.Name,
-                    Description = ts.Description,
-                })
+                    {
+                        Name = ts.Name,
+                        Description = ts.Description,
+                    }
+                )
                 .ToList()
         };
 
