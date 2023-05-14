@@ -790,22 +790,27 @@
 	Gesamt ist die Implementierung auf vier User-Stories aufgeteilt, die in folgender Reihenfolge implementiert wurden:
 	
 	\begin{itemize}
-		\setlength\itemsep{-0.5em}
 		\item Projekt und Datenbank Aufsetzen
 		\item Erstellen und suchen von Test-Environments
-		\item Erstellen und suchen von Testplänen, Testfällen und Testimplementationen
-		\item Erstellen und suchen von Testläufe
-	\end{itemize}
-
-	Um die Durchgängigkeit der Architektur zu veranschaulichen wird bei der User-Story \emph{Erstellen und suchen von Test-Environments} im \autoref{subsec:createAndSearchTestEnvironments} auf \autopageref{subsec:createAndSearchTestEnvironments} detailliert in jede Schicht eingegangen.
-	Dabei werden die User-Stories in folgender Reihenfolge in die Schichten implementiert:
+		
+		Um die Durchgängigkeit der Architektur zu veranschaulichen wird bei dieser User-Story detailliert in jede Schicht eingegangen (Siehe: \autoref{subsec:createAndSearchTestEnvironments} auf \autopageref{subsec:createAndSearchTestEnvironments}).
+		Dabei werden die User-Stories in folgender Reihenfolge in die Schichten implementiert:
+		
+		\begin{itemize}
+			\setlength\itemsep{-0.5em}
+			\item Domainschicht
+			\item Infrastrukturschicht
+			\item Applikationsschicht
+			\item Präsentationsschicht
+		\end{itemize}
 	
-	\begin{itemize}
-		\setlength\itemsep{-0.5em}
-		\item Domainschicht
-		\item Infrastrukturschicht
-		\item Applikationsschicht
-		\item Präsentationsschicht
+		\item Erstellen und suchen von Testplänen, Testfällen und Testimplementationen
+		
+		Um zu zeigen, wie die Konfiguration der Tabellen mit \ac{EF} Core funktioniert wird bei dieser User-Story detailliert darauf eingegangen (Siehe: \autoref{subsec:createAndSearchTestplans} auf \autopageref{subsec:createAndSearchTestplans}).
+		
+		\item Erstellen und suchen von Testläufe
+		
+		In dieser User-Story wird gezeigt wie das \ac{TAS} von \ac{GI} mit dem \ac{TCMS} interagiert (Siehe: \autoref{subsec:createAndSearchTestruns} auf \autopageref{subsec:createAndSearchTestruns}).
 	\end{itemize}
 
 	Zur Umsetzung des \ac{TCMS} kommt die Version .NET 7.0 zum Einsatz.
@@ -918,10 +923,7 @@
 					.Include(tp => tp.TestPlans)
 					.FirstOrDefaultAsync(testEnvironment => testEnvironment.DomainId == id);
 				
-				if (testEnvironment == null)
-				{
-					throw new ArgumentNullException(null, "Test environment is null: " + id);
-				}
+				[...]
 				
 				return testEnvironment;
 			}
@@ -934,6 +936,59 @@
 	
 	Mithilfe der \ac{ORM} Technologie, \ac{EF} Core, können Objekte ohne \acfi{SQL} Statements in die Datenbank geschrieben, gelesen, gelöscht und aktualisiert werden.
 	Beispielsweise zeigt der \autoref{lst:testEnvironmentRepositoryAusschnitt_1} wie ein Test-Environment mit einer \acfi{ID} von der Datenbank ausgelesen werden kann.
+	
+	Damit wir das von \autoref{lst:testEnvironmentRepositoryAusschnitt_1} ausgelesene Test-Environment-Objekt weiter verwenden können, wird ein Test-Environment-Service in der Applikationsschicht einwickelt.
+	Dabei wird für den Service zuerst wieder ein Interface definiert, welches die \emph{TestEnvironemntService} Klasse implementiert.
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			public async Task<TestEnvironmentDTO> FindById(string id)
+			{
+				var testEnvironment = await _testEnvironmentRepository.FindById(id);	
+				return new TestEnvironmentDTO
+				{
+					Id = testEnvironment.DomainId,
+					ShortDescription = testEnvironment.ShortDescription,
+					LongDescription = testEnvironment.LongDescription,
+					[...]
+				};
+			}
+			
+			[...]
+		\end{minted}
+		\caption{Ausschnitt der \emph{TestEnvironemntService} Klasse}
+		\label{lst:testEnvironmentServiceAusschnitt}
+	\end{listing}
+
+	Der in \autoref{lst:testEnvironmentServiceAusschnitt} gezeigte Code bekommt das Test-Environment-Objekt von der Infrastrukturschicht zurück und wandelt es in ein \acfi{DTO} um.
+	Das \ac{DTO} wird dann in der Präsentationsschicht weiter verarbeitet.
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			[HttpGet("{id}")]
+			public async Task<ActionResult<TestEnvironmentDTO>> 
+				FindTestEnvironmentById(string id)
+			{
+				var testEnvironmentDTO = await _testEnvironmentService.FindById(id);
+				return Ok(testEnvironmentDTO);
+			}
+			
+			[...]
+		\end{minted}
+		\caption{Ausschnitt der \emph{TestEnvironemntController} Klasse}
+		\label{lst:testEnvironmentControllerAusschnitt_1}
+	\end{listing}
+
+	Der in \autoref{lst:testEnvironmentControllerAusschnitt_1} gezeigte Code bekommt das umgewandelte Test-Environment-Objekt (\ac{DTO}) von der Applikationsschicht zurück und schickt es dem Client weiter.
+	Zu guter Letzt wird die \emph{TestEnvironemntService} und die \emph{TestEnvironmentRepository} Klasse in der \emph{EFContext} Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
+	
+	Der gezeigte Ablauf war die Suche eines Test-Environments. 
+	Beim Erstellen passiert ähnliches, nur dass der Client ein \ac{DTO} über den bereitgestellten Endpunkt der \ac{API} schickt. (Siehe: \autoref{fig:swaggeruiTestenvironment})
+	Die \emph{TestEnvironemntController} Klasse empfängt das \ac{DTO} und schickt es der Applikationschicht weiter, diese Schicht wandelt es von einem \ac{DTO} in ein Domain-Objekt um und schickt es weiter zur Infrastukturschicht, die es dann persistiert.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -950,77 +1005,22 @@
 		\caption{Ausschnitt der \emph{TestEnvironmentRepository} Klasse}
 		\label{lst:testEnvironmentRepositoryAusschnitt_2}
 	\end{listing}
-
+	
 	Der in \autoref{lst:testEnvironmentRepositoryAusschnitt_2} gezeigte Code zeigt das Schreiben eines Test-Environment-Objekts in die Datenbank.
-	
-	Damit wir das von \autoref{lst:testEnvironmentRepositoryAusschnitt_1} ausgelesene Test-Environment-Objekt weiter verwenden können, wird ein Test-Environment-Service in der Applikationsschicht einwickelt.
-	Dabei wird für den Service zuerst wieder ein Interface definiert, welches die \emph{TestEnvironemntService} Klasse implementiert.
-	
-	\begin{listing}[ht]
-		\begin{minted}{csharp}
-			[...]
-			
-			public async Task<TestEnvironmentDTO> FindById(string id)
-			{
-				var testEnvironment = await _testEnvironmentRepository.FindById(id);
-				
-				return new TestEnvironmentDTO
-				{
-					Id = testEnvironment.DomainId,
-					ShortDescription = testEnvironment.ShortDescription,
-					LongDescription = testEnvironment.LongDescription,
-					TestSystems = testEnvironment.TestSystems
-						.Select(ts => new TestSystemDTO
-						{
-							Name = ts.Name,
-							Description = ts.Description,
-						})
-						.ToList()
-				};
-			}
-			
-			[...]
-		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironemntService} Klasse}
-		\label{lst:testEnvironmentServiceAusschnitt}
-	\end{listing}
-	
-	Der in \autoref{lst:testEnvironmentServiceAusschnitt} gezeigte Code bekommt das Test-Environment-Objekt von der Infrastrukturschicht zurück und wandelt es in ein \acfi{DTO} um.
-	Das \ac{DTO} wird dann in der Präsentationsschicht weiter verarbeitet.
-	
-	\begin{listing}[ht]
-		\begin{minted}{csharp}
-			[...]
-			
-			[HttpGet("{id}")]
-			public async Task<ActionResult<TestEnvironmentDTO>> FindTestEnvironmentById(string id)
-			{
-				var testEnvironmentDTO = await _testEnvironmentService.FindById(id);
-				return Ok(testEnvironmentDTO);
-			}
-			
-			[...]
-		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironemntController} Klasse}
-		\label{lst:testEnvironmentControllerAusschnitt_1}
-	\end{listing}
-
-	Der in \autoref{lst:testEnvironmentControllerAusschnitt_1} gezeigte Code bekommt das umgewandelte Test-Environment-Objekt (\ac{DTO}) von der Applikationsschicht zurück und schickt es dem Client weiter.
-	Zu guter Letzt wird die \emph{TestEnvironemntService} und die \emph{TestEnvironmentRepository} Klasse in der \emph{EFContext} Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.5]{assets/swaggerui_testenvironment.png}
 		\caption{Test-Environment \ac{UI} von Swagger}
-		\label{fig:swaggerui_testenvironment}
+		\label{fig:swaggeruiTestenvironment}
 	\end{figure}
 
-	Dadurch, dass \emph{Swagger} verwendet wird, wird beim Start des Projektes die \emph{TestEnvironemntController} Klasse gescannt und dafür eine Weboberfläche für die definierten Endpunkte generiert (Siehe: \autoref{fig:swaggerui_testenvironment}).
+	Dadurch, dass \emph{Swagger} verwendet wird, wird beim Start des Projektes die \emph{TestEnvironemntController} Klasse gescannt und dafür eine Weboberfläche für die definierten Endpunkte generiert (Siehe: \autoref{fig:swaggeruiTestenvironment}).
 	
-	\subsection{Erstellen und suchen von Testplänen, Testfällen und Testimplementationen}
+	\subsection{Erstellen und suchen von Testplänen, Testfällen und Testimplementationen} \label{subsec:createAndSearchTestplans}
 	\todo{Proper Erstellen und suchen von Testplänen, Testfällen und Testimplementationen Description}
 	
-	\subsection{Erstellen und suchen von Testläufe}
+	\subsection{Erstellen und suchen von Testläufe} \label{subsec:createAndSearchTestruns}
 	\todo{Proper Erstellen und suchen von Testläufe Description}
 	
 	
