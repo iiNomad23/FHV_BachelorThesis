@@ -1115,8 +1115,63 @@
 	\autoref{lst:testEnvironmentManagerClass} im Anhang auf \autopageref{lst:testEnvironmentManagerClass} zeigt, wie dies erfolgt.
 	
 	\subsection{Erstellen und suchen von Testläufe} \label{subsec:createAndSearchTestruns}
-	\todo{Proper Erstellen und suchen von Testläufe Description}
 	
+	Der Ablauf der Implementierung ist gleich wie bei den vorherigen User-Stories.
+	Die \ac{EF} Core Konfiguration besteht aus folgenden Beziehungen:
+	
+	\begin{itemize}
+		\item Many-to-one zu der \emph{Testsystem} Domain-Klasse
+		
+		Dadurch wird ermöglicht, dass alle Testläufe eines Testsystems von einem Test-Environment effizient abgefragt werden können.
+		
+		\item One-to-many zu der \emph{ResultDetails} ValueObject-Klasse
+		\item One-to-many zu der \emph{DeviceDetail} ValueObject-Klasse
+	\end{itemize}
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			builder
+				.Property(p => p.ResultDetailsMap)
+				.HasConversion<string>(
+					d => JsonConvert.SerializeObject(d),
+					s => JsonConvert.DeserializeObject<Dictionary<string, ResultDetails>>(s) ??
+						new Dictionary<string, ResultDetails>()
+			);
+			
+			[...]
+		\end{minted}
+		\caption{Ausschnit aus der \emph{TestRunConfiguration} Klasse}
+		\label{lst:testRunConfigurationClass}
+	\end{listing}
+	
+	\autoref{lst:testRunConfigurationClass} zeigt wie ein \emph{Dictionary} mit \ac{EF} Core konfiguriert wird.
+	Dabei wird das \emph{Dictionary} als \ac{JSON} in ein \ac{JSON}-Spalte geschrieben.
+	Beim Auslesen wird das \ac{JSON}-Objekt wieder in ein \emph{Dictionary} deserialisiert.
+	
+	\subsubsection{Automatische Erstellung von Testläufen über das TAS}
+	Über bereitgestellte \ac{API}s ermöglicht es dem \ac{TAS} von \ac{GI} Testläufe automatisch zu erstellen.
+	Um manuell Testläufe zu erstellen, gibt es ein \ac{UI}, dass mit swagger generiert wurde.
+	
+	Ein Ablauf eines \ac{TAS} sieht folgend aus:
+	
+	\begin{itemize}
+		\item Ein Testlauf wird beim Start des \ac{TAS} erstellt.
+		
+		Jeder Test des \ac{TAS} beinhaltet eine \ac{ID} von einer Testimplementation.
+		
+		\item Nach Beendigung eines Tests benachrichtigt das \ac{TAS}, über eine bereitgestellte \ac{API}, das \ac{TCMS}
+		
+		Der Testlauf der beim Start erstellt wurde, wird nun aus der Datenbank ausgelesen. 
+		Die Resultate, die das \ac{TAS} mit der zugehörigen Testimplementation \ac{ID} sendet, wird in das \emph{Dictionary}, von der \emph{Testlauf} Klasse, hinzugefügt.
+		Der Testlauf wird daraufhin in der Datenbank aktualisiert.
+		
+		\item Nach Beendigung des gesamten Testablaufs wird das Enddatum beim Testlauf eingetragen.
+	\end{itemize}
+	
+	Die Testimplementationen sind, wie die Testläufe, in einer Many-to-one Beziehung zu der \emph{Testsystem} Klasse. 
+	Dadurch ist es möglich, durch den Status der Testimplementationen, Statistiken und Reports zu erstellen, die angeben in welchem Zustand ein Feature (Testplan) eines Gerätes (Test-Environment) ist.
 	
 	
 	\chapter{Ergebnisse}
