@@ -1150,10 +1150,11 @@
 	Dabei wird das \emph{Dictionary} als \ac{JSON} in ein \ac{JSON}-Spalte geschrieben.
 	Beim Auslesen wird das \ac{JSON}-Objekt wieder in ein \emph{Dictionary} deserialisiert.
 	
+	Die Testimplementationen sind, wie die Testläufe, in einer Many-to-one Beziehung zu der \emph{Testsystem} Klasse. 
+	Dadurch ist es möglich, durch den Status der Testimplementationen, Statistiken und Reports zu erstellen, die angeben in welchem Zustand ein Feature (Testplan) eines Gerätes (Test-Environment) ist und ob es Release bereit ist.
+	
 	\subsubsection{Automatische Erstellung von Testläufen über das TAS}
 	Über bereitgestellte \ac{API}s ermöglicht es dem \ac{TAS} von \ac{GI} Testläufe automatisch zu erstellen.
-	Um manuell Testläufe zu erstellen, gibt es ein \ac{UI}, dass mit \emph{swagger} generiert wurde.
-	
 	Ein Ablauf eines \ac{TAS} sieht folgend aus:
 	
 	\begin{itemize}
@@ -1170,9 +1171,7 @@
 		\item Nach Beendigung des gesamten Testablaufs wird das Enddatum beim Testlauf eingetragen.
 	\end{itemize}
 	
-	Die Testimplementationen sind, wie die Testläufe, in einer Many-to-one Beziehung zu der \emph{Testsystem} Klasse. 
-	Dadurch ist es möglich, durch den Status der Testimplementationen, Statistiken und Reports zu erstellen, die angeben in welchem Zustand ein Feature (Testplan) eines Gerätes (Test-Environment) ist.
-	
+	Um manuell Testläufe zu erstellen, gibt es ein \ac{UI}, dass mit \emph{swagger} generiert wurde.
 	
 	\chapter{Ergebnisse}
 	\todo{Proper Ergebnisse Description}
