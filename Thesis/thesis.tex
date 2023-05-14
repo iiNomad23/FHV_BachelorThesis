@@ -806,7 +806,7 @@
 	
 		\item Erstellen und suchen von Testplänen, Testfällen und Testimplementationen
 		
-		Um zu zeigen, wie die Konfiguration der Tabellen mit \ac{EF} Core funktioniert wird bei dieser User-Story detailliert darauf eingegangen (Siehe: \autoref{subsec:createAndSearchTestplans} auf \autopageref{subsec:createAndSearchTestplans}).
+		Um zu zeigen, wie \ac{EF} Core Tabellen konfiguriert, werden bei dieser User-Story detailliert auf die Konfigurationen eingegangen (Siehe: \autoref{subsec:createAndSearchTestplans} auf \autopageref{subsec:createAndSearchTestplans}).
 		
 		\item Erstellen und suchen von Testläufe
 		
@@ -886,7 +886,7 @@
 	Weiters wird in \autoref{lst:registerDatabase} gezeigt, dass die Funktion \emph{AddDbContext} den Typ \emph{EFContext} bekommt. 
 	Diese Klasse kümmert sich um alle Tabellen Konfigurationen, die verwendet werden (Siehe: \autoref{lst:efcontextClass}).
 
-	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang auf Seite \autopageref{lst:startupClassPart1} zeigt die \emph{Startup} und \emph{Program} Klasse, die im Zusammenhang der oben gezeigten Ausschnitte, alles nötige initiiert.
+	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang auf \autopageref{lst:startupClassPart1} zeigt die \emph{Startup} und \emph{Program} Klasse, die im Zusammenhang der oben gezeigten Ausschnitte, alles nötige initiiert.
 
 	\subsection{Erstellen und suchen von Test-Environments} \label{subsec:createAndSearchTestEnvironments}
 	Zuerst wurde mit den Domain-Models, \emph{Test-Environment} und \emph{Testsystem}, in der Domainschicht angefangen.
@@ -920,7 +920,7 @@
 			{
 				var testEnvironment = await _context.TestEnvironments
 					.Include(te => te.TestSystems)
-					.Include(tp => tp.TestPlans)
+					.Include(tp => tp.TestEnvironmentPlans)
 					.FirstOrDefaultAsync(testEnvironment => testEnvironment.DomainId == id);
 				
 				[...]
@@ -984,10 +984,10 @@
 	\end{listing}
 
 	Der in \autoref{lst:testEnvironmentControllerAusschnitt_1} gezeigte Code bekommt das umgewandelte Test-Environment-Objekt (\ac{DTO}) von der Applikationsschicht zurück und schickt es dem Client weiter.
-	Zu guter Letzt wird die \emph{TestEnvironemntService} und die \emph{TestEnvironmentRepository} Klasse in der \emph{EFContext} Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
+	Zu guter Letzt werden die \emph{TestEnvironemntService} und \emph{TestEnvironmentRepository} Klassen in der \emph{EFContext} Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
 	
 	Der gezeigte Ablauf war die Suche eines Test-Environments. 
-	Beim Erstellen passiert ähnliches, nur dass der Client ein \ac{DTO} über den bereitgestellten Endpunkt der \ac{API} schickt. (Siehe: \autoref{fig:swaggeruiTestenvironment})
+	Beim Erstellen passiert ähnliches, nur dass der Client ein \ac{DTO} über den bereitgestellten Endpunkt der \ac{API} schickt (Siehe: \autoref{fig:swaggeruiTestenvironment}).
 	Die \emph{TestEnvironemntController} Klasse empfängt das \ac{DTO} und schickt es der Applikationschicht weiter, diese Schicht wandelt es von einem \ac{DTO} in ein Domain-Objekt um und schickt es weiter zur Infrastukturschicht, die es dann persistiert.
 	
 	\begin{listing}[ht]
@@ -1018,7 +1018,101 @@
 	Dadurch, dass \emph{Swagger} verwendet wird, wird beim Start des Projektes die \emph{TestEnvironemntController} Klasse gescannt und dafür eine Weboberfläche für die definierten Endpunkte generiert (Siehe: \autoref{fig:swaggeruiTestenvironment}).
 	
 	\subsection{Erstellen und suchen von Testplänen, Testfällen und Testimplementationen} \label{subsec:createAndSearchTestplans}
-	\todo{Proper Erstellen und suchen von Testplänen, Testfällen und Testimplementationen Description}
+	Wie bei der vorherigen User-Story ist der Ablauf der Implementierung für die Testpläne, Testfälle und für die Testimplementationen der gleiche.
+	
+	Zuerst wurden die Domain-Models erstellt, dann das Repository, folgend mit dem Service und als Letztes wurde der Controller implementiert.
+	Zudem werden bei Start des Projektes wieder die \emph{Controller} Klassen gescannt und dafür eine Weboberfläche generiert.
+	
+	Damit beispielsweise die Testpläne einer Test-Environment zugewiesen werden können muss eine \emph{Junction} Tabelle erstellt werden, da zwischen Testplan und Test-Environment eine Many-to-many Beziehung herrscht.
+	
+	\newpage
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			public class TestEnvironmentPlan
+			{
+				public string TestEnvironmentDomainId {get; private set;}
+				public string TestPlanDomainId {get; private set;}
+				
+				public TestEnvironmentPlan(string testEnvironmentDomainId, string testPlanDomainId)
+				{
+					TestEnvironmentDomainId = testEnvironmentDomainId;
+					TestPlanDomainId = testPlanDomainId;
+				}
+			}
+		\end{minted}
+		\caption{\emph{TestEnvironmentPlan} Klasse}
+		\label{lst:testEnvironmentPlanClass}
+	\end{listing}
+	
+	Dadurch, dass eine \emph{Junction} Tabelle benötigt wird, wurde die \emph{TestEnvironmentPlan} Klasse erstellt, die lediglich die Domain-\ac{ID}s beider Domain-Klassen, \emph{TestEnvironment} und \emph{TestPlan}, beinhaltet (Siehe: \autoref{lst:testEnvironmentPlanClass}).
+	
+	Damit die zwei Domain-Klassen später in den \ac{EF} Core Tabellenkonfigurationen als Many-to-many Beziehung konfigurierbar sind, ist die \emph{TestEnvironmentPlan} Klasse als \emph{Property} in beiden Klassen vorhanden.
+	
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			// TestEnvironment - many to one - TestEnvironmentPlan
+			builder
+				.HasMany(e => e.TestEnvironmentPlans)
+				.WithOne()
+				.HasPrincipalKey(e => e.DomainId)
+				.IsRequired();
+				
+			[...]
+				
+			// TestPlan - many to one - TestEnvironmentPlan
+			builder
+				.HasMany(e => e.TestEnvironmentPlans)
+				.WithOne()
+				.HasPrincipalKey(e => e.DomainId)
+				.IsRequired();	
+				
+			[...]
+		\end{minted}
+		\caption{Ausschnit aus der \emph{TestEnvironmentConfiguration} und \emph{TestPlanConfiguration} Klasse}
+		\label{lst:testEnvironmentAndPlanConfigurationClass}
+	\end{listing}
+
+	Der in \autoref{lst:testEnvironmentAndPlanConfigurationClass} gezeigte Code konfiguriert ein Teil der Tabellen \emph{TestEnvironment} und \emph{TestPlan}.
+	Damit wird bestimmt, dass die Tabellen \emph{TestEnvironment} und \emph{TestPlan} eine Many-to-one Beziehung zu der \emph{Junction} Tabelle haben.
+
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			builder.HasKey(e => new {e.TestEnvironmentDomainId, e.TestPlanDomainId});
+			
+			// TestEnvironmentPlan - many to one - TestEnvironment
+			builder
+				.HasOne<TestEnvironment>()
+				.WithMany(e => e.TestEnvironmentPlans)
+				.HasPrincipalKey(e => e.DomainId)
+				.IsRequired();
+				
+			// TestEnvironmentPlan - many to one - TestPlan
+			builder
+				.HasOne<TestPlan>()
+				.WithMany(e => e.TestEnvironmentPlans)
+				.HasPrincipalKey(e => e.DomainId)
+				.IsRequired();
+			
+			[...]
+		\end{minted}
+		\caption{Ausschnit aus der \emph{TestEnvironmentPlanConfiguration} Klasse}
+		\label{lst:testEnvironmentPlanConfigurationClass}
+	\end{listing}
+
+	Der in \autoref{lst:testEnvironmentPlanConfigurationClass} gezeigte Code konfiguriert ein Teil der \emph{Junction} Tabelle \emph{TestEnvironmentPlan}.
+	Damit wird bestimmt, dass diese Tabelle eine Many-to-one Beziehung zu den Tabellen \emph{TestEnvironment} und \emph{TestPlan}.
+	
+	Somit wurde mit \ac{EF} Core eine Many-to-Many Beziehung hergestellt. 
+	Nun ist es möglich Testpläne einer Test-Environemnt zuzuweisen.
+	
+	Um ein Test-Environment mit den hinzugefügten Test-Pläne abzufragen, wurde eine \emph{TestEnvironmentManager} Klasse in der Applikationsschicht implementiert.
+	Dieser Manager hat Zugriff auf die \emph{TestEnvironmentRepository} und \emph{TestPlanRepository} Klassen.
+	\autoref{lst:testEnvironmentManagerClass} im Anhang auf \autopageref{lst:testEnvironmentManagerClass} zeigt, wie dies erfolgt.
 	
 	\subsection{Erstellen und suchen von Testläufe} \label{subsec:createAndSearchTestruns}
 	\todo{Proper Erstellen und suchen von Testläufe Description}
@@ -1197,6 +1291,60 @@
 			Diese Klasse wird, bei der Registrierung der Datenbank, in \autoref{lst:startupClassPart1} als Typ angegeben.
 		}
 		\label{lst:efcontextClass}
+	\end{listing}
+
+	\begin{listing}[ht]
+		\begin{minted}{csharp}
+			[...]
+			
+			public async Task<TestEnvironmentWithTestPlansDTO> FindByIdWithTestPlans(string id)
+			{
+				var testEnvironment = await _testEnvironmentRepository.FindById(id);
+				
+				var testEnvironmentPlanIds = testEnvironment.TestEnvironmentPlans
+					.Select(item => item.TestPlanDomainId)
+					.ToArray();
+				
+				var testPlans = await _testPlanRepository.FindByIdSet(testEnvironmentPlanIds);
+				
+				var testPlanDTOs = testPlans
+					.Select(tp => new TestPlanDTO
+						{
+							Id = tp.DomainId,
+							ShortDescription = tp.ShortDescription,
+							LongDescription = tp.LongDescription,
+							ReferenceLink = tp.ReferenceLink
+						}
+					)
+					.ToList();
+				
+				var testEnvironmentDTO = new TestEnvironmentDTO
+				{
+					Id = testEnvironment.DomainId,
+					ShortDescription = testEnvironment.ShortDescription,
+					LongDescription = testEnvironment.LongDescription,
+					TestSystems = testEnvironment.TestSystems
+						.Select(ts => new TestSystemDTO
+						{
+							Name = ts.Name,
+							Description = ts.Description,
+						})
+						.ToList()
+				};
+				
+				var testEnvironmentWithTestPlansDTO = new TestEnvironmentWithTestPlansDTO
+				{
+					TestEnvironmentDTO = testEnvironmentDTO,
+					TestPlanDTOs = testPlanDTOs
+				};
+				
+				return testEnvironmentWithTestPlansDTO;
+			}
+		
+			[...]
+		\end{minted}
+		\caption{Ausschnitt der \emph{TestEnvironmentManager} Klasse die das Interface \emph{ITestEnvironmentManger} implementiert}
+		\label{lst:testEnvironmentManagerClass}
 	\end{listing}
 		
 	\clearpage
