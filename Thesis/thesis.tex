@@ -1173,20 +1173,9 @@
 	
 	Um manuell Testläufe zu erstellen, gibt es ein \ac{UI}, dass mit \emph{swagger} generiert wurde.
 	
-	\chapter{Evaluierung und Ausblick}
-	In diesem Kapitel werden die erzielten Ergebnisse der technischen Umsetzung des \ac{TCMS} Backends noch einmal reflektiert. 
-	Weiters werden Verbesserungsmöglichkeiten und ein kurzer Ausblick auf zukünftige Features für das \ac{TCMS} gegeben.
-	
-	Ziel dieser Arbeit war es ein funktionierendes \ac{TCMS} Backend zu implementieren. 
-	Anhand der Kommunikation mit den Domain-Experten sind die aufgelisteten Kriterien in \autoref{chapter:requiremnts} auf \autopageref{chapter:requiremnts} entstanden.
-	Durch diese Kriterien wurde dann entsprechend ein Domain-Model erstellt, das die angegebenen Kriterien vollständig abgedeckt hat.
-	Folgend darauf wurden in \autoref{sec:userStoriesDefinition} auf \autopageref{sec:userStoriesDefinition} die User-Stories für die Umsetzung der gegebenen Anforderungen geplant.	
-	
-	Mit den beschriebenen Technologien in \autoref{sec:technologies} auf \autopageref{sec:technologies} erfolgte eine dementsprechende Umsetzung eines \ac{TCMS} Backends.
-	Angefangen mit der User-Story \emph{Erstellen und suchen von Test-Environments} ist die vierschichtige Architektur implementiert worden.
-	Mithilfe dieser Architektur konnten dann mit wenig Aufwand die restlichen User-Stories implementiert werden.
-	
-	Betrachtet man die Ergebnisse der technischen Umsetzung\footnote{https://github.com/iiNomad23/FHV\_BachelorThesis} kann für die vierschichtigen Architektur und den angewendeten Technologien eine Empfehlung ausgesprochen werden.
+	\chapter{Zusammenfassung und Ausblick}
+	Abschließend befasst sich dieses Kapitel mit den Verbesserungsmöglichkeiten der technischen Umsetzung des \ac{TCMS} Backends und fasst die erzielten Ergebnisse dieser Arbeit auf Basis der gegebenen Anforderung zusammen.
+	Weiters wird ein kurzer Ausblick auf zukünftige Features für das \ac{TCMS} gegeben.
 	
 	\section{Verbesserungsmöglichkeiten}
 	In diesem Abschnitt werden potenzielle Verbesserungsmöglichkeiten für die umgesetzte Lösung erläutert.
@@ -1213,17 +1202,29 @@
 	\autoref{fig:autoMapperExample} zeigt wie \ac{DTO}s zu Domain-Objekte mit \emph{AutoMapper} umgewandelt werden können.
 	Somit wird die Übersichtlichkeit des Codes verbessert und eventuell Codeverdoppelung verhindert.
 	
+	\section{Zusammenfassung}
+	Ziel dieser Arbeit war es ein funktionierendes \ac{TCMS} Backend zu implementieren. 
+	Anhand der Kommunikation mit den Domain-Experten sind die aufgelisteten Kriterien in \autoref{chapter:requiremnts} auf \autopageref{chapter:requiremnts} entstanden.
+	Durch diese Kriterien wurde dann entsprechend ein Domain-Model erstellt, das die angegebenen Kriterien vollständig abgedeckt hat.
+	Folgend darauf wurden in \autoref{sec:userStoriesDefinition} auf \autopageref{sec:userStoriesDefinition} die User-Stories für die Umsetzung der gegebenen Anforderungen geplant.	
+	
+	Mit den beschriebenen Technologien in \autoref{sec:technologies} auf \autopageref{sec:technologies} erfolgte eine dementsprechende Umsetzung eines \ac{TCMS} Backends.
+	Angefangen mit der User-Story \emph{Erstellen und suchen von Test-Environments}, ist die vierschichtige Architektur implementiert worden.
+	Darauffolgend konnten, mithilfe dieser Architektur, mit wenig Aufwand die restlichen User-Stories implementiert werden.
+	
+	Betrachtet man die Ergebnisse der technischen Umsetzung\footnote{https://github.com/iiNomad23/FHV\_BachelorThesis} kann für die vierschichtigen Architektur und den angewendeten Technologien eine Empfehlung ausgesprochen werden. 
+	Entwickler:innen die Erfahrung mit den genannten Technologien und der Architektur haben können damit einfach und effizient ein eigenes \ac{TCMS} Backend entwickeln.
+	
+	Abschließend lässt sich sagen, dass die vorgenommenen Ziele erfolgreich umgesetzt worden sind und die anfangs gestellten relevanten Fragen, unterstützend mit der Umsetzung, beantwortet sind.
+	
+	
 	\section{Ausblick}
-	Die technische Umsetzung des \ac{TCMS} Backends in Zusammenarbeit mit \ac{GI} war der erste Schritt zur Realisierung eines Vollständigem \emph{\acl{TCMS}s}.
+	Die technische Umsetzung des \ac{TCMS} Backends in Zusammenarbeit mit \emph{\acl{GI}} war der erste Schritt zur Realisierung eines Vollständigem \emph{\acl{TCMS}s}.
 	
 	Aus der Sicht des Backends werden in Zukunft die oben aufgelisteten Verbesserungsmöglichkeiten implementiert und gegebenenfalls weitere Features eingebaut.
 	Weiters wird ein Frontend mit den Technologien \emph{React} und \emph{TypeScript}, auf Basis dieser Arbeit, entwickelt.
 	
 	Dadurch wird es die Möglichkeit geben über eine Weboberfläche Statistiken und Reports über gesamte Systeme und Geräte erstellen zu lassen, die wertvollen Einblick geben, welche Features getestet und Release bereit sind.
-	
-	
-	\section{Zusammenfassung}
-	Abschließend lasst sich zusammenfassen...
 	
 	
 	% Literaturverzeichnis
