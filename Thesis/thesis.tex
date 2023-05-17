@@ -245,7 +245,7 @@
 	
 	
 	
-	\chapter{Stand des Technik}
+	\chapter{Stand der Technik}
 	Dieses Kapitel gibt einen Überblick über den aktuellen Stand der Technik von Testarten, \ac{TCMS} sowie deren Verwendung und Integration mit bestehenden Systemen. 
 	Weiters werden Technologien, auf denen das in dieser Arbeit entwickelte \ac{TCMS} aufbaut, beschrieben.
 	
@@ -1173,13 +1173,50 @@
 	
 	Um manuell Testläufe zu erstellen, gibt es ein \ac{UI}, dass mit \emph{swagger} generiert wurde.
 	
-	\chapter{Ergebnisse}
-	\todo{Proper Ergebnisse Description}
+	\chapter{Evaluierung und Ausblick}
+	In diesem Kapitel werden die erzielten Ergebnisse der technischen Umsetzung des \ac{TCMS} Backends noch einmal reflektiert. 
+	Weiters werden Verbesserungsmöglichkeiten und ein kurzer Ausblick auf zukünftige Features für das \ac{TCMS} gegeben.
 	
+	Ziel dieser Arbeit war es ein funktionierendes \ac{TCMS} Backend zu implementieren. 
+	Anhand der Kommunikation mit den Domain-Experten sind die aufgelisteten Kriterien in \autoref{chapter:requiremnts} auf \autopageref{chapter:requiremnts} entstanden.
+	Durch diese Kriterien wurde dann entsprechend ein Domain-Model erstellt, das die angegebenen Kriterien vollständig abgedeckt hat.
+	Folgend darauf wurden in \autoref{sec:userStoriesDefinition} auf \autopageref{sec:userStoriesDefinition} die User-Stories für die Umsetzung der gegebenen Anforderungen geplant.	
 	
+	Mit den beschriebenen Technologien in \autoref{sec:technologies} auf \autopageref{sec:technologies} erfolgte eine dementsprechende Umsetzung eines \ac{TCMS} Backends.
+	Angefangen mit der User-Story \emph{Erstellen und suchen von Test-Environments} ist die vierschichtige Architektur implementiert worden.
+	Mithilfe dieser Architektur konnten dann mit wenig Aufwand die restlichen User-Stories implementiert werden.
 	
-	\chapter{Fazit und Ausblick}
-	\todo{Proper Fazit und Ausblick}
+	Betrachtet man die Ergebnisse der technischen Umsetzung\footnote{https://github.com/iiNomad23/FHV\_BachelorThesis} kann für die vierschichtigen Architektur und den angewendeten Technologien eine Empfehlung ausgesprochen werden.
+	
+	\section{Verbesserungsmöglichkeiten}
+	In diesem Abschnitt werden potenzielle Verbesserungsmöglichkeiten für die umgesetzte Lösung erläutert.
+	Obwohl die Umsetzung die Ziele dieser Arbeit erreicht hat, ist es wichtig mögliche Optimierungen und Verbesserungen der bestehenden Lösung zu veranschaulichen, da dadurch potenzielle Unschönheiten, Codeverdoppelungen etc. aufgedeckt werden können und sich dadurch der Wert des Projektes steigert.
+	Folgend gibt es zwei Möglichkeiten Codeverdoppelungen und Unschönheiten zu vermindern.
+
+	\subsection{Basis Klassen}
+	Bei der Implementierung der User-Stories wurde ersichtlich, dass einige Funktionalitäten, wie z.B. \autoref{lst:testEnvironmentRepository} zeigt, für mehrere Domain-Objekte wie beispielsweise \emph{TestEnvironment}, \emph{TestPlan} etc. gleich ist.
+	Um das zu verhindern, könnten Basis-Klassen in der Infrastruktur- und Applikationsschicht verwendet werden.
+	Beispielsweise könnten die Klassen \emph{TestEnvironmentRepository} und \emph{TestPlanRepository} Basisfunktionalitäten Generisch von einer Basis-Klasse vererben.
+	Somit könnte ein großer Teil der Codebase verkleinert werden.
+	
+	\subsection{Automapper}
+	Bei der Entwicklung der \emph{Controller}-Klassen ist aufgefallen, dass die Umwandlung von \ac{DTO}s in Domain-Objekte und umgekehrt oft mehrfach in verschiedene Funktionalitäten gleich funktioniert.
+	Eine Third-Party Bibliothek names \emph{AutoMapper} könnte die Umwandlungen um einiges vereinfachen. \textcite{noauthor_automapper_nodate}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.3]{assets/AutoMapper_example.png}
+		\caption{Funktionsweise von \emph{AutoMapper} (Quelle: \textcite{sanjay_implement_2020})}
+		\label{fig:autoMapperExample}
+	\end{figure}
+
+	\autoref{fig:autoMapperExample} zeigt wie \ac{DTO}s zu Domain-Objekte mit \emph{AutoMapper} umgewandelt werden können.
+	Somit wird die Übersichtlichkeit des Codes verbessert und eventuell Codeverdoppelung verhindert.
+	
+	\section{Ausblick}
+	
+	\section{Zusammenfassung}
+	Abschließend lasst sich zusammenfassen...
 	
 	
 	% Literaturverzeichnis
