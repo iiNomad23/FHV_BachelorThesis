@@ -760,12 +760,6 @@
 	
 	Die in \autoref{fig:domainModelPart1} und \autoref{fig:domainModelPart2} gezeigten Entitäten wurden auf Basis der Kommunikation mit den Domainexperten so modelliert.
 	
-	\section{Datenbank Server}
-	Der Datenbank Server wird mit Docker aufgesetzt.
-	Über die bereitgestellten \ac{API}s des \ac{TCMS} wird dann über die schichten der verwendeten Architektur in die Datenbank geschrieben und gelesen werden (Siehe \autoref{subsec:backend}).
-	Wie dies implementiert wird, wird im folgenden Kapitel beschrieben.
-	
-	
 	\chapter{Technische Umsetzung}
 	Damit das Ziel dieser Arbeit, ein \ac{TCMS} zu entwickeln, erreicht wird, werden die im \autoref{chapter:requiremnts} auf \autopageref{sec:userStoriesDefinition} definierten User-Stories mithilfe der erwähnten Technologien aus \autoref{sec:technologies} umgesetzt.
 	Dabei wird auf den Scrum-Prozess und im Anschluss auf die User-Stories detailliert eingegangen.
@@ -1173,9 +1167,9 @@
 	
 	Um manuell Testläufe zu erstellen, gibt es ein \ac{UI}, dass mit \emph{swagger} generiert wurde.
 	
-	\chapter{Zusammenfassung und Ausblick}
-	Abschließend befasst sich dieses Kapitel mit den Verbesserungsmöglichkeiten der technischen Umsetzung des \ac{TCMS} Backends und fasst die erzielten Ergebnisse dieser Arbeit auf Basis der gegebenen Anforderung zusammen.
-	Weiters wird ein kurzer Ausblick auf zukünftige Features für das \ac{TCMS} gegeben.
+	\chapter{Evaluierung und Ausblick}
+	Abschließend befasst sich dieses Kapitel mit den Verbesserungsmöglichkeiten der technischen Umsetzung des \ac{TCMS} Backends.
+	Weiters wird ein kurzer Ausblick in die Zukunft des \ac{TCMS} gegeben.
 	
 	\section{Verbesserungsmöglichkeiten}
 	In diesem Abschnitt werden potenzielle Verbesserungsmöglichkeiten für die umgesetzte Lösung erläutert.
@@ -1202,9 +1196,17 @@
 	\autoref{fig:autoMapperExample} zeigt wie \ac{DTO}s zu Domain-Objekte mit \emph{AutoMapper} umgewandelt werden können.
 	Somit wird die Übersichtlichkeit des Codes verbessert und eventuell Codeverdoppelung verhindert.
 	
-	\section{Zusammenfassung}
+	\section{Ausblick}
+	Die technische Umsetzung des \ac{TCMS} Backends in Zusammenarbeit mit \emph{\acl{GI}} war der erste Schritt zur Realisierung eines Vollständigem \emph{\acl{TCMS}s}.
+	
+	Aus der Sicht des Backends werden in Zukunft die oben aufgelisteten Verbesserungsmöglichkeiten implementiert und gegebenenfalls weitere Features eingebaut.
+	Weiters wird ein Frontend mit den Technologien \emph{React} und \emph{TypeScript}, auf Basis dieser Arbeit, entwickelt.
+	
+	Dadurch wird es die Möglichkeit geben über eine Weboberfläche Statistiken und Reports über gesamte Systeme und Geräte erstellen zu lassen, die wertvollen Einblick geben, welche Features getestet und Release bereit sind.
+	
+	\chapter{Zusammenfassung}
 	Ziel dieser Arbeit war es ein funktionierendes \ac{TCMS} Backend zu implementieren. 
-	Anhand der Kommunikation mit den Domain-Experten sind die aufgelisteten Kriterien in \autoref{chapter:requiremnts} auf \autopageref{chapter:requiremnts} entstanden.
+	Anhand der Kommunikation mit den Domainexperten sind die aufgelisteten Kriterien in \autoref{chapter:requiremnts} auf \autopageref{chapter:requiremnts} entstanden.
 	Durch diese Kriterien wurde dann entsprechend ein Domain-Model erstellt, das die angegebenen Kriterien vollständig abgedeckt hat.
 	Folgend darauf wurden in \autoref{sec:userStoriesDefinition} auf \autopageref{sec:userStoriesDefinition} die User-Stories für die Umsetzung der gegebenen Anforderungen geplant.	
 	
@@ -1216,15 +1218,6 @@
 	Entwickler:innen die Erfahrung mit den genannten Technologien und der Architektur haben können damit einfach und effizient ein eigenes \ac{TCMS} Backend entwickeln.
 	
 	Abschließend lässt sich sagen, dass die vorgenommenen Ziele erfolgreich umgesetzt worden sind und die anfangs gestellten relevanten Fragen, unterstützend mit der Umsetzung, beantwortet sind.
-	
-	
-	\section{Ausblick}
-	Die technische Umsetzung des \ac{TCMS} Backends in Zusammenarbeit mit \emph{\acl{GI}} war der erste Schritt zur Realisierung eines Vollständigem \emph{\acl{TCMS}s}.
-	
-	Aus der Sicht des Backends werden in Zukunft die oben aufgelisteten Verbesserungsmöglichkeiten implementiert und gegebenenfalls weitere Features eingebaut.
-	Weiters wird ein Frontend mit den Technologien \emph{React} und \emph{TypeScript}, auf Basis dieser Arbeit, entwickelt.
-	
-	Dadurch wird es die Möglichkeit geben über eine Weboberfläche Statistiken und Reports über gesamte Systeme und Geräte erstellen zu lassen, die wertvollen Einblick geben, welche Features getestet und Release bereit sind.
 	
 	
 	% Literaturverzeichnis
