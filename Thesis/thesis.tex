@@ -860,14 +860,13 @@
 	Diese werden beim Start des Projektes in der \emph{Startup} Klasse gelesen und verwendet (Siehe: \autoref{lst:registerDatabase}).
 	Weiters wird in \autoref{lst:registerDatabase} gezeigt, dass die Funktion \emph{AddDbContext} den Typ \emph{EFContext} bekommt. 
 	Diese Klasse kümmert sich um die Konfiguration aller Tabellen, die verwendet werden (Siehe: \autoref{lst:efcontextClass}).
-	
+
 	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang zeigt die \emph{Startup} und \emph{Program} Klasse, die für die Initiierung der Datenbank und Tabellen, der \ac{DI} Container und Generierung der Swagger \ac{UI} zuständig sind.
 
 	\begin{listing}[ht]
 		\begin{minted}{JSON}
 			{
-				[...]
-				
+				[...]		
 				"ConnectionStrings": {
 					"MariaDbConnectionString": 
 					"server=localhost;port=3306;database=tcms_mariadb;user=root;password=admin;"
@@ -880,8 +879,7 @@
 
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
-			[...]
-			
+			[...]		
 			services.AddDbContext<EFContext>(dbContextOptions => {
 				var connectionString = _config
 					.GetConnectionString("MariaDbConnectionString");
@@ -889,8 +887,7 @@
 				dbContextOptions
 					.UseMySql(connectionString,
 						ServerVersion.AutoDetect(connectionString));
-			});
-			
+			});		
 			[...]
 		\end{minted}
 		\caption{Ausschnitt der \emph{Startup} Klasse, der das Registrieren der Datenbank zeigt}
@@ -912,9 +909,7 @@
 				Task<TestEnvironment> FindById(string id);
 				Task<List<TestEnvironment>> FindByShortDescription(string shortDescription);
 				Task<List<TestEnvironment>> GetAll();
-				Task Add(TestEnvironment testEnvironment);
-				Task Remove(string id);
-				Task Update(TestEnvironment testEnvironment);
+				[...]
 			}
 		\end{minted}
 		\caption{Test-Environment Aggregate Interface, für die Infrastrukturschicht}
@@ -929,20 +924,14 @@
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
-			[...]
-			
+			[...]		
 			public async Task<TestEnvironment> FindById(string id)
 			{
-				var testEnvironment = await _context.TestEnvironments
+				return await _context.TestEnvironments
 					.Include(te => te.TestSystems)
 					.Include(tp => tp.TestEnvironmentPlans)
-					.FirstOrDefaultAsync(testEnvironment => testEnvironment.DomainId == id);
-				
-				[...]
-				
-				return testEnvironment;
-			}
-		
+					.FirstOrDefaultAsync(testEnvironment => testEnvironment.DomainId == id);		
+			}		
 			[...]
 		\end{minted}
 		\caption{Ausschnitt der \emph{TestEnvironmentRepository} Klasse, die ein Test-Environment-Objekt mithilfe einer \ac{ID} von der Datenbank ausliest}
@@ -951,11 +940,10 @@
 	
 	Der in \autoref{lst:testEnvironmentServiceAusschnitt} gezeigte Code bekommt das Test-Environment-Objekt von der Infrastrukturschicht zurück und wandelt es in ein \acfi{DTO} um.
 	Das \ac{DTO} wird anschließend von der Applikationsschicht in die Präsentationsschicht weitergeleitet.
-	
-	\begin{listing}[ht]
+
+	\begin{listing}[!htb]
 		\begin{minted}{csharp}
-			[...]
-			
+			[...]				
 			public async Task<TestEnvironmentDTO> FindById(string id)
 			{
 				var testEnvironment = await _testEnvironmentRepository.FindById(id);	
@@ -964,10 +952,9 @@
 					Id = testEnvironment.DomainId,
 					ShortDescription = testEnvironment.ShortDescription,
 					LongDescription = testEnvironment.LongDescription,
-					[...]
+					[...]	
 				};
-			}
-			
+			}			
 			[...]
 		\end{minted}
 		\caption{Ausschnitt der \emph{TestEnvironmentService} Klasse}
@@ -976,41 +963,36 @@
 
 	Der in \autoref{lst:testEnvironmentControllerAusschnitt_1} gezeigte Code bekommt das umgewandelte Test-Environment-Objekt (\ac{DTO}) von der Applikationsschicht zurück und schickt es dem Client weiter.
 	
-	\begin{listing}[ht]
+	\begin{listing}[!htb]
 		\begin{minted}{csharp}
-			[...]
-			
+			[...]	
 			[HttpGet("{id}")]
 			public async Task<ActionResult<TestEnvironmentDTO>> 
-				FindTestEnvironmentById(string id)
+			FindTestEnvironmentById(string id)
 			{
 				var testEnvironmentDTO = await _testEnvironmentService.FindById(id);
 				return Ok(testEnvironmentDTO);
-			}
-			
+			}	
 			[...]
 		\end{minted}
 		\caption{Ausschnitt der \emph{TestEnvironmentController} Klasse}
 		\label{lst:testEnvironmentControllerAusschnitt_1}
 	\end{listing}
-	
+
 	Der oben gezeigte Ablauf beschreibt die Suche nach einem Test-Environment. 
 	Beim Erstellen passiert ähnliches, nur dass der Client ein \ac{DTO} über den bereitgestellten Endpunkt der \ac{API} schickt.
 	Die \emph{TestEnvironmentController} Klasse empfängt das \ac{DTO} und schickt es der Applikationschicht weiter, diese Schicht wandelt es von einem \ac{DTO} in ein Domain-Objekt um und schickt es weiter zur Infrastukturschicht, die es dann persistiert.
 	
-	\newpage
 	Der in \autoref{lst:testEnvironmentRepositoryAusschnitt_2} gezeigte Code zeigt das Schreiben eines Test-Environment-Objekts in die Datenbank.
 	
-	\begin{listing}[ht]
+	\begin{listing}[!htb]
 		\begin{minted}{csharp}
-			[...]
-			
+			[...]	
 			public async Task Add(TestEnvironment testEnvironment)
 			{
 				await _context.TestEnvironments.AddAsync(testEnvironment);
 				await _context.SaveChangesAsync();
 			}
-			
 			[...]
 		\end{minted}
 		\caption{Ausschnitt der \emph{TestEnvironmentRepository} Klasse}
@@ -1062,37 +1044,36 @@
 	Der in \autoref{lst:testEnvironmentAndPlanConfigurationClass} gezeigte Code konfiguriert einen Teil der Tabellen \emph{TestEnvironment} und \emph{TestPlan}.
 	Dadurch wird festgelegt, dass die Tabellen \emph{TestEnvironment} und \emph{TestPlan} eine Many-to-one Beziehung zu der \emph{Junction} Tabelle haben.
 	
-	Der in \autoref{lst:testEnvironmentPlanConfigurationClass} gezeigte Code konfiguriert einen Teil der \emph{Junction} Tabelle \emph{TestEnvironmentPlan}.
-	Dadurch wird festgelegt, dass die \emph{TestEnvironmentPlan} Tabelle eine Many-to-one Beziehung zu den Tabellen \emph{TestEnvironment} und \emph{TestPlan} hat.
-	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
-			[...]
-			
+			[...]	
 			builder // TestEnvironment - many to one - TestEnvironmentPlan
 				.HasMany(e => e.TestEnvironmentPlans)
 				.WithOne()
 				.HasPrincipalKey(e => e.DomainId)
 				.IsRequired();
 				
-			[...]
+			[...]	
 			
 			builder // TestPlan - many to one - TestEnvironmentPlan
 				.HasMany(e => e.TestEnvironmentPlans)
 				.WithOne()
 				.HasPrincipalKey(e => e.DomainId)
-				.IsRequired();	
-				
+				.IsRequired();						
 			[...]
 		\end{minted}
 		\caption{Ausschnitt aus der \emph{TestEnvironmentConfiguration} und \emph{TestPlanConfiguration} Klasse}
 		\label{lst:testEnvironmentAndPlanConfigurationClass}
 	\end{listing}
 
+	Der in \autoref{lst:testEnvironmentPlanConfigurationClass} gezeigte Code konfiguriert einen Teil der \emph{Junction} Tabelle \emph{TestEnvironmentPlan}.
+	Dadurch wird festgelegt, dass die \emph{TestEnvironmentPlan} Tabelle eine Many-to-one Beziehung zu den Tabellen \emph{TestEnvironment} und \emph{TestPlan} hat.
+
+	\newpage
+
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
-			[...]
-			
+			[...]			
 			builder.HasKey(e => new {e.TestEnvironmentDomainId, e.TestPlanDomainId});
 			
 			builder // TestEnvironmentPlan - many to one - TestEnvironment
@@ -1105,8 +1086,7 @@
 				.HasOne<TestPlan>()
 				.WithMany(e => e.TestEnvironmentPlans)
 				.HasPrincipalKey(e => e.DomainId)
-				.IsRequired();
-			
+				.IsRequired();		
 			[...]
 		\end{minted}
 		\caption{Ausschnitt aus der \emph{TestEnvironmentPlanConfiguration} Klasse}
@@ -1119,7 +1099,6 @@
 	Diese Klasse hat Zugriff auf die \emph{TestEnvironmentRepository}- und \emph{TestPlanRepository}-Klassen.
 	\autoref{lst:testEnvironmentManagerClass} im Anhang zeigt, wie dies erfolgt.
 	
-	\newpage
 	\subsection{Erstellen und suchen von Testläufe} \label{subsec:createAndSearchTestruns}
 	
 	Der Ablauf der Implementierung erfolgte analog zu den vorherigen User-Stories.
@@ -1140,16 +1119,14 @@
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
-			[...]
-			
+			[...]	
 			builder
 				.Property(p => p.ResultDetailsMap)
 				.HasConversion<string>(
 					d => JsonConvert.SerializeObject(d),
 					s => JsonConvert.DeserializeObject<Dictionary<string, ResultDetails>>(s) ??
 						new Dictionary<string, ResultDetails>()
-			);
-			
+			);		
 			[...]
 		\end{minted}
 		\caption{Ausschnitt aus der \emph{TestRunConfiguration} Klasse}
