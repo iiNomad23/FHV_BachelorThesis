@@ -527,7 +527,7 @@
 	
 	
 	\section{Testen der Funktionalitäten}
-	Damit der Kunde die Funktionalitäten des \ac{TCMS} auch \acfi{UI} unterstützt testen kann, wird ein webbasiertes \ac{UI} von Swagger zur Verfügung gestellt (Siehe: \autoref{fig:swaggeruiExample}).
+	Damit der Kunde die Funktionalitäten des \ac{TCMS} auch \acfi{UI} unterstützt testen kann, wird ein webbasiertes \ac{UI} von \emph{Swagger} zur Verfügung gestellt (Siehe: \autoref{fig:swaggeruiExample}).
 	
 	Swagger ist ein Werkzeug mit denen \ac{API}-Beschreibungen erstellt werden können.
 	Zudem kann Swagger mithilfe des standardisiertem \ac{OAS} automatisch ein \ac{UI} generieren. (\textcite{noauthor_api_nodate})
@@ -561,9 +561,9 @@
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
-		\item Erstellen von Test-Environments über Swagger \ac{UI}
-		\item Suchen von Test-Environments über Swagger \ac{UI}
-		\item Zuordnungsmöglichkeit von Testplänen über Swagger \ac{UI}
+		\item Erstellen von Test-Environments über die Swagger-UI
+		\item Suchen von Test-Environments über die Swagger-UI
+		\item Zuordnungsmöglichkeit von Testplänen über die Swagger-UI
 	\end{itemize}
 
 	Diese User-Story erfüllt die Anforderungen RE 1 und RE 3.
@@ -573,9 +573,9 @@
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
-		\item Erstellen von Testplänen, Testfällen und Testimplementationen über Swagger \ac{UI}
-		\item Suchen von Testplänen, Testfällen und Testimplementationen über Swagger \ac{UI}
-		\item Zuordnungsmöglichkeit von Testfällen und Testimplementationen über Swagger \ac{UI}
+		\item Erstellen von Testplänen, Testfällen und Testimplementationen über die Swagger-UI
+		\item Suchen von Testplänen, Testfällen und Testimplementationen über die Swagger-UI
+		\item Zuordnungsmöglichkeit von Testfällen und Testimplementationen über die Swagger-UI
 	\end{itemize}
 
 	Diese User-Story erfüllt die Anforderungen RE 2, 4, 5, 6 und RE 7.
@@ -585,9 +585,9 @@
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
-		\item Erstellen von Testläufen über Swagger \ac{UI}
-		\item Suchen von Testläufen über Swagger \ac{UI}
-		\item Zuordnungsmöglichkeit von Testläufen über Swagger \ac{UI}
+		\item Erstellen von Testläufen über die Swagger-UI
+		\item Suchen von Testläufen über die Swagger-UI
+		\item Zuordnungsmöglichkeit von Testläufen über die Swagger-UI
 	\end{itemize}
 	
 	Diese User-Story erfüllt die Anforderungen RE 8 und RE 9.
@@ -615,8 +615,7 @@
 	\end{itemize}
 	
 	\subsection{Backend} \label{subsec:backend}
-	In dieser Arbeit haben wir uns für eine Schichtenarchitektur mit \acfi{DDD} entschieden, da sich diese schon öfters bewährt hat und es gute Erfahrungen damit gab.
-	\todo{MInor improvments}
+	In dieser Arbeit haben wir uns für eine Schichtenarchitektur mit \acfi{DDD} entschieden, da sich aus meiner Erfahrung diese Architektur bewährt und es gute Erfahrungen damit gab.
 	Der Aufbau dieser Architektur unterteilt sich in vier Schichten, siehe \autoref{fig:layeredArchitecture}:
 	
 	\begin{itemize}
@@ -857,11 +856,11 @@
 	\end{listing}
 
 	Um eine Verbindung zur Datenbank herzustellen, liegt im Projekt ein \ac{JSON}-File, das die benötigten Konfigurationen bereitstellt (Siehe: \autoref{lst:connectionConfigs}).
-	Diese werden beim Start des Projektes in der \emph{Startup} Klasse gelesen und verwendet (Siehe: \autoref{lst:registerDatabase}).
+	Diese werden beim Start des Projektes in der \emph{Startup}-Klasse gelesen und verwendet (Siehe: \autoref{lst:registerDatabase}).
 	Weiters wird in \autoref{lst:registerDatabase} gezeigt, dass die Funktion \emph{AddDbContext} den Typ \emph{EFContext} bekommt. 
 	Diese Klasse kümmert sich um die Konfiguration aller Tabellen, die verwendet werden (Siehe: \autoref{lst:efcontextClass}).
 
-	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang zeigt die \emph{Startup} und \emph{Program} Klasse, die für die Initiierung der Datenbank und Tabellen, der \ac{DI} Container und Generierung der Swagger \ac{UI} zuständig sind.
+	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang zeigt die \emph{Startup} und \emph{Program}-Klasse, die für die Initiierung der Datenbank und Tabellen, der \ac{DI} Container und Generierung der Swagger-UI zuständig sind.
 
 	\begin{listing}[ht]
 		\begin{minted}{JSON}
@@ -890,7 +889,7 @@
 			});		
 			[...]
 		\end{minted}
-		\caption{Ausschnitt der \emph{Startup} Klasse, der das Registrieren der Datenbank zeigt}
+		\caption{Ausschnitt der \emph{Startup}-Klasse, der das Registrieren der Datenbank zeigt}
 		\label{lst:registerDatabase}
 	\end{listing}
 
@@ -934,7 +933,7 @@
 			}		
 			[...]
 		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironmentRepository} Klasse, die ein Test-Environment-Objekt mithilfe einer \ac{ID} von der Datenbank ausliest}
+		\caption{Ausschnitt der \emph{TestEnvironmentRepository}-Klasse, die ein Test-Environment-Objekt mithilfe einer \ac{ID} von der Datenbank ausliest}
 		\label{lst:testEnvironmentRepositoryAusschnitt_1}
 	\end{listing}
 	
@@ -957,7 +956,7 @@
 			}			
 			[...]
 		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironmentService} Klasse}
+		\caption{Ausschnitt der \emph{TestEnvironmentService}-Klasse}
 		\label{lst:testEnvironmentServiceAusschnitt}
 	\end{listing}
 
@@ -975,13 +974,13 @@
 			}	
 			[...]
 		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironmentController} Klasse}
+		\caption{Ausschnitt der \emph{TestEnvironmentController}-Klasse}
 		\label{lst:testEnvironmentControllerAusschnitt_1}
 	\end{listing}
 
 	Der oben gezeigte Ablauf beschreibt die Suche nach einem Test-Environment. 
 	Beim Erstellen passiert ähnliches, nur dass der Client ein \ac{DTO} über den bereitgestellten Endpunkt der \ac{API} schickt.
-	Die \emph{TestEnvironmentController} Klasse empfängt das \ac{DTO} und schickt es der Applikationschicht weiter, diese Schicht wandelt es von einem \ac{DTO} in ein Domain-Objekt um und schickt es weiter zur Infrastukturschicht, die es dann persistiert.
+	Die \emph{TestEnvironmentController}-Klasse empfängt das \ac{DTO} und schickt es der Applikationschicht weiter, diese Schicht wandelt es von einem \ac{DTO} in ein Domain-Objekt um und schickt es weiter zur Infrastukturschicht, die es dann persistiert.
 	
 	Der in \autoref{lst:testEnvironmentRepositoryAusschnitt_2} gezeigte Code zeigt das Schreiben eines Test-Environment-Objekts in die Datenbank.
 	
@@ -995,13 +994,13 @@
 			}
 			[...]
 		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironmentRepository} Klasse}
+		\caption{Ausschnitt der \emph{TestEnvironmentRepository}-Klasse}
 		\label{lst:testEnvironmentRepositoryAusschnitt_2}
 	\end{listing}
 	
-	\subsubsection{Swagger UI}
-	%Abschließend werden die \emph{TestEnvironmentService} und \emph{TestEnvironmentRepository} Klassen in der \emph{EFContext} Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
-	Dadurch, dass \emph{Swagger} verwendet wird, wird beim Start des Projektes die \emph{TestEnvironmentController} Klasse gescannt und dafür eine Weboberfläche für die definierten Endpunkte generiert (Siehe: \autoref{fig:swaggeruiTestenvironment}).
+	\subsubsection{Swagger-UI}
+	%Abschließend werden die \emph{TestEnvironmentService} und \emph{TestEnvironmentRepository}-Klassen in der \emph{EFContext}-Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
+	Dadurch, dass \emph{Swagger} verwendet wird, wird beim Start des Projektes die \emph{TestEnvironmentController}-Klasse gescannt und dafür eine Weboberfläche für die definierten Endpunkte generiert (Siehe: \autoref{fig:swaggeruiTestenvironment}).
 	
 	\begin{figure}[ht]
 		\centering
@@ -1014,14 +1013,14 @@
 	Wie bei der vorherigen User-Story ist der Ablauf der Implementierung für die Testpläne, Testfälle und für die Testimplementationen der Gleiche.
 	
 	Zuerst die Domain-Models erstellt, dann das Repository, gefolgt von dem Service und dem Controller.
-	Zudem werden beim Start des Projektes die \emph{Controller} Klassen gescannt und eine Weboberfläche generiert.
-	Somit ist das Erstellen und Suchen von Testplänen, Testfällen und Testimplementationen auf dem Swagger \ac{UI} verfügbar. 
+	Zudem werden beim Start des Projektes die \emph{Controller}-Klassen gescannt und eine Weboberfläche generiert.
+	Somit ist das Erstellen und Suchen von Testplänen, Testfällen und Testimplementationen auf dem Swagger-UI verfügbar. 
 	
 	\subsubsection{Tabellen Konfiguration mit EF Core}
 	Damit beispielsweise die Testpläne einer Test-Environment zugewiesen werden können, muss eine \emph{Junction} Tabelle erstellt werden, da zwischen Testplan und Test-Environment eine Many-to-many Beziehung herrscht.
 	
-	Dadurch, dass eine \emph{Junction} Tabelle benötigt wird, wurde die \emph{TestEnvironmentPlan} Klasse erstellt, die lediglich die Domain-\ac{ID}s beider Domain-Klassen, \emph{TestEnvironment} und \emph{TestPlan}, beinhaltet (Siehe: \autoref{lst:testEnvironmentPlanClass}). 
-	Damit die zwei Domain-Klassen später in den \ac{EF} Core Tabellenkonfigurationen als Many-to-many Beziehung konfigurierbar sind, ist die \emph{TestEnvironmentPlan} Klasse als \emph{Property} in beiden Klassen vorhanden.
+	Dadurch, dass eine \emph{Junction} Tabelle benötigt wird, wurde die \emph{TestEnvironmentPlan}-Klasse erstellt, die lediglich die Domain-\ac{ID}s beider Domain-Klassen, \emph{TestEnvironment} und \emph{TestPlan}, beinhaltet (Siehe: \autoref{lst:testEnvironmentPlanClass}). 
+	Damit die zwei Domain-Klassen später in den \ac{EF} Core Tabellenkonfigurationen als Many-to-many Beziehung konfigurierbar sind, ist die \emph{TestEnvironmentPlan}-Klasse als \emph{Property} in beiden Klassen vorhanden.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -1037,7 +1036,7 @@
 				}
 			}
 		\end{minted}
-		\caption{\emph{TestEnvironmentPlan} Klasse}
+		\caption{\emph{TestEnvironmentPlan}-Klasse}
 		\label{lst:testEnvironmentPlanClass}
 	\end{listing}
 	
@@ -1062,7 +1061,7 @@
 				.IsRequired();						
 			[...]
 		\end{minted}
-		\caption{Ausschnitt aus der \emph{TestEnvironmentConfiguration} und \emph{TestPlanConfiguration} Klasse}
+		\caption{Ausschnitt aus der \emph{TestEnvironmentConfiguration} und \emph{TestPlanConfiguration}-Klasse}
 		\label{lst:testEnvironmentAndPlanConfigurationClass}
 	\end{listing}
 
@@ -1089,7 +1088,7 @@
 				.IsRequired();		
 			[...]
 		\end{minted}
-		\caption{Ausschnitt aus der \emph{TestEnvironmentPlanConfiguration} Klasse}
+		\caption{Ausschnitt aus der \emph{TestEnvironmentPlanConfiguration}-Klasse}
 		\label{lst:testEnvironmentPlanConfigurationClass}
 	\end{listing}
 	
@@ -1129,7 +1128,7 @@
 			);		
 			[...]
 		\end{minted}
-		\caption{Ausschnitt aus der \emph{TestRunConfiguration} Klasse}
+		\caption{Ausschnitt aus der \emph{TestRunConfiguration}-Klasse}
 		\label{lst:testRunConfigurationClass}
 	\end{listing}
 	
@@ -1154,7 +1153,7 @@
 		\item Nach Beendigung des gesamten Testablaufs wird das Enddatum beim Testlauf eingetragen.
 	\end{itemize}
 	
-	Testläufe können auch manuell über die Swagger-\ac{UI} erstellt werden.
+	Testläufe können auch manuell über die Swagger-UI erstellt werden.
 	
 	\chapter{Evaluierung und Ausblick}
 	Abschließend befasst sich dieses Kapitel mit den Verbesserungsmöglichkeiten der technischen Umsetzung des \ac{TCMS} Backends.
@@ -1259,7 +1258,7 @@
 				
 			[...]
 		\end{minted}
-		\caption{\emph{Startup} Klasse Teil 1}
+		\caption{\emph{Startup}-Klasse Teil 1}
 		\label{lst:startupClassPart1}
 	\end{listing}
 
@@ -1290,7 +1289,7 @@
 				}
 			}
 		\end{minted}
-		\caption{\emph{Startup} Klasse Teil 2}
+		\caption{\emph{Startup}-Klasse Teil 2}
 		\label{lst:startupClassPart2}
 	\end{listing}
 
@@ -1326,7 +1325,7 @@
 				}
 			}
 		\end{minted}
-		\caption{\emph{Program} Klasse, die die \emph{Startup} Klasse verwendet}
+		\caption{\emph{Program}-Klasse, die die \emph{Startup}-Klasse verwendet}
 		\label{lst:programClass}
 	\end{listing}
 
@@ -1368,7 +1367,7 @@
 			}
 		\end{minted}
 		\caption{
-			\emph{EFContext} Klasse, die \ac{EF} Core verwendet, um die Tabellen zu erstellen. 
+			\emph{EFContext}-Klasse, die \ac{EF} Core verwendet, um die Tabellen zu erstellen. 
 			Diese Klasse wird, bei der Registrierung der Datenbank, in \autoref{lst:startupClassPart1} als Typ angegeben.
 		}
 		\label{lst:efcontextClass}
@@ -1425,7 +1424,7 @@
 		
 			[...]
 		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironmentManager} Klasse die das Interface \emph{ITestEnvironmentManger} implementiert}
+		\caption{Ausschnitt der \emph{TestEnvironmentManager}-Klasse die das Interface \emph{ITestEnvironmentManger} implementiert}
 		\label{lst:testEnvironmentManagerClass}
 	\end{listing}
 		
