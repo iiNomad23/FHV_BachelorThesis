@@ -1,0 +1,48 @@
+
+1 korrektur besprechung incl. was tun bei den anforderungen, da nich alle implementiert worden sind
+
+2 new contnet besprechung
+
+3 Footnotes notwendig?
+
+4 Wie vorbereiten für doppelseit drucken
+
+5 Anforderungen nummerieren und bei den UserStories angeben welche anforderung damit erfüllt wird.
+
+6 Abstract
+
+
+
+TODO::
+0
+Apply korrektur
+
+1 
+In Einleitung: "mit hauptfokus auf backend"
+sonst nur TCMS
+
+2
+Bei autoref ohne zusätzlich autopageref
+
+3
+Reference direkt dahinter ohne abstand
+
+.... (quelle):
+...., siehe ...:
+
+4
+Fig and lit description above
+
+das noch hinzufügen:
+zeigt alle komponenten  die bei DDD zum einsatz kommen. ind ideser arbeit fokusieren wir auf aggregate, value object etc.
+
+5
+Bulletpoint RE 1
+Bulletpoint RE 2
+Bulletpoint RE 3
+
+6
+Finish abstract
+
+7
+Verbessering der Erklärung von white box testing

@@ -56,7 +56,7 @@
 % define date variable for whole doc
 % use \displaydate{date} where needed to insert this date
 
-\newdate{date}{01}{07}{2023}
+\newdate{date}{20}{05}{2023}
 \date{\displaydate{date}}
 
 % add zotero file for citations
@@ -74,7 +74,7 @@
 		\end{flushright}
 		
 		\begin{flushleft}
-			\section*{Entwicklung eines Test Case Management Systems für GI-Messsysteme}
+			\section*{Entwicklung eines Test Case Management Systems für Gantner Instruments Messsysteme}
 			%\subsection*{\papersubtitle}
 			\vspace{1cm}
 			
@@ -105,24 +105,26 @@
 	% Kurzreferat
 	\newpage
 	\section*{Kurzreferat}
-	\subsection*{Integration eines Feature-orientierten Testsystems in den Entwicklungszyklus technischer Systeme}
+	\subsection*{Entwicklung eines Test Case Management Systems für Gantner Instruments Messsysteme}
 	
 	Die Entwicklung technischer Systeme ist ein komplexer und kostspieliger Prozess. 
 	Daher ist es wichtig, dass die Produkte vor der Auslieferung an den Kunden gezielt und sorgfältig getestet werden. 
 	Dies wird durch Zeitdruck und Deadlines oftmals vernachlässigt, oder nur unzureichend durchgeführt. 
-	Mit einem gut strukturierten Testplan kann dieses Risiko allerdings minimiert werden, und die Durchführung der Tests mit dem Produktentwicklungszyklus integriert werden. 
+	
+	Durch ein Test Case Management System ist es möglich, dass Features vor dem Release der Produkte abgenommen und getestet werden müssen. 
+	Das wiederum ermöglicht, dass neu implementierte Features gründlich getestet werden und somit zu einer hohen Qualität beitragen.
 	Dadurch kann stabile Hardware sowie effiziente und gut strukturierte Software ohne große Verzögerung an den Kunden ausgeliefert werden.
 	
-	Durch Methodiken wie zum Beispiel Feature-orientierte Entwicklung ist es möglich, dass bestimmte Features vor dem Release der Produkte abgenommen und getestet werden müssen. 
-	Das wiederum ermöglicht, dass neu implementierte Features gründlich getestet werden und somit zu einer hohen Qualität beitragen.
+	Ziel dieser Arbeit ist es, ein Test Case Management System zu entwickeln, mit dem es möglich ist Features von bestimmten Geräten und Systemen zu beschreiben.
+	Zusätzlich soll das Test Case Management System in der Lage seine Testergebnisse von einem bereits bestehenden Test Automation System zu empfangen und diese zu den beschriebenen Features zuzuordnen.
 	
-	Dies kann erreicht werden, indem Features strukturiert in einer Datenbank eingepflegt werden. 
-	Ein auf diesen Featurebeschreibungen basierendes System kann die automatische Testdurchführung unterstützen, gezielt Tests für einzelne Features durchführen und deren Abnahme beschleunigen. 
-	Dadurch kann der Testaufwand verringert und den Entwicklern ein fokussiertes Feedback vermittelt werden.
+	Dies kann erreicht werden, indem gut strukturierte APIs sowie präzise Feature-Beschreibungen und Testergebnisse bereitgestellt sind und diese in einer Datenbank eingepflegt werden. 
+	Durch sorgfältige Dokumentation von Features und Testergebnisse können Statistiken und Reports erstellt werden, die wiedergeben, welche Features erfolgreich getestet wurden.
+	Aufgrund dessen ist eine Überwachung des Testfortschritts möglich und es kann festgestellt werden welche Features Release-fähig und mit gutem Gewissen verkauft werden können.
 	
 	\newpage
 	\section*{Abstract}
-	\subsection*{Integrating a feature-oriented testing system into the development cycle of technical systems}
+	\subsection*{Development of a Test Case Management System for Gantner Instruments Measurement Systems}
 	
 	The development of technical systems is a complex and costly process. 
 	Therefore, it is important that products are thoroughly tested before delivery to the customer. 
@@ -214,7 +216,7 @@
 	Durch die Verwendung eines \ac{TCMS} können Angestellte aus verschiedenen Abteilungen, wie z.B. der Software-, Hardware-, Support- oder Marketingabteilung, die Qualität des Produkts gemeinsam verbessern. 
 	
 	\section{Problemstellung}
-	Durch die von \autoref{sec:motivation} angesprochene Komplexität technischer Systeme ist bekannt, dass Fehler, die erst spät im Entwicklungsprozess entdeckt werden, viel kostspieliger zu beheben sind als Fehler, die frühzeitig identifiziert und behoben werden. \textcite{westland_cost_2002}
+	Durch die von \autoref{sec:motivation} angesprochene Komplexität technischer Systeme ist bekannt, dass Fehler, die erst spät im Entwicklungsprozess entdeckt werden, viel kostspieliger zu beheben sind als Fehler, die frühzeitig identifiziert und behoben werden. (\textcite{westland_cost_2002})
 	
 	Infolgedessen suchen Unternehmen nach Lösungen, um den Testprozess effektiver zu gestalten und Fehler früher im Entwicklungszyklus zu identifizieren. 
 	\ac{TCMS} bietet eine solche Lösung, indem es Entwicklern und Testern ermöglicht, Testfälle effizient zu planen und zu verwalten sowie Testergebnisse zu erfassen, darzustellen und somit auch zu verfolgen. 
@@ -266,9 +268,7 @@
 	\end{itemize}
 
 	Um eine Testabdeckung sicherzustellen und den allgemeinen Testprozess zu optimieren werden \ac{TCMS} eingesetzt. 
-	Diese Systeme bieten eine zentrale Plattform zur Verwaltung von Testfällen, wo Tests, die für ein Release oder Produkt erforderlich sind, erstellt und dokumentiert werden können (Siehe \autoref{sec:tcms}). 
-	
-	\textcite{ammann_introduction_2016}
+	Diese Systeme bieten eine zentrale Plattform zur Verwaltung von Testfällen, wo Tests, die für ein Release oder Produkt erforderlich sind, erstellt und dokumentiert werden können (Siehe \autoref{sec:tcms}). (\textcite{ammann_introduction_2016})
 	
 	\subsection{Unit-Tests}
 	Im Allgemeinen sind Unit-Tests Tests die beispielsweise Methoden einer Klasse mit unterschiedlichen Parametern testet. 
@@ -292,18 +292,15 @@
 	
 	\section{Black-Box und White-Box Testing}
 	Sowohl \emph{Black-Box} als auch \emph{White-Box} Tests werden in der Software Entwicklung häufig verwendet, um Fehler als auch die Qualität des Produkts zu evaluieren. 
-	Dabei gibt es zwischen den beiden wichtige Unterschiede.
+	Dabei gibt es zwischen den beiden wichtige Unterschiede. (Siehe: \autoref{fig:WhiteBoxBlackBoxTesting})
 	
-	\todo{Verbessering der Erklärung von white box testing}
-	Bei White-Box Testing handelt es sich grundsätzlich um Unit-Tests die den Code und die Struktur des zu testeten Produkts überprüfen. 
+	Bei White-Box Testing handelt es sich um Unit-Tests die den Code, die Struktur und das Desgin des zu testeten Produkts überprüfen. 
 	Wobei der Inhalt des Codes für den Tester einsehbar ist.
 	White-Box Testing bezieht sich dabei nur auf die interne Funktion der Software.
 	
 	Bei Black-Box Testing wird die interne Struktur, das Design und die Implementierung nicht berücksichtigt.
 	Hier werden nur die Ausgaben oder Reaktionen von dem System geprüft.
-	Black-Box Testing bezieht sich hiermit nur auf die externe Funktion der Software.
-	
-	\textcite[Seite 12]{nidhra_black_2012}
+	Black-Box Testing bezieht sich hiermit nur auf die externe Funktion der Software. (\textcite[Seite 12]{nidhra_black_2012})
 	
 	\begin{figure}[ht]
 		\centering
@@ -315,15 +312,14 @@
 	
 	\section{Test Driven Devlopment}
 	\acfi{TDD} ist ein Konzept, bei dem Tests zuerst geschrieben werden und erst anschließend eine passende Implementierung erstellt wird die genau soviel beinhaltet, dass der Test erfolgreich durchgeführt werden kann.
-	\ac{TDD} bietet daher mehrere Vorteile:
+	\autoref{fig:tdd-cycle} zeigt einen \ac{TDD} Zyklus.
+	\ac{TDD} bietet daher mehrere Vorteile (\textcite{ammann_introduction_2016}):
 	
 	\begin{itemize}
 		\item Geschriebener Code kann überarbeitet oder verschoben werden, ohne dass die Gefahr besteht, Funktionalität zu beschädigen.
 		\item Die Tests selbst werden durch die Implementierung getestet.
 		\item Die Anforderungen können mit geringerem Aufwand umgesetzt werden, da nur die benötigte Funktion geschrieben wird.
 	\end{itemize}
-
-	\textcite{ammann_introduction_2016}
 	
 	\begin{figure}[ht]
 		\centering
@@ -340,7 +336,7 @@
 	Es verfügt über Basisfunktionen wie Testfall-Erstellung, Testfall-Verwaltung, Testfall-Ausführung und Ergebnisberichterstattung. 
 	Weiters kann ein solches System auch eine integrierte Umgebung für die Zusammenarbeit von verschiedene Abteilungen in einer Firma bereitstellen.
 	
-	Zusätzlich zu den Basisfunktionen sind weitere wichtige Merkmale:
+	Zusätzlich zu den Basisfunktionen sind weitere wichtige Merkmale (\textcite{lead_articles_nodate}):
 	
 	\begin{itemize}
 		\item Attraktive Benutzeroberfläche und benutzerfreundliches Design
@@ -350,14 +346,12 @@
 		\item Flexibilität
 	\end{itemize}
 	
-	\textcite{lead_articles_nodate}	
-	
 	
 	\subsection{Allgemeine Vorteile von Test Case Management Systemen}
 	Einer der Hauptvorteile eines \ac{TCMS} besteht darin, dass sie den Testprozess verbessern. 
 	Sie unterstützen auch die Kontrolle der Gesamtkosten, indem sie die Testautomatisierung nutzen, um einen reibungslosen Ablauf zu gewährleisten.  
 	
-	Einige Vorteile von \ac{TCMS} bezüglich der Testausführungsläufe sind:
+	Einige Vorteile von \ac{TCMS} bezüglich der Testausführungsläufe sind (\textcite{lead_articles_nodate}):
 	
 	\begin{itemize}
 		\item Sie geben einen besseren Überblick über das zu testende System, halten den gesamten Prozess auf Kurs und koordinieren die Testaktivitäten.
@@ -365,13 +359,12 @@
 		\item Sie dokumentieren Aufgaben, Fehler und Testergebnisse und vereinfachen den Prozess, indem sie alles in einer einzigen Anwendung erledigen.
 		\item Sie sind skalierbar und können eingesetzt werden, wenn die Testaktivitäten umfangreicher und komplexer werden.
 	\end{itemize}
-
-	\textcite{lead_articles_nodate}
+	
 	
 	\subsection{Überblick von bestehenden Test Case Management Systeme}
 	Auf dem Markt gibt es eine Vielzahl fertiger und direkt verwendbaren \ac{TCMS}, die die Verwaltung von Tests vereinfacht.
 	
-	Einige bekannte \ac{TCMS} sind:
+	Einige bekannte \ac{TCMS} sind, siehe \autoref{fig:tcms_logo}:
 	
 	\begin{itemize}
 		\item \textcite{noauthor_testrail_2023} 
@@ -385,7 +378,7 @@
 			\item Rückverfolgbarkeits- und Abdeckungsberichte für Anforderungen, Tests und Fehler
 		\end{itemize}
 		
-		\item \textcite{noauthor_tricentis_nodate} 
+		\item \textcite{noauthor_practitest_nodate} 
 		
 		Webbasiertes \ac{TCMS} und hat folgende Features:
 		
@@ -394,6 +387,8 @@
 			\item Test Planung, Verwaltung und Ausführung 
 			\item Echtzeit Test Status Update
 			\item Berichterstattung
+			\item Dashboards
+			\item Integrationsmöglichkeit mit Automation Tools
 		\end{itemize}
 		
 		\item \textcite{noauthor_zephyr_nodate} 
@@ -407,7 +402,7 @@
 			\item Echtzeit Visualisierung von Projektstatus
 		\end{itemize}
 		
-		\item \textcite{noauthor_tricentis_nodate-1} 
+		\item \textcite{noauthor_tricentis_nodate} 
 		
 		Webbasiertes \ac{TCMS} und hat folgende Features:
 		
@@ -438,23 +433,21 @@
 	MariaDB ist eine weit verbreitete relationalen Open-Source-Datenbanken. 
 	Sie wurde auf einem Fork von MySQL basierend von den ursprünglichen Entwicklern von MySQL entwickelt. 
 	Der Fokus von MariaDB liegt auf Leistung, Stabilität und Offenheit. 
-	Zu den jüngsten Erweiterungen gehören Clustering mit Galera Cluster 4, Kompatibilitätsfunktionen mit der Oracle-Datenbank und temporäre Datentabellen, mit denen Daten zu jedem beliebigen Zeitpunkt in der Vergangenheit abgefragt werden können.
-	
-	\textcite{noauthor_mariadb_nodate}
+	Zu den jüngsten Erweiterungen gehören Clustering mit Galera Cluster 4, Kompatibilitätsfunktionen mit der Oracle-Datenbank und temporäre Datentabellen, mit denen Daten zu jedem beliebigen Zeitpunkt in der Vergangenheit abgefragt werden können. (\textcite{noauthor_mariadb_nodate})
 	
 	\subsection{Docker}
 	Docker ist eine Plattform mit der Entwickler einfach und schnell Container erstellen, bereitstellen, ausführen, aktualisieren und verwalten können.
+	\autoref{fig:docker-funktionsweise} zeigt die Funktionsweise von Docker.
 	Container sind eigenständige, ausführbare Einheiten die unabhängig vom OS deployed werden können.
 	Container vereinfachen die Entwicklung und Bereitstellung von verteilten Anwendungen. 
 	Entwickler können Container auch ohne Docker erstellen doch Docker macht die Containerisierung schneller, einfacher und sicherer. 
-	Telepresence ist die neuste Erweiterung und bietet einen einfachen Weg mit Kubernetes zu entwickeln.
-	
-	\textcite{ghosh_docker_2020}
+	Telepresence ist die neuste Erweiterung und bietet einen einfachen Weg mit Kubernetes zu entwickeln. (\textcite{ghosh_docker_2020})
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.4]{assets/docker-funktionsweise.png}
 		\caption{Funktionsweise von Docker (Quelle: \textcite{bollhoff_kubernetes_2022})}
+		\label{fig:docker-funktionsweise}
 	\end{figure}
 	
 	\subsection{Microsoft .NET Core} \label{subsec:msNetCore}
@@ -462,17 +455,13 @@
 	Microsoft .NET Core unterstützt mehrere Programmiersprachen wie C\#, F\# und Visual Basic.
 	Zudem bietet .NET einen Paketmanager um einfach und effizient Bibliotheken von Drittanbietern zu verwenden.
 	Die neue Version .NET 8 bietet einige Neuerungen wie beispielsweise Performance-focused Typen, die die Leistung einer Anwendung erheblich verbessern soll.
-	.NET 8 wird offiziell im November 2023 veröffentlicht.
-	
-	\textcite{billwagner_net_nodate}
-	
+	.NET 8 wird offiziell im November 2023 veröffentlicht. (\textcite{billwagner_net_nodate})
+
 	\subsection{Microsoft ASP.NET Core}
 	Microsoft ASP.NET Core ist im Gegensatz zu .NET Core ein Framework um Webanwendungen zu entwickeln. 
 	ASP.NET verfügt über Vorteile wie beispielsweise Blazor mit dem man einfach und effizient eine Interaktive Webbenutzeroberfläche mit C\# entwickeln kann.
 	Dieses Framework unterstützt die Entwicklung und Implementierung von \acfi{API} und Mikroservices.
-	Zudem ist ASP.NET laut \textcite{noauthor_techempower_nodate} schneller als jedes andere beliebte Web-Framework.
-	
-	\textcite{billwagner_net_nodate}
+	Zudem ist ASP.NET laut \textcite{noauthor_techempower_nodate} schneller als jedes andere beliebte Web-Framework. (\textcite{billwagner_net_nodate})
 	
 	\subsection{Entity Framework Core}
 	\acfi{EF} Core ist eine \acfi{ORM} Technik für Microsofts .NET Core Technologie (\autoref{subsec:msNetCore}). 
@@ -480,7 +469,8 @@
 	\ac{EF} Core unterstützt LINQ-Abfragen, Änderungsverfolgung, Aktualisierung sowie Schemamigration.
 	Weiteres unterstützt \ac{EF} Core mehrere Datenbanken wie beispielsweise MySQL, PostgreSQL, Azure CosmosDB etc. und auch MariaDB.
 	Die aktuelle Version von \ac{EF} Core ist 7.0 und verfügt über neue Funktionen wie z.B. das Mapping und Abfragen auf \acfi{JSON} Spalten. 
-	Dabei ist es möglich einzelne Parameter von einem \ac{JSON} Objekt abzufragen und zu ändern.
+	Dabei ist es möglich einzelne Parameter von einem \ac{JSON} Objekt abzufragen und zu ändern. 
+	\autoref{lst:exampleOfJsonColumn} zeigt wie das erfolgt. (\textcite{billwagner_net_nodate})
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -496,76 +486,75 @@
 			await context.SaveChangesAsync();
 		\end{minted}
 		\caption{Update von einem Parameter einer \ac{JSON} Spalte}
+		\label{lst:exampleOfJsonColumn}
 	\end{listing}
-
-	\textcite{billwagner_net_nodate}
 	
 	\subsection{OpenAPI}
 	Die OpenAPI-Initiative hat die \acfi{OAS} entwickelt, die eine \ac{API} Beschreibung standardisiert.
 	Die \ac{OAS} ist eine Sprache für \acfi{HTTP} \ac{API}s, durch diese \ac{API}s standardisiert beschrieben werden können. 
-	Mithilfe von einem OpenAPI-Code-Generator (\textcite{noauthor_openapi_nodate-1}) kann direkt Client-Code für verschiedene Technologien wie z.B. Typescript generiert werden.
+	Mithilfe von einem OpenAPI-Code-Generator (\textcite{noauthor_openapi_nodate-1}) kann direkt Client-Code für verschiedene Technologien wie z.B. Typescript generiert werden. (\textcite{noauthor_openapi_nodate})
 	
-	\textcite{noauthor_openapi_nodate}
 	
 	
 	\chapter{Anforderungen} \label{chapter:requiremnts}
 	Der Hauptteil dieser Arbeit ist es ein funktionierendes \ac{TCMS} mit den genannten Technologien zu entwickeln.
 	Dabei steht Zuverlässigkeit, Geschwindigkeit und Skalierbarkeit im Vordergrund.
-	Zudem soll geachtet werden, dass Ressourcen bzw. Entitäten wie beispielsweise Testfälle für mehrere Testpläne verwendet werden können damit mehrfache Einträge in der Datenbank verhindert werden.
+	Zudem soll darauf geachtet werden, dass Ressourcen bzw. Entitäten, wie beispielsweise Testfälle, für mehrere Testpläne verwendet werden können, um damit mehrfache Einträge in der Datenbank zu verhindern.
 	
-	Das zu entwickelnde \ac{TCMS} hat folgende Anforderungen:
+	Das zu entwickelnde \ac{TCMS} hat folgende Anforderungen (Requirements):
 	
 	\begin{itemize}
 		\setlength\itemsep{-0.5em}
-		\item Produkt und Testsysteme beschreiben
-		\item Features beschreiben
-		\item Features zu einem Produkt zuordnen
-		\item Testfälle beschreiben
-		\item Testfälle zu einem Feature zuordnen
-		\item Testimplementierungen beschreiben
-		\item Testimplementierungen zu Testfällen und Testsysteme zuordnen
-		\item Testläufe von Testimplementierungen zu einem Testsystem zuordnen
-		\item Resultate von bestimmten Testläufen abzufragen
+		\item RE 1 - Produkt und Testsysteme beschreiben und darstellen
+		\item RE 2 - Features beschreiben und darstellen
+		\item RE 3 - Features zu einem Produkt zuordnen
+		\item RE 4 - Testfälle beschreiben und darstellen
+		\item RE 5 - Testfälle zu einem Feature zuordnen
+		\item RE 6 - Testimplementierungen beschreiben und darstellen
+		\item RE 7 - Testimplementierungen zu Testfällen und Testsysteme zuordnen
+		\item RE 8 - Testläufe von Testimplementierungen zu einem Testsystem zuordnen
+		\item RE 9 - Resultate von bestimmten Testläufen abzufragen
 	\end{itemize}
 	
 	
 	\section{Minimum Viable Product}
-	Ein \acfi{MVP} ist ein minimal brauchbares Produkt. 
+	Bei einem \acfi{MVP} handelt es sich um ein minimal brauchbares Produkt. 
 	Dabei handelt es sich um die erste funktionierte Iteration eines Produkts das nur Kernfunktionalitäten beinhaltet.
-	In unserem Fall ist das ein Funktionierendes \ac{TCMS} backend von der Datenbank abfrage bis hin zur \ac{API} und sollte die oben angeführten Anforderung abdecken.
+	In unserem Fall ist das ein funktionierendes \ac{TCMS}, welches die oben angeführten Anforderungen abdeckt und von der Datenbankabfrage bis zur \ac{API} unterstützt.
 	
-	Der Vorteil ist, dass das Produkt so schnell wie möglich zum Kunden gelangt und das Produkt Kundenfeedback bekommt.
-	Die Kunden von dem zu entwickelnden \ac{TCMS} sind in diesem Fall die Mitarbeitenden der Firma Ganter Instruments.
-	
-	\textcite{alliance_what_2017}
+	Der Vorteil ist, dass das Produkt so schnell wie möglich zum Kunden gelangt und Entwickler:innen Kundenfeedback bekommen.
+	Die Kunden von dem zu entwickelnden \ac{TCMS} sind in diesem Fall die Mitarbeitenden der Firma \acl{GI}. (\textcite{alliance_what_2017})
 	
 	
 	\section{Testen der Funktionalitäten}
-	Damit der Kunde die Funktionalitäten des \ac{TCMS} auch oberflächlich Testen kann, wird ein Tool namens Swagger verwendet um ein Webbasiertes \acfi{UI} bereitzustellen.
-	Swagger ist grundsätzlich ein Werkzeug mit denen Teams \ac{API}-Beschreibungen erstellen können.
-	Zudem kann Swagger mithilfe des standardisiertem \ac{OAS} automatisch ein \ac{UI} generieren.
+	Damit der Kunde die Funktionalitäten des \ac{TCMS} auch \acfi{UI} unterstützt testen kann, wird ein webbasiertes \ac{UI} von Swagger zur Verfügung gestellt (Siehe: \autoref{fig:swaggeruiExample}).
 	
-	\textcite{noauthor_api_nodate}
+	Swagger ist ein Werkzeug mit denen \ac{API}-Beschreibungen erstellt werden können.
+	Zudem kann Swagger mithilfe des standardisiertem \ac{OAS} automatisch ein \ac{UI} generieren. (\textcite{noauthor_api_nodate})
+	\newline
 	
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.6]{assets/swaggerui.png}
 		\caption{Beispiel \ac{UI} von Swagger (Quelle: \textcite{noauthor_host_nodate})}
+		\label{fig:swaggeruiExample}
 	\end{figure}
 
 	\section{Vorgehensweise} \label{sec:userStoriesDefinition}
-	Damit das zu Entwickelnde \ac{TCMS} die eben genannten Anforderungen erfüllen kann werden diese in User-Stories aufgeteilt.
-	Nachfolgend sind vier User-Stories aufgeführt, die erklären, welche Funktionalitäten das \ac{TCMS} beinhaltet, um die Anforderungen abzudecken.
+	Die ermittelten Anforderungen wurden in User-Stories aufgeteilt. 
+	Nachfolgend sind vier User-Stories aufgeführt, die aufzeigen, welche Funktionalitäten das \ac{TCMS} beinhaltet, um die oben gelisteten Anforderungen abzudecken.
 	
 	\subsection{Projekt und Datenbank Aufsetzen}
-	Diese User Story beinhaltet noch keine Implementierung von Funktionalitäten, sondern beschäftigt sich mit dem Aufsetzten des Projektes und der Datenbank.
+	Diese User-Story beinhaltet noch keine Implementierung von Funktionalitäten, sondern beschäftigt sich mit dem Aufsetzten des Projektes und der Datenbank.
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
-		\item Projekt Struktur in die Architektur Schichten aufteilen 
+		\item Projekt Struktur in die Architekturschichten aufteilen 
 		\item Datenbank mit Docker aufsetzen
-		\item Datenbank manuell beschreibbar
+		\item \acfi{SQL} Statements möglich
 	\end{itemize}
+
+	Diese User-Story erfüllt noch keine Anforderungen.
 	
 	\subsection{Erstellen und suchen von Test-Environments}
 	Als Nutzer:in möchte ich Test-Environments erstellen und suchen, sodass ich Testpläne zuordnen kann.
@@ -574,17 +563,22 @@
 	\begin{itemize}
 		\item Erstellen von Test-Environments über Swagger \ac{UI}
 		\item Suchen von Test-Environments über Swagger \ac{UI}
-		\item Hinzufügen und Entfernen von Testplänen über Swagger \ac{UI}
+		\item Zuordnungsmöglichkeit von Testplänen über Swagger \ac{UI}
 	\end{itemize}
 
+	Diese User-Story erfüllt die Anforderungen RE 1 und RE 3.
+
 	\subsection{Erstellen und suchen von Testplänen, Testfällen und Testimplementationen}
-	Als Nutzer:in möchte ich Testpläne, Testfälle und Testimplementationen erstellen und suchen, sodass ich diese dementsprechend zuordnen kann.
+	Als Nutzer:in möchte ich Testpläne, Testfälle und Testimplementationen erstellen und suchen, sodass ich diese entsprechend zuordnen kann.
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
 		\item Erstellen von Testplänen, Testfällen und Testimplementationen über Swagger \ac{UI}
 		\item Suchen von Testplänen, Testfällen und Testimplementationen über Swagger \ac{UI}
+		\item Zuordnungsmöglichkeit von Testfällen und Testimplementationen über Swagger \ac{UI}
 	\end{itemize}
+
+	Diese User-Story erfüllt die Anforderungen RE 2, 4, 5, 6 und RE 7.
 	
 	\subsection{Erstellen und suchen von Testläufe}
 	Als Nutzer:in möchte ich Testläufe erstellen und suchen, sodass ich Reports generieren kann.
@@ -593,18 +587,19 @@
 	\begin{itemize}
 		\item Erstellen von Testläufen über Swagger \ac{UI}
 		\item Suchen von Testläufen über Swagger \ac{UI}
+		\item Zuordnungsmöglichkeit von Testläufen über Swagger \ac{UI}
 	\end{itemize}
 	
-	
+	Diese User-Story erfüllt die Anforderungen RE 8 und RE 9.
 	
 	\chapter{Konzept}
 	Im vorherigen Kapitel wurden die Anforderungen des zu entwickelnden \ac{TCMS} festgelegt.
-	Dieses Kapitel gibt nun einen Überblick über die Architektur, die dafür verwendet wird und vertieft sich in die Entwicklungsphasen des \ac{TCMS}.
+	Dieses Kapitel gibt einen Überblick über die konzipierte Architektur und gibt Einblick in die Planung des \ac{TCMS}.
 	
 	\section{Architektur}
-	Grundlegend repräsentiert eine Softwarearchitektur die Organisation und den Aufbau eines Systems, zudem ist die Architektur eines der wichtigsten Komponente bei der Softwareentwicklung.
-	Die Wahl der Softwarearchitektur ist zu Beginn eines Softwareprojektes sehr relevant, da diese hohen Einfluss auf den späteren verlauf des Projektes haben wird und es sehr kostenintensiv ist diese umzustellen.
-	Eine gut strukturierte Software Architektur bringt dementsprechend einige Vorteile:
+	Grundlegend repräsentiert eine Softwarearchitektur die Organisation und den Aufbau eines Systems was die Architektur zu einer der wichtigsten Bestandteile in der Softwareentwicklung macht.
+	Die Wahl der Softwarearchitektur eines Softwareprojektes hat demnach hohen Einfluss auf den späteren verlauf des Projektes was dadurch sehr kostenintensiv werden kann diese umzustellen.
+	Eine gut strukturierte Softwarearchitektur bringt dementsprechend einige Vorteile (\textcite{richards_fundamentals_2020}):
 	
 	\begin{itemize}
 		%\setlength\itemsep{-0.5em}
@@ -613,29 +608,28 @@
 		\item Erweiterbarkeit
 		\item Anpassungsfähigkeit
 		\item Skalierbar
-		\item reduziert kosten und verhindert Code Verdoppelung
+		\item reduziert Kosten und verhindert Code-Duplikation
 		\item erhöht die Qualität der Software
-		\item Hilf bei komplexen Problemstellungen
+		\item hilft bei komplexen Problemstellungen
 		\item reduziert den Time-to-Market Faktor durch effizienteres entwickeln
 	\end{itemize}
 	
-	\textcite{richards_fundamentals_2020}
-	
 	\subsection{Backend} \label{subsec:backend}
-	In dieser Arbeit haben wir uns für die Vierschichtigen \acfi{DDD} Architektur entschieden, da sich diese schon öfters bewährt hat und es gute Erfahrungen damit gab.
-	Der Aufbau dieser Architektur unterteilt sich in vier Schichten:
+	In dieser Arbeit haben wir uns für eine Schichtenarchitektur mit \acfi{DDD} entschieden, da sich diese schon öfters bewährt hat und es gute Erfahrungen damit gab.
+	\todo{MInor improvments}
+	Der Aufbau dieser Architektur unterteilt sich in vier Schichten, siehe \autoref{fig:layeredArchitecture}:
 	
 	\begin{itemize}
 		%\setlength\itemsep{-0.5em}
 		\item Präsentationsschicht
 		
-		Diese Repräsentiert \ac{API}s, die reinkommende Anfragen entgegennimmt und dementsprechend Antworten liefert.
+		Diese repräsentiert \ac{API}s, die Anfragen entgegennimmt und dementsprechend Antworten liefert.
 		Die Anfragen werden an die Applikationsschicht weitergeleitet.
 		
 		\item Applikationsschicht
 		
-		Diese Schicht interagiert mit der Präsentationsschicht und koordiniert Applikation Aktivitäten.
-		Hier werden abhängig von den gelieferten Daten dementsprechende Domain Objekte erzeugt und der Infrastruktur weitergeleitet.
+		Diese Schicht interagiert mit der Präsentationsschicht und der Infrakstrukturschicht.
+		Abhängig von den aus der Präsentationsschicht weitergeleiteten Anfragen werden Domain-Objects erzeugt und an die Infrakstrukturschicht weitergeleitet.
 		
 		\item Domainschicht
 		
@@ -650,27 +644,40 @@
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.5]{assets/layeredArchitecture.png}
-		\caption{Übersicht der Schichten (Quelle: \textcite{zhang_domain_nodate})}
+		\caption{Übersicht einer Schichtenarchitektur (Quelle: \textcite{zhang_domain_nodate})}
+		\label{fig:layeredArchitecture}
 	\end{figure}
 	
-	\ac{DDD} ist ein Design Ansatz, der sich auf den Input der Domainexperten konzentriert und somit die Entitäten des Systems dadurch modelliert werden.
+	\ac{DDD} ist ein Designansatz, bei dem die Entitäten des Systems, abhängig von dem Input der Domainexperten, modelliert werden.
 	Das erleichtert es den Teammitgliedern, die Arbeit der anderen besser zu verstehen.
-	Diese Verwendung trägt auch zur \emph{ubiquitous language} bei, die alle Teammitglieder bei Modell- und Entwurfsdiskussionen verwenden können.
+	Diese Verwendung trägt auch zur \emph{ubiquitous language} bei, die alle Teammitglieder bei Modell- und Entwurfsdiskussionen verwenden können. (\textcite{vernon_implementing_2013})
 	
-	\textcite{vernon_implementing_2013}
+	\autoref{fig:patternsDDD} zeigt alle Komponenten, die bei \ac{DDD} zum Einsatz kommen. 
+	In dieser Arbeit fokussieren wir uns speziell auf die folgenden Komponenten:
+	
+	\begin{itemize}
+		\setlength\itemsep{-0.5em}
+		\item Entities 
+		\item Value-Objects
+		\item Aggregates
+		\item Repositories
+		\item Services
+	\end{itemize}
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[scale=0.4]{assets/PatternsDDD.png}
-		\caption{Komponenten von \ac{DDD} (Quelle: \textcite{noauthor_domain_nodate})}
+		\includegraphics[scale=0.32]{assets/componentsDDD.jpg}
+		\caption{Komponenten von \ac{DDD} (Quelle: \textcite{xu_ep32_2023})}
+		\label{fig:patternsDDD}
 	\end{figure}
 
 	
-	\section{Vorentwicklungsphase}
-	In dieser Phase handelt es sich hauptsächlich um die Planung der Implementierung des \ac{TCMS}.
-	Zuerst wurde eine Übersicht von dem schon bestehenden \acfi{TAS} erzeugt, das zeigt wie es mit dem \ac{TCMS} interagiert.
-	Dabei greift das \ac{TAS} über die Technologie Automise über eine von \ac{TCMS} bereitgestellte \ac{API} darauf zu und erstellt Testläufe.
-	Bei der Beschreibung von \autoref{fig:domainModelPart2} wird darauf genauer eingegangen (Siehe \autoref{subsec:domainModel}).
+	\section{Planung}
+	In diesem Abschnitt geht es hauptsächlich um die Modellierung des Domain-Models von dem \ac{TCMS}.
+	Vor der Modellierung wurde eine Übersicht von dem schon bestehenden \acfi{TAS} verschafft (Siehe: \autoref{fig:testAutomationSystem}).
+	Durch diese Übersicht wurden die Interaktionen mit dem zu entwickelnden \ac{TCMS} ermittelt.
+	Dabei greift das \ac{TAS} über die Technologie \emph{Automise} über eine von \ac{TCMS} bereitgestellte \ac{API} darauf zu und erstellt Testläufe.
+	In \autoref{subsec:domainModel} erfolgt eine detaillierte Beschreibung wie das \ac{TAS} Testläufe erstellt (Siehe: \autoref{fig:domainModelPart2}).
 	
 	\begin{figure}[ht]
 		\centering
@@ -678,117 +685,123 @@
 		\caption{\ac{TAS} von \ac{GI}}
 		\label{fig:testAutomationSystem}
 	\end{figure}
-
-	Durch die von \autoref{chapter:requiremnts} gegebenen Anforderungen und dem bestehendem \ac{TAS} wurde dementsprechend geplant.
 	
-	\subsection{Domain Model} \label{subsec:domainModel}
-	Zunächst wurde das Domain-Model entwickelt, um die Entitäten und ihre Beziehungen darzustellen.
-	Dabei wurden exakt, die von den Anforderungen geforderten Features abgebildet.
-	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[scale=0.6]{assets/TCMS_DomainModel_part1.png}
-		\caption{Domain-Model (Teil 1) aus den Anforderungen von \autoref{chapter:requiremnts}}
-		\label{fig:domainModelPart1}
-	\end{figure}
+	\subsection{Domain-Model} \label{subsec:domainModel}
+	Zunächst wurde das Domain-Model entwickelt, um die Entitäten und deren Beziehungen darzustellen.
+	Dabei wurde exakt darauf geachtet, dass die in \autoref{chapter:requiremnts} ermittelten Anforderungen vollständig abgebildet wurden.
 
-	Bei den in \autoref{fig:domainModelPart1} abgebildeten Entitäten handelt es sich um die folgenden Anforderungen:
+	Die in \autoref{fig:domainModelPart1} abgebildeten Entitäten betreffen folgende Anforderungen:
 	
 	\begin{itemize}
 		%\setlength\itemsep{-0.5em}
-		\item Produkt und Testsysteme beschreiben
+		\item RE 1 - Produkt und Testsysteme beschreiben
 		
-		Das Produkt wurde als Test-Environment Entität modelliert, dass kann beispielsweise ein Gerät von der Firma sein.
-		Das Testsystem bildet beispielsweise eine Prüfwand mit mehreren Geräten ab mit denen Tests durchgeführt werden.
+		Das Produkt wurde als \emph{Environment/Platform} (Test-Environment) modelliert.
+		Ein Beispiel hierfür wäre ein Gerät von der Firma.
+		Das \emph{Testsystem} ist ein Aufbau mit Geräten, die geprüft werden. 
+		Beispielsweise ist das eine Prüfwand mit mehreren Geräten mit denen Tests durchgeführt werden.
 		Jedes Produkt hat eigene Testsysteme.
 		
-		\item Features beschreiben
+		\item RE 2 - Features beschreiben und darstellen
 		
-		Feature wurde als Testplan Entität modelliert.
-		Ein Feature besteht aus mehreren Testfällen und bildet ein Feature von einem Gerät ab wie beispielsweise Netzwerk Connectivity.
+		Feature wurde als \emph{Testplan/Feature} modelliert.
+		Ein Feature besteht aus mehreren Testfällen (Entität Testcase) und bildet ein Feature von einem Gerät ab.
+		Ein Beispiel für ein Feature ist die Netzwerk-Connectivity von einem Gerät.
 		
-		\item Features zu einem Produkt zuordnen
+		\item RE 3 - Features zu einem Produkt zuordnen
 		
-		Die erstellten Testpläne können nach dem Erstellen zu Test-Environments zugeordnet werden.
-		Somit können Testpläne für andere Environments wiederverwendet werden.
+		Die erstellten Testpläne können zu Produkten zugeordnet werden.
+		Somit können Testpläne für andere Produkte wiederverwendet werden.
 		
-		\item Testfälle beschreiben
+		\item RE 4 - Testfälle beschreiben und darstellen
 		
-	    Ein Testfall besteht aus mehreren Testimplementationen.
-	    Diese Testimplementationen sind für jeden Testfall unique und können nicht wiederverwendet werden. 
-	    Ein Testfall ist beispielsweise eine überprüfung ob das Gerät eine \acfi{DHCP} Adresse erhalten hat.
+		Testfall wurde als \emph{Testcase} modelliert.
+	    Ein Testfall besteht aus mehreren Testimplementierungen (Entität Testimplementation).
+	    Diese Testimplementierungen sind für jeden Testfall einzigartig und können nicht wiederverwendet werden. 
+	    Ein Testfall ist beispielsweise eine Überprüfung, ob ein Gerät eine \acfi{DHCP} Adresse erhalten hat.
 		
-		\item Testfälle zu einem Feature zuordnen
+		\item RE 5 - Testfälle zu einem Feature zuordnen
 		
-		Die Teställe können dann zu Features zugeordnet werden.
-		Somit können Testfälle wiederverwendet werden.
+		Die Testfälle können zu Features zugeordnet werden.
+		Somit können Testfälle für andere Features wiederverwendet werden.
 		
-		\item Testimplementierungen beschreiben
+		\item RE 6 - Testimplementierungen beschreiben und darstellen
 		
-		Testimplementierungen sind grundsätzlich Beschreibungen wie ein Testfall getestet wird und ob dieser manuell oder automatisch ausgeführt wird.
-		Testimplementierungen enthalten auch Informationen, ob sie Positiv beim letzten Testlauf getestet worden sind.
-		Eine Testimplementation ist beispielsweise die Beschreibung mit welchen Konfigurationen ein Testfall bei einem Gerät getestet wird.
+		Eine Testimplementierung wurde als \emph{Testimplementation} modelliert.
+		Testimplementierungen sind Beschreibungen wie ein Testfall getestet wird und ob dieser manuell oder automatisch ausgeführt wird.
+		Testimplementierungen enthalten auch Informationen, ob sie erfolgreich beim letzten Testlauf getestet worden sind.
+		Eine Testimplementierungen ist die Beschreibung mit welchen Konfigurationen ein Testfall bei einem Gerät getestet wird.
 		
-		\item Testimplementierungen zu Testfällen und Testsysteme zuordnen
+		\item RE 7 - Testimplementierungen zu Testfällen und Testsystemen zuordnen
 		
-		Testimplementierungen könne zu Testfällen und zu Testsysteme zugeordnet werden.
-		Durch die Zuordnung von Testimplementierungen zu Testsystemen ist es einfacher die Testimplementierungen von einer Environment darzustellen.
-		Somit kann beispielsweise ein Report generiert werden, der einen Überblick über jede Testimplementation von einem Environment gibt.
+		Testimplementierungen könne zu Testfällen und zu Testsystemen zugeordnet werden.
+		Durch die Zuordnung von Testimplementierungen zu Testsystemen ist es möglich die Testimplementierungen von einem Produkt darzustellen.
+		Somit können beispielsweise Statistiken und Reports generiert werden, die einen Überblick über jede Testimplementierungen von einem Produkt gibt.
+	\end{itemize}
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.6]{assets/TCMS_DomainModel_part1.png}
+		\caption{Domain-Model (Teil 1) basierend auf den Anforderungen von \autoref{chapter:requiremnts}}
+		\label{fig:domainModelPart1}
+	\end{figure}
+
+	Die in \autoref{fig:domainModelPart2} abgebildeten Entitäten betreffen folgende Anforderungen:
+	
+	\begin{itemize}
+		%\setlength\itemsep{-0.5em}
+		\item RE 8 - Testläufe von Testimplementierungen zu einem Testsystem zuordnen
+		
+		Ein Testlauf wurden als \emph{TestRun} modelliert.
+		Testläufe werden automatisch von dem bereits bestehenden \ac{TAS} der Firma erstellt und beschrieben.
+		Diese Testläufe enthalten Informationen welche Testimplementationen, mit welchen Konfigurationen und mit welcher Hardware getestet wurde.
+		Testläufe werden zum Zeitpunkt des Erstellens zu den jeweiligen Testsystemen, mit denen diese durchgeführt worden sind, zugeordnet.
+		
+		\item RE 9 - Resultate von bestimmten Testläufen abzufragen
+		
+		Durch die Zuordnung von Testläufen zu Testsystemen können Resultate zu jedem Testsystem abgefragt werden.
 	\end{itemize}
 
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[scale=0.6]{assets/TCMS_DomainModel_part2.png}
-		\caption{Domain-Model (Teil 2) aus den Anforderungen von \autoref{chapter:requiremnts}}
+		\caption{Domain-Model (Teil 2) basierend auf den Anforderungen von \autoref{chapter:requiremnts}}
 		\label{fig:domainModelPart2}
 	\end{figure}
-
-	Bei den in \autoref{fig:domainModelPart2} abgebildeten Entitäten handelt es sich um die folgenden Anforderungen:
 	
-	\begin{itemize}
-		%\setlength\itemsep{-0.5em}
-		\item Testläufe von Testimplementierungen zu einem Testsystem zuordnen
-		
-		Testläufe werden automatisch von dem bereits bestehenden \ac{TAS} der Firma erstellt und beschrieben.
-		Diese Testläufe enthalten Informationen welche Testimplementationen, mit welchen Konfigurationen und mit welcher Hardware getestet wurde.
-		Testläufe werden zum Zeitpunkt des Erstellens zu den jeweiligen Testsystemen zugeordnet, mit denen diese durchgeführt worden sind.
-		
-		\item Resultate von bestimmten Testläufen abzufragen
-		
-		Durch die Zuordnung von Testläufen zu Testsystemen können Resultate zu jedem Testsystem abgefragt werden.
-	\end{itemize}
+	Die in \autoref{fig:domainModelPart1} und \autoref{fig:domainModelPart2} gezeigten Entitäten wurden auf Basis der Kommunikation mit Domainexperten modelliert.
 	
-	Die in \autoref{fig:domainModelPart1} und \autoref{fig:domainModelPart2} gezeigten Entitäten wurden auf Basis der Kommunikation mit den Domainexperten so modelliert.
+	
 	
 	\chapter{Technische Umsetzung}
-	Damit das Ziel dieser Arbeit, ein \ac{TCMS} zu entwickeln, erreicht wird, werden die im \autoref{chapter:requiremnts} auf \autopageref{sec:userStoriesDefinition} definierten User-Stories mithilfe der erwähnten Technologien aus \autoref{sec:technologies} umgesetzt.
-	Dabei wird auf den Scrum-Prozess und im Anschluss auf die User-Stories detailliert eingegangen.
+	Dieses Kapitel beschreibt die Implementierung der definierten User-Stories mit den gewählten Technologien und wie diese mit der entworfenen Architektur umgesetzt wurden. 
+	Zuerst wird der allgemeine Ablauf des verwendeten Scrum-Prozesses beschrieben und im Anschluss detailliert auf die User-Stories eingegangen. 
 
 	\section{Scrum}
-	Scrum ist grundsätzlich eine Projektmanagement-Methode um in der Softwareentwicklung agil zu arbeiten.
-	Bei dieser Methode geht es darum, dass ein Team Aufgaben von einer Aufgabenstellung in kleinen Schritten, sogenannte Sprints, angeht.
+	Scrum ist eine Projektmanagement-Methode zur Unterstützung der agilen Softwareentwicklung.
+	Bei dieser Methode geht es darum, dass ein Team Teilaufgaben von einer komplexen Aufgabenstellung in kleinen Schritten, sogenannte \emph{Sprints}, angeht. (\textcite{rubin_essential_2012})
 	
-	\textcite{rubin_essential_2012}
-	
+	Für die Implementierung der User-Stories wurde der in \autoref{fig:scrum-process} gezeigte Prozess angewendet.
+		
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[scale=0.4]{assets/scrum-process.png}
+		\includegraphics[scale=0.35]{assets/scrum-process.png}
 		\caption{Scrum Prozess (Quelle: \textcite{noauthor_home_nodate})}
 		\label{fig:scrum-process}
 	\end{figure}
 	
-	Für die Implementierung der User-Stories wurde der oben gezeigte Prozess angewendet (\autoref{fig:scrum-process}).
 	
 	\section{Implementierung der User-Stories}
-	Dieser Abschnitt zeigt den Ablauf der Implementierung des \ac{TCMS} dieser Arbeit.
-	Gesamt ist die Implementierung auf vier User-Stories aufgeteilt, die in folgender Reihenfolge implementiert wurden:
+	Dieser Abschnitt zeigt den Ablauf der Implementierung der User-Stories.
+	Die Implementierung ist auf vier User-Stories aufgeteilt, die in der folgenden Reihenfolge implementiert wurden:
 	
 	\begin{itemize}
 		\item Projekt und Datenbank Aufsetzen
 		\item Erstellen und suchen von Test-Environments
 		
-		Um die Durchgängigkeit der Architektur zu veranschaulichen wird bei dieser User-Story detailliert in jede Schicht eingegangen (Siehe: \autoref{subsec:createAndSearchTestEnvironments} auf \autopageref{subsec:createAndSearchTestEnvironments}).
-		Dabei werden die User-Stories in folgender Reihenfolge in die Schichten implementiert:
+		Um die Durchgängigkeit der Architektur zu veranschaulichen, wird bei dieser User-Story detailliert auf jede Schicht eingegangen.
+		Eine detaillierte Beschreibung erfolgt in \autoref{subsec:createAndSearchTestEnvironments}.
+		Dabei wurden die User-Stories in folgender Reihenfolge in die Schichten implementiert:
 		
 		\begin{itemize}
 			\setlength\itemsep{-0.5em}
@@ -800,22 +813,27 @@
 	
 		\item Erstellen und suchen von Testplänen, Testfällen und Testimplementationen
 		
-		Um zu zeigen, wie \ac{EF} Core Tabellen konfiguriert, werden bei dieser User-Story detailliert auf die Konfigurationen eingegangen (Siehe: \autoref{subsec:createAndSearchTestplans} auf \autopageref{subsec:createAndSearchTestplans}).
+		Nachdem die Durchgängigkeit der Architektur gezeigt wurde, wird bei dieser User-Story detailliert auf die Tabellen Konfigurationen mit \ac{EF} Core eingegangen. 
+		Eine detaillierte Beschreibung erfolgt in \autoref{subsec:createAndSearchTestplans}.
 		
 		\item Erstellen und suchen von Testläufe
 		
-		In dieser User-Story wird gezeigt wie das \ac{TAS} von \ac{GI} mit dem \ac{TCMS} interagiert (Siehe: \autoref{subsec:createAndSearchTestruns} auf \autopageref{subsec:createAndSearchTestruns}).
+		In dieser User-Story wird gezeigt, wie das \ac{TAS} von \ac{GI} mit dem \ac{TCMS} interagiert (Siehe: \autoref{subsec:createAndSearchTestruns} auf \autopageref{subsec:createAndSearchTestruns}).
 	\end{itemize}
 
-	Zur Umsetzung des \ac{TCMS} kommt die Version .NET 7.0 zum Einsatz.
-	Als \acfi{IDE} wurde \emph{Rider} verwendet, die von \emph{JetBrains} entwickelt wurde.
+	Für die Umsetzung des \ac{TCMS} kommt die Version .NET 7.0 zum Einsatz.
+	Als \acfi{IDE} wurde \emph{Rider} von \emph{JetBrains} verwendet.
+
 
 	\subsection{Projekt und Datenbank Aufsetzen}
-	Damit eine Grundlage für die folgenden User-Stories vorhanden ist, wurde die Struktur des Projektes in vier Teil Projekte aufgeteilt.
-	Dabei ist jedes Projekt die Projektion einer Schicht der verwendeten Architektur (Siehe: \autoref{subsec:backend}).
+	Damit eine Grundlage für die folgenden User-Stories vorhanden ist, wurde die Struktur des Projektes in vier Teilprojekte aufgeteilt.
+	Dabei repräsentiert jedes Projekt eine Schicht der verwendeten Architektur.
 	
-	Für das Aufsetzen der Datenbank wurde Docker Desktop verwendet.
-	Docker Desktop ist eine Anwendung die das Erstellen und Verwalten von Container einfacher macht. \textcite{noauthor_docker_2022}
+	Für das Aufsetzen der Datenbank wurde das von Docker bereitgestellte Tool \emph{Docker Desktop} verwendet.
+	Docker Desktop ist eine Anwendung die das Erstellen und Verwalten von Container einfacher macht. (\textcite{noauthor_docker_2022})
+	
+	\autoref{lst:dockerDesktop} zeigt das Erstellen und Ausführen eines MariaDB Containers.
+	Nachdem der Container hochgefahren ist, kann mit dem MariaDB Server gearbeitet werden.
 	
 	\begin{listing}[ht]
 		\begin{minted}{Basic}
@@ -826,8 +844,8 @@
 		\label{lst:dockerDesktop}
 	\end{listing}
 
-	\autoref{lst:dockerDesktop} zeigt das Erstellen und Ausführen eines MariaDB Containers.
-	Nachdem der Container hochgefahren ist kann mit dem MariaDB Server gearbeitet werden.
+	\autoref{lst:createAndUseDBSchema} zeigt das Erstellen eines Datenbankschemas namens \emph{tcms\_mariadb}. 
+	In dieser werden die Tabellen vom \ac{TCMS} erzeugt und verwaltet.
 	
 	\begin{listing}[ht]
 		\begin{minted}{SQL}
@@ -838,8 +856,12 @@
 		\label{lst:createAndUseDBSchema}
 	\end{listing}
 
-	\autoref{lst:createAndUseDBSchema} zeigt das Erstellen eines Datenbankschemas namens \emph{tcms\_mariadb}. 
-	In dieser werden die Tabellen vom \ac{TCMS} erzeugt und verwaltet.
+	Um eine Verbindung zur Datenbank herzustellen, liegt im Projekt ein \ac{JSON}-File, das die benötigten Konfigurationen bereitstellt (Siehe: \autoref{lst:connectionConfigs}).
+	Diese werden beim Start des Projektes in der \emph{Startup} Klasse gelesen und verwendet (Siehe: \autoref{lst:registerDatabase}).
+	Weiters wird in \autoref{lst:registerDatabase} gezeigt, dass die Funktion \emph{AddDbContext} den Typ \emph{EFContext} bekommt. 
+	Diese Klasse kümmert sich um die Konfiguration aller Tabellen, die verwendet werden (Siehe: \autoref{lst:efcontextClass}).
+	
+	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang zeigt die \emph{Startup} und \emph{Program} Klasse, die für die Initiierung der Datenbank und Tabellen, der \ac{DI} Container und Generierung der Swagger \ac{UI} zuständig sind.
 
 	\begin{listing}[ht]
 		\begin{minted}{JSON}
@@ -875,18 +897,13 @@
 		\label{lst:registerDatabase}
 	\end{listing}
 
-	Um eine Verbindung zur Datenbank herzustellen, liegt im Projekt ein \ac{JSON}-File, das die benötigten Konfigurationen bereitstellt (Siehe: \autoref{lst:connectionConfigs}).
-	Diese werden beim Start des Projektes in der \emph{Startup} Klasse gelesen und verwendet (Siehe: \autoref{lst:registerDatabase}).
-	Weiters wird in \autoref{lst:registerDatabase} gezeigt, dass die Funktion \emph{AddDbContext} den Typ \emph{EFContext} bekommt. 
-	Diese Klasse kümmert sich um alle Tabellen Konfigurationen, die verwendet werden (Siehe: \autoref{lst:efcontextClass}).
-
-	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang auf \autopageref{lst:startupClassPart1} zeigt die \emph{Startup} und \emph{Program} Klasse, die im Zusammenhang der oben gezeigten Ausschnitte, alles nötige initiiert.
-
 	\subsection{Erstellen und suchen von Test-Environments} \label{subsec:createAndSearchTestEnvironments}
-	Zuerst wurde mit den Domain-Models, \emph{Test-Environment} und \emph{Testsystem}, in der Domainschicht angefangen.
+	Zuerst erfolgte die Implementierung der Domain-Models, \emph{Test-Environment} und \emph{Testsystem}, in der Domainschicht.
 	Im Anschluss wurden die Interfaces für die Infrastrukturschicht definiert, die ebenfalls in der Domainschicht liegen.
 	Somit kann die Infrastrukturschicht einfach und ohne Abhängigkeiten ausgetauscht werden.
 	
+	Als nächster Schritt wurden das definierte Interface (Siehe: \autoref{lst:testEnvironmentRepository}) in der Infrastrukturschicht implementiert.
+
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
 			public interface ITestEnvironmentRepository
@@ -904,7 +921,11 @@
 		\label{lst:testEnvironmentRepository}
 	\end{listing}
 
-	Als nächster Schritt wurden das definierte Interface (Siehe: \autoref{lst:testEnvironmentRepository}) in der Infrastrukturschicht programmiert.
+	Mithilfe der \ac{ORM} Technologie \ac{EF} Core, können Objekte ohne \ac{SQL} Statements in die Datenbank geschrieben, gelesen, gelöscht und aktualisiert werden.
+	\autoref{lst:testEnvironmentRepositoryAusschnitt_1} zeigt wie ein Test-Environment mit einer \acfi{ID} von der Datenbank ausgelesen werden kann.
+	
+	Damit wir das von \autoref{lst:testEnvironmentRepositoryAusschnitt_1} ausgelesene Test-Environment-Objekt weiter verwenden können, wurde ein \emph{TestEnvironmentService} in der Applikationsschicht implementiert. 
+	Dabei wird für den Service sowohl ein Interface definiert als auch eine implementierende Klasse \emph{TestEnvironmentService} realisiert.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -928,11 +949,8 @@
 		\label{lst:testEnvironmentRepositoryAusschnitt_1}
 	\end{listing}
 	
-	Mithilfe der \ac{ORM} Technologie, \ac{EF} Core, können Objekte ohne \acfi{SQL} Statements in die Datenbank geschrieben, gelesen, gelöscht und aktualisiert werden.
-	Beispielsweise zeigt der \autoref{lst:testEnvironmentRepositoryAusschnitt_1} wie ein Test-Environment mit einer \acfi{ID} von der Datenbank ausgelesen werden kann.
-	
-	Damit wir das von \autoref{lst:testEnvironmentRepositoryAusschnitt_1} ausgelesene Test-Environment-Objekt weiter verwenden können, wird ein Test-Environment-Service in der Applikationsschicht einwickelt.
-	Dabei wird für den Service zuerst wieder ein Interface definiert, welches die \emph{TestEnvironemntService} Klasse implementiert.
+	Der in \autoref{lst:testEnvironmentServiceAusschnitt} gezeigte Code bekommt das Test-Environment-Objekt von der Infrastrukturschicht zurück und wandelt es in ein \acfi{DTO} um.
+	Das \ac{DTO} wird anschließend von der Applikationsschicht in die Präsentationsschicht weitergeleitet.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -952,12 +970,11 @@
 			
 			[...]
 		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironemntService} Klasse}
+		\caption{Ausschnitt der \emph{TestEnvironmentService} Klasse}
 		\label{lst:testEnvironmentServiceAusschnitt}
 	\end{listing}
 
-	Der in \autoref{lst:testEnvironmentServiceAusschnitt} gezeigte Code bekommt das Test-Environment-Objekt von der Infrastrukturschicht zurück und wandelt es in ein \acfi{DTO} um.
-	Das \ac{DTO} wird dann in der Präsentationsschicht weiter verarbeitet.
+	Der in \autoref{lst:testEnvironmentControllerAusschnitt_1} gezeigte Code bekommt das umgewandelte Test-Environment-Objekt (\ac{DTO}) von der Applikationsschicht zurück und schickt es dem Client weiter.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -973,16 +990,16 @@
 			
 			[...]
 		\end{minted}
-		\caption{Ausschnitt der \emph{TestEnvironemntController} Klasse}
+		\caption{Ausschnitt der \emph{TestEnvironmentController} Klasse}
 		\label{lst:testEnvironmentControllerAusschnitt_1}
 	\end{listing}
-
-	Der in \autoref{lst:testEnvironmentControllerAusschnitt_1} gezeigte Code bekommt das umgewandelte Test-Environment-Objekt (\ac{DTO}) von der Applikationsschicht zurück und schickt es dem Client weiter.
-	Zu guter Letzt werden die \emph{TestEnvironemntService} und \emph{TestEnvironmentRepository} Klassen in der \emph{EFContext} Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
 	
-	Der gezeigte Ablauf war die Suche eines Test-Environments. 
-	Beim Erstellen passiert ähnliches, nur dass der Client ein \ac{DTO} über den bereitgestellten Endpunkt der \ac{API} schickt (Siehe: \autoref{fig:swaggeruiTestenvironment}).
-	Die \emph{TestEnvironemntController} Klasse empfängt das \ac{DTO} und schickt es der Applikationschicht weiter, diese Schicht wandelt es von einem \ac{DTO} in ein Domain-Objekt um und schickt es weiter zur Infrastukturschicht, die es dann persistiert.
+	Der oben gezeigte Ablauf beschreibt die Suche nach einem Test-Environment. 
+	Beim Erstellen passiert ähnliches, nur dass der Client ein \ac{DTO} über den bereitgestellten Endpunkt der \ac{API} schickt.
+	Die \emph{TestEnvironmentController} Klasse empfängt das \ac{DTO} und schickt es der Applikationschicht weiter, diese Schicht wandelt es von einem \ac{DTO} in ein Domain-Objekt um und schickt es weiter zur Infrastukturschicht, die es dann persistiert.
+	
+	\newpage
+	Der in \autoref{lst:testEnvironmentRepositoryAusschnitt_2} gezeigte Code zeigt das Schreiben eines Test-Environment-Objekts in die Datenbank.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -1000,7 +1017,9 @@
 		\label{lst:testEnvironmentRepositoryAusschnitt_2}
 	\end{listing}
 	
-	Der in \autoref{lst:testEnvironmentRepositoryAusschnitt_2} gezeigte Code zeigt das Schreiben eines Test-Environment-Objekts in die Datenbank.
+	\subsubsection{Swagger UI}
+	%Abschließend werden die \emph{TestEnvironmentService} und \emph{TestEnvironmentRepository} Klassen in der \emph{EFContext} Klasse (Siehe: \autoref{lst:startupClassPart1}) für den \acfi{DI} Container registriert.
+	Dadurch, dass \emph{Swagger} verwendet wird, wird beim Start des Projektes die \emph{TestEnvironmentController} Klasse gescannt und dafür eine Weboberfläche für die definierten Endpunkte generiert (Siehe: \autoref{fig:swaggeruiTestenvironment}).
 	
 	\begin{figure}[ht]
 		\centering
@@ -1008,18 +1027,19 @@
 		\caption{Test-Environment \ac{UI} von Swagger}
 		\label{fig:swaggeruiTestenvironment}
 	\end{figure}
-
-	Dadurch, dass \emph{Swagger} verwendet wird, wird beim Start des Projektes die \emph{TestEnvironemntController} Klasse gescannt und dafür eine Weboberfläche für die definierten Endpunkte generiert (Siehe: \autoref{fig:swaggeruiTestenvironment}).
 	
 	\subsection{Erstellen und suchen von Testplänen, Testfällen und Testimplementationen} \label{subsec:createAndSearchTestplans}
-	Wie bei der vorherigen User-Story ist der Ablauf der Implementierung für die Testpläne, Testfälle und für die Testimplementationen der gleiche.
+	Wie bei der vorherigen User-Story ist der Ablauf der Implementierung für die Testpläne, Testfälle und für die Testimplementationen der Gleiche.
 	
-	Zuerst wurden die Domain-Models erstellt, dann das Repository, folgend mit dem Service und als Letztes wurde der Controller implementiert.
-	Zudem werden bei Start des Projektes wieder die \emph{Controller} Klassen gescannt und dafür eine Weboberfläche generiert.
+	Zuerst die Domain-Models erstellt, dann das Repository, gefolgt von dem Service und dem Controller.
+	Zudem werden beim Start des Projektes die \emph{Controller} Klassen gescannt und eine Weboberfläche generiert.
+	Somit ist das Erstellen und Suchen von Testplänen, Testfällen und Testimplementationen auf dem Swagger \ac{UI} verfügbar. 
 	
-	Damit beispielsweise die Testpläne einer Test-Environment zugewiesen werden können muss eine \emph{Junction} Tabelle erstellt werden, da zwischen Testplan und Test-Environment eine Many-to-many Beziehung herrscht.
+	\subsubsection{Tabellen Konfiguration mit EF Core}
+	Damit beispielsweise die Testpläne einer Test-Environment zugewiesen werden können, muss eine \emph{Junction} Tabelle erstellt werden, da zwischen Testplan und Test-Environment eine Many-to-many Beziehung herrscht.
 	
-	\newpage
+	Dadurch, dass eine \emph{Junction} Tabelle benötigt wird, wurde die \emph{TestEnvironmentPlan} Klasse erstellt, die lediglich die Domain-\ac{ID}s beider Domain-Klassen, \emph{TestEnvironment} und \emph{TestPlan}, beinhaltet (Siehe: \autoref{lst:testEnvironmentPlanClass}). 
+	Damit die zwei Domain-Klassen später in den \ac{EF} Core Tabellenkonfigurationen als Many-to-many Beziehung konfigurierbar sind, ist die \emph{TestEnvironmentPlan} Klasse als \emph{Property} in beiden Klassen vorhanden.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -1039,25 +1059,25 @@
 		\label{lst:testEnvironmentPlanClass}
 	\end{listing}
 	
-	Dadurch, dass eine \emph{Junction} Tabelle benötigt wird, wurde die \emph{TestEnvironmentPlan} Klasse erstellt, die lediglich die Domain-\ac{ID}s beider Domain-Klassen, \emph{TestEnvironment} und \emph{TestPlan}, beinhaltet (Siehe: \autoref{lst:testEnvironmentPlanClass}).
+	Der in \autoref{lst:testEnvironmentAndPlanConfigurationClass} gezeigte Code konfiguriert einen Teil der Tabellen \emph{TestEnvironment} und \emph{TestPlan}.
+	Dadurch wird festgelegt, dass die Tabellen \emph{TestEnvironment} und \emph{TestPlan} eine Many-to-one Beziehung zu der \emph{Junction} Tabelle haben.
 	
-	Damit die zwei Domain-Klassen später in den \ac{EF} Core Tabellenkonfigurationen als Many-to-many Beziehung konfigurierbar sind, ist die \emph{TestEnvironmentPlan} Klasse als \emph{Property} in beiden Klassen vorhanden.
+	Der in \autoref{lst:testEnvironmentPlanConfigurationClass} gezeigte Code konfiguriert einen Teil der \emph{Junction} Tabelle \emph{TestEnvironmentPlan}.
+	Dadurch wird festgelegt, dass die \emph{TestEnvironmentPlan} Tabelle eine Many-to-one Beziehung zu den Tabellen \emph{TestEnvironment} und \emph{TestPlan} hat.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
 			[...]
 			
-			// TestEnvironment - many to one - TestEnvironmentPlan
-			builder
+			builder // TestEnvironment - many to one - TestEnvironmentPlan
 				.HasMany(e => e.TestEnvironmentPlans)
 				.WithOne()
 				.HasPrincipalKey(e => e.DomainId)
 				.IsRequired();
 				
 			[...]
-				
-			// TestPlan - many to one - TestEnvironmentPlan
-			builder
+			
+			builder // TestPlan - many to one - TestEnvironmentPlan
 				.HasMany(e => e.TestEnvironmentPlans)
 				.WithOne()
 				.HasPrincipalKey(e => e.DomainId)
@@ -1065,12 +1085,9 @@
 				
 			[...]
 		\end{minted}
-		\caption{Ausschnit aus der \emph{TestEnvironmentConfiguration} und \emph{TestPlanConfiguration} Klasse}
+		\caption{Ausschnitt aus der \emph{TestEnvironmentConfiguration} und \emph{TestPlanConfiguration} Klasse}
 		\label{lst:testEnvironmentAndPlanConfigurationClass}
 	\end{listing}
-
-	Der in \autoref{lst:testEnvironmentAndPlanConfigurationClass} gezeigte Code konfiguriert ein Teil der Tabellen \emph{TestEnvironment} und \emph{TestPlan}.
-	Damit wird bestimmt, dass die Tabellen \emph{TestEnvironment} und \emph{TestPlan} eine Many-to-one Beziehung zu der \emph{Junction} Tabelle haben.
 
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -1078,15 +1095,13 @@
 			
 			builder.HasKey(e => new {e.TestEnvironmentDomainId, e.TestPlanDomainId});
 			
-			// TestEnvironmentPlan - many to one - TestEnvironment
-			builder
+			builder // TestEnvironmentPlan - many to one - TestEnvironment
 				.HasOne<TestEnvironment>()
 				.WithMany(e => e.TestEnvironmentPlans)
 				.HasPrincipalKey(e => e.DomainId)
 				.IsRequired();
 				
-			// TestEnvironmentPlan - many to one - TestPlan
-			builder
+			builder // TestEnvironmentPlan - many to one - TestPlan
 				.HasOne<TestPlan>()
 				.WithMany(e => e.TestEnvironmentPlans)
 				.HasPrincipalKey(e => e.DomainId)
@@ -1094,33 +1109,34 @@
 			
 			[...]
 		\end{minted}
-		\caption{Ausschnit aus der \emph{TestEnvironmentPlanConfiguration} Klasse}
+		\caption{Ausschnitt aus der \emph{TestEnvironmentPlanConfiguration} Klasse}
 		\label{lst:testEnvironmentPlanConfigurationClass}
 	\end{listing}
-
-	Der in \autoref{lst:testEnvironmentPlanConfigurationClass} gezeigte Code konfiguriert ein Teil der \emph{Junction} Tabelle \emph{TestEnvironmentPlan}.
-	Damit wird bestimmt, dass die \emph{TestEnvironmentPlan} Tabelle eine Many-to-one Beziehung zu den Tabellen \emph{TestEnvironment} und \emph{TestPlan} hat.
 	
-	Somit wurde mit \ac{EF} Core eine Many-to-Many Beziehung hergestellt. 
-	Nun ist es möglich Testpläne einer Test-Environemnt zuzuweisen.
+	Dadurch ergibt sich eine Many-to-Many Beziehung und es wird ermöglicht, dass Testpläne zu einem Test-Environment zuweisbar sind.
 	
-	Um ein Test-Environment mit den hinzugefügten Test-Pläne abzufragen, wurde eine \emph{TestEnvironmentManager} Klasse in der Applikationsschicht implementiert.
-	Dieser Manager hat Zugriff auf die \emph{TestEnvironmentRepository} und \emph{TestPlanRepository} Klassen.
-	\autoref{lst:testEnvironmentManagerClass} im Anhang auf \autopageref{lst:testEnvironmentManagerClass} zeigt, wie dies erfolgt.
+	Um ein Test-Environment und dazugehörige Testpläne abzufragen, wurde eine \emph{TestEnvironmentManager}-Klasse in der Applikationsschicht implementiert.
+	Diese Klasse hat Zugriff auf die \emph{TestEnvironmentRepository}- und \emph{TestPlanRepository}-Klassen.
+	\autoref{lst:testEnvironmentManagerClass} im Anhang zeigt, wie dies erfolgt.
 	
+	\newpage
 	\subsection{Erstellen und suchen von Testläufe} \label{subsec:createAndSearchTestruns}
 	
-	Der Ablauf der Implementierung ist gleich wie bei den vorherigen User-Stories.
+	Der Ablauf der Implementierung erfolgte analog zu den vorherigen User-Stories.
 	Die \ac{EF} Core Konfiguration besteht aus folgenden Beziehungen:
 	
 	\begin{itemize}
 		\item Many-to-one zu der \emph{Testsystem} Domain-Klasse
 		
-		Dadurch wird ermöglicht, dass alle Testläufe eines Testsystems von einem Test-Environment effizient abgefragt werden können.
+		Dadurch wird ermöglicht, dass alle Testläufe eines Testsystems von einem Test-Environment abgefragt werden können.
 		
 		\item One-to-many zu der \emph{ResultDetails} ValueObject-Klasse
 		\item One-to-many zu der \emph{DeviceDetail} ValueObject-Klasse
 	\end{itemize}
+	
+	\autoref{lst:testRunConfigurationClass} zeigt wie ein \emph{Dictionary} mit \ac{EF} Core konfiguriert wird.
+	Dabei wird das \emph{Dictionary} als \ac{JSON} in eine \ac{JSON}-Spalte geschrieben.
+	Beim Auslesen wird das \ac{JSON}-Objekt wieder in ein \emph{Dictionary} deserialisiert.
 	
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
@@ -1136,20 +1152,16 @@
 			
 			[...]
 		\end{minted}
-		\caption{Ausschnit aus der \emph{TestRunConfiguration} Klasse}
+		\caption{Ausschnitt aus der \emph{TestRunConfiguration} Klasse}
 		\label{lst:testRunConfigurationClass}
 	\end{listing}
 	
-	\autoref{lst:testRunConfigurationClass} zeigt wie ein \emph{Dictionary} mit \ac{EF} Core konfiguriert wird.
-	Dabei wird das \emph{Dictionary} als \ac{JSON} in ein \ac{JSON}-Spalte geschrieben.
-	Beim Auslesen wird das \ac{JSON}-Objekt wieder in ein \emph{Dictionary} deserialisiert.
-	
-	Die Testimplementationen sind, wie die Testläufe, in einer Many-to-one Beziehung zu der \emph{Testsystem} Klasse. 
-	Dadurch ist es möglich, durch den Status der Testimplementationen, Statistiken und Reports zu erstellen, die angeben in welchem Zustand ein Feature (Testplan) eines Gerätes (Test-Environment) ist und ob es Release bereit ist.
+	Die Testimplementationen sind, wie die Testläufe, in einer Many-to-one Beziehung zu der \emph{Testsystem}-Klasse. 
+	Dadurch ist es möglich, anhand des Status der Testimplementationen, Statistiken und Reports zu erstellen, die angeben in welchem Zustand ein Feature (Testplan) eines Gerätes (Test-Environment) ist und ob es Release bereit ist.
 	
 	\subsubsection{Automatische Erstellung von Testläufen über das TAS}
-	Über bereitgestellte \ac{API}s ermöglicht es dem \ac{TAS} von \ac{GI} Testläufe automatisch zu erstellen.
-	Ein Ablauf eines \ac{TAS} sieht folgend aus:
+	Über bereitgestellte \ac{API}s ermöglicht das \ac{TCMS} dem \ac{TAS} von \ac{GI} Testläufe automatisch zu erstellen.
+	Ein Ablauf eines \ac{TAS} sieht wie folgt aus:
 	
 	\begin{itemize}
 		\item Ein Testlauf wird beim Start des \ac{TAS} erstellt.
@@ -1159,13 +1171,13 @@
 		\item Nach Beendigung eines Tests benachrichtigt das \ac{TAS}, über eine bereitgestellte \ac{API}, das \ac{TCMS}
 		
 		Der Testlauf der beim Start erstellt wurde, wird nun aus der Datenbank ausgelesen. 
-		Die Resultate, die das \ac{TAS} mit der zugehörigen Testimplementation \ac{ID} sendet, wird in das \emph{Dictionary}, von der \emph{Testlauf} Klasse, hinzugefügt.
-		Der Testlauf wird daraufhin in der Datenbank aktualisiert.
+		Die Resultate, die das \ac{TAS} mit der zugehörigen Testimplementation \ac{ID} sendet, wird in das \emph{Dictionary}, welches von der \emph{Testlauf}-Klasse, hinzugefügt.
+		Der Testlauf wird anschließend in der Datenbank aktualisiert.
 		
 		\item Nach Beendigung des gesamten Testablaufs wird das Enddatum beim Testlauf eingetragen.
 	\end{itemize}
 	
-	Um manuell Testläufe zu erstellen, gibt es ein \ac{UI}, dass mit \emph{swagger} generiert wurde.
+	Testläufe können auch manuell über die Swagger-\ac{UI} erstellt werden.
 	
 	\chapter{Evaluierung und Ausblick}
 	Abschließend befasst sich dieses Kapitel mit den Verbesserungsmöglichkeiten der technischen Umsetzung des \ac{TCMS} Backends.
