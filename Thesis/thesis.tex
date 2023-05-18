@@ -561,9 +561,9 @@
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
-		\item Erstellen von Test-Environments über die Swagger-UI
-		\item Suchen von Test-Environments über die Swagger-UI
-		\item Zuordnungsmöglichkeit von Testplänen über die Swagger-UI
+		\item Erstellen von Test-Environments über das Swagger-UI
+		\item Suchen von Test-Environments über das Swagger-UI
+		\item Zuordnungsmöglichkeit von Testplänen über das Swagger-UI
 	\end{itemize}
 
 	Diese User-Story erfüllt die Anforderungen RE 1 und RE 3.
@@ -573,9 +573,9 @@
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
-		\item Erstellen von Testplänen, Testfällen und Testimplementationen über die Swagger-UI
-		\item Suchen von Testplänen, Testfällen und Testimplementationen über die Swagger-UI
-		\item Zuordnungsmöglichkeit von Testfällen und Testimplementationen über die Swagger-UI
+		\item Erstellen von Testplänen, Testfällen und Testimplementationen über das Swagger-UI
+		\item Suchen von Testplänen, Testfällen und Testimplementationen über das Swagger-UI
+		\item Zuordnungsmöglichkeit von Testfällen und Testimplementationen über das Swagger-UI
 	\end{itemize}
 
 	Diese User-Story erfüllt die Anforderungen RE 2, 4, 5, 6 und RE 7.
@@ -585,9 +585,9 @@
 	
 	Die Akzeptanzkriterien sind wie folgend:
 	\begin{itemize}
-		\item Erstellen von Testläufen über die Swagger-UI
-		\item Suchen von Testläufen über die Swagger-UI
-		\item Zuordnungsmöglichkeit von Testläufen über die Swagger-UI
+		\item Erstellen von Testläufen über das Swagger-UI
+		\item Suchen von Testläufen über das Swagger-UI
+		\item Zuordnungsmöglichkeit von Testläufen über das Swagger-UI
 	\end{itemize}
 	
 	Diese User-Story erfüllt die Anforderungen RE 8 und RE 9.
@@ -1046,7 +1046,9 @@
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
 			[...]	
-			builder // TestEnvironment - many to one - TestEnvironmentPlan
+			
+			// TestEnvironment - many to one - TestEnvironmentPlan
+			builder 
 				.HasMany(e => e.TestEnvironmentPlans)
 				.WithOne()
 				.HasPrincipalKey(e => e.DomainId)
@@ -1054,11 +1056,13 @@
 				
 			[...]	
 			
-			builder // TestPlan - many to one - TestEnvironmentPlan
+			// TestPlan - many to one - TestEnvironmentPlan
+			builder 
 				.HasMany(e => e.TestEnvironmentPlans)
 				.WithOne()
 				.HasPrincipalKey(e => e.DomainId)
-				.IsRequired();						
+				.IsRequired();	
+									
 			[...]
 		\end{minted}
 		\caption{Ausschnitt aus der \emph{TestEnvironmentConfiguration} und \emph{TestPlanConfiguration}-Klasse}
@@ -1072,20 +1076,24 @@
 
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
-			[...]			
+			[...]	
+					
 			builder.HasKey(e => new {e.TestEnvironmentDomainId, e.TestPlanDomainId});
 			
-			builder // TestEnvironmentPlan - many to one - TestEnvironment
+			// TestEnvironmentPlan - many to one - TestEnvironment
+			builder 
 				.HasOne<TestEnvironment>()
 				.WithMany(e => e.TestEnvironmentPlans)
 				.HasPrincipalKey(e => e.DomainId)
 				.IsRequired();
 				
-			builder // TestEnvironmentPlan - many to one - TestPlan
+			// TestEnvironmentPlan - many to one - TestPlan
+			builder 
 				.HasOne<TestPlan>()
 				.WithMany(e => e.TestEnvironmentPlans)
 				.HasPrincipalKey(e => e.DomainId)
-				.IsRequired();		
+				.IsRequired();	
+					
 			[...]
 		\end{minted}
 		\caption{Ausschnitt aus der \emph{TestEnvironmentPlanConfiguration}-Klasse}
@@ -1119,6 +1127,7 @@
 	\begin{listing}[ht]
 		\begin{minted}{csharp}
 			[...]	
+			
 			builder
 				.Property(p => p.ResultDetailsMap)
 				.HasConversion<string>(
@@ -1126,6 +1135,7 @@
 					s => JsonConvert.DeserializeObject<Dictionary<string, ResultDetails>>(s) ??
 						new Dictionary<string, ResultDetails>()
 			);		
+			
 			[...]
 		\end{minted}
 		\caption{Ausschnitt aus der \emph{TestRunConfiguration}-Klasse}
