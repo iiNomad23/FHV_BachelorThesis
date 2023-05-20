@@ -111,8 +111,8 @@
 	Daher ist es wichtig, dass die Produkte vor der Auslieferung an den Kunden gezielt und sorgfältig getestet werden. 
 	Dies wird durch knappe Ressourcen und Termindruck oftmals vernachlässigt, oder nur unzureichend durchgeführt. 
 	
-	Durch ein Test Case Management System ist es möglich, dass Features vor dem Release eines Produktes getestet und abgenommen werden müssen. 
-	Das wiederum ermöglicht, dass neu implementierte Features gründlich getestet werden und somit zu einer hohen Qualität des Produktes beitragen.
+	Durch ein Test Case Management System ist es möglich, dass Features vor dem Release eines Produkts getestet und abgenommen werden müssen. 
+	Das wiederum ermöglicht, dass neu implementierte Features gründlich getestet werden und somit zu einer hohen Qualität des Produkts beitragen.
 	Dadurch kann stabile Hardware sowie effiziente und gut strukturierte Software an den Kunden ausgeliefert werden.
 	
 	Ziel dieser Arbeit ist es, ein Test Case Management System zu entwickeln, mit dem es möglich ist Features von Messsystemen der Firma Gantner Instruments zu beschreiben.
@@ -245,7 +245,7 @@
 	
 	\chapter{Stand der Technik}
 	Dieses Kapitel gibt einen Überblick über den aktuellen Stand der Technik von Testarten, \ac{TCMS} sowie deren Verwendung und Integration mit bestehenden Systemen. 
-	Weiters werden Technologien, auf denen das in dieser Arbeit entwickelte \ac{TCMS} aufbaut, beschrieben.
+	Des Weiteren werden Technologien, auf denen das in dieser Arbeit entwickelte \ac{TCMS} aufbaut, beschrieben.
 	
 	\section{Testarten} \label{sec:testtypes}
 	Während der Entwicklung eines Produkts kommen unterschiedliche Testarten zum Einsatz. 
@@ -330,7 +330,7 @@
 	
 	Ein \ac{TCMS} ist ein wichtiges Werkzeug, um einen strukturierten und effektiven Testprozess zu gewährleisten und den Qualitätsstandard einer Anwendung zu verbessern.
 	Es verfügt über Basisfunktionen wie Testfall-Erstellung, Testfall-Verwaltung, Testfall-Ausführung und Ergebnisberichterstattung. 
-	Weiters kann ein solches System auch eine integrierte Umgebung für die Zusammenarbeit von verschiedene Abteilungen in einer Firma bereitstellen.
+	Des Weiteren kann ein solches System auch eine integrierte Umgebung für die Zusammenarbeit von verschiedene Abteilungen in einer Firma bereitstellen.
 	
 	Zusätzlich zu den Basisfunktionen sind weitere wichtige Merkmale (\textcite{lead_articles_nodate}):
 	
@@ -357,7 +357,7 @@
 	\end{itemize}
 	
 	
-	\subsection{Überblick von bestehenden Test Case Management Systeme}
+	\subsection{Überblick von bestehenden Test Case Management Systemen}
 	Auf dem Markt gibt es eine Vielzahl fertiger und direkt verwendbaren \ac{TCMS}, die die Verwaltung von Tests vereinfachen.
 	
 	Einige bekannte \ac{TCMS} sind in \autoref{fig:tcms_logo} dargestellt und hier aufgelistet:
@@ -851,7 +851,7 @@
 
 	Um eine Verbindung zur Datenbank herzustellen, liegt im Projekt ein \ac{JSON}-File, das die benötigten Konfigurationen bereitstellt, siehe \autoref{lst:connectionConfigs}.
 	Diese werden beim Start des Projektes in der \emph{Startup}-Klasse gelesen und verwendet, siehe \autoref{lst:registerDatabase}.
-	Weiters zeigt \autoref{lst:registerDatabase}, dass die Funktion \emph{AddDbContext} den Typ \emph{EFContext} bekommt. 
+	Des Weiteren zeigt \autoref{lst:registerDatabase}, dass die Funktion \emph{AddDbContext} den Typ \emph{EFContext} bekommt. 
 	Diese Klasse kümmert sich um die Konfiguration aller verwendeten Tabellen, die verwendet werden, siehe \autoref{lst:efcontextClass}.
 
 	\autoref{lst:startupClassPart1}, \ref{lst:startupClassPart2} und \ref{lst:programClass} im Anhang zeigen die \emph{Startup} und \emph{Program}-Klasse, die für die Initiierung der Datenbank und Tabellen, der \ac{DI} Container und Generierung der Swagger-UI zuständig sind.
@@ -1156,23 +1156,26 @@
 	Testläufe können auch manuell über die Swagger-UI erstellt werden.
 	
 	\chapter{Evaluierung und Ausblick}
-	Abschließend befasst sich dieses Kapitel mit den Verbesserungsmöglichkeiten der technischen Umsetzung des \ac{TCMS} Backends.
-	Weiters wird ein kurzer Ausblick in die Zukunft des \ac{TCMS} gegeben.
+	Dieses Kapitel reflektiert über den Entwicklungsprozess sowie die technische Umsetzung des \ac{TCMS} und beschreibt mögliche Verbesserungsmöglichkeiten.
+	Des Weiteren wird ein kurzer Ausblick in die Zukunft des \ac{TCMS} gegeben.
 	
 	\section{Verbesserungsmöglichkeiten}
 	In diesem Abschnitt werden potenzielle Verbesserungsmöglichkeiten für die umgesetzte Lösung erläutert.
-	Obwohl die Umsetzung die Ziele dieser Arbeit erreicht hat, ist es wichtig mögliche Optimierungen und Verbesserungen der bestehenden Lösung zu veranschaulichen, da dadurch potenzielle Unschönheiten, Codeverdoppelungen etc. aufgedeckt werden können und sich dadurch der Wert des Projektes steigert.
-	Folgend gibt es zwei Möglichkeiten Codeverdoppelungen und Unschönheiten zu vermindern.
+	Obwohl die Umsetzung die Ziele dieser Arbeit erreicht hat, ist es wichtig mögliche Optimierungen und Verbesserungen der bestehenden Lösung aufzuzeigen, da dadurch potenzielle Verbesserungsmöglichkeiten wie beispielsweise das Verhindern von Code-Duplikation etc. aufgedeckt werden können.
+	Folgend werden zwei Verbesserungsmöglichkeiten beschrieben.
 
 	\subsection{Basis Klassen}
-	Bei der Implementierung der User-Stories wurde ersichtlich, dass einige Funktionalitäten, wie z.B. \autoref{lst:testEnvironmentRepository} zeigt, für mehrere Domain-Objekte wie beispielsweise \emph{TestEnvironment}, \emph{TestPlan} etc. gleich ist.
+	Bei der Implementierung der User-Stories wurde ersichtlich, dass einige Funktionalitäten, wie z.B. \autoref{lst:testEnvironmentRepository} zeigt, für mehrere Domain-Objekte \emph{TestEnvironment}, \emph{TestPlan} etc. gleich sind.
 	Um das zu verhindern, könnten Basis-Klassen in der Infrastruktur- und Applikationsschicht verwendet werden.
-	Beispielsweise könnten die Klassen \emph{TestEnvironmentRepository} und \emph{TestPlanRepository} Basisfunktionalitäten Generisch von einer Basis-Klasse vererben.
+	Beispielsweise könnten die Klassen \emph{TestEnvironmentRepository} und \emph{TestPlanRepository} Basisfunktionalitäten von einer Basis-Klasse erben.
 	Somit könnte ein großer Teil der Codebase verkleinert werden.
 	
 	\subsection{Automapper}
-	Bei der Entwicklung der \emph{Controller}-Klassen ist aufgefallen, dass die Umwandlung von \ac{DTO}s in Domain-Objekte und umgekehrt oft mehrfach in verschiedene Funktionalitäten gleich funktioniert.
-	Eine Third-Party Bibliothek names \emph{AutoMapper} könnte die Umwandlungen um einiges vereinfachen. \textcite{noauthor_automapper_nodate}
+	Bei der Entwicklung der \emph{Controller}-Klassen ist hat sich gezeigt, dass sich die Umwandlung von \ac{DTO}s in Domain-Objekte und umgekehrt mehrfach wiederholt.
+	Eine Third-Party Bibliothek names \emph{AutoMapper} könnte die Umwandlungen um einiges vereinfachen. (\textcite{noauthor_automapper_nodate})
+	
+	\autoref{fig:autoMapperExample} zeigt wie \ac{DTO}s zu Domain-Objekten mit \emph{AutoMapper} umgewandelt werden können.
+	Somit wird die Übersichtlichkeit des Codes verbessert und Code-Duplikation verhindert.
 	
 	\begin{figure}[ht]
 		\centering
@@ -1180,32 +1183,29 @@
 		\caption{Funktionsweise von \emph{AutoMapper} (Quelle: \textcite{sanjay_implement_2020})}
 		\label{fig:autoMapperExample}
 	\end{figure}
-
-	\autoref{fig:autoMapperExample} zeigt wie \ac{DTO}s zu Domain-Objekte mit \emph{AutoMapper} umgewandelt werden können.
-	Somit wird die Übersichtlichkeit des Codes verbessert und eventuell Codeverdoppelung verhindert.
 	
 	\section{Ausblick}
 	Die technische Umsetzung des \ac{TCMS} Backends in Zusammenarbeit mit \emph{\acl{GI}} war der erste Schritt zur Realisierung eines Vollständigem \emph{\acl{TCMS}s}.
 	
 	Aus der Sicht des Backends werden in Zukunft die oben aufgelisteten Verbesserungsmöglichkeiten implementiert und gegebenenfalls weitere Features eingebaut.
-	Weiters wird ein Frontend mit den Technologien \emph{React} und \emph{TypeScript}, auf Basis dieser Arbeit, entwickelt.
+	Des Weiteren wird ein Frontend mit den Technologien \emph{React} und \emph{TypeScript} entwickelt.
 	
-	Dadurch wird es die Möglichkeit geben über eine Weboberfläche Statistiken und Reports über gesamte Systeme und Geräte erstellen zu lassen, die wertvollen Einblick geben, welche Features getestet und Release bereit sind.
+	Dadurch wird es möglich über eine Weboberfläche Statistiken und Reports für Systeme und Geräte erstellen zu lassen. Diese dienen als Basis für eine Analyse und um einen Überblick zu bekommen, welche Features getestet und Release-fähig sind.
 	
 	\chapter{Zusammenfassung}
-	Ziel dieser Arbeit war es ein funktionierendes \ac{TCMS} Backend zu implementieren. 
-	Anhand der Kommunikation mit den Domainexperten sind die aufgelisteten Kriterien in \autoref{chapter:requiremnts} auf \autopageref{chapter:requiremnts} entstanden.
-	Durch diese Kriterien wurde dann entsprechend ein Domain-Model erstellt, das die angegebenen Kriterien vollständig abgedeckt hat.
-	Folgend darauf wurden in \autoref{sec:userStoriesDefinition} auf \autopageref{sec:userStoriesDefinition} die User-Stories für die Umsetzung der gegebenen Anforderungen geplant.	
+	Ziel dieser Arbeit war es ein funktionierendes \ac{TCMS} zu implementieren. 
+	Anhand der Kommunikation mit den Domainexperten wurden Anforderungen erstellt die in \autoref{chapter:requiremnts} beschrieben sind.
+	Anhand dieser Anforderungen wurde dann ein entsprechendes Domain-Model erstellt, das die angegebenen Kriterien vollständig abgedeckt hat.
+	Darauf aufbauend wurden User-Stories für die Umsetzung der gegebenen Anforderungen geplant.	
 	
-	Mit den beschriebenen Technologien in \autoref{sec:technologies} auf \autopageref{sec:technologies} erfolgte eine dementsprechende Umsetzung eines \ac{TCMS} Backends.
-	Angefangen mit der User-Story \emph{Erstellen und Suchen von Test-Environments}, ist die vierschichtige Architektur implementiert worden.
-	Darauffolgend konnten, mithilfe dieser Architektur, mit wenig Aufwand die restlichen User-Stories implementiert werden.
+	Mittels ausgewählter Technologien erfolgte eine dementsprechende Umsetzung eines \ac{TCMS} in C\#.
+	Angefangen mit der User-Story \emph{Erstellen und Suchen von Test-Environments}, wurde eine vierschichtige Architektur implementiert worden.
+	Mithilfe dieser Architektur konnten, mit wenig Aufwand, die restlichen User-Stories implementiert werden.
 	
 	Betrachtet man die Ergebnisse der technischen Umsetzung\footnote{https://github.com/iiNomad23/FHV\_BachelorThesis} kann für die vierschichtigen Architektur und den angewendeten Technologien eine Empfehlung ausgesprochen werden. 
-	Entwickler:innen die Erfahrung mit den genannten Technologien und der Architektur haben können damit einfach und effizient ein eigenes \ac{TCMS} Backend entwickeln.
+	Entwickler:innen die Erfahrung mit den genannten Technologien und der Architektur haben, können damit einfach und effizient ein eigenes \ac{TCMS} entwickeln.
 	
-	Abschließend lässt sich sagen, dass die vorgenommenen Ziele erfolgreich umgesetzt worden sind und die anfangs gestellten relevanten Fragen, unterstützend mit der Umsetzung, beantwortet sind.
+	Die definierten Ziele konnten erfolgreich umgesetzt und die anfangs gestellten relevanten Fragen, unterstützend mit der Umsetzung, beantwortet werden.
 	
 	
 	% Literaturverzeichnis
