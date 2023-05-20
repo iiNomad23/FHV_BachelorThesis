@@ -1,19 +1,32 @@
 # Bachelor's Thesis
 
-This repository includes all LaTeX files of my bachelor's thesis **Integrating a feature-oriented testing system into the development cycle of technical systems**. 
+This repository includes all LaTeX files of my bachelor's thesis **Development of a Test Case Management System for Gantner
+Instruments Measurement Systems**. 
 
 Written with [Overleaf](https://www.overleaf.com/) and [TeXstudio](https://www.texstudio.org/).
 
 ### Abstract
-The development of technical systems is a complex and costly process. 
-Therefore, it is important that products are thoroughly tested before delivery to the customer. 
-However, this is often neglected or done insufficiently due to time pressure and deadlines. 
-A well-structured test plan can minimize this risk and integrate the testing process into the product development cycle. 
-This allows stable hardware and efficient, well-structured software to be delivered to the customer without significant delays.  
+The development of technical systems is a complex and costly process. It is therefore
+important that the products are tested specifically and carefully before delivery to the
+customer. Due to scarce resources and deadline pressure, this is often neglected, or
+only carried out inadequately.
 
-Using techniques such as feature-oriented development, certain features must be accepted and tested before the product release. 
-This in turn allows newly implemented features to be thoroughly tested and contribute to high quality.  
+A test case management system makes it possible for features to be tested and approved
+before a product is released. This in turn enables newly implemented features to be
+thoroughly tested, thus contributing to the high quality of the product. As a result,
+stable hardware as well as efficient and well-structured software can be delivered to
+the customer.
 
-This can be achieved by structuring features in a database. 
-A system based on these feature descriptions can support automatic testing, conduct targeted tests for individual features, and accelerate their acceptance. 
-This reduces testing effort and provides focused feedback to the developers.
+The goal of this thesis is to develop a Test Case Management System, which makes
+it possible to describe features of measurement systems of the company Gantner
+Instruments. In addition, the test case management system should be able to receive
+test results from an already existing test automation system and assign them to
+features.
+
+The Test Case Management System developed in this thesis allows a precise description
+of features and test results as well as their storage in a database. Using a standardized
+API, data can be retrieved from the system and processed by external systems. By
+carefully documenting features and test results, statistics and reports can be generated
+that reflect which features were successfully tested. This makes it possible to monitor
+the progress of testing and to determine which features are ready for release and can
+be incorporated into the product on the basis of targets.
