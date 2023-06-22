@@ -11,7 +11,7 @@ important that the products are tested specifically and carefully before deliver
 customer. Due to scarce resources and deadline pressure, this is often neglected, or
 only carried out inadequately.
 
-A test case management system makes it possible for features to be tested and approved
+A Test Case Management System makes it possible for features to be tested and approved
 before a product is released. This in turn enables newly implemented features to be
 thoroughly tested, thus contributing to the high quality of the product. As a result,
 stable hardware as well as efficient and well-structured software can be delivered to
@@ -19,7 +19,7 @@ the customer.
 
 The goal of this thesis is to develop a Test Case Management System, which makes
 it possible to describe features of measurement systems of the company Gantner
-Instruments. In addition, the test case management system should be able to receive
+Instruments. In addition, the Test Case Management System should be able to receive
 test results from an already existing test automation system and assign them to
 features.
 
