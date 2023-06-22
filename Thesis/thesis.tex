@@ -2,7 +2,7 @@
 
 % !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
 
-\documentclass[a4paper, fontsize=11pt, parskip=half, twoside]{scrreprt}
+\documentclass[a4paper, fontsize=11pt, parskip=half, twoside, headings=openright]{scrreprt}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}   
@@ -64,21 +64,20 @@
 
 \begin{document}
 	
-	\thispagestyle{empty}
+	% Titelblatt
+	%\pagenumbering{roman}
 	
-	\cleardoublepage   % force output to a right page
-	\thispagestyle{empty}
 	\begin{titlepage}
 		\begin{flushright}
-			\includegraphics[width=0.4\linewidth]{assets/Logo-A3.jpg}
+			\includegraphics[width=0.4\linewidth]{assets/FHV_FHV-Logo.png}
 		\end{flushright}
 		
+		\vspace{1cm}	
 		\begin{flushleft}
 			\section*{Entwicklung eines Test Case Management Systems für Gantner Instruments Messsysteme}
 			%\subsection*{\papersubtitle}
-			\vspace{1cm}
 			
-			\vspace{0.5cm}
+			\vspace{1cm}
 			Bachelorarbeit\newline
 			zum Erlangen des akademischen Grades\newline
 			
@@ -89,7 +88,7 @@
 			Fachhochschule Vorarlberg\newline
 			Informatik - Software and Information Engineering\newline
 			
-			\vspace{0.5cm}
+			\vspace{1cm}
 			Betreut von\newline
 			Dipl.-Ing. Dr. techn. Ralph Hoch
 			
@@ -103,17 +102,18 @@
 	\end{titlepage}
 	
 	% Kurzreferat
-	\newpage
+	%\newpage
+	\cleardoublepage
 	\section*{Kurzreferat}
 	\subsection*{Entwicklung eines Test Case Management Systems für Gantner Instruments Messsysteme}
 	
 	Die Entwicklung technischer Systeme ist ein komplexer und kostspieliger Prozess. 
-	Daher ist es wichtig, dass die Produkte vor der Auslieferung an kaufende Personen gezielt und sorgfältig getestet werden. 
+	Daher ist es wichtig, dass die Produkte vor der Auslieferung an die Kundschaft gezielt und sorgfältig getestet werden. 
 	Dies wird durch knappe Ressourcen und Termindruck oftmals vernachlässigt, oder nur unzureichend durchgeführt. 
 	
 	Durch ein Test Case Management System ist es möglich, dass Features vor dem Release eines Produkts getestet und abgenommen werden müssen. 
 	Das wiederum ermöglicht, dass neu implementierte Features gründlich getestet werden und somit zu einer hohen Qualität des Produkts beitragen.
-	Dadurch kann stabile Hardware sowie effiziente und gut strukturierte Software an kaufende Person ausgeliefert werden.
+	Dadurch kann stabile Hardware sowie effiziente und gut strukturierte Software an die Kundschaft ausgeliefert werden.
 	
 	Ziel dieser Arbeit ist es, ein Test Case Management System zu entwickeln, mit dem es möglich ist Features von Messsystemen der Firma Gantner Instruments zu beschreiben.
 	Zusätzlich soll das Test Case Management System in der Lage sein, Testergebnisse von einem bereits bestehenden Test Automation System zu empfangen und diesen Features zuzuordnen.
@@ -123,7 +123,9 @@
 	Durch sorgfältige Dokumentation von Features und Testergebnisse können Statistiken und Reports erstellt werden, die wiedergeben, welche Features erfolgreich getestet wurden.
 	Dadurch ist eine Überwachung des Testfortschritts möglich und es kann anhand von Zielvorgaben festgestellt werden, welche Features Release-fähig sind und in das Produkt mit übernommen werden können.
 	
-	\newpage
+	% Abstract
+	%\newpage
+	\cleardoublepage
 	\section*{Abstract}
 	\subsection*{Development of a Test Case Management System for Gantner Instruments Measurement Systems}
 	
@@ -131,17 +133,17 @@
 	It is therefore important that the products are tested specifically and carefully before delivery to the customer. 
 	Due to scarce resources and deadline pressure, this is often neglected, or only carried out inadequately. 
 	
-	A test case management system makes it possible for features to be tested and approved before a product is released. 
+	A Test Case Management System makes it possible for features to be tested and approved before a product is released. 
 	This in turn enables newly implemented features to be thoroughly tested, thus contributing to the high quality of the product.
 	As a result, stable hardware as well as efficient and well-structured software can be delivered to the customer.
 	
 	The goal of this thesis is to develop a Test Case Management System, which makes it possible to describe features of measurement systems of the company Gantner Instruments.
-	In addition, the test case management system should be able to receive test results from an already existing test automation system and assign them to features.
+	In addition, the Test Case Management System should be able to receive test results from an already existing test automation system and assign them to features.
 	
 	The Test Case Management System developed in this thesis allows a precise description of features and test results as well as their storage in a database. 
 	Using a standardized API, data can be retrieved from the system and processed by external systems. 
 	By carefully documenting features and test results, statistics and reports can be generated that reflect which features were successfully tested.
-	This makes it possible to monitor the progress of testing and to determine which features are ready for release and can be incorporated into the product on the basis of targets.
+	This makes it possible to monitor the progress of testing and to determine, based on target goals, which features are ready for release and can be incorporated into the product.
 	
 	% Inhaltsverzeichnis
 	\cleardoublepage   % force output to a right page
@@ -190,8 +192,10 @@
 		\acrodefplural{TCMS}{Test Case Management Systeme}
 	\end{acronym}
 	
+	% Inhalt
+	\cleardoublepage
+	%\pagenumbering{arabic}
 	
-	\clearpage
 	\chapter{Einleitung}
 	
 	\begin{flushright}
@@ -207,7 +211,7 @@
 	
 	
 	\section{Motivation} \label{sec:motivation}
-	Die Entwicklung technischer Systeme ist ein komplexer Prozess, der eine hohe Qualität für das zu entwickelnde System erfordert, um den Anforderungen der kaufenden Personen gerecht zu werden. 
+	Die Entwicklung technischer Systeme ist ein komplexer Prozess, der eine hohe Qualität für das zu entwickelnde System erfordert, um den Anforderungen der Kundschaft gerecht zu werden. 
 	Damit diese Qualität auch gewährleistet werden kann, müssen Fehler sowie Mängel identifiziert und ausgebessert werden. 
 	Ein \ac{TCMS} bietet eine Lösung, um diesen Prozess zu vereinfachen und effektiver zu gestalten. 
 	Durch die Verwendung eines \ac{TCMS} können Angestellte aus verschiedenen Abteilungen, wie zum Beispiel der Software-, Hardware-, Support- oder Marketingabteilung, die Qualität des Produkts gemeinsam verbessern. 
@@ -518,7 +522,7 @@
 	
 	
 	\section{Testen der Funktionalitäten}
-	Damit die kaufende Person die Funktionalitäten des \ac{TCMS} auch \acfi{UI} unterstützt testen kann, wird ein webbasiertes \ac{UI} von \emph{Swagger} zur Verfügung gestellt, siehe \autoref{fig:swaggeruiExample}.
+	Damit die auftraggebende Person die Funktionalitäten des \ac{TCMS} auch \acfi{UI} unterstützt testen kann, wird ein webbasiertes \ac{UI} von \emph{Swagger} zur Verfügung gestellt, siehe \autoref{fig:swaggeruiExample}.
 	
 	Swagger ist ein Werkzeug mit dem \ac{API}-Beschreibungen erstellt werden können.
 	Zudem kann Swagger mithilfe des standardisiertem \ac{OAS} automatisch ein \ac{UI} generieren. (\textcite{noauthor_api_nodate})
@@ -1417,14 +1421,15 @@
 		\label{lst:testEnvironmentManagerClass}
 	\end{listing}
 		
+	% Eidesstattliche Erklärung
 	\clearpage
-	\section*{Eidesstattliche Erklärung}
+	\chapter*{Eidesstattliche Erklärung}
 	\addcontentsline{toc}{chapter}{Eidesstattliche Erklärung}
 	Ich erkläre hiermit an Eides statt, dass ich vorliegende Bachelorarbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. 
 	Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. 
 	Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
 	
-	\vspace{3cm}
+	\vspace{5cm}
 	\noindent
 	Dornbirn, am \displaydate{date} \hfill Marco Prescher
 	

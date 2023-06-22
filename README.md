@@ -28,5 +28,5 @@ of features and test results as well as their storage in a database. Using a sta
 API, data can be retrieved from the system and processed by external systems. By
 carefully documenting features and test results, statistics and reports can be generated
 that reflect which features were successfully tested. This makes it possible to monitor
-the progress of testing and to determine which features are ready for release and can
-be incorporated into the product on the basis of targets.
+the progress of testing and to determine, based on target goals, which features are ready
+for release and can be incorporated into the product.
