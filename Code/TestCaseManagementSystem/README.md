@@ -1,7 +1,7 @@
 # Test Case Management System
 
 Backend code.  
-Written in .NET Core using EF Core and MariaDB.
+Written in C# (.NET Core) using EF Core and MariaDB.
 
 ## Docker
 Docker MariaDB Container  
